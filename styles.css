@@ -1,0 +1,49 @@
+
+body.bg{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background:radial-gradient(circle at top left, rgba(212,175,55,0.25), transparent 40%),
+             radial-gradient(circle at bottom right, rgba(124,10,2,0.18), transparent 45%),
+             linear-gradient(#FFF8E7,#F9EFD5);
+  color:#7C0A02;
+}
+.header{display:flex;justify-content:space-between;padding:20px;}
+.logo2{
+  font-family:"Cinzel Decorative", serif;
+  font-size:38px;font-weight:700;letter-spacing:6px;
+  background:linear-gradient(90deg,#7C0A02,#D4AF37,#7C0A02);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 0 10px rgba(212,175,55,0.4);
+}
+.contact-link{text-decoration:none;font-weight:600;color:#7C0A02;}
+.landing{display:flex;flex-wrap:wrap;padding:20px;gap:20px;}
+.purpose{flex:1 1 300px;min-width:300px;}
+.authbox{
+  flex:1 1 300px;min-width:320px;
+  background:rgba(255,255,255,0.65);
+  padding:20px;border-radius:14px;
+  box-shadow:0 0 24px rgba(212,175,55,0.3);
+}
+input,select{
+  width:100%;padding:12px;margin-top:10px;border-radius:8px;
+  border:1px solid rgba(212,175,55,0.4);
+  background:rgba(255,255,255,0.45);backdrop-filter:blur(3px);
+  color:#7C0A02;font-size:14px;
+}
+input:focus,select:focus{
+  border:1px solid #7C0A02;
+  box-shadow:0 0 10px rgba(212,175,55,0.4);
+  background:rgba(255,255,255,0.6);
+  outline:none;
+}
+.btnrow{display:flex;gap:10px;margin-top:15px;}
+.btnrow button, .authbox button{
+  flex:1;padding:12px;background:#7C0A02;color:white;border:none;
+  border-radius:8px;font-weight:600;
+}
+.phone-row{display:flex;gap:10px;}
+.other-field{animation:fadeIn .4s ease forwards;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.invalid{border:1px solid #7C0A02 !important;}
+.error{font-size:12px;color:#7C0A02;}
+.info{margin-top:10px;font-size:13px;color:#5b4028;}
