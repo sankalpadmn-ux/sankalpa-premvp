@@ -1,66 +1,248 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Contact – Sankalpa</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+/* ----------------------------------------------------- */
+/*  BASE FONT & BODY BACKGROUND                          */
+/* ----------------------------------------------------- */
 
-<body class="bg">
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #fffdfa;
+  color: #5c483a;
+}
 
-  <!-- Header -->
-  <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
+.bg {
+  background: linear-gradient(to bottom, #fffdf6, #f4e7d5);
+  min-height: 100vh;
+}
 
-    <!-- Left Logo -->
-    <div class="logo2">S A N K A L P A</div>
+/* ----------------------------------------------------- */
+/*  HEADER (Consistent Across All Pages)                 */
+/* ----------------------------------------------------- */
 
-    <!-- (NO Contact Us link here — as requested) -->
+.header {
+  padding: 20px 30px;
+  border-bottom: 1px solid #e8d9c0;
+  background: rgba(255, 253, 246, 0.85);
+  backdrop-filter: blur(4px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    <div style="width:80px;"></div> <!-- keeps header balanced -->
+.logo2 {
+  font-size: 26px;
+  letter-spacing: 6px;
+  color: #7a4d24;
+  font-weight: bold;
+}
 
-  </header>
+/* ----------------------------------------------------- */
+/*  HERO SECTION (Landing Page)                          */
+/* ----------------------------------------------------- */
 
-  <!-- Main Contact Section -->
-  <main class="contact-main">
-    <section class="form contact-box">
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 60px;
+  gap: 40px;
+}
 
-      <h2>Contact Us</h2>
-      <p class="contact-text">
-        We are here to support your divine journey.  
-        Whether you have questions about priest availability, ritual types,  
-        or upcoming features, Sankalpa is committed to helping you with clarity and devotion.
-        <br><br>
-        Please feel free to reach out using the details below.
-      </p>
+.left {
+  width: 55%;
+}
 
-      <!-- Contact Details -->
-      <div class="contact-details">
+.right {
+  width: 45%;
+}
 
-        <div class="contact-line">
-          <span class="contact-label">Email</span>
-          <span style="color:#5c483a;">sankalpadmn@gmail.com</span>
-        </div>
+.hero-title {
+  font-size: 32px;
+  color: #7a4d24;
+  margin-bottom: 12px;
+}
 
-        <div class="contact-line" style="margin-top:14px;">
-          <span class="contact-label">Phone</span>
-          <span style="color:#5c483a;">9040044700</span>
-        </div>
+.hero-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #5c483a;
+}
 
-        <div class="contact-line" style="margin-top:14px;">
-          <span class="contact-label">WhatsApp</span>
-          <a 
-            href="https://wa.me/919040044700" 
-            target="_blank"
-            style="color:#7a4d24;text-decoration:none;font-weight:bold;">
-            Click here to open WhatsApp
-          </a>
-        </div>
+/* ----------------------------------------------------- */
+/*  FORM BOXES (Login, Contact, Search)                  */
+/* ----------------------------------------------------- */
 
-      </div>
+.form-box,
+.contact-box {
+  background: rgba(255, 253, 247, 0.7);
+  border: 1px solid #e8d9c0;
+  border-radius: 12px;
+  padding: 26px 28px;
+  box-shadow: 0 2px 8px rgba(185, 147, 96, 0.18);
+}
 
-    </section>
-  </main>
+.form-title {
+  margin-top: 0;
+  font-size: 20px;
+  color: #7a4d24;
+  text-align: center;
+}
 
-</body>
-</html>
+/* ----------------------------------------------------- */
+/*  INPUTS & LABELS                                      */
+/* ----------------------------------------------------- */
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #7a4d24;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #d4c098;
+  background: #fdfdfd;
+  color: #5c483a;
+  font-size: 15px;
+}
+
+/* Fix: Mobile Number should not stretch */
+#phone {
+  max-width: 220px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* ----------------------------------------------------- */
+/*  BUTTONS                                              */
+/* ----------------------------------------------------- */
+
+.primary-btn {
+  background: #7a4d24;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.primary-btn:hover {
+  background: #633e1c;
+}
+
+/* ----------------------------------------------------- */
+/*  TOGGLE BUTTON ROW                                    */
+/* ----------------------------------------------------- */
+
+.toggle-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+/* ----------------------------------------------------- */
+/*  CONTACT & SEARCH PAGE LAYOUT                         */
+/* ----------------------------------------------------- */
+
+.contact-main {
+  padding: 40px 60px;
+}
+
+.contact-text {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.contact-details {
+  margin-top: 18px;
+}
+
+.contact-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+
+.contact-label {
+  font-weight: bold;
+  color: #7a4d24;
+}
+
+/* ----------------------------------------------------- */
+/*  MOBILE-FRIENDLY LAYOUT                               */
+/* ----------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* Header compact */
+  .header {
+    padding: 12px 18px;
+  }
+
+  .logo2 {
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+
+  .header a,
+  .header button {
+    font-size: 12px !important;
+    padding: 6px 8px;
+  }
+
+  /* Hero collapses */
+  .hero {
+    flex-direction: column;
+    padding: 26px 22px;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 22px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+  }
+
+  /* Form boxes compact */
+  .form-box,
+  .contact-box {
+    padding: 18px 18px;
+  }
+
+  input,
+  select {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .primary-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  /* Contact & Search page compact */
+  .contact-main {
+    padding: 26px 22px;
+  }
+
+  .contact-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
