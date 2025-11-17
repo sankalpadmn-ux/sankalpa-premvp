@@ -21,12 +21,12 @@
   <!-- Main Hero Section -->
   <section class="hero">
     
-    <!-- LEFT SIDE (Why Sankalpa) -->
+    <!-- LEFT SIDE -->
     <div class="left">
       <h1 class="hero-title">Why Sankalpa?</h1>
       <p class="hero-text">
         Sankalpa is a sacred place created to help devotees connect with the right
-        Hindu priests for every ritual, ceremony, and spiritual requirement.  
+        Hindu priests for every ritual, ceremony, and spiritual requirement.
         Our purpose is to make the process simple, respectful, and deeply rooted
         in tradition — ensuring that every devotee finds the priest who aligns
         with their needs, values, and customs.
@@ -40,10 +40,10 @@
     <div class="right">
       <div class="form-box">
 
-        <!-- MOBILE NUMBER COMMON FIELD -->
+        <!-- COMMON MOBILE NUMBER -->
         <div class="input-group">
           <label>Mobile Number</label>
-          <input type="text" id="phone" placeholder="Enter Mobile Number">
+          <input type="text" id="phone_common" placeholder="Enter Mobile Number">
         </div>
 
         <!-- Toggle Buttons -->
@@ -52,12 +52,18 @@
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- Existing User Section -->
+        <!-- EXISTING USER -->
         <div id="existingSection" style="display:none;margin-top:20px;">
+
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" id="existing_name" placeholder="Enter Your Name">
+          </div>
+
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
-        <!-- New User Section -->
+        <!-- NEW USER -->
         <div id="newSection" style="display:none;margin-top:20px;">
 
           <div class="input-group">
@@ -93,13 +99,11 @@
             </select>
           </div>
 
-          <!-- Other Locality Field -->
           <div class="input-group" id="otherLocalityBox" style="display:none;">
             <label>Enter your locality</label>
             <input type="text" id="otherLocality" placeholder="Enter Locality">
           </div>
 
-          <!-- Submit -->
           <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
 
         </div>
@@ -109,6 +113,7 @@
   </section>
 
 <script>
+
 /* Go Home */
 function goHome() {
   window.location.href = "index.html";
@@ -118,13 +123,6 @@ function goHome() {
 function showExisting() {
   document.getElementById("existingSection").style.display = "block";
   document.getElementById("newSection").style.display = "none";
-
-  // Reset new user fields
-  document.getElementById("name").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("locality").value = "";
-  document.getElementById("otherLocality").value = "";
-  document.getElementById("otherLocalityBox").style.display = "none";
 }
 
 function showNew() {
@@ -132,35 +130,44 @@ function showNew() {
   document.getElementById("newSection").style.display = "block";
 }
 
-/* Show Other Locality */
+/* Other Locality */
 function checkOtherLocality() {
   let loc = document.getElementById("locality").value;
   document.getElementById("otherLocalityBox").style.display =
     (loc === "Other") ? "block" : "none";
 }
 
-/* Login → Go to Search Page */
+/* EXISTING USER LOGIN */
 function loginUser() {
-  let phone = document.getElementById("phone").value.trim();
-  if (phone === "") {
-    alert("Please enter Mobile Number");
+  let name = document.getElementById("existing_name").value.trim();
+  let phone = document.getElementById("phone_common").value.trim();
+
+  if (name === "" || phone === "") {
+    alert("Please enter Name and Mobile Number");
     return;
   }
-  localStorage.setItem("customerName", phone);  
+
+  localStorage.setItem("customerName", name);
+
   window.location.href = "search.html";
 }
 
-/* Register New User (Local Only For Now) */
+/* NEW USER */
 function registerUser() {
   let name = document.getElementById("name").value.trim();
-  if (name === "") {
-    alert("Please enter Name");
+  let phone = document.getElementById("phone_common").value.trim();
+
+  if (name === "" || phone === "") {
+    alert("Please enter Name and Mobile Number");
     return;
   }
-  localStorage.setItem("customerName", name);
+
   alert("Registration successful!");
-  window.location.href = "index.html";
+
+  localStorage.setItem("customerName", name);
+  window.location.href = "search.html";
 }
+
 </script>
 
 </body>
