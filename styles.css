@@ -1,12 +1,12 @@
 /* ----------------------------------------------------- */
-/*  BASE FONT & BODY BACKGROUND                          */
+/* BASE FONT & BACKGROUND                                */
 /* ----------------------------------------------------- */
 
 body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  background-color: #fffdfa;
   color: #5c483a;
+  background-color: #fffdfa;
 }
 
 .bg {
@@ -15,13 +15,13 @@ body {
 }
 
 /* ----------------------------------------------------- */
-/*  HEADER (Consistent Across All Pages)                 */
+/* HEADER (Consistent Across All Pages)                  */
 /* ----------------------------------------------------- */
 
 .header {
   padding: 20px 30px;
   border-bottom: 1px solid #e8d9c0;
-  background: rgba(255, 253, 246, 0.85);
+  background: rgba(255, 253, 246, 0.92);
   backdrop-filter: blur(4px);
   position: sticky;
   top: 0;
@@ -35,8 +35,18 @@ body {
   font-weight: bold;
 }
 
+.header-link {
+  color: #7a4d24;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.header-link:hover {
+  text-decoration: underline;
+}
+
 /* ----------------------------------------------------- */
-/*  HERO SECTION (Landing Page)                          */
+/* HERO SECTION (Landing Page)                           */
 /* ----------------------------------------------------- */
 
 .hero {
@@ -57,22 +67,20 @@ body {
 .hero-title {
   font-size: 32px;
   color: #7a4d24;
-  margin-bottom: 12px;
 }
 
 .hero-text {
   font-size: 16px;
   line-height: 1.8;
-  color: #5c483a;
 }
 
 /* ----------------------------------------------------- */
-/*  FORM BOXES (Login, Contact, Search)                  */
+/* FORM BOXES                                            */
 /* ----------------------------------------------------- */
 
 .form-box,
 .contact-box {
-  background: rgba(255, 253, 247, 0.7);
+  background: rgba(255, 253, 247, 0.75);
   border: 1px solid #e8d9c0;
   border-radius: 12px;
   padding: 26px 28px;
@@ -80,14 +88,13 @@ body {
 }
 
 .form-title {
-  margin-top: 0;
-  font-size: 20px;
-  color: #7a4d24;
   text-align: center;
+  color: #7a4d24;
+  font-size: 20px;
 }
 
 /* ----------------------------------------------------- */
-/*  INPUTS & LABELS                                      */
+/* INPUTS & LABELS                                       */
 /* ----------------------------------------------------- */
 
 .input-group {
@@ -98,8 +105,8 @@ body {
 
 label {
   font-size: 14px;
-  margin-bottom: 5px;
   color: #7a4d24;
+  margin-bottom: 5px;
 }
 
 input,
@@ -107,20 +114,25 @@ select {
   padding: 10px 12px;
   border-radius: 6px;
   border: 1px solid #d4c098;
-  background: #fdfdfd;
-  color: #5c483a;
+  background: #faf4e5;
   font-size: 15px;
+  color: #5c483a;
 }
 
-/* Fix: Mobile Number should not stretch */
+/* Phone field not stretched */
 #phone {
-  max-width: 220px;
+  max-width: 240px;
   margin: 0 auto;
   display: block;
 }
 
+/* Multiselect height */
+select[multiple] {
+  height: 65px;
+}
+
 /* ----------------------------------------------------- */
-/*  BUTTONS                                              */
+/* BUTTONS                                               */
 /* ----------------------------------------------------- */
 
 .primary-btn {
@@ -138,18 +150,7 @@ select {
 }
 
 /* ----------------------------------------------------- */
-/*  TOGGLE BUTTON ROW                                    */
-/* ----------------------------------------------------- */
-
-.toggle-row {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 14px;
-}
-
-/* ----------------------------------------------------- */
-/*  CONTACT & SEARCH PAGE LAYOUT                         */
+/* CONTACT PAGE                                          */
 /* ----------------------------------------------------- */
 
 .contact-main {
@@ -158,18 +159,18 @@ select {
 
 .contact-text {
   font-size: 15px;
-  line-height: 1.7;
+  color: #5c483a;
 }
 
 .contact-details {
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .contact-line {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 8px;
+  padding: 8px 0;
 }
 
 .contact-label {
@@ -178,12 +179,20 @@ select {
 }
 
 /* ----------------------------------------------------- */
-/*  MOBILE-FRIENDLY LAYOUT                               */
+/* SEARCH PAGE                                           */
+/* ----------------------------------------------------- */
+
+#results div {
+  background: #faf4e5;
+  border-radius: 8px;
+}
+
+/* ----------------------------------------------------- */
+/* MOBILE LAYOUT                                         */
 /* ----------------------------------------------------- */
 
 @media (max-width: 768px) {
 
-  /* Header compact */
   .header {
     padding: 12px 18px;
   }
@@ -193,13 +202,6 @@ select {
     letter-spacing: 4px;
   }
 
-  .header a,
-  .header button {
-    font-size: 12px !important;
-    padding: 6px 8px;
-  }
-
-  /* Hero collapses */
   .hero {
     flex-direction: column;
     padding: 26px 22px;
@@ -210,39 +212,23 @@ select {
     width: 100%;
   }
 
-  .hero-title {
-    font-size: 22px;
-  }
-
-  .hero-text {
-    font-size: 14px;
-  }
-
-  /* Form boxes compact */
   .form-box,
   .contact-box {
-    padding: 18px 18px;
+    padding: 18px;
   }
 
   input,
   select {
     font-size: 13px;
-    padding: 8px 10px;
   }
 
   .primary-btn {
-    padding: 8px 12px;
     font-size: 13px;
-  }
-
-  /* Contact & Search page compact */
-  .contact-main {
-    padding: 26px 22px;
+    padding: 8px 12px;
   }
 
   .contact-line {
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
   }
 }
