@@ -9,7 +9,7 @@
 
 <body class="bg">
 
-  <!-- Header with Single Logo + Contact Us + Logout -->
+  <!-- Header -->
   <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
     
     <!-- Left Logo -->
@@ -17,6 +17,7 @@
 
     <!-- Right Contact Us + Logout -->
     <div style="display:flex;gap:16px;align-items:center;">
+
       <a 
         href="contact.html" 
         style="font-size:12px;color:#5c483a;text-decoration:none;">
@@ -35,36 +36,33 @@
           font-size:13px;">
         Logout
       </button>
+
     </div>
 
   </header>
 
-  <!-- Main section -->
+  <!-- Main Section -->
   <main class="contact-main">
     <section class="form contact-box">
 
       <h2>Search Priests</h2>
       <p class="contact-text">
-        Share your ritual requirements and locality details. As Sankalpa evolves,
-        this sacred space will guide you toward priests whose experience, language,
-        and traditions align beautifully with your family's needs.
+        Share your ritual requirements and locality details. Sankalpa will guide you toward priests whose experience, language, and traditions align beautifully with your needs.
       </p>
 
-      <!-- Search Filters Begin -->
       <div class="contact-details">
 
-        <!-- City (Prefilled + Disabled) -->
+        <!-- CITY -->
         <div class="contact-line" style="flex-direction:column;align-items:flex-start;">
           <span class="contact-label">City</span>
           <input 
             type="text" 
             value="Coimbatore" 
             disabled
-            style="width:100%;opacity:0.85;background:#fdfdfd;border-radius:6px;padding:8px;border:1px solid #d4c098;color:#5c483a;"
-          />
+            style="width:100%;opacity:0.85;background:#fdfdfd;border-radius:6px;padding:8px;border:1px solid #d4c098;color:#5c483a;" />
         </div>
 
-        <!-- Ritual Type -->
+        <!-- RITUAL TYPE -->
         <div class="contact-line" style="flex-direction:column;align-items:flex-start;margin-top:14px;">
           <span class="contact-label">Ritual Type</span>
           <select id="ritualType">
@@ -87,11 +85,12 @@
           </select>
         </div>
 
-        <!-- Locality -->
+        <!-- LOCALITY -->
         <div class="contact-line" style="flex-direction:column;align-items:flex-start;margin-top:14px;">
           <span class="contact-label">Locality (Coimbatore)</span>
           <select id="searchLocality">
             <option value="">Select Locality</option>
+
             <option>R.S. Puram</option>
             <option>Saibaba Colony</option>
             <option>Gandhipuram</option>
@@ -121,11 +120,12 @@
             <option>Kovilpalayam</option>
             <option>Vellalore</option>
             <option>Chettipalayam</option>
+
             <option value="other">Other</option>
           </select>
         </div>
 
-        <!-- Languages -->
+        <!-- LANGUAGES -->
         <div class="contact-line" style="flex-direction:column;align-items:flex-start;margin-top:14px;">
           <span class="contact-label">Languages</span>
           <select id="languages" multiple size="3">
@@ -138,7 +138,7 @@
           </select>
         </div>
 
-        <!-- Experience -->
+        <!-- EXPERIENCE -->
         <div class="contact-line" style="flex-direction:column;align-items:flex-start;margin-top:14px;">
           <span class="contact-label">Experience</span>
           <select id="experience">
@@ -150,7 +150,7 @@
           </select>
         </div>
 
-        <!-- Search Button -->
+        <!-- SEARCH BUTTON -->
         <div class="contact-line" style="margin-top:20px;">
           <button type="button" class="primary-btn" onclick="searchPriests()">
             Search Priests
@@ -159,6 +159,7 @@
 
       </div>
 
+      <!-- MESSAGES -->
       <p id="searchInfo" class="contact-text" style="margin-top:12px;"></p>
       <div id="resultsContainer" style="margin-top:14px;"></div>
 
@@ -167,12 +168,9 @@
 
   <script>
     function searchPriests() {
-      const info = document.getElementById("searchInfo");
-      const results = document.getElementById("resultsContainer");
-
-      info.innerText =
-        "Priest search will be activated once we wire the backend.";
-      results.innerHTML = "";
+      document.getElementById("searchInfo").innerText =
+        "Priest search will be activated once the backend connection to the Priests sheet is added.";
+      document.getElementById("resultsContainer").innerHTML = "";
     }
 
     function logoutUser() {
