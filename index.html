@@ -23,10 +23,10 @@
     
     <!-- LEFT SIDE -->
     <div class="left">
-      <h1 class="hero-title">Why Sankalpa?</h1>
+      <h1 class="hero-title">Why Sankalpa?</hh1>
       <p class="hero-text">
         Sankalpa is a sacred place created to help devotees connect with the right
-        Hindu priests for every ritual, ceremony, and spiritual requirement.
+        Hindu priests for every ritual, ceremony, and spiritual spiritual requirement.
         Our purpose is to make the process simple, respectful, and deeply rooted
         in tradition — ensuring that every devotee finds the priest who aligns
         with their needs, values, and customs.
@@ -40,13 +40,13 @@
     <div class="right">
       <div class="form-box">
 
-        <!-- ONLY BUTTONS SHOWN INITIALLY -->
+        <!-- BUTTONS ONLY -->
         <div class="toggle-row" style="margin-top:10px;">
           <button class="primary-btn" onclick="showExisting()">Existing User</button>
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- EXISTING USER SECTION -->
+        <!-- EXISTING USER -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -62,7 +62,7 @@
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
-        <!-- NEW USER SECTION -->
+        <!-- NEW USER -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -82,7 +82,7 @@
 
           <div class="input-group">
             <label>City</label>
-            <input type="text" value="Coimbatore" disabled style="background:#faf4e5;">
+            <input type="text" value="Coimbatore" disabled style="background:#f7f2e8;">
           </div>
 
           <div class="input-group">
@@ -123,31 +123,27 @@ function goHome() {
   window.location.href = "index.html";
 }
 
-/* SHOW EXISTING USER ONLY */
+/* Toggle */
 function showExisting() {
   document.getElementById("existingSection").style.display = "block";
   document.getElementById("newSection").style.display = "none";
   document.getElementById("otherLocalityBox").style.display = "none";
 }
 
-/* SHOW NEW USER ONLY */
 function showNew() {
   document.getElementById("existingSection").style.display = "none";
   document.getElementById("newSection").style.display = "block";
   document.getElementById("otherLocalityBox").style.display = "none";
 }
 
-/* OTHER LOCALITY ONLY WHEN "Other" SELECTED */
+/* Other Locality */
 function checkOtherLocality() {
   let loc = document.getElementById("new_locality").value;
-  if (loc === "Other") {
-    document.getElementById("otherLocalityBox").style.display = "block";
-  } else {
-    document.getElementById("otherLocalityBox").style.display = "none";
-  }
+  document.getElementById("otherLocalityBox").style.display = 
+      (loc === "Other") ? "block" : "none";
 }
 
-/* LOGIN EXISTING USER */
+/* Existing */
 function loginUser() {
   let name = document.getElementById("existing_name").value.trim();
   let phone = document.getElementById("existing_phone").value.trim();
@@ -161,7 +157,7 @@ function loginUser() {
   window.location.href = "search.html";
 }
 
-/* REGISTER NEW USER WITH GOOGLE SHEETS BACKEND */
+/* NEW USER REGISTRATION - BACKEND CONNECTED */
 async function registerUser() {
   let name = document.getElementById("new_name").value.trim();
   let phone = document.getElementById("new_phone").value.trim();
@@ -186,7 +182,7 @@ async function registerUser() {
 
   try {
     let response = await fetch(
-      "https://script.google.com/macros/s/AKfycbxoJ82xHS4_ALGYpS5ziN66hoPrs0gyvOJlT_J9Xd_D-keKhUcdUt6ZWbLHZnEok-O-/exec?action=registerCustomer",
+      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec?action=registerCustomer",
       {
         method: "POST",
         body: JSON.stringify(payload)
@@ -195,7 +191,7 @@ async function registerUser() {
 
     let result = await response.json();
 
-    if (result.status === "SUCCESS") {
+    if (result.status === "success") {
       alert("Registration successful!");
       localStorage.setItem("customerName", name);
       window.location.href = "search.html";
