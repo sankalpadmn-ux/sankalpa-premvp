@@ -6,26 +6,66 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body class="bg">
-  <header class="header">
+
+  <!-- Header with Single Logo + Contact Us + Logout -->
+  <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
+    
+    <!-- Left Logo -->
     <div class="logo2">S A N K A L P A</div>
-    <a class="contact-link" href="dashboard.html">Back to Dashboard</a>
+
+    <!-- Right Contact Us + Logout -->
+    <div style="display:flex;gap:16px;align-items:center;">
+      <a 
+        href="contact.html" 
+        style="font-size:12px;color:#5c483a;text-decoration:none;">
+        Contact Us
+      </a>
+
+      <button 
+        onclick="logoutUser()" 
+        style="
+          background:#7a4d24;
+          color:white;
+          border:none;
+          padding:6px 14px;
+          border-radius:6px;
+          cursor:pointer;
+          font-size:13px;">
+        Logout
+      </button>
+    </div>
+
   </header>
 
+  <!-- Main section -->
   <main class="contact-main">
     <section class="form contact-box">
+
       <h2>Search Priests</h2>
       <p class="contact-text">
         Share your ritual requirements and locality details. As Sankalpa evolves,
-        this sacred space will help you discover priests whose experience, language,
-        and traditions align with your family’s needs.
+        this sacred space will guide you toward priests whose experience, language,
+        and traditions align beautifully with your family's needs.
       </p>
 
-      <!-- Search Filters -->
+      <!-- Search Filters Begin -->
       <div class="contact-details">
-        
-        <!-- Ritual Type -->
+
+        <!-- City (Prefilled + Disabled) -->
         <div class="contact-line" style="flex-direction:column;align-items:flex-start;">
+          <span class="contact-label">City</span>
+          <input 
+            type="text" 
+            value="Coimbatore" 
+            disabled
+            style="width:100%;opacity:0.85;background:#fdfdfd;border-radius:6px;padding:8px;border:1px solid #d4c098;color:#5c483a;"
+          />
+        </div>
+
+        <!-- Ritual Type -->
+        <div class="contact-line" style="flex-direction:column;align-items:flex-start;margin-top:14px;">
           <span class="contact-label">Ritual Type</span>
           <select id="ritualType">
             <option value="">Select Ritual Type</option>
@@ -116,24 +156,28 @@
             Search Priests
           </button>
         </div>
+
       </div>
 
       <p id="searchInfo" class="contact-text" style="margin-top:12px;"></p>
-
-      <!-- Search Results Placeholder -->
       <div id="resultsContainer" style="margin-top:14px;"></div>
 
     </section>
   </main>
 
   <script>
-    // Search logic will be wired in next backend phase
     function searchPriests() {
       const info = document.getElementById("searchInfo");
       const results = document.getElementById("resultsContainer");
+
       info.innerText =
-        "Search functionality will be activated shortly as we connect the Priests_Admin_List backend.";
+        "Priest search will be activated once we wire the backend.";
       results.innerHTML = "";
+    }
+
+    function logoutUser() {
+      sessionStorage.clear();
+      window.location.href = "index.html";
     }
   </script>
 
