@@ -1,40 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Contact – Sankalpa</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <title>Sankalpa – Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg">
 
   <!-- Header -->
   <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
+      <div class="logo2" onclick="goHome()" style="cursor:pointer;">S A N K A L P A</div>
 
-    <!-- Left Logo -->
-    <div class="logo2">S A N K A L P A</div>
-
-    <!-- (NO Contact Us link here — as requested) -->
-
-    <div style="width:80px;"></div> <!-- keeps header balanced -->
-
+      <nav style="display:flex;gap:22px;">
+        <a href="index.html" class="header-link">Home</a>
+        <a onclick="logout()" class="header-link" style="cursor:pointer;">Logout</a>
+      </nav>
   </header>
 
-  <!-- Main Contact Section -->
+  <!-- Contact Container -->
   <main class="contact-main">
-    <section class="form contact-box">
+    <div class="contact-box" style="max-width:600px;margin:auto;">
 
-      <h2>Contact Us</h2>
+      <h2 class="form-title">Contact Us</h2>
+
       <p class="contact-text">
-        We are here to support your divine journey.  
-        Whether you have questions about priest availability, ritual types,  
-        or upcoming features, Sankalpa is committed to helping you with clarity and devotion.
-        <br><br>
-        Please feel free to reach out using the details below.
+        Please feel free to reach out using the details below:
       </p>
 
-      <!-- Contact Details -->
       <div class="contact-details">
 
         <div class="contact-line">
@@ -42,25 +36,36 @@
           <span style="color:#5c483a;">sankalpadmn@gmail.com</span>
         </div>
 
-        <div class="contact-line" style="margin-top:14px;">
+        <div class="contact-line">
           <span class="contact-label">Phone</span>
           <span style="color:#5c483a;">9040044700</span>
         </div>
 
-        <div class="contact-line" style="margin-top:14px;">
+        <div class="contact-line">
           <span class="contact-label">WhatsApp</span>
           <a 
             href="https://wa.me/919040044700" 
             target="_blank"
             style="color:#7a4d24;text-decoration:none;font-weight:bold;">
-            Click here to open WhatsApp
+            Open WhatsApp
           </a>
         </div>
 
       </div>
 
-    </section>
+    </div>
   </main>
+
+<script>
+function goHome() {
+  window.location.href = "index.html";
+}
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "index.html";
+}
+</script>
 
 </body>
 </html>
