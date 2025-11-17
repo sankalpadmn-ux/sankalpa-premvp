@@ -15,7 +15,7 @@
 
       <nav style="display:flex;gap:22px;">
         <a href="index.html" class="header-link">Home</a>
-        <a onclick="logout()" class="header-link" style="cursor:pointer;">Logout</a>
+        <a id="logoutLink" onclick="logout()" class="header-link" style="cursor:pointer; display:none;">Logout</a>
       </nav>
   </header>
 
@@ -62,11 +62,21 @@ function goHome() {
   window.location.href = "index.html";
 }
 
+/* SHOW LOGOUT ONLY IF USER LOGGED IN */
+window.onload = function() {
+  let name = localStorage.getItem("customerName");
+
+  if (name && name.trim() !== "") {
+    document.getElementById("logoutLink").style.display = "inline";
+  } else {
+    document.getElementById("logoutLink").style.display = "none";
+  }
+};
+
 function logout() {
   localStorage.clear();
   window.location.href = "index.html";
 }
-
 </script>
 
 </body>
