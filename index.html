@@ -36,39 +36,43 @@
       </p>
     </div>
 
-    <!-- RIGHT SIDE (Login & Registration) -->
+    <!-- RIGHT SIDE -->
     <div class="right">
       <div class="form-box">
 
-        <!-- COMMON MOBILE NUMBER -->
-        <div class="input-group">
-          <label>Mobile Number</label>
-          <input type="text" id="phone_common" placeholder="Enter Mobile Number">
-        </div>
-
-        <!-- Toggle Buttons -->
-        <div class="toggle-row">
+        <!-- ONLY BUTTONS SHOWN INITIALLY -->
+        <div class="toggle-row" style="margin-top:10px;">
           <button class="primary-btn" onclick="showExisting()">Existing User</button>
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- EXISTING USER -->
-        <div id="existingSection" style="display:none;margin-top:20px;">
+        <!-- EXISTING USER SECTION -->
+        <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
             <label>Name</label>
             <input type="text" id="existing_name" placeholder="Enter Your Name">
           </div>
 
+          <div class="input-group">
+            <label>Mobile Number</label>
+            <input type="text" id="existing_phone" placeholder="Enter Mobile Number">
+          </div>
+
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
-        <!-- NEW USER -->
-        <div id="newSection" style="display:none;margin-top:20px;">
+        <!-- NEW USER SECTION -->
+        <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
             <label>Name</label>
-            <input type="text" id="name" placeholder="Enter Name">
+            <input type="text" id="new_name" placeholder="Enter Name">
+          </div>
+
+          <div class="input-group">
+            <label>Mobile Number</label>
+            <input type="text" id="new_phone" placeholder="Enter Mobile Number">
           </div>
 
           <div class="input-group">
@@ -83,7 +87,7 @@
 
           <div class="input-group">
             <label>Locality</label>
-            <select id="locality" onchange="checkOtherLocality()">
+            <select id="new_locality" onchange="checkOtherLocality()">
               <option value="">Select Locality</option>
               <option>RS Puram</option>
               <option>Saibaba Colony</option>
@@ -119,28 +123,34 @@ function goHome() {
   window.location.href = "index.html";
 }
 
-/* Toggle Sections */
+/* SHOW EXISTING USER ONLY */
 function showExisting() {
   document.getElementById("existingSection").style.display = "block";
   document.getElementById("newSection").style.display = "none";
+  document.getElementById("otherLocalityBox").style.display = "none"; // hide in case
 }
 
+/* SHOW NEW USER ONLY */
 function showNew() {
   document.getElementById("existingSection").style.display = "none";
   document.getElementById("newSection").style.display = "block";
+  document.getElementById("otherLocalityBox").style.display = "none"; // default hidden
 }
 
-/* Other Locality */
+/* OTHER LOCALITY ONLY WHEN "Other" SELECTED */
 function checkOtherLocality() {
-  let loc = document.getElementById("locality").value;
-  document.getElementById("otherLocalityBox").style.display =
-    (loc === "Other") ? "block" : "none";
+  let loc = document.getElementById("new_locality").value;
+  if (loc === "Other") {
+    document.getElementById("otherLocalityBox").style.display = "block";
+  } else {
+    document.getElementById("otherLocalityBox").style.display = "none";
+  }
 }
 
-/* EXISTING USER LOGIN */
+/* LOGIN EXISTING USER */
 function loginUser() {
   let name = document.getElementById("existing_name").value.trim();
-  let phone = document.getElementById("phone_common").value.trim();
+  let phone = document.getElementById("existing_phone").value.trim();
 
   if (name === "" || phone === "") {
     alert("Please enter Name and Mobile Number");
@@ -148,14 +158,13 @@ function loginUser() {
   }
 
   localStorage.setItem("customerName", name);
-
   window.location.href = "search.html";
 }
 
-/* NEW USER */
+/* REGISTER NEW USER */
 function registerUser() {
-  let name = document.getElementById("name").value.trim();
-  let phone = document.getElementById("phone_common").value.trim();
+  let name = document.getElementById("new_name").value.trim();
+  let phone = document.getElementById("new_phone").value.trim();
 
   if (name === "" || phone === "") {
     alert("Please enter Name and Mobile Number");
