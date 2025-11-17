@@ -127,14 +127,14 @@ function goHome() {
 function showExisting() {
   document.getElementById("existingSection").style.display = "block";
   document.getElementById("newSection").style.display = "none";
-  document.getElementById("otherLocalityBox").style.display = "none"; // hide in case
+  document.getElementById("otherLocalityBox").style.display = "none";
 }
 
 /* SHOW NEW USER ONLY */
 function showNew() {
   document.getElementById("existingSection").style.display = "none";
   document.getElementById("newSection").style.display = "block";
-  document.getElementById("otherLocalityBox").style.display = "none"; // default hidden
+  document.getElementById("otherLocalityBox").style.display = "none";
 }
 
 /* OTHER LOCALITY ONLY WHEN "Other" SELECTED */
@@ -161,20 +161,51 @@ function loginUser() {
   window.location.href = "search.html";
 }
 
-/* REGISTER NEW USER */
-function registerUser() {
+/* REGISTER NEW USER WITH GOOGLE SHEETS BACKEND */
+async function registerUser() {
   let name = document.getElementById("new_name").value.trim();
   let phone = document.getElementById("new_phone").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let locality = document.getElementById("new_locality").value.trim();
+  let otherLocality = document.getElementById("otherLocality").value.trim();
+  let city = "Coimbatore";
 
   if (name === "" || phone === "") {
     alert("Please enter Name and Mobile Number");
     return;
   }
 
-  alert("Registration successful!");
+  let payload = {
+    name: name,
+    mobile: phone,
+    email: email,
+    city: city,
+    locality: locality,
+    otherLocality: otherLocality
+  };
 
-  localStorage.setItem("customerName", name);
-  window.location.href = "search.html";
+  try {
+    let response = await fetch(
+      "https://script.google.com/macros/s/AKfycbxoJ82xHS4_ALGYpS5ziN66hoPrs0gyvOJlT_J9Xd_D-keKhUcdUt6ZWbLHZnEok-O-/exec?action=registerCustomer",
+      {
+        method: "POST",
+        body: JSON.stringify(payload)
+      }
+    );
+
+    let result = await response.json();
+
+    if (result.status === "SUCCESS") {
+      alert("Registration successful!");
+      localStorage.setItem("customerName", name);
+      window.location.href = "search.html";
+    } else {
+      alert("Error: " + result.message);
+    }
+
+  } catch (err) {
+    alert("Unable to connect to server.");
+  }
 }
 
 </script>
