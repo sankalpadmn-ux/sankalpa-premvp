@@ -109,6 +109,7 @@
   </main>
 
 <script>
+
 /* Go Home */
 function goHome() {
   window.location.href = "index.html";
@@ -120,13 +121,13 @@ function logout() {
   window.location.href = "index.html";
 }
 
-/* Show Customer Name */
+/* Display Name from index.html */
 window.onload = function() {
   let name = localStorage.getItem("customerName");
   document.getElementById("displayName").innerText = name || "Devotee";
 };
 
-/* Search Dummy Logic (Until Backend is Connected) */
+/* Dummy Search (until backend is added) */
 function searchPriests() {
   document.getElementById("results").innerHTML =
     "<br><div style='padding:15px;background:#faf4e5;border-radius:8px;'>Priest search will be activated soon.</div>";
