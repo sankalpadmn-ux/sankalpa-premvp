@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sankalpa – Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg">
+  <header class="header">
+    <div class="logo2">S A N K A L P A</div>
+    <a class="contact-link" href="contact.html">Contact Us</a>
+  </header>
+
+  <main class="contact-main">
+    <section class="form contact-box">
+      <h2>Welcome <span id="customerName">Devotee</span></h2>
+      <p class="contact-text">
+        Select your ritual requirements and proceed towards a priest search that is
+        thoughtfully aligned to your needs, traditions, and timings.
+      </p>
+      <p class="contact-text">
+        This dashboard will gradually grow into the sacred space where your preferences,
+        upcoming rituals, and priest guidance will be organised with clarity and calm.
+      </p>
+
+      <div class="contact-details" style="margin-top:18px;">
+        <div class="contact-line">
+          <button type="button" class="primary-btn" onclick="goToSearch()">
+            Search Priests
+          </button>
+        </div>
+        <div class="contact-line">
+          <button type="button" class="primary-btn" onclick="goToContact()">
+            Contact Support
+          </button>
+        </div>
+        <div class="contact-line">
+          <button type="button" class="primary-btn" onclick="logoutUser()">
+            Logout
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Load the Customer Name from sessionStorage
+    (function () {
+      const name = sessionStorage.getItem("customerName") || "Devotee";
+      document.getElementById("customerName").textContent = name;
+    })();
+
+    function goToSearch() {
+      window.location.href = "search.html";
+    }
+
+    function goToContact() {
+      window.location.href = "contact.html";
+    }
+
+    function logoutUser() {
+      sessionStorage.clear();
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
