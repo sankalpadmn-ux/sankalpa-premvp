@@ -133,109 +133,187 @@
       <p id="infoMessage" class="info" style="display:none;"></p>
     </section>
   </main>
+<script>
+  const BACKEND_URL = "https://script.google.com/macros/s/AKfycbxoJ82xHS4_ALGYpS5ziN66hoPrs0gyvOJlT_J9Xd_D-keKhUcdUt6ZWbLHZnEok-O-/exec";
 
-  <script>
-    const mobileInput = document.getElementById("mobile");
-    const phoneError = document.getElementById("phoneError");
-    const emailInput = document.getElementById("email");
-    const emailError = document.getElementById("emailError");
-    const newFields = document.getElementById("newFields");
-    const existSubmit = document.getElementById("existSubmit");
-    const infoMessage = document.getElementById("infoMessage");
-    const otherLocalityField = document.getElementById("otherLocalityField");
-    const otherLocalityInput = document.getElementById("otherLocalityInput");
+  const mobileInput = document.getElementById("mobile");
+  const phoneError = document.getElementById("phoneError");
+  const emailInput = document.getElementById("email");
+  const emailError = document.getElementById("emailError");
+  const newFields = document.getElementById("newFields");
+  const existSubmit = document.getElementById("existSubmit");
+  const infoMessage = document.getElementById("infoMessage");
+  const otherLocalityField = document.getElementById("otherLocalityField");
+  const otherLocalityInput = document.getElementById("otherLocalityInput");
+  const countryCodeSelect = document.getElementById("countryCode");
+  const localityDropdown = document.getElementById("localityDropdown");
+  const cityInput = document.getElementById("city");
+  const nameInput = document.getElementById("name");
 
-    mobileInput.addEventListener("input", function() {
-      this.value = this.value.replace(/[^0-9]/g, "");
-    });
+  mobileInput.addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9]/g, "");
+  });
 
-    function setMode(mode) {
-      infoMessage.style.display = "none";
-      if (mode === "new") {
-        newFields.style.display = "block";
-        existSubmit.style.display = "none";
-      } else if (mode === "exist") {
-        newFields.style.display = "none";
-        existSubmit.style.display = "block";
-      }
+  function setMode(mode) {
+    infoMessage.style.display = "none";
+    if (mode === "new") {
+      newFields.style.display = "block";
+      existSubmit.style.display = "none";
+    } else if (mode === "exist") {
+      newFields.style.display = "none";
+      existSubmit.style.display = "block";
     }
+  }
 
-    function validatePhone() {
-      const num = mobileInput.value.trim();
-      if (num.length !== 10) {
-        phoneError.style.display = "block";
-        mobileInput.classList.add("invalid");
-        return false;
-      }
-      phoneError.style.display = "none";
-      mobileInput.classList.remove("invalid");
-      return true;
+  function validatePhone() {
+    const num = mobileInput.value.trim();
+    if (num.length !== 10) {
+      phoneError.style.display = "block";
+      mobileInput.classList.add("invalid");
+      return false;
     }
+    phoneError.style.display = "none";
+    mobileInput.classList.remove("invalid");
+    return true;
+  }
 
-    function validateEmail() {
-      if (!emailInput) return true;
-      const email = emailInput.value.trim();
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!regex.test(email)) {
-        emailError.style.display = "block";
-        emailInput.classList.add("invalid");
-        return false;
-      }
-      emailError.style.display = "none";
-      emailInput.classList.remove("invalid");
-      return true;
+  function validateEmail() {
+    if (!emailInput) return true;
+    const email = emailInput.value.trim();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regex.test(email)) {
+      emailError.style.display = "block";
+      emailInput.classList.add("invalid");
+      return false;
     }
+    emailError.style.display = "none";
+    emailInput.classList.remove("invalid");
+    return true;
+  }
 
-    function handleOtherLocality(value) {
-      if (value === "other") {
-        otherLocalityField.style.display = "block";
-      } else {
-        otherLocalityField.style.display = "none";
-        otherLocalityInput.value = "";
-      }
+  function handleOtherLocality(value) {
+    if (value === "other") {
+      otherLocalityField.style.display = "block";
+    } else {
+      otherLocalityField.style.display = "none";
+      otherLocalityInput.value = "";
     }
+  }
 
-    function submitExisting() {
-      if (!validatePhone()) return;
-      infoMessage.innerText = "Welcome back to Sankalpa. (Existing user flow will evolve in future phases.)";
-      infoMessage.style.display = "block";
-    }
+  // -------- Existing User Flow (checkCustomer) ----------
+  function submitExisting() {
+    infoMessage.style.display = "none";
+    if (!validatePhone()) return;
 
-    function submitNewUser() {
-      const phoneOk = validatePhone();
-      const emailOk = validateEmail();
-      if (!phoneOk || !emailOk) return;
+    const payload = new URLSearchParams();
+    payload.append("action", "checkCustomer");
+    payload.append("phone", mobileInput.value.trim());
 
-      const name = document.getElementById("name").value.trim();
-      const localityDropdown = document.getElementById("localityDropdown");
-      const localityValue = localityDropdown.value;
-      const city = document.getElementById("city").value.trim();
-      let finalLocality = localityValue;
-      if (localityValue === "other") {
-        finalLocality = otherLocalityInput.value.trim();
-      }
+    fetch(BACKEND_URL, {
+      method: "POST",
+      body: payload
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          const name = data.name || "Devotee";
+          infoMessage.innerText =
+            "Welcome back, " + name + ". Taking you to your dashboard…";
+          infoMessage.style.display = "block";
 
-      if (!name || !finalLocality || !city) {
-        infoMessage.innerText = "Please fill in all details for New User registration.";
+          // store in sessionStorage for dashboard
+          sessionStorage.setItem("customerName", name);
+          sessionStorage.setItem("customerID", data.customerID || "");
+
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1200);
+        } else if (data.status === "not_found") {
+          infoMessage.innerText =
+            "We could not find a registered customer for this number. Please register as a New User.";
+          infoMessage.style.display = "block";
+        } else {
+          infoMessage.innerText =
+            "There was an issue verifying your details. Please try again in a little while.";
+          infoMessage.style.display = "block";
+        }
+      })
+      .catch((err) => {
+        infoMessage.innerText =
+          "Network error while checking your details. Please try again.";
         infoMessage.style.display = "block";
-        return;
-      }
+      });
+  }
 
-      infoMessage.innerText = "Thank you, " + name + ". Your details have been recorded for Sankalpa.";
-      infoMessage.style.display = "block";
+  // -------- New User Flow (registerCustomer) ----------
+  function submitNewUser() {
+    infoMessage.style.display = "none";
+    const phoneOk = validatePhone();
+    const emailOk = validateEmail();
+    if (!phoneOk || !emailOk) return;
 
-      setTimeout(function() {
-        // Simple reset back to base state
-        document.getElementById("name").value = "";
-        emailInput.value = "";
-        localityDropdown.value = "";
-        otherLocalityField.style.display = "none";
-        otherLocalityInput.value = "";
-        mobileInput.value = "";
-        newFields.style.display = "none";
-        existSubmit.style.display = "none";
-      }, 1800);
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = mobileInput.value.trim();
+    const countryCode = countryCodeSelect ? countryCodeSelect.value : "";
+    const city = cityInput ? cityInput.value.trim() : "";
+    const localityValue = localityDropdown ? localityDropdown.value : "";
+    let finalLocality = localityValue;
+    if (localityValue === "other") {
+      finalLocality = otherLocalityInput.value.trim();
     }
-  </script>
+
+    if (!name || !finalLocality || !city) {
+      infoMessage.innerText = "Please fill in all the details for registration.";
+      infoMessage.style.display = "block";
+      return;
+    }
+
+    const payload = new URLSearchParams();
+    payload.append("action", "registerCustomer");
+    payload.append("name", name);
+    payload.append("email", email);
+    payload.append("phone", phone);
+    payload.append("countryCode", countryCode);
+    payload.append("city", city);
+    payload.append("locality", localityValue);
+    payload.append("otherLocality", finalLocality);
+
+    fetch(BACKEND_URL, {
+      method: "POST",
+      body: payload
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          infoMessage.innerText =
+            "Thank you, " +
+            name +
+            ". Your details have been recorded. You can now log in as an Existing User.";
+          infoMessage.style.display = "block";
+
+          // reset fields gently
+          setTimeout(() => {
+            nameInput.value = "";
+            emailInput.value = "";
+            localityDropdown.value = "";
+            otherLocalityInput.value = "";
+            otherLocalityField.style.display = "none";
+            mobileInput.value = "";
+            // keep on landing page; they can now log in
+          }, 1800);
+        } else {
+          infoMessage.innerText =
+            "There was an issue saving your details. Please try again.";
+          infoMessage.style.display = "block";
+        }
+      })
+      .catch((err) => {
+        infoMessage.innerText =
+          "Network error while saving your details. Please try again.";
+        infoMessage.style.display = "block";
+      });
+  }
+</script>
 </body>
 </html>
