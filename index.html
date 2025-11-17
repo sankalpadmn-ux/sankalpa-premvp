@@ -2,84 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Sankalpa – Base Pre-MVP v2</title>
+  <title>Sankalpa</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body class="bg">
-  <header class="header">
+
+  <!-- Header -->
+  <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
+    
+    <!-- Left Logo -->
     <div class="logo2">S A N K A L P A</div>
-    <a class="contact-link" href="contact.html">Contact Us</a>
+
+    <!-- Right Contact Us -->
+    <a 
+      href="contact.html"
+      style="font-size:12px;color:#5c483a;text-decoration:none;margin-right:8px;">
+      Contact Us
+    </a>
+
   </header>
 
-  <main class="landing">
-    <section class="purpose">
-      <h1>Purpose &amp; Mission of Sankalpa</h1>
-      <p>
-        Sankalpa is born from a simple, sacred intention – to honour the bond between devotee,
-        priest, and the divine, and to make that connection gentle, dignified, and effortless
-        in today’s world.
+  <!-- Main Section -->
+  <main class="hero">
+    <div class="left">
+      <!-- PURPOSE & MISSION (UNCHANGED) -->
+      <h1 class="hero-title">Why Sankalpa</h1>
+      <p class="hero-text">
+        Sankalpa is your sacred space to discover experienced priests aligned to your family traditions and ritual needs. With devotion, discipline, and authenticity at its core, Sankalpa is designed to simplify your search and bring the right guidance to your spiritual moments.<br><br>
+        Rooted in culture and guided by purity of intent, Sankalpa aspires to be a trusted divine companion for every household.
       </p>
-      <p>
-        Many families long to perform their rituals in the right way, at the right time,
-        with the right guidance – yet struggle to know whom to call, where to search,
-        or how to find a priest aligned with their tradition, language, and values.
-        Sankalpa exists to hold their hand in that moment.
-      </p>
-      <p>
-        Our mission is to offer a calm, trustworthy space where devotees can discover authentic
-        Hindu priests based on locality, language, experience, and ritual needs – without noise,
-        pressure, or confusion. Every search is treated with respect; every detail is handled
-        with care.
-      </p>
-      <p>
-        As this platform grows, Sankalpa aspires to become a quiet companion for every household –
-        a place where the practical and the sacred meet, where technology steps back and allows
-        tradition, devotion, and blessings to come forward.
-      </p>
-    </section>
+    </div>
 
-    <section class="authbox">
-      <h2>Welcome to Sankalpa</h2>
-      <p class="sub">
-        Begin by sharing your mobile number. If you have connected with us before, choose
-        <strong>Existing User</strong>. If you are here for the first time, choose
-        <strong>New User</strong> and share a few basic details so that we may serve you better.
-      </p>
+    <div class="right">
+      <div class="form-box">
 
-      <label class="field-label">Mobile Number</label>
-      <div class="phone-row">
-        <select class="country-code" id="countryCode">
-          <option value="+91" selected>🇮🇳 India (+91)</option>
-          <option value="+1">🇺🇸 United States (+1)</option>
-          <option value="+44">🇬🇧 United Kingdom (+44)</option>
-          <option value="+61">🇦🇺 Australia (+61)</option>
-          <option value="+65">🇸🇬 Singapore (+65)</option>
-          <option value="+971">🇦🇪 United Arab Emirates (+971)</option>
-        </select>
-        <input id="mobile" maxlength="10" placeholder="10-digit number" />
-      </div>
-      <p id="phoneError" class="error" style="display:none;">
-        Please enter a valid 10-digit mobile number.
-      </p>
+        <h2 class="form-title">Welcome</h2>
 
-      <div class="btnrow">
-        <button type="button" onclick="setMode('exist')">Existing User</button>
-        <button type="button" onclick="setMode('new')">New User</button>
-      </div>
+        <!-- ALWAYS VISIBLE -->
+        <div class="input-group">
+          <label>Mobile Number</label>
+          <input type="text" id="phone" placeholder="Enter mobile number" />
+        </div>
 
-      <div id="newFields" class="extra" style="display:none;">
-        <input id="name" placeholder="Full Name" />
-        <input id="email" placeholder="Email Address" />
+        <!-- TOGGLE BUTTONS -->
+        <div class="toggle-row">
+          <button type="button" class="primary-btn" onclick="showExisting()">Existing User</button>
+          <button type="button" class="primary-btn" onclick="showNew()">New User</button>
+        </div>
 
-        <div class="row-two">
-          <div class="col">
-            <label class="field-label small-label">City</label>
-            <input id="city" value="Coimbatore" readonly />
+        <!-- EXISTING USER -->
+        <div id="existingSection" style="display:none;margin-top:16px;">
+          <button class="primary-btn" onclick="loginUser()">Submit</button>
+        </div>
+
+        <!-- NEW USER -->
+        <div id="newSection" style="display:none;margin-top:16px;">
+
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Enter your name" />
           </div>
-          <div class="col">
-            <label class="field-label small-label">Locality</label>
-            <select id="localityDropdown" onchange="handleOtherLocality(this.value)">
+
+          <div class="input-group">
+            <label>Email</label>
+            <input type="text" id="email" placeholder="Enter email address" />
+          </div>
+
+          <div class="input-group">
+            <label>City</label>
+            <input type="text" value="Coimbatore" disabled />
+          </div>
+
+          <div class="input-group">
+            <label>Locality</label>
+            <select id="locality" onchange="checkOtherLocality()">
               <option value="">Select Locality</option>
               <option>R.S. Puram</option>
               <option>Saibaba Colony</option>
@@ -113,207 +111,71 @@
               <option value="other">Other</option>
             </select>
           </div>
+
+          <!-- OTHER locality -->
+          <div class="input-group" id="otherLocalityBox" style="display:none;">
+            <label>Enter Your Locality</label>
+            <input type="text" id="otherLocality" placeholder="Your locality" />
+          </div>
+
+          <!-- SUBMIT NEW USER -->
+          <button class="primary-btn" onclick="registerUser()">Submit</button>
         </div>
 
-        <div id="otherLocalityField" class="other-field" style="display:none;">
-          <input id="otherLocalityInput" placeholder="Enter Your Locality" />
-        </div>
+        <p id="statusMsg" class="contact-text" style="margin-top:12px;"></p>
 
-        <p id="emailError" class="error" style="display:none;">
-          Please enter a valid email address.
-        </p>
-
-        <button type="button" class="primary-btn" onclick="submitNewUser()">Submit</button>
       </div>
-
-      <div id="existSubmit" class="extra" style="display:none;">
-        <button type="button" class="primary-btn" onclick="submitExisting()">Submit</button>
-      </div>
-
-      <p id="infoMessage" class="info" style="display:none;"></p>
-    </section>
+    </div>
   </main>
-<script>
-  const BACKEND_URL = "https://script.google.com/macros/s/AKfycbxoJ82xHS4_ALGYpS5ziN66hoPrs0gyvOJlT_J9Xd_D-keKhUcdUt6ZWbLHZnEok-O-/exec";
 
-  const mobileInput = document.getElementById("mobile");
-  const phoneError = document.getElementById("phoneError");
-  const emailInput = document.getElementById("email");
-  const emailError = document.getElementById("emailError");
-  const newFields = document.getElementById("newFields");
-  const existSubmit = document.getElementById("existSubmit");
-  const infoMessage = document.getElementById("infoMessage");
-  const otherLocalityField = document.getElementById("otherLocalityField");
-  const otherLocalityInput = document.getElementById("otherLocalityInput");
-  const countryCodeSelect = document.getElementById("countryCode");
-  const localityDropdown = document.getElementById("localityDropdown");
-  const cityInput = document.getElementById("city");
-  const nameInput = document.getElementById("name");
 
-  mobileInput.addEventListener("input", function () {
-    this.value = this.value.replace(/[^0-9]/g, "");
-  });
-
-  function setMode(mode) {
-    infoMessage.style.display = "none";
-    if (mode === "new") {
-      newFields.style.display = "block";
-      existSubmit.style.display = "none";
-    } else if (mode === "exist") {
-      newFields.style.display = "none";
-      existSubmit.style.display = "block";
-    }
-  }
-
-  function validatePhone() {
-    const num = mobileInput.value.trim();
-    if (num.length !== 10) {
-      phoneError.style.display = "block";
-      mobileInput.classList.add("invalid");
-      return false;
-    }
-    phoneError.style.display = "none";
-    mobileInput.classList.remove("invalid");
-    return true;
-  }
-
-  function validateEmail() {
-    if (!emailInput) return true;
-    const email = emailInput.value.trim();
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regex.test(email)) {
-      emailError.style.display = "block";
-      emailInput.classList.add("invalid");
-      return false;
-    }
-    emailError.style.display = "none";
-    emailInput.classList.remove("invalid");
-    return true;
-  }
-
-  function handleOtherLocality(value) {
-    if (value === "other") {
-      otherLocalityField.style.display = "block";
-    } else {
-      otherLocalityField.style.display = "none";
-      otherLocalityInput.value = "";
-    }
-  }
-
-  // -------- Existing User Flow (checkCustomer) ----------
-  function submitExisting() {
-    infoMessage.style.display = "none";
-    if (!validatePhone()) return;
-
-    const payload = new URLSearchParams();
-    payload.append("action", "checkCustomer");
-    payload.append("phone", mobileInput.value.trim());
-
-    fetch(BACKEND_URL, {
-      method: "POST",
-      body: payload
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          const name = data.name || "Devotee";
-          infoMessage.innerText =
-            "Welcome back, " + name + ". Taking you to your dashboard…";
-          infoMessage.style.display = "block";
-
-          // store in sessionStorage for dashboard
-          sessionStorage.setItem("customerName", name);
-          sessionStorage.setItem("customerID", data.customerID || "");
-
-          setTimeout(() => {
-            window.location.href = "dashboard.html";
-          }, 1200);
-        } else if (data.status === "not_found") {
-          infoMessage.innerText =
-            "We could not find a registered customer for this number. Please register as a New User.";
-          infoMessage.style.display = "block";
-        } else {
-          infoMessage.innerText =
-            "There was an issue verifying your details. Please try again in a little while.";
-          infoMessage.style.display = "block";
-        }
-      })
-      .catch((err) => {
-        infoMessage.innerText =
-          "Network error while checking your details. Please try again.";
-        infoMessage.style.display = "block";
-      });
-  }
-
-  // -------- New User Flow (registerCustomer) ----------
-  function submitNewUser() {
-    infoMessage.style.display = "none";
-    const phoneOk = validatePhone();
-    const emailOk = validateEmail();
-    if (!phoneOk || !emailOk) return;
-
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const phone = mobileInput.value.trim();
-    const countryCode = countryCodeSelect ? countryCodeSelect.value : "";
-    const city = cityInput ? cityInput.value.trim() : "";
-    const localityValue = localityDropdown ? localityDropdown.value : "";
-    let finalLocality = localityValue;
-    if (localityValue === "other") {
-      finalLocality = otherLocalityInput.value.trim();
+  <script>
+    function showExisting() {
+      document.getElementById("existingSection").style.display = "block";
+      document.getElementById("newSection").style.display = "none";
     }
 
-    if (!name || !finalLocality || !city) {
-      infoMessage.innerText = "Please fill in all the details for registration.";
-      infoMessage.style.display = "block";
-      return;
+    function showNew() {
+      document.getElementById("existingSection").style.display = "none";
+      document.getElementById("newSection").style.display = "block";
     }
 
-    const payload = new URLSearchParams();
-    payload.append("action", "registerCustomer");
-    payload.append("name", name);
-    payload.append("email", email);
-    payload.append("phone", phone);
-    payload.append("countryCode", countryCode);
-    payload.append("city", city);
-    payload.append("locality", localityValue);
-    payload.append("otherLocality", finalLocality);
+    function checkOtherLocality() {
+      let loc = document.getElementById("locality").value;
+      document.getElementById("otherLocalityBox").style.display =
+        loc === "other" ? "block" : "none";
+    }
 
-    fetch(BACKEND_URL, {
-      method: "POST",
-      body: payload
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          infoMessage.innerText =
-            "Thank you, " +
-            name +
-            ". Your details have been recorded. You can now log in as an Existing User.";
-          infoMessage.style.display = "block";
+    function loginUser() {
+      let phone = document.getElementById("phone").value.trim();
+      if (!phone || isNaN(phone)) {
+        alert("Please enter a valid phone number.");
+        return;
+      }
+      window.location.href = "search.html";
+    }
 
-          // reset fields gently
-          setTimeout(() => {
-            nameInput.value = "";
-            emailInput.value = "";
-            localityDropdown.value = "";
-            otherLocalityInput.value = "";
-            otherLocalityField.style.display = "none";
-            mobileInput.value = "";
-            // keep on landing page; they can now log in
-          }, 1800);
-        } else {
-          infoMessage.innerText =
-            "There was an issue saving your details. Please try again.";
-          infoMessage.style.display = "block";
-        }
-      })
-      .catch((err) => {
-        infoMessage.innerText =
-          "Network error while saving your details. Please try again.";
-        infoMessage.style.display = "block";
-      });
-  }
-</script>
+    function registerUser() {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+
+      if (!name || !email || !phone) {
+        alert("All fields are required.");
+        return;
+      }
+      if (email.indexOf("@") === -1) {
+        alert("Enter a valid email address.");
+        return;
+      }
+
+      document.getElementById("statusMsg").innerHTML =
+        "Registration successful. Please login as Existing User.";
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2000);
+    }
+  </script>
+
 </body>
 </html>
