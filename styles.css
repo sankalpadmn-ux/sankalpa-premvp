@@ -1,49 +1,273 @@
-
 body.bg{
   margin:0;
-  font-family:Poppins, sans-serif;
-  background:radial-gradient(circle at top left, rgba(212,175,55,0.25), transparent 40%),
-             radial-gradient(circle at bottom right, rgba(124,10,2,0.18), transparent 45%),
-             linear-gradient(#FFF8E7,#F9EFD5);
+  font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(212,175,55,0.28), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(124,10,2,0.18), transparent 45%),
+    linear-gradient(#FFF8E7,#F9EFD5);
   color:#7C0A02;
 }
-.header{display:flex;justify-content:space-between;padding:20px;}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 24px;
+}
+
 .logo2{
-  font-family:"Cinzel Decorative", serif;
-  font-size:38px;font-weight:700;letter-spacing:6px;
+  font-family:"Cinzel Decorative","Times New Roman",serif;
+  font-size:32px;
+  letter-spacing:6px;
+  font-weight:700;
   background:linear-gradient(90deg,#7C0A02,#D4AF37,#7C0A02);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
   text-shadow:0 0 10px rgba(212,175,55,0.4);
 }
-.contact-link{text-decoration:none;font-weight:600;color:#7C0A02;}
-.landing{display:flex;flex-wrap:wrap;padding:20px;gap:20px;}
-.purpose{flex:1 1 300px;min-width:300px;}
+
+.contact-link{
+  color:#7C0A02;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.landing{
+  display:flex;
+  flex-wrap:wrap;
+  gap:24px;
+  padding:20px 24px 32px;
+}
+
+.purpose{
+  flex:1 1 320px;
+  min-width:320px;
+  max-width:640px;
+}
+
+.purpose h1{
+  margin-top:0;
+  font-size:24px;
+}
+
+.purpose p{
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
 .authbox{
-  flex:1 1 300px;min-width:320px;
-  background:rgba(255,255,255,0.65);
-  padding:20px;border-radius:14px;
-  box-shadow:0 0 24px rgba(212,175,55,0.3);
+  flex:1 1 320px;
+  min-width:320px;
+  max-width:420px;
+  background:rgba(255,255,255,0.7);
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 0 24px rgba(212,175,55,0.28);
 }
-input,select{
-  width:100%;padding:12px;margin-top:10px;border-radius:8px;
+
+.authbox h2{
+  margin-top:0;
+}
+
+.sub{
+  font-size:14px;
+  color:#8a5a32;
+}
+
+.field-label{
+  display:block;
+  margin-top:14px;
+  font-weight:500;
+  font-size:14px;
+}
+
+.small-label{
+  margin-top:4px;
+  font-size:13px;
+}
+
+.phone-row{
+  display:flex;
+  gap:10px;
+  margin-top:6px;
+}
+
+.country-code{
+  width:45%;
+}
+
+#mobile{
+  width:55%;
+}
+
+input, select{
+  width:100%;
+  padding:10px 12px;
+  margin-top:8px;
+  border-radius:8px;
   border:1px solid rgba(212,175,55,0.4);
-  background:rgba(255,255,255,0.45);backdrop-filter:blur(3px);
-  color:#7C0A02;font-size:14px;
+  background:rgba(255,255,255,0.45);
+  backdrop-filter:blur(3px);
+  color:#7C0A02;
+  font-size:14px;
+  transition:all 0.25s ease;
 }
-input:focus,select:focus{
+
+select{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #7C0A02 50%),
+    linear-gradient(135deg, #7C0A02 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) calc(50% - 3px),
+    calc(100% - 10px) calc(50% - 3px);
+  background-size:6px 6px, 6px 6px;
+  background-repeat:no-repeat;
+}
+
+input:focus, select:focus{
+  outline:none;
   border:1px solid #7C0A02;
   box-shadow:0 0 10px rgba(212,175,55,0.4);
   background:rgba(255,255,255,0.6);
-  outline:none;
 }
-.btnrow{display:flex;gap:10px;margin-top:15px;}
-.btnrow button, .authbox button{
-  flex:1;padding:12px;background:#7C0A02;color:white;border:none;
-  border-radius:8px;font-weight:600;
+
+.invalid{
+  border:1px solid #7C0A02 !important;
+  box-shadow:0 0 10px rgba(212,175,55,0.4);
 }
-.phone-row{display:flex;gap:10px;}
-.other-field{animation:fadeIn .4s ease forwards;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.invalid{border:1px solid #7C0A02 !important;}
-.error{font-size:12px;color:#7C0A02;}
-.info{margin-top:10px;font-size:13px;color:#5b4028;}
+
+.btnrow{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+}
+
+.btnrow button, .primary-btn{
+  flex:1;
+  padding:10px 12px;
+  background:#7C0A02;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+
+.btnrow button:hover, .primary-btn:hover{
+  box-shadow:0 0 16px rgba(212,175,55,0.45);
+  transform:translateY(-1px);
+}
+
+.extra{
+  margin-top:16px;
+}
+
+.row-two{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.col{
+  flex:1;
+}
+
+.other-field{
+  margin-top:10px;
+  animation:fadeIn .35s ease forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(6px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.error{
+  color:#7C0A02;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.info{
+  margin-top:12px;
+  font-size:13px;
+  color:#5b4028;
+}
+
+.contact-main{
+  padding:20px 24px 40px;
+}
+
+.form.contact-box{
+  max-width:640px;
+  margin:0 auto;
+  background:rgba(255,255,255,0.7);
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 0 24px rgba(212,175,55,0.3);
+}
+
+.contact-box h2{
+  margin-top:0;
+  text-align:center;
+}
+
+.contact-text{
+  line-height:1.8;
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+.contact-list{
+  margin-top:6px;
+  margin-bottom:10px;
+  padding-left:20px;
+  font-size:14px;
+}
+
+.contact-details{
+  margin-top:16px;
+  border-top:1px dashed rgba(124,10,2,0.45);
+  padding-top:12px;
+}
+
+.contact-line{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:8px;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.contact-label{
+  font-weight:600;
+}
+
+.contact-value{
+  font-weight:500;
+}
+
+.wa-pill{
+  display:inline-block;
+  margin-left:8px;
+  padding:3px 8px;
+  border-radius:999px;
+  background:#25D366;
+  color:white;
+  font-size:11px;
+  font-weight:600;
+}
+
+@media (max-width: 768px){
+  .landing{
+    flex-direction:column;
+  }
+  .logo2{
+    font-size:28px;
+  }
+}
