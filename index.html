@@ -74,4 +74,109 @@
             </select>
           </div>
 
-          <
+          <div class="input-group hidden" id="existing_otherCountryBox">
+            <label>Enter Country</label>
+            <input type="text" id="existing_otherCountry">
+          </div>
+
+          <div class="input-group">
+            <label>Country Code</label>
+            <input type="text" id="existing_countryCode" readonly>
+          </div>
+
+          <div class="input-group">
+            <label>Mobile Number (WhatsApp)</label>
+            <input type="text" id="existing_phone" placeholder="Enter Mobile Number" oninput="validateMobile('existing')">
+            <div id="existing_error" class="error-msg hidden"></div>
+            <div id="existing_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
+          </div>
+
+          <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
+        </div>
+
+        <!-- ================== NEW USER ================== -->
+        <div id="newSection" style="display:none;margin-top:25px;">
+
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" id="new_name" placeholder="Enter Name">
+          </div>
+
+          <div class="input-group">
+            <label>Country</label>
+            <select id="new_country" onchange="handleCountryChange('new')">
+              <option value="">Select Country</option>
+              <option value="India" data-code="+91">India</option>
+              <option value="United States" data-code="+1">United States</option>
+              <option value="United Kingdom" data-code="+44">United Kingdom</option>
+              <option value="Singapore" data-code="+65">Singapore</option>
+              <option value="UAE" data-code="+971">UAE</option>
+              <option value="Australia" data-code="+61">Australia</option>
+              <option value="Canada" data-code="+1">Canada</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <div class="input-group hidden" id="new_otherCountryBox">
+            <label>Enter Country</label>
+            <input type="text" id="new_otherCountry" placeholder="Your Country">
+          </div>
+
+          <div class="input-group">
+            <label>Country Code</label>
+            <input type="text" id="new_countryCode" readonly>
+          </div>
+
+          <div class="input-group">
+            <label>City</label>
+            <input type="text" id="new_city" placeholder="Enter City">
+          </div>
+
+          <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="Enter Email">
+          </div>
+
+          <div class="input-group">
+            <label>Locality</label>
+            <select id="new_locality" onchange="checkOtherLocality()">
+              <option value="">Select Locality</option>
+              <option>RS Puram</option>
+              <option>Saibaba Colony</option>
+              <option>Gandhipuram</option>
+              <option>Peelamedu</option>
+              <option>Ukkadam</option>
+              <option>Town Hall</option>
+              <option>Singanallur</option>
+              <option>Ganapathy</option>
+              <option>Thudiyalur</option>
+              <option>Race Course</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="input-group" id="otherLocalityBox" style="display:none;">
+            <label>Enter your locality</label>
+            <input type="text" id="otherLocality" placeholder="Enter Locality">
+          </div>
+
+          <div class="input-group">
+            <label>Mobile Number (WhatsApp)</label>
+            <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
+            <div id="new_error" class="error-msg hidden"></div>
+            <div id="new_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
+          </div>
+
+          <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- Load external script (cache-busted) -->
+<script src="script.js?v=3.0"></script>
+
+</body>
+</html>
