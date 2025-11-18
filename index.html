@@ -45,7 +45,7 @@
     <div class="right">
       <div class="form-box">
 
-        <!-- TOGGLE -->
+        <!-- TOGGLE BUTTONS -->
         <div class="toggle-row" style="margin-top:10px;">
           <button class="primary-btn" onclick="showExisting()">Existing User</button>
           <button class="primary-btn" onclick="showNew()">New User</button>
@@ -59,7 +59,6 @@
             <input type="text" id="existing_name" placeholder="Enter Your Name">
           </div>
 
-          <!-- Country -->
           <div class="input-group">
             <label>Country</label>
             <select id="existing_country" onchange="handleCountryChange('existing')">
@@ -175,3 +174,43 @@
       </div>
     </div>
   </section>
+
+<!-- ========================= SCRIPT SECTION ========================= -->
+
+<script>
+
+function goHome() { window.location.href = "index.html"; }
+
+/* Toggle Sections */
+function showExisting() {
+  document.getElementById("existingSection").style.display = "block";
+  document.getElementById("newSection").style.display = "none";
+}
+function showNew() {
+  document.getElementById("existingSection").style.display = "none";
+  document.getElementById("newSection").style.display = "block";
+}
+
+/* Country rules */
+const rules = {
+  "India": { code: "+91", len: 10 },
+  "United States": { code: "+1", len: 10 },
+  "United Kingdom": { code: "+44", len: 10 },
+  "Singapore": { code: "+65", len: 8 },
+  "UAE": { code: "+971", len: 9 },
+  "Australia": { code: "+61", len: 9 },
+  "Canada": { code: "+1", len: 10 }
+};
+
+/* Country Change Handler */
+function handleCountryChange(type) {
+  let sel = document.getElementById(type + "_country");
+  let other = document.getElementById(type + "_otherCountryBox");
+  let code = document.getElementById(type + "_countryCode");
+
+  if (sel.value === "Others") {
+    other.classList.remove("hidden");
+    code.value = "";
+  } else {
+    other.classList.add("hidden");
+    code.valu
