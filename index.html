@@ -7,20 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* Validation messages – merges naturally with your UI */
-    .valid-msg {
-      color: green;
-      font-size: 0.85rem;
-      margin-top: 4px;
-    }
-    .error-msg {
-      color: red;
-      font-size: 0.85rem;
-      margin-top: 4px;
-    }
-    .hidden {
-      display: none;
-    }
+    .valid-msg { color: green; font-size: 0.85rem; margin-top: 4px; }
+    .error-msg { color: red; font-size: 0.85rem; margin-top: 4px; }
+    .hidden { display: none; }
   </style>
 </head>
 
@@ -38,12 +27,11 @@
   <!-- Main Hero Section -->
   <section class="hero">
     
-    <!-- LEFT SIDE -->
     <div class="left">
       <h1 class="hero-title">Why Sankalpa?</h1>
       <p class="hero-text">
         Sankalpa is a sacred place created to help devotees connect with the right
-        Hindu priests for every ritual, ceremony, and spiritual spiritual requirement.
+        Hindu priests for every ritual, ceremony, and spiritual requirement.
         Our purpose is to make the process simple, respectful, and deeply rooted
         in tradition — ensuring that every devotee finds the priest who aligns
         with their needs, values, and customs.
@@ -53,17 +41,16 @@
       </p>
     </div>
 
-    <!-- RIGHT SIDE -->
     <div class="right">
       <div class="form-box">
 
-        <!-- TOGGLE BUTTONS -->
+        <!-- TOGGLE -->
         <div class="toggle-row" style="margin-top:10px;">
           <button class="primary-btn" onclick="showExisting()">Existing User</button>
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- ===================== EXISTING USER ===================== -->
+        <!-- ================== EXISTING USER ================== -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -87,19 +74,16 @@
             </select>
           </div>
 
-          <!-- Other country text -->
           <div class="input-group hidden" id="existing_otherCountryBox">
             <label>Enter Country</label>
-            <input type="text" id="existing_otherCountry" placeholder="Your Country">
+            <input type="text" id="existing_otherCountry">
           </div>
 
-          <!-- Country Code -->
           <div class="input-group">
             <label>Country Code</label>
             <input type="text" id="existing_countryCode" readonly>
           </div>
 
-          <!-- WhatsApp Mobile -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
             <input type="text" id="existing_phone" placeholder="Enter Mobile Number" oninput="validateMobile('existing')">
@@ -110,7 +94,7 @@
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
-        <!-- ====================== NEW USER ====================== -->
+        <!-- ================== NEW USER ================== -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -134,19 +118,16 @@
             </select>
           </div>
 
-          <!-- Other country -->
           <div class="input-group hidden" id="new_otherCountryBox">
             <label>Enter Country</label>
             <input type="text" id="new_otherCountry" placeholder="Your Country">
           </div>
 
-          <!-- Country Code -->
           <div class="input-group">
             <label>Country Code</label>
             <input type="text" id="new_countryCode" readonly>
           </div>
 
-          <!-- City -->
           <div class="input-group">
             <label>City</label>
             <input type="text" id="new_city" placeholder="Enter City">
@@ -154,7 +135,7 @@
 
           <div class="input-group">
             <label>Email Address</label>
-            <input type="email" id="email" placeholder="Enter Email">
+            <input type="email" id="email">
           </div>
 
           <div class="input-group">
@@ -177,10 +158,9 @@
 
           <div class="input-group" id="otherLocalityBox" style="display:none;">
             <label>Enter your locality</label>
-            <input type="text" id="otherLocality" placeholder="Enter Locality">
+            <input type="text" id="otherLocality">
           </div>
 
-          <!-- WhatsApp Mobile -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
             <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
@@ -201,7 +181,7 @@
 
 function goHome() { window.location.href = "index.html"; }
 
-/* Toggle Sections */
+/* Toggle */
 function showExisting() {
   document.getElementById("existingSection").style.display = "block";
   document.getElementById("newSection").style.display = "none";
@@ -211,7 +191,7 @@ function showNew() {
   document.getElementById("newSection").style.display = "block";
 }
 
-/* Country validation rules */
+/* Country rules */
 const rules = {
   "India": { code: "+91", len: 10 },
   "United States": { code: "+1", len: 10 },
@@ -222,25 +202,24 @@ const rules = {
   "Canada": { code: "+1", len: 10 }
 };
 
-/* Country Change Handler */
+/* Country Change */
 function handleCountryChange(type) {
   let sel = document.getElementById(type + "_country");
-  let otherBox = document.getElementById(type + "_otherCountryBox");
-  let codeInput = document.getElementById(type + "_countryCode");
+  let other = document.getElementById(type + "_otherCountryBox");
+  let code = document.getElementById(type + "_countryCode");
 
   if (sel.value === "Others") {
-    otherBox.classList.remove("hidden");
-    codeInput.value = "";
+    other.classList.remove("hidden");
+    code.value = "";
   } else {
-    otherBox.classList.add("hidden");
-    let opt = sel.options[sel.selectedIndex];
-    codeInput.value = opt.dataset.code || "";
+    other.classList.add("hidden");
+    code.value = sel.options[sel.selectedIndex].dataset.code || "";
   }
 
   validateMobile(type);
 }
 
-/* WhatsApp Number Validation */
+/* WhatsApp validation */
 function validateMobile(type) {
   let country = document.getElementById(type + "_country").value;
   let phone = document.getElementById(type + "_phone").value.trim();
@@ -253,21 +232,17 @@ function validateMobile(type) {
   if (!country || phone === "") return;
 
   if (country !== "Others") {
-    let rule = rules[country];
-
-    if (!rule) return;
-
-    if (isNaN(phone) || phone.length !== rule.len) {
-      err.textContent = `Invalid number for ${country}. Expected ${rule.len} digits.`;
+    let r = rules[country];
+    if (isNaN(phone) || phone.length !== r.len) {
+      err.textContent = `Invalid number for ${country}. Expected ${r.len} digits.`;
       err.classList.remove("hidden");
       return;
     }
-
     ok.classList.remove("hidden");
 
   } else {
     if (isNaN(phone)) {
-      err.textContent = "Please enter digits only.";
+      err.textContent = "Enter digits only.";
       err.classList.remove("hidden");
     } else {
       ok.classList.remove("hidden");
@@ -278,11 +253,60 @@ function validateMobile(type) {
 /* Existing User */
 function loginUser() {
   let name = document.getElementById("existing_name").value.trim();
-  let phone = document.getElementById("existing_phone").value.trim();
-
-  if (name === "" || phone === "") {
+  if (name === "") {
     alert("Please enter Name and Mobile Number");
     return;
   }
 
-  localStorage.setItem("cus
+  localStorage.setItem("customerName", name);
+  window.location.href = "search.html";
+}
+
+/* NEW USER */
+async function registerUser() {
+
+  let name = document.getElementById("new_name").value.trim();
+  let mobile = document.getElementById("new_phone").value.trim();
+  let country = document.getElementById("new_country").value.trim();
+  let city = document.getElementById("new_city").value.trim();
+  let email = document.getElementById("email").value.trim();
+
+  if (name === "" || mobile === "") {
+    alert("Please enter Name and Mobile Number");
+    return;
+  }
+
+  /* Store global details for Search.html */
+  localStorage.setItem("customerName", name);
+  localStorage.setItem("customerCountry", country);
+  localStorage.setItem("customerCity", city);
+  localStorage.setItem("customerMobile", mobile);
+
+  /* Backend payload unchanged except added fields */
+  let payload = {
+    name: name,
+    mobile: mobile,
+    email: email,
+    city: city,
+    locality: document.getElementById("new_locality").value.trim(),
+    otherLocality: document.getElementById("otherLocality").value.trim(),
+    country: country
+  };
+
+  try {
+    let response = await fetch(
+      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec?action=registerCustomer",
+      { method: "POST", body: JSON.stringify(payload) }
+    );
+
+    let result = await response.json();
+
+    if (result.status === "success") {
+      alert("Registration successful!");
+      window.location.href = "search.html";
+    } else {
+      alert("Error: " + result.message);
+    }
+
+  } catch (err) {
+    alert("Unable
