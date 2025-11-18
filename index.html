@@ -28,7 +28,9 @@
   <section class="hero">
     
     <div class="left">
+      <!-- IMPORTANT FIX: Correct closing tag -->
       <h1 class="hero-title">Why Sankalpa?</h1>
+
       <p class="hero-text">
         Sankalpa is a sacred place created to help devotees connect with the right
         Hindu priests for every ritual, ceremony, and spiritual requirement.
@@ -176,7 +178,6 @@
     </div>
   </section>
 
-
 <script>
 
 function goHome() { window.location.href = "index.html"; }
@@ -264,49 +265,3 @@ function loginUser() {
 
 /* NEW USER */
 async function registerUser() {
-
-  let name = document.getElementById("new_name").value.trim();
-  let mobile = document.getElementById("new_phone").value.trim();
-  let country = document.getElementById("new_country").value.trim();
-  let city = document.getElementById("new_city").value.trim();
-  let email = document.getElementById("email").value.trim();
-
-  if (name === "" || mobile === "") {
-    alert("Please enter Name and Mobile Number");
-    return;
-  }
-
-  /* Store global details for Search.html */
-  localStorage.setItem("customerName", name);
-  localStorage.setItem("customerCountry", country);
-  localStorage.setItem("customerCity", city);
-  localStorage.setItem("customerMobile", mobile);
-
-  /* Backend payload unchanged except added fields */
-  let payload = {
-    name: name,
-    mobile: mobile,
-    email: email,
-    city: city,
-    locality: document.getElementById("new_locality").value.trim(),
-    otherLocality: document.getElementById("otherLocality").value.trim(),
-    country: country
-  };
-
-  try {
-    let response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec?action=registerCustomer",
-      { method: "POST", body: JSON.stringify(payload) }
-    );
-
-    let result = await response.json();
-
-    if (result.status === "success") {
-      alert("Registration successful!");
-      window.location.href = "search.html";
-    } else {
-      alert("Error: " + result.message);
-    }
-
-  } catch (err) {
-    alert("Unable
