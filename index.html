@@ -51,6 +51,7 @@
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
+
         <!-- ================== EXISTING USER ================== -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
@@ -75,8 +76,8 @@
           </div>
 
           <div class="input-group hidden" id="existing_otherCountryBox">
-            <label>Enter Country</label>
-            <input type="text" id="existing_otherCountry" placeholder="Your Country">
+            <label>Your Country</label>
+            <input type="text" id="existing_otherCountry">
           </div>
 
           <div class="input-group">
@@ -94,6 +95,8 @@
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
+
+
         <!-- ================== NEW USER ================== -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
@@ -102,7 +105,6 @@
             <input type="text" id="new_name" placeholder="Enter Name">
           </div>
 
-          <!-- Country -->
           <div class="input-group">
             <label>Country</label>
             <select id="new_country" onchange="handleCountryChange('new')">
@@ -118,36 +120,43 @@
             </select>
           </div>
 
-          <!-- Other Country -->
           <div class="input-group hidden" id="new_otherCountryBox">
-            <label>Enter Country</label>
-            <input type="text" id="new_otherCountry" placeholder="Your Country">
+            <label>Your Country</label>
+            <input type="text" id="new_otherCountry" placeholder="Enter Country">
           </div>
 
-          <!-- Country Code -->
           <div class="input-group">
             <label>Country Code</label>
             <input type="text" id="new_countryCode" readonly>
           </div>
 
-          <!-- Mobile -->
-          <div class="input-group">
-            <label>Mobile Number (WhatsApp)</label>
-            <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
-            <div id="new_error" class="error-msg hidden"></div>
-            <div id="new_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
-          </div>
-
-          <!-- City -->
           <div class="input-group">
             <label>City</label>
             <input type="text" id="new_city" placeholder="Enter City">
           </div>
 
-          <!-- Email -->
           <div class="input-group">
             <label>Email Address</label>
-            <input type="email" id="email" placeholder="Enter Email">
+            <input type="email" id="email">
+          </div>
+
+          <!-- Duplicate UI Message -->
+          <div id="duplicateMsg" style="
+              display:none;
+              margin-top:12px;
+              padding:12px;
+              background:#faf4e5;
+              border:1px solid #e8d9c0;
+              color:#7a4d24;
+              border-radius:8px;
+              font-size:14px;">
+          </div>
+
+          <div class="input-group">
+            <label>Mobile Number (WhatsApp)</label>
+            <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
+            <div id="new_error" class="error-msg hidden"></div>
+            <div id="new_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
           </div>
 
           <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
@@ -156,11 +165,10 @@
 
       </div>
     </div>
-
   </section>
 
-<!-- External Script -->
-<script src="script.js?v=8.0"></script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
