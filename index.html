@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sankalpa – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .valid-msg { color: green; font-size: 0.85rem; margin-top: 4px; }
+    .error-msg { color: red; font-size: 0.85rem; margin-top: 4px; }
+    .hidden { display: none; }
+  </style>
+</head>
+
+<body class="bg">
+
+  <!-- Header -->
+  <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
+      <div class="logo2" onclick="goHome()" style="cursor:pointer;">S A N K A L P A</div>
+
+      <nav style="display:flex;gap:22px;">
+        <a href="contact.html" class="header-link">Contact Us</a>
+      </nav>
+  </header>
+
+  <!-- Main Hero Section -->
+  <section class="hero">
+    
+    <div class="left">
+      <h1 class="hero-title">Why Sankalpa?</h1>
+
+      <p class="hero-text">
+        Sankalpa is a sacred place created to help devotees connect with the right
+        Hindu priests for every ritual, ceremony, and spiritual requirement.
+        Our purpose is to make the process simple, respectful, and deeply rooted
+        in tradition — ensuring that every devotee finds the priest who aligns
+        with their needs, values, and customs.
+        <br><br>
+        With purity of intention and seamless experience at heart,
+        Sankalpa stands as your trusted space for divine connection.
+      </p>
+    </div>
+
+    <div class="right">
+      <div class="form-box">
+
+        <!-- TOGGLE BUTTONS -->
+        <div class="toggle-row" style="margin-top:10px;">
+          <button class="primary-btn" onclick="showExisting()">Existing User</button>
+          <button class="primary-btn" onclick="showNew()">New User</button>
+        </div>
+
+        <!-- ================== EXISTING USER ================== -->
+        <div id="existingSection" style="display:none;margin-top:25px;">
+
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" id="existing_name" placeholder="Enter Your Name">
+          </div>
+
+          <div class="input-group">
+            <label>Country</label>
+            <select id="existing_country" onchange="handleCountryChange('existing')">
+              <option value="">Select Country</option>
+              <option value="India" data-code="+91">India</option>
+              <option value="United States" data-code="+1">United States</option>
+              <option value="United Kingdom" data-code="+44">United Kingdom</option>
+              <option value="Singapore" data-code="+65">Singapore</option>
+              <option value="UAE" data-code="+971">UAE</option>
+              <option value="Australia" data-code="+61">Australia</option>
+              <option value="Canada" data-code="+1">Canada</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <
