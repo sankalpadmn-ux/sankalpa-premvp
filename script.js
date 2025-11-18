@@ -1,9 +1,9 @@
 /***********************************************
  * SANKALPA – script.js
  * Handles:
- *  - Toggle between Existing / New User
+ *  - Existing / New User toggle
  *  - Country selection & WhatsApp validation
- *  - Registration + Duplicate handling
+ *  - Registration + Duplicate logic
  *  - Existing User login
  ***********************************************/
 
@@ -30,9 +30,8 @@ function showNew() {
 }
 
 
-
 /*---------------------------------------------------------
-  COUNTRY RULES FOR PHONE VALIDATION
+  COUNTRY RULES (WhatsApp Validation)
 ---------------------------------------------------------*/
 const rules = {
   "India":          { code: "+91",  len: 10 },
@@ -66,9 +65,8 @@ function handleCountryChange(type) {
 }
 
 
-
 /*---------------------------------------------------------
-  WHATSAPP NUMBER VALIDATION
+  MOBILE VALIDATION (WhatsApp Format)
 ---------------------------------------------------------*/
 function validateMobile(type) {
 
@@ -104,7 +102,6 @@ function validateMobile(type) {
 }
 
 
-
 /*---------------------------------------------------------
   EXISTING USER LOGIN
 ---------------------------------------------------------*/
@@ -123,8 +120,6 @@ async function loginUser() {
 
   localStorage.setItem("customerName", name);
 
-  // Optionally, we could verify with backend in future
-
   window.location.href = "search.html";
 }
 
@@ -135,7 +130,7 @@ async function loginUser() {
 ---------------------------------------------------------*/
 async function registerUser() {
 
-  // Hide earlier duplicate message if visible
+  // Hide duplicate message box
   let duplicateBox = document.getElementById("duplicateMsg");
   duplicateBox.style.display = "none";
 
@@ -151,10 +146,14 @@ async function registerUser() {
     return;
   }
 
-  // full WhatsApp number
+  // Full WhatsApp number saved to backend
   let fullPhone = countryCode ? (countryCode + " " + phone) : phone;
 
+  // ---------------------------------------------------------
+  // FIX: action MUST be inside JSON (NOT in URL)
+  // ---------------------------------------------------------
   let payload = {
+    action: "registerCustomer",
     name: name,
     email: email,
     mobile: fullPhone,
@@ -164,7 +163,7 @@ async function registerUser() {
 
   try {
     let response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec?action=registerCustomer",
+      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec",
       {
         method: "POST",
         body: JSON.stringify(payload)
@@ -174,7 +173,7 @@ async function registerUser() {
     let result = await response.json();
 
     /*---------------------------------------------------
-      DUPLICATE CUSTOMER HANDLING (Soft UI Message)
+      DUPLICATE CUSTOMER (Soft UI Message)
     ---------------------------------------------------*/
     if (result.status === "duplicate") {
 
@@ -199,7 +198,7 @@ async function registerUser() {
     }
 
     /*---------------------------------------------------
-      ERROR HANDLING
+      BACKEND ERROR MESSAGE
     ---------------------------------------------------*/
     alert("Error: " + result.message);
 
