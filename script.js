@@ -150,7 +150,7 @@ async function registerUser() {
   let fullPhone = countryCode ? (countryCode + " " + phone) : phone;
 
   // ---------------------------------------------------------
-  // FIX: action MUST be inside JSON (NOT in URL)
+  // Correct JSON payload including action
   // ---------------------------------------------------------
   let payload = {
     action: "registerCustomer",
@@ -166,6 +166,7 @@ async function registerUser() {
       "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec",
       {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       }
     );
