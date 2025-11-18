@@ -1,3 +1,4 @@
+/* Go Home */
 function goHome() { 
   window.location.href = "index.html"; 
 }
@@ -23,27 +24,28 @@ const rules = {
   "Canada": { code: "+1", len: 10 }
 };
 
-/* Country Change */
+/* Handle Country Select Change */
 function handleCountryChange(type) {
   let sel = document.getElementById(type + "_country");
-  let other = document.getElementById(type + "_otherCountryBox");
-  let code = document.getElementById(type + "_countryCode");
+  let otherBox = document.getElementById(type + "_otherCountryBox");
+  let codeBox = document.getElementById(type + "_countryCode");
 
   if (sel.value === "Others") {
-    other.classList.remove("hidden");
-    code.value = "";
+    otherBox.classList.remove("hidden");
+    codeBox.value = "";
   } else {
-    other.classList.add("hidden");
-    code.value = sel.options[sel.selectedIndex].dataset.code || "";
+    otherBox.classList.add("hidden");
+    codeBox.value = sel.options[sel.selectedIndex].dataset.code || "";
   }
 
   validateMobile(type);
 }
 
-/* WhatsApp Number Validation */
+/* Mobile Validation */
 function validateMobile(type) {
   let country = document.getElementById(type + "_country").value;
   let phone = document.getElementById(type + "_phone").value.trim();
+
   let err = document.getElementById(type + "_error");
   let ok = document.getElementById(type + "_valid");
 
@@ -70,15 +72,20 @@ function validateMobile(type) {
   }
 }
 
-/* Existing User */
+/* Existing User Login */
 function loginUser() {
   let name = document.getElementById("existing_name").value.trim();
-  if (!name) {
+  let phone = document.getElementById("existing_phone").value.trim();
+  let countryCode = document.getElementById("existing_countryCode").value.trim();
+
+  if (name === "" || phone === "") {
     alert("Please enter Name and Mobile Number");
     return;
   }
 
+  // Save local only (no backend)
   localStorage.setItem("customerName", name);
+
   window.location.href = "search.html";
 }
 
@@ -97,23 +104,21 @@ async function registerUser() {
     return;
   }
 
-  // BUILD FULL WHATSAPP NUMBER (Option B)
+  // Build Full WhatsApp Number
   let fullWhatsApp = (countryCode + " " + mobile).trim();
 
-  // Save for search page
+  // Save for Search Page
   localStorage.setItem("customerName", name);
   localStorage.setItem("customerCountry", country);
   localStorage.setItem("customerCity", city);
   localStorage.setItem("customerMobile", fullWhatsApp);
 
-  // PAYLOAD → Matches your Customer Sheet
+  // PAYLOAD for backend (Locality removed)
   let payload = {
     name: name,
     email: email,
-    mobile: fullWhatsApp,   // IMPORTANT: Phone column will store full WhatsApp
+    mobile: fullWhatsApp,   // Stored as Phone column
     city: city,
-    locality: document.getElementById("new_locality").value.trim(),
-    otherLocality: document.getElementById("otherLocality").value.trim(),
     country: country
   };
 
