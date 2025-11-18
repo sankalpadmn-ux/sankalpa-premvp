@@ -1,4 +1,6 @@
-function goHome() { window.location.href = "index.html"; }
+function goHome() { 
+  window.location.href = "index.html"; 
+}
 
 /* Toggle Sections */
 function showExisting() {
@@ -10,7 +12,7 @@ function showNew() {
   document.getElementById("newSection").style.display = "block";
 }
 
-/* Country Rules */
+/* Country Rules for WhatsApp Validation */
 const rules = {
   "India": { code: "+91", len: 10 },
   "United States": { code: "+1", len: 10 },
@@ -38,7 +40,7 @@ function handleCountryChange(type) {
   validateMobile(type);
 }
 
-/* WhatsApp validation */
+/* WhatsApp Number Validation */
 function validateMobile(type) {
   let country = document.getElementById(type + "_country").value;
   let phone = document.getElementById(type + "_phone").value.trim();
@@ -71,7 +73,7 @@ function validateMobile(type) {
 /* Existing User */
 function loginUser() {
   let name = document.getElementById("existing_name").value.trim();
-  if (name === "") {
+  if (!name) {
     alert("Please enter Name and Mobile Number");
     return;
   }
@@ -88,22 +90,27 @@ async function registerUser() {
   let country = document.getElementById("new_country").value.trim();
   let city = document.getElementById("new_city").value.trim();
   let email = document.getElementById("email").value.trim();
+  let countryCode = document.getElementById("new_countryCode").value.trim();
 
   if (name === "" || mobile === "") {
     alert("Please enter Name and Mobile Number");
     return;
   }
 
-  // Save customer data
+  // BUILD FULL WHATSAPP NUMBER (Option B)
+  let fullWhatsApp = (countryCode + " " + mobile).trim();
+
+  // Save for search page
   localStorage.setItem("customerName", name);
   localStorage.setItem("customerCountry", country);
   localStorage.setItem("customerCity", city);
-  localStorage.setItem("customerMobile", mobile);
+  localStorage.setItem("customerMobile", fullWhatsApp);
 
+  // PAYLOAD → Matches your Customer Sheet
   let payload = {
     name: name,
-    mobile: mobile,
     email: email,
+    mobile: fullWhatsApp,   // IMPORTANT: Phone column will store full WhatsApp
     city: city,
     locality: document.getElementById("new_locality").value.trim(),
     otherLocality: document.getElementById("otherLocality").value.trim(),
@@ -128,5 +135,4 @@ async function registerUser() {
   } catch (err) {
     alert("Unable to connect to server.");
   }
-
 }
