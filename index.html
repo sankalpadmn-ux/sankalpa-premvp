@@ -5,6 +5,23 @@
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Validation messages – merges naturally with your UI */
+    .valid-msg {
+      color: green;
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+    .error-msg {
+      color: red;
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="bg">
@@ -23,7 +40,7 @@
     
     <!-- LEFT SIDE -->
     <div class="left">
-      <h1 class="hero-title">Why Sankalpa?</hh1>
+      <h1 class="hero-title">Why Sankalpa?</h1>
       <p class="hero-text">
         Sankalpa is a sacred place created to help devotees connect with the right
         Hindu priests for every ritual, ceremony, and spiritual spiritual requirement.
@@ -40,13 +57,13 @@
     <div class="right">
       <div class="form-box">
 
-        <!-- BUTTONS ONLY -->
+        <!-- TOGGLE BUTTONS -->
         <div class="toggle-row" style="margin-top:10px;">
           <button class="primary-btn" onclick="showExisting()">Existing User</button>
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- EXISTING USER -->
+        <!-- ===================== EXISTING USER ===================== -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -54,15 +71,46 @@
             <input type="text" id="existing_name" placeholder="Enter Your Name">
           </div>
 
+          <!-- Country -->
           <div class="input-group">
-            <label>Mobile Number</label>
-            <input type="text" id="existing_phone" placeholder="Enter Mobile Number">
+            <label>Country</label>
+            <select id="existing_country" onchange="handleCountryChange('existing')">
+              <option value="">Select Country</option>
+              <option value="India" data-code="+91">India</option>
+              <option value="United States" data-code="+1">United States</option>
+              <option value="United Kingdom" data-code="+44">United Kingdom</option>
+              <option value="Singapore" data-code="+65">Singapore</option>
+              <option value="UAE" data-code="+971">UAE</option>
+              <option value="Australia" data-code="+61">Australia</option>
+              <option value="Canada" data-code="+1">Canada</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <!-- Other country text -->
+          <div class="input-group hidden" id="existing_otherCountryBox">
+            <label>Enter Country</label>
+            <input type="text" id="existing_otherCountry" placeholder="Your Country">
+          </div>
+
+          <!-- Country Code -->
+          <div class="input-group">
+            <label>Country Code</label>
+            <input type="text" id="existing_countryCode" readonly>
+          </div>
+
+          <!-- WhatsApp Mobile -->
+          <div class="input-group">
+            <label>Mobile Number (WhatsApp)</label>
+            <input type="text" id="existing_phone" placeholder="Enter Mobile Number" oninput="validateMobile('existing')">
+            <div id="existing_error" class="error-msg hidden"></div>
+            <div id="existing_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
           </div>
 
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
-        <!-- NEW USER -->
+        <!-- ====================== NEW USER ====================== -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -70,19 +118,43 @@
             <input type="text" id="new_name" placeholder="Enter Name">
           </div>
 
+          <!-- Country -->
           <div class="input-group">
-            <label>Mobile Number</label>
-            <input type="text" id="new_phone" placeholder="Enter Mobile Number">
+            <label>Country</label>
+            <select id="new_country" onchange="handleCountryChange('new')">
+              <option value="">Select Country</option>
+              <option value="India" data-code="+91">India</option>
+              <option value="United States" data-code="+1">United States</option>
+              <option value="United Kingdom" data-code="+44">United Kingdom</option>
+              <option value="Singapore" data-code="+65">Singapore</option>
+              <option value="UAE" data-code="+971">UAE</option>
+              <option value="Australia" data-code="+61">Australia</option>
+              <option value="Canada" data-code="+1">Canada</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <!-- Other country -->
+          <div class="input-group hidden" id="new_otherCountryBox">
+            <label>Enter Country</label>
+            <input type="text" id="new_otherCountry" placeholder="Your Country">
+          </div>
+
+          <!-- Country Code -->
+          <div class="input-group">
+            <label>Country Code</label>
+            <input type="text" id="new_countryCode" readonly>
+          </div>
+
+          <!-- City -->
+          <div class="input-group">
+            <label>City</label>
+            <input type="text" id="new_city" placeholder="Enter City">
           </div>
 
           <div class="input-group">
             <label>Email Address</label>
             <input type="email" id="email" placeholder="Enter Email">
-          </div>
-
-          <div class="input-group">
-            <label>City</label>
-            <input type="text" value="Coimbatore" disabled style="background:#f7f2e8;">
           </div>
 
           <div class="input-group">
@@ -108,6 +180,14 @@
             <input type="text" id="otherLocality" placeholder="Enter Locality">
           </div>
 
+          <!-- WhatsApp Mobile -->
+          <div class="input-group">
+            <label>Mobile Number (WhatsApp)</label>
+            <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
+            <div id="new_error" class="error-msg hidden"></div>
+            <div id="new_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
+          </div>
+
           <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
 
         </div>
@@ -116,34 +196,86 @@
     </div>
   </section>
 
+
 <script>
 
-/* Go Home */
-function goHome() {
-  window.location.href = "index.html";
-}
+function goHome() { window.location.href = "index.html"; }
 
-/* Toggle */
+/* Toggle Sections */
 function showExisting() {
   document.getElementById("existingSection").style.display = "block";
   document.getElementById("newSection").style.display = "none";
-  document.getElementById("otherLocalityBox").style.display = "none";
 }
-
 function showNew() {
   document.getElementById("existingSection").style.display = "none";
   document.getElementById("newSection").style.display = "block";
-  document.getElementById("otherLocalityBox").style.display = "none";
 }
 
-/* Other Locality */
-function checkOtherLocality() {
-  let loc = document.getElementById("new_locality").value;
-  document.getElementById("otherLocalityBox").style.display = 
-      (loc === "Other") ? "block" : "none";
+/* Country validation rules */
+const rules = {
+  "India": { code: "+91", len: 10 },
+  "United States": { code: "+1", len: 10 },
+  "United Kingdom": { code: "+44", len: 10 },
+  "Singapore": { code: "+65", len: 8 },
+  "UAE": { code: "+971", len: 9 },
+  "Australia": { code: "+61", len: 9 },
+  "Canada": { code: "+1", len: 10 }
+};
+
+/* Country Change Handler */
+function handleCountryChange(type) {
+  let sel = document.getElementById(type + "_country");
+  let otherBox = document.getElementById(type + "_otherCountryBox");
+  let codeInput = document.getElementById(type + "_countryCode");
+
+  if (sel.value === "Others") {
+    otherBox.classList.remove("hidden");
+    codeInput.value = "";
+  } else {
+    otherBox.classList.add("hidden");
+    let opt = sel.options[sel.selectedIndex];
+    codeInput.value = opt.dataset.code || "";
+  }
+
+  validateMobile(type);
 }
 
-/* Existing */
+/* WhatsApp Number Validation */
+function validateMobile(type) {
+  let country = document.getElementById(type + "_country").value;
+  let phone = document.getElementById(type + "_phone").value.trim();
+  let err = document.getElementById(type + "_error");
+  let ok = document.getElementById(type + "_valid");
+
+  err.classList.add("hidden");
+  ok.classList.add("hidden");
+
+  if (!country || phone === "") return;
+
+  if (country !== "Others") {
+    let rule = rules[country];
+
+    if (!rule) return;
+
+    if (isNaN(phone) || phone.length !== rule.len) {
+      err.textContent = `Invalid number for ${country}. Expected ${rule.len} digits.`;
+      err.classList.remove("hidden");
+      return;
+    }
+
+    ok.classList.remove("hidden");
+
+  } else {
+    if (isNaN(phone)) {
+      err.textContent = "Please enter digits only.";
+      err.classList.remove("hidden");
+    } else {
+      ok.classList.remove("hidden");
+    }
+  }
+}
+
+/* Existing User */
 function loginUser() {
   let name = document.getElementById("existing_name").value.trim();
   let phone = document.getElementById("existing_phone").value.trim();
@@ -153,58 +285,4 @@ function loginUser() {
     return;
   }
 
-  localStorage.setItem("customerName", name);
-  window.location.href = "search.html";
-}
-
-/* NEW USER REGISTRATION - BACKEND CONNECTED */
-async function registerUser() {
-  let name = document.getElementById("new_name").value.trim();
-  let phone = document.getElementById("new_phone").value.trim();
-  let email = document.getElementById("email").value.trim();
-  let locality = document.getElementById("new_locality").value.trim();
-  let otherLocality = document.getElementById("otherLocality").value.trim();
-  let city = "Coimbatore";
-
-  if (name === "" || phone === "") {
-    alert("Please enter Name and Mobile Number");
-    return;
-  }
-
-  let payload = {
-    name: name,
-    mobile: phone,
-    email: email,
-    city: city,
-    locality: locality,
-    otherLocality: otherLocality
-  };
-
-  try {
-    let response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec?action=registerCustomer",
-      {
-        method: "POST",
-        body: JSON.stringify(payload)
-      }
-    );
-
-    let result = await response.json();
-
-    if (result.status === "success") {
-      alert("Registration successful!");
-      localStorage.setItem("customerName", name);
-      window.location.href = "search.html";
-    } else {
-      alert("Error: " + result.message);
-    }
-
-  } catch (err) {
-    alert("Unable to connect to server.");
-  }
-}
-
-</script>
-
-</body>
-</html>
+  localStorage.setItem("cus
