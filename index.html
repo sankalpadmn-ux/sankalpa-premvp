@@ -131,16 +131,13 @@
           </div>
 
           <div class="input-group">
-            <label>City</label>
-            <input type="text" id="new_city" placeholder="Enter City">
+            <label>Mobile Number (WhatsApp)</label>
+            <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
+            <div id="new_error" class="error-msg hidden"></div>
+            <div id="new_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
           </div>
 
-          <div class="input-group">
-            <label>Email Address</label>
-            <input type="email" id="email">
-          </div>
-
-          <!-- Duplicate UI Message -->
+          <!-- Duplicate Message (Soft UI) -->
           <div id="duplicateMsg" style="
               display:none;
               margin-top:12px;
@@ -153,10 +150,13 @@
           </div>
 
           <div class="input-group">
-            <label>Mobile Number (WhatsApp)</label>
-            <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
-            <div id="new_error" class="error-msg hidden"></div>
-            <div id="new_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
+            <label>City</label>
+            <input type="text" id="new_city" placeholder="Enter City">
+          </div>
+
+          <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" id="email">
           </div>
 
           <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
