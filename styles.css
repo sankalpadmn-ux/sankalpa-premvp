@@ -46,7 +46,7 @@ body {
 }
 
 /* ----------------------------------------------------- */
-/* HERO SECTION (Landing Page)                           */
+/* HERO SECTION                                          */
 /* ----------------------------------------------------- */
 
 .hero {
@@ -78,8 +78,7 @@ body {
 /* FORM BOXES                                            */
 /* ----------------------------------------------------- */
 
-.form-box,
-.contact-box {
+.form-box {
   background: rgba(255, 253, 247, 0.75);
   border: 1px solid #e8d9c0;
   border-radius: 12px;
@@ -119,16 +118,33 @@ select {
   color: #5c483a;
 }
 
-/* Phone field not stretched */
-#phone {
-  max-width: 240px;
-  margin: 0 auto;
-  display: block;
-}
-
-/* Multiselect height */
+/* MULTISELECT */
 select[multiple] {
   height: 65px;
+}
+
+/* INLINE PHONE LAYOUT (important!) */
+.phone-row {
+  display: flex;
+  gap: 10px;
+}
+
+.phone-row input:first-child {
+  width: 30%;
+}
+
+.phone-row input:last-child {
+  width: 70%;
+}
+
+/* Mobile friendly inline phone */
+@media (max-width: 600px) {
+  .phone-row {
+    flex-direction: column;
+  }
+  .phone-row input {
+    width: 100% !important;
+  }
 }
 
 /* ----------------------------------------------------- */
@@ -150,6 +166,15 @@ select[multiple] {
 }
 
 /* ----------------------------------------------------- */
+/* SEARCH PAGE                                           */
+/* ----------------------------------------------------- */
+
+#results div {
+  background: #faf4e5;
+  border-radius: 8px;
+}
+
+/* ----------------------------------------------------- */
 /* CONTACT PAGE                                          */
 /* ----------------------------------------------------- */
 
@@ -168,7 +193,6 @@ select[multiple] {
 
 .contact-line {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   padding: 8px 0;
 }
@@ -178,17 +202,16 @@ select[multiple] {
   color: #7a4d24;
 }
 
-/* ----------------------------------------------------- */
-/* SEARCH PAGE                                           */
-/* ----------------------------------------------------- */
-
-#results div {
-  background: #faf4e5;
-  border-radius: 8px;
+/* Mobile layout */
+@media (max-width: 768px) {
+  .contact-line {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* ----------------------------------------------------- */
-/* MOBILE LAYOUT                                         */
+/* MOBILE LAYOUT (Global)                                */
 /* ----------------------------------------------------- */
 
 @media (max-width: 768px) {
@@ -207,28 +230,16 @@ select[multiple] {
     padding: 26px 22px;
   }
 
-  .left,
-  .right {
+  .left, .right {
     width: 100%;
   }
 
-  .form-box,
-  .contact-box {
-    padding: 18px;
-  }
-
-  input,
-  select {
+  input, select {
     font-size: 13px;
   }
 
   .primary-btn {
     font-size: 13px;
     padding: 8px 12px;
-  }
-
-  .contact-line {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
