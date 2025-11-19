@@ -5,20 +5,21 @@
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS -->
+  <!-- CSS with cache-busting -->
   <link rel="stylesheet" href="styles.css?v=20251120-01">
 
   <style>
     .valid-msg { color: green; font-size: 0.85rem; margin-top: 4px; }
     .error-msg { color: red; font-size: 0.85rem; margin-top: 4px; }
     .hidden { display: none; }
-    #duplicateMsg { 
-      background: #f7e9d4; 
-      border: 1px solid #d7c2a4; 
-      padding: 10px; 
-      border-radius: 6px; 
+
+    #duplicateMsg {
+      background: #f7e9d4;
+      border: 1px solid #d7c2a4;
+      padding: 10px;
+      border-radius: 6px;
       color: #7a4d24;
-      font-size: 14px; 
+      font-size: 14px;
       margin-bottom: 12px;
       display: none;
     }
@@ -26,6 +27,8 @@
 </head>
 
 <body class="bg">
+
+  <!-- VERSION TEST: RAMYA-2025-TEST -->
 
   <!-- Header -->
   <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
@@ -74,7 +77,6 @@
             <input type="text" id="existing_name" placeholder="Enter Your Name">
           </div>
 
-          <!-- Country -->
           <div class="input-group">
             <label>Country</label>
             <select id="existing_country" onchange="handleCountryChange('existing')">
@@ -107,7 +109,7 @@
             <div id="existing_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
           </div>
 
-          <button type="button" class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
+          <button type="button" class="primary-btn" style="width:100%;" onclick="loginUser();">Submit</button>
 
         </div>
 
@@ -120,7 +122,6 @@
             <input type="text" id="new_name" placeholder="Enter Name">
           </div>
 
-          <!-- Country -->
           <div class="input-group">
             <label>Country</label>
             <select id="new_country" onchange="handleCountryChange('new')">
