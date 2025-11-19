@@ -90,7 +90,7 @@ function validateMobile(type) {
     }
 
     ok.classList.remove("hidden");
-  } 
+  }
   else {
     if (isNaN(phone)) {
       err.textContent = "Digits only.";
@@ -163,7 +163,7 @@ async function registerUser() {
 
   try {
     let response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec",
+      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec?action=registerCustomer",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
