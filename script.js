@@ -1,5 +1,5 @@
 /***********************************************
- * SANKALPA – script.js (CORS-FREE VERSION)
+ * SANKALPA – script.js (NON-CORS, NO PREFLIGHT)
  ***********************************************/
 
 function goHome() {
@@ -42,6 +42,9 @@ function handleCountryChange(type) {
 
 function validateMobile(type) {}
 
+/*----------------------------------------------
+  EXISTING USER LOGIN
+----------------------------------------------*/
 function loginUser() {
   let name = document.getElementById("existing_name").value.trim();
   if (!name) { alert("Please enter Name"); return; }
@@ -49,6 +52,10 @@ function loginUser() {
   window.location.href = "search.html";
 }
 
+/*----------------------------------------------
+  NEW USER REGISTRATION (NO FETCH)
+  Uses hidden HTML form → never sends OPTIONS
+----------------------------------------------*/
 async function registerUser() {
 
   let duplicateBox = document.getElementById("duplicateMsg");
@@ -68,45 +75,33 @@ async function registerUser() {
 
   let fullPhone = code ? `${code} ${phone}` : phone;
 
-  // 🔥 NO JSON: USE URL FORM ENCODING (NO CORS PROBLEM)
-  let formData = new URLSearchParams();
-  formData.append("action", "registerCustomer");
-  formData.append("name", name);
-  formData.append("email", email);
-  formData.append("mobile", fullPhone);
-  formData.append("city", city);
-  formData.append("country", country);
+  /*----------------------------------------------
+    CREATE HIDDEN FORM (NO CORS, NO PREFLIGHT)
+  ----------------------------------------------*/
+  let form = document.createElement("form");
+  form.method = "POST";
+  form.action = "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec";
 
-  try {
-    let response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec",
-      {
-        method: "POST",
-        body: formData
-      }
-    );
+  let addField = (name, value) => {
+    let input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  };
 
-    let result = await response.json();
+  addField("action", "registerCustomer");
+  addField("name", name);
+  addField("email", email);
+  addField("mobile", fullPhone);
+  addField("city", city);
+  addField("country", country);
 
-    if (result.status === "duplicate") {
-      duplicateBox.innerHTML =
-        "<b>This mobile number is already registered.</b><br>Welcome back, " +
-        (result.name || "Devotee") + ".";
-      duplicateBox.style.display = "block";
-      return;
-    }
+  document.body.appendChild(form);
 
-    if (result.status === "success") {
-      localStorage.setItem("customerName", name);
-      alert("Registration successful!");
-      window.location.href = "search.html";
-      return;
-    }
-
-    alert(result.message);
-
-  } catch (err) {
-    alert("Unable to connect to server.");
-    console.error(err);
-  }
+  /*----------------------------------------------
+    SUBMIT FORM
+    → Browser sends POST directly (no OPTIONS)
+  ----------------------------------------------*/
+  form.submit();
 }
