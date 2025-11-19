@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- CSS with cache-busting -->
-  <link rel="stylesheet" href="styles.css?v=20251120-01">
+  <link rel="stylesheet" href="styles.css?v=20251121-01">
 
   <style>
     .valid-msg { color: green; font-size: 0.85rem; margin-top: 4px; }
     .error-msg { color: red; font-size: 0.85rem; margin-top: 4px; }
     .hidden { display: none; }
 
+    /* Duplicate box styling */
     #duplicateMsg {
       background: #f7e9d4;
       border: 1px solid #d7c2a4;
@@ -23,28 +24,49 @@
       margin-bottom: 12px;
       display: none;
     }
+
+    /* INLINE PHONE LAYOUT (consistent for both forms) */
+    .phone-row {
+      display: flex;
+      gap: 10px;
+    }
+    .phone-row input:first-child {
+      width: 30%;
+    }
+    .phone-row input:last-child {
+      width: 70%;
+    }
+
+    @media (max-width: 600px) {
+      .phone-row {
+        flex-direction: column;
+      }
+      .phone-row input {
+        width: 100% !important;
+      }
+    }
   </style>
 </head>
 
 <body class="bg">
 
-  <!-- VERSION TEST: RAMYA-2025-TEST -->
+  <!-- VERSION TEST -->
+  <!-- RAMYA-2025-TEST -->
 
   <!-- Header -->
   <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
-      <div class="logo2" onclick="goHome()" style="cursor:pointer;">S A N K A L P A</div>
+    <div class="logo2" onclick="goHome()" style="cursor:pointer;">S A N K A L P A</div>
 
-      <nav style="display:flex;gap:22px;">
-        <a href="contact.html" class="header-link">Contact Us</a>
-      </nav>
+    <nav style="display:flex;gap:22px;">
+      <a href="contact.html" class="header-link">Contact Us</a>
+    </nav>
   </header>
 
-  <!-- Main Hero Section -->
   <section class="hero">
-    
+
+    <!-- LEFT PANEL -->
     <div class="left">
       <h1 class="hero-title">Why Sankalpa?</h1>
-
       <p class="hero-text">
         Sankalpa is a sacred place created to help devotees connect with the right
         Hindu priests for every ritual, ceremony, and spiritual requirement.
@@ -57,19 +79,20 @@
       </p>
     </div>
 
+    <!-- RIGHT PANEL -->
     <div class="right">
       <div class="form-box">
 
-        <!-- TOGGLE BUTTONS -->
-        <div class="toggle-row" style="margin-top:10px; display:flex; gap:10px;">
-          <button type="button" class="primary-btn" onclick="showExisting()">Existing User</button>
-          <button type="button" class="primary-btn" onclick="showNew()">New User</button>
+        <!-- Toggle Buttons -->
+        <div class="toggle-row" style="margin-top:10px;">
+          <button class="primary-btn" onclick="showExisting()">Existing User</button>
+          <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
         <!-- DUPLICATE MESSAGE -->
         <div id="duplicateMsg"></div>
 
-        <!-- ================== EXISTING USER ================== -->
+        <!-- EXISTING USER FORM -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -97,24 +120,20 @@
             <input type="text" id="existing_otherCountry">
           </div>
 
-          <div class="input-group">
-            <label>Country Code</label>
-            <input type="text" id="existing_countryCode" readonly>
-          </div>
-
+          <!-- INLINE PHONE -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
-            <input type="text" id="existing_phone" placeholder="Enter Mobile Number" oninput="validateMobile('existing')">
-            <div id="existing_error" class="error-msg hidden"></div>
-            <div id="existing_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
+            <div class="phone-row">
+              <input type="text" id="existing_countryCode" placeholder="+91" readonly>
+              <input type="text" id="existing_phone" placeholder="Enter Mobile Number">
+            </div>
           </div>
 
-          <button type="button" class="primary-btn" style="width:100%;" onclick="loginUser();">Submit</button>
-
+          <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
 
-        <!-- ================== NEW USER ================== -->
+        <!-- NEW USER FORM -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -139,12 +158,16 @@
 
           <div class="input-group hidden" id="new_otherCountryBox">
             <label>Enter Country</label>
-            <input type="text" id="new_otherCountry" placeholder="Your Country">
+            <input type="text" id="new_otherCountry">
           </div>
 
+          <!-- INLINE PHONE -->
           <div class="input-group">
-            <label>Country Code</label>
-            <input type="text" id="new_countryCode" readonly>
+            <label>Mobile Number (WhatsApp)</label>
+            <div class="phone-row">
+              <input type="text" id="new_countryCode" placeholder="+91" readonly>
+              <input type="text" id="new_phone" placeholder="Enter Mobile Number">
+            </div>
           </div>
 
           <div class="input-group">
@@ -154,33 +177,18 @@
 
           <div class="input-group">
             <label>Email Address</label>
-            <input type="email" id="email">
+            <input type="email" id="email" placeholder="Enter Email">
           </div>
 
-          <div class="input-group">
-            <label>Mobile Number (WhatsApp)</label>
-            <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
-            <div id="new_error" class="error-msg hidden"></div>
-            <div id="new_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
-          </div>
-
-          <!-- FIXED SUBMIT BUTTON -->
-          <button 
-            type="button" 
-            class="primary-btn" 
-            style="width:100%;" 
-            onclick="registerUser();">
-            Submit
-          </button>
-
+          <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- SCRIPT -->
-  <script src="script.js?v=20251120-01"></script>
+  <!-- JS with cache-busting -->
+  <script src="script.js?v=20251121-01"></script>
 
 </body>
 </html>
