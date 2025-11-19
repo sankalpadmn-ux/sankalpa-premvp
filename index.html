@@ -10,16 +10,14 @@
     .valid-msg { color: green; font-size: 0.85rem; margin-top: 4px; }
     .error-msg { color: red; font-size: 0.85rem; margin-top: 4px; }
     .hidden { display: none; }
-
     #duplicateMsg {
-      display: none;
-      background: #f5efe3;
-      padding: 12px;
-      border-radius: 8px;
+      background: #faf4e5;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
       color: #7a4d24;
       font-size: 14px;
-      margin-bottom: 12px;
-      border: 1px solid #dcc9a6;
+      display: none;
     }
   </style>
 </head>
@@ -35,9 +33,11 @@
       </nav>
   </header>
 
+
   <!-- Main Hero Section -->
   <section class="hero">
-    
+
+    <!-- LEFT SIDE -->
     <div class="left">
       <h1 class="hero-title">Why Sankalpa?</h1>
 
@@ -53,17 +53,17 @@
       </p>
     </div>
 
+
+    <!-- RIGHT SIDE -->
     <div class="right">
       <div class="form-box">
 
-        <!-- Toggle buttons -->
+        <!-- TOGGLE BUTTONS -->
         <div class="toggle-row" style="margin-top:10px;">
           <button class="primary-btn" onclick="showExisting()">Existing User</button>
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- DUPLICATE BOX (Soft UI Message) -->
-        <div id="duplicateMsg"></div>
 
         <!-- ================== EXISTING USER ================== -->
         <div id="existingSection" style="display:none;margin-top:25px;">
@@ -73,6 +73,7 @@
             <input type="text" id="existing_name" placeholder="Enter Your Name">
           </div>
 
+          <!-- COUNTRY -->
           <div class="input-group">
             <label>Country</label>
             <select id="existing_country" onchange="handleCountryChange('existing')">
@@ -88,16 +89,19 @@
             </select>
           </div>
 
+          <!-- OTHER COUNTRY -->
           <div class="input-group hidden" id="existing_otherCountryBox">
             <label>Enter Country</label>
             <input type="text" id="existing_otherCountry">
           </div>
 
+          <!-- COUNTRY CODE -->
           <div class="input-group">
             <label>Country Code</label>
             <input type="text" id="existing_countryCode" readonly>
           </div>
 
+          <!-- MOBILE -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
             <input type="text" id="existing_phone" placeholder="Enter Mobile Number" oninput="validateMobile('existing')">
@@ -109,6 +113,7 @@
         </div>
 
 
+
         <!-- ================== NEW USER ================== -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
@@ -117,6 +122,7 @@
             <input type="text" id="new_name" placeholder="Enter Name">
           </div>
 
+          <!-- COUNTRY -->
           <div class="input-group">
             <label>Country</label>
             <select id="new_country" onchange="handleCountryChange('new')">
@@ -132,26 +138,19 @@
             </select>
           </div>
 
+          <!-- OTHER COUNTRY -->
           <div class="input-group hidden" id="new_otherCountryBox">
             <label>Enter Country</label>
             <input type="text" id="new_otherCountry">
           </div>
 
+          <!-- COUNTRY CODE -->
           <div class="input-group">
             <label>Country Code</label>
             <input type="text" id="new_countryCode" readonly>
           </div>
 
-          <div class="input-group">
-            <label>City</label>
-            <input type="text" id="new_city" placeholder="Enter City">
-          </div>
-
-          <div class="input-group">
-            <label>Email</label>
-            <input type="email" id="email" placeholder="Enter Email">
-          </div>
-
+          <!-- MOBILE -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
             <input type="text" id="new_phone" placeholder="Enter Mobile Number" oninput="validateMobile('new')">
@@ -159,14 +158,32 @@
             <div id="new_valid" class="valid-msg hidden">✓ WhatsApp number looks valid</div>
           </div>
 
+          <!-- EMAIL -->
+          <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="Enter Email">
+          </div>
+
+          <!-- CITY -->
+          <div class="input-group">
+            <label>City</label>
+            <input type="text" id="new_city" placeholder="Enter City">
+          </div>
+
+          <!-- DUPLICATE MESSAGE BOX -->
+          <div id="duplicateMsg"></div>
+
           <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
+
         </div>
 
       </div>
     </div>
+
   </section>
 
-  <!-- IMPORTANT: CACHE-BUSTED SCRIPT -->
+
+  <!-- LOAD SCRIPT WITH CACHEBUSTER -->
   <script src="script.js?v=20251119"></script>
 
 </body>
