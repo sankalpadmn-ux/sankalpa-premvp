@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- VERSIONING TO PREVENT CACHE -->
+  <meta name="sankalpa-version" content="20251120-01">
+
   <link rel="stylesheet" href="styles.css">
 
   <style>
@@ -183,8 +187,24 @@
   </section>
 
 
-  <!-- LOAD SCRIPT WITH CACHEBUSTER -->
-  <script src="script.js?v=20251119"></script>
+  <!-- AUTO VERSION CHECK → SILENT HARD REFRESH -->
+  <script>
+  (function() {
+    const pageVersion = document
+      .querySelector('meta[name="sankalpa-version"]')
+      .getAttribute("content");
+
+    const cachedVersion = localStorage.getItem("sankalpa-version");
+
+    if (cachedVersion !== pageVersion) {
+      localStorage.setItem("sankalpa-version", pageVersion);
+      window.location.reload(true);
+    }
+  })();
+  </script>
+
+  <!-- LOAD SCRIPT WITH CACHE-BUSTER -->
+  <script src="script.js?v=20251120-01"></script>
 
 </body>
 </html>
