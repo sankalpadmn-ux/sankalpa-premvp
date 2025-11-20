@@ -5,93 +5,44 @@
   <title>Sankalpa – Contact Us</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css?v=20251121">
-
-  <style>
-    /* LOGO STYLES – same as Landing Page */
-    .logo-link {
-      display:flex;
-      align-items:center;
-      cursor:pointer;
-      text-decoration:none;
-    }
-    .logo-img {
-      height:60px;
-      width:auto;
-      object-fit:contain;
-    }
-    @media (max-width:600px){
-      .logo-img { height:50px; }
-    }
-
-    /* CONTACT PAGE ENHANCEMENTS */
-    .contact-main {
-      padding: 40px 20px;
-      display:flex;
-      justify-content:center;
-    }
-    .contact-box {
-      background:#ffffff;
-      padding:28px;
-      border-radius:14px;
-      box-shadow:0 4px 14px rgba(0,0,0,0.1);
-    }
-    .contact-text {
-      color:#5a3b1c;
-      margin-bottom:18px;
-      line-height:1.5;
-    }
-    .contact-details {
-      margin-top:20px;
-    }
-    .contact-line {
-      margin-bottom:14px;
-    }
-    .contact-label {
-      display:block;
-      font-weight:bold;
-      color:#8a3615;
-      margin-bottom:4px;
-    }
-  </style>
 </head>
 
 <body class="bg">
 
   <!-- Header -->
-  <header class="header" style="display:flex;justify-content:space-between;align-items:center; background:#f7e9d4; padding:10px 18px;">
+  <header class="header" style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#f7e9d4;
+      padding:10px 18px;
+    ">
 
-      <!-- NEW LOGO – SAME BEHAVIOR AS LANDING PAGE -->
-      <a href="index.html" class="logo-link">
-        <img class="logo-img"
-             src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAQ4BDgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1rVbqWn2mkpLbZCqokE4HQe2T9PamvftPfQMjEk8jbn8q9O3Z5rwJVQABwfwq2PxxUuNa3QkBVrhjA49f5V+o2n6SMM+3IA7e9PtPpU5/OsuM7fw4UvDU7p0UUV5J//2Q==">
-      </a>
+    <!-- LOGO LEFT TOP -->
+    <a href="index.html" style="display:flex;align-items:center;cursor:pointer;text-decoration:none;">
+      <img src="images/Sankalpa_Logo.jpg" style="height:60px;width:auto;object-fit:contain;">
+    </a>
 
-      <nav style="display:flex;gap:22px;">
-        <a href="index.html" class="header-link">Home</a>
-        <a id="logoutLink" onclick="logout()" class="header-link" style="cursor:pointer; display:none;">Logout</a>
-      </nav>
+    <nav style="display:flex;gap:22px;">
+      <a href="index.html" class="header-link">Home</a>
+      <a onclick="logout()" id="logoutLink" class="header-link" style="cursor:pointer; display:none;">Logout</a>
+    </nav>
+
   </header>
 
   <!-- Contact Container -->
   <main class="contact-main">
     <div class="contact-box" style="max-width:600px;margin:auto;">
 
-      <h2 class="form-title" style="color:#8a3615;">Contact Us</h2>
-
-      <!-- NEW BEAUTIFUL CONTENT ADDED -->
-      <p class="contact-text">
-        At <b>Sankalpa</b>, we believe every devotee deserves guidance, clarity and warmth on their spiritual journey.
-        <br><br>
-        Our support team is always here to help you connect with authentic priests, clarify rituals, explore traditions,
-        and ensure your experiences are meaningful and peaceful.
-      </p>
+      <h2 class="form-title">Contact Us</h2>
 
       <p class="contact-text">
-        Whether you have a question about a ceremony, need assistance with your booking, or simply want to understand how
-        Sankalpa works — we are just a message away.
+        Our team is always here to support your spiritual needs.
+        Whether it is guidance, clarifications, ritual details, or help with priest coordination —
+        we respond with warmth, care and complete dedication.
       </p>
 
-      <div class="contact-details">
+      <div class="contact-details" style="margin-top:20px;">
 
         <div class="contact-line">
           <span class="contact-label">Email</span>
@@ -109,10 +60,33 @@
             href="https://wa.me/919040044700" 
             target="_blank"
             style="color:#7a4d24;text-decoration:none;font-weight:bold;">
-            Open WhatsApp
+            Message Us on WhatsApp
           </a>
         </div>
 
       </div>
 
-    </di
+    </div>
+  </main>
+
+<script>
+function goHome() {
+  window.location.href = "index.html";
+}
+
+/* SHOW LOGOUT ONLY IF USER LOGGED IN */
+window.onload = function() {
+  let name = localStorage.getItem("customerName");
+  if (name && name.trim() !== "") {
+    document.getElementById("logoutLink").style.display = "inline";
+  }
+};
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
