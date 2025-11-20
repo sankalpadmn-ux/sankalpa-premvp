@@ -1,9 +1,14 @@
 /***********************************************
- * SANKALPA – script.js (Duplicate Message + Auto Redirect)
+ * SANKALPA – script.js (FINAL MATCHED VERSION)
  ***********************************************/
 
-function goHome() { window.location.href = "index.html"; }
+function goHome() {
+  window.location.href = "index.html";
+}
 
+/*-------------------------------------------
+  TOGGLE SCREENS
+-------------------------------------------*/
 function showExisting() {
   document.getElementById("duplicateMsg").style.display = "none";
   document.getElementById("existingSection").style.display = "block";
@@ -16,6 +21,9 @@ function showNew() {
   document.getElementById("newSection").style.display = "block";
 }
 
+/*-------------------------------------------
+  COUNTRY RULES
+-------------------------------------------*/
 const rules = {
   "India": { code: "+91", len: 10 },
   "United States": { code: "+1", len: 10 },
@@ -26,20 +34,38 @@ const rules = {
   "Canada": { code: "+1", len: 10 }
 };
 
+/*-------------------------------------------
+  SET COUNTRY CODE FOR EXISTING + NEW USERS
+-------------------------------------------*/
 function handleCountryChange(type) {
   let sel = document.getElementById(type + "_country");
   let code = document.getElementById(type + "_countryCode");
-  let other = document.getElementById(type + "_otherCountryBox");
 
-  if (sel.value === "Others") {
-    other.classList.remove("hidden");
-    code.value = "";
-  } else {
-    other.classList.add("hidden");
-    code.value = sel.options[sel.selectedIndex].dataset.code || "";
-  }
+  let selected = sel.options[sel.selectedIndex];
+  code.value = selected.dataset.code || "";
 }
 
+/*-------------------------------------------
+  EXISTING USER LOGIN
+-------------------------------------------*/
+function loginUser() {
+
+  let name = document.getElementById("existing_name").value.trim();
+  let code = document.getElementById("existing_countryCode").value.trim();
+  let phone = document.getElementById("existing_phone").value.trim();
+
+  if (!name || !phone) {
+    alert("Please enter Name and Mobile Number");
+    return;
+  }
+
+  localStorage.setItem("customerName", name);
+  window.location.href = "search.html";
+}
+
+/*-------------------------------------------
+  NEW USER REGISTRATION
+-------------------------------------------*/
 async function registerUser() {
 
   let duplicateBox = document.getElementById("duplicateMsg");
@@ -59,6 +85,7 @@ async function registerUser() {
 
   let fullPhone = code ? `${code} ${phone}` : phone;
 
+  // URL-encoded request (CORS-safe)
   let formData = new URLSearchParams();
   formData.append("action", "registerCustomer");
   formData.append("name", name);
@@ -70,15 +97,19 @@ async function registerUser() {
   try {
     let response = await fetch(
       "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec",
-      { method: "POST", body: formData }
+      {
+        method: "POST",
+        body: formData
+      }
     );
 
     let result = await response.json();
 
-    // ---------------------------
-    // DUPLICATE USER HANDLING
-    // ---------------------------
+    /*-------------------------------------------
+      DUPLICATE CUSTOMER
+    -------------------------------------------*/
     if (result.status === "duplicate") {
+
       duplicateBox.innerHTML =
         `<b>This mobile number is already registered.</b><br>
          Welcome back, ${result.name}. Redirecting…`;
@@ -93,26 +124,23 @@ async function registerUser() {
       return;
     }
 
-    // ---------------------------
-    // SUCCESSFUL REGISTRATION
-    // ---------------------------
+    /*-------------------------------------------
+      SUCCESSFUL NEW REGISTRATION
+    -------------------------------------------*/
     if (result.status === "success") {
+
       localStorage.setItem("customerName", name);
       window.location.href = "search.html";
       return;
     }
 
+    /*-------------------------------------------
+      OTHER ERRORS
+    -------------------------------------------*/
     alert(result.message);
 
   } catch (err) {
     alert("Unable to connect to server.");
     console.error(err);
   }
-}
-
-function loginUser() {
-  let name = document.getElementById("existing_name").value.trim();
-  if (!name) { alert("Please enter Name"); return; }
-  localStorage.setItem("customerName", name);
-  window.location.href = "search.html";
 }
