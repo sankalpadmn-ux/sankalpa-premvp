@@ -1,245 +1,168 @@
-/* ----------------------------------------------------- */
-/* BASE FONT & BACKGROUND                                */
-/* ----------------------------------------------------- */
+/* -------------------------------------------------------
+   GLOBAL COLOR PALETTE (Taken from Sankalpa Logo)
+-------------------------------------------------------- */
+:root {
+  --sankalpa-bg: #f7e9d4;        /* Soft beige/gold from logo background */
+  --sankalpa-primary: #d85b29;   /* Orange from logo text */
+  --sankalpa-dark: #8a3615;      /* Deep brown from logo flame */
+  --sankalpa-text: #5a3b1c;      /* Brown shade for body text */
+  --sankalpa-green: #176a3a;     /* Green from “Connecting with purpose” */
+  --white: #ffffff;
+}
 
-body {
+/* -------------------------------------------------------
+   BODY
+-------------------------------------------------------- */
+body.bg {
+  background: var(--sankalpa-bg);
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  color: #5c483a;
-  background-color: #fffdfa;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  color: var(--sankalpa-text);
 }
 
-.bg {
-  background: linear-gradient(to bottom, #fffdf6, #f4e7d5);
-  min-height: 100vh;
-}
-
-/* ----------------------------------------------------- */
-/* HEADER (Consistent Across All Pages)                  */
-/* ----------------------------------------------------- */
-
+/* -------------------------------------------------------
+   HEADER (matches landing page logo behavior)
+-------------------------------------------------------- */
 .header {
-  padding: 20px 30px;
-  border-bottom: 1px solid #e8d9c0;
-  background: rgba(255, 253, 246, 0.92);
-  backdrop-filter: blur(4px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo2 {
-  font-size: 26px;
-  letter-spacing: 6px;
-  color: #7a4d24;
-  font-weight: bold;
+  background: var(--sankalpa-bg);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .header-link {
-  color: #7a4d24;
+  color: var(--sankalpa-dark);
   text-decoration: none;
   font-size: 16px;
+  font-weight: 600;
 }
 
 .header-link:hover {
-  text-decoration: underline;
+  color: var(--sankalpa-primary);
 }
 
-/* ----------------------------------------------------- */
-/* HERO SECTION                                          */
-/* ----------------------------------------------------- */
+/* -------------------------------------------------------
+   LOGO (same behavior across all pages)
+-------------------------------------------------------- */
+.logo-link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
 
+.logo-img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media(max-width:600px){
+  .logo-img { height: 50px; }
+}
+
+/* -------------------------------------------------------
+   HERO SECTION
+-------------------------------------------------------- */
 .hero {
   display: flex;
   justify-content: space-between;
-  padding: 40px 60px;
+  padding: 40px 8%;
+  align-items: center;
   gap: 40px;
 }
 
 .left {
-  width: 55%;
+  flex: 1;
 }
 
 .right {
-  width: 45%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-title {
-  font-size: 32px;
-  color: #7a4d24;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--sankalpa-dark);
+  margin-bottom: 12px;
 }
 
 .hero-text {
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 18px;
+  color: var(--sankalpa-text);
+  line-height: 1.4;
 }
 
-/* ----------------------------------------------------- */
-/* FORM BOXES                                            */
-/* ----------------------------------------------------- */
-
+/* -------------------------------------------------------
+   FORM CARD
+-------------------------------------------------------- */
 .form-box {
-  background: rgba(255, 253, 247, 0.75);
-  border: 1px solid #e8d9c0;
-  border-radius: 12px;
-  padding: 26px 28px;
-  box-shadow: 0 2px 8px rgba(185, 147, 96, 0.18);
+  background: var(--white);
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 360px;
 }
-
-.form-title {
-  text-align: center;
-  color: #7a4d24;
-  font-size: 20px;
-}
-
-/* ----------------------------------------------------- */
-/* INPUTS & LABELS                                       */
-/* ----------------------------------------------------- */
 
 .input-group {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 14px;
 }
 
 label {
+  display: block;
+  margin-bottom: 6px;
   font-size: 14px;
-  color: #7a4d24;
-  margin-bottom: 5px;
+  color: var(--sankalpa-dark);
+  font-weight: 600;
 }
 
-input,
-select {
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid #d4c098;
-  background: #faf4e5;
+input, select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d8c4a8;
+  background: #fff;
   font-size: 15px;
-  color: #5c483a;
+  color: var(--sankalpa-text);
 }
 
-/* MULTISELECT */
-select[multiple] {
-  height: 65px;
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--sankalpa-primary);
+  box-shadow: 0 0 5px rgba(216,91,41,0.4);
 }
 
-/* INLINE PHONE LAYOUT (important!) */
+/* Phone Row */
 .phone-row {
   display: flex;
   gap: 10px;
 }
 
-.phone-row input:first-child {
-  width: 30%;
-}
-
-.phone-row input:last-child {
-  width: 70%;
-}
-
-/* Mobile friendly inline phone */
-@media (max-width: 600px) {
-  .phone-row {
-    flex-direction: column;
-  }
-  .phone-row input {
-    width: 100% !important;
-  }
-}
-
-/* ----------------------------------------------------- */
-/* BUTTONS                                               */
-/* ----------------------------------------------------- */
-
+/* -------------------------------------------------------
+   BUTTONS
+-------------------------------------------------------- */
 .primary-btn {
-  background: #7a4d24;
-  color: white;
+  padding: 12px 20px;
+  background: var(--sankalpa-primary);
   border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 16px;
   cursor: pointer;
-  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
 }
 
 .primary-btn:hover {
-  background: #633e1c;
+  background: var(--sankalpa-dark);
 }
 
-/* ----------------------------------------------------- */
-/* SEARCH PAGE                                           */
-/* ----------------------------------------------------- */
-
-#results div {
-  background: #faf4e5;
-  border-radius: 8px;
-}
-
-/* ----------------------------------------------------- */
-/* CONTACT PAGE                                          */
-/* ----------------------------------------------------- */
-
-.contact-main {
-  padding: 40px 60px;
-}
-
-.contact-text {
-  font-size: 15px;
-  color: #5c483a;
-}
-
-.contact-details {
-  margin-top: 16px;
-}
-
-.contact-line {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-}
-
-.contact-label {
-  font-weight: bold;
-  color: #7a4d24;
-}
-
-/* Mobile layout */
-@media (max-width: 768px) {
-  .contact-line {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ----------------------------------------------------- */
-/* MOBILE LAYOUT (Global)                                */
-/* ----------------------------------------------------- */
-
-@media (max-width: 768px) {
-
-  .header {
-    padding: 12px 18px;
-  }
-
-  .logo2 {
-    font-size: 20px;
-    letter-spacing: 4px;
-  }
-
-  .hero {
-    flex-direction: column;
-    padding: 26px 22px;
-  }
-
-  .left, .right {
-    width: 100%;
-  }
-
-  input, select {
-    font-size: 13px;
-  }
-
-  .primary-btn {
-    font-size: 13px;
-    padding: 8px 12px;
-  }
-}
+/* -------------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------------- */
+@media(max-wi
