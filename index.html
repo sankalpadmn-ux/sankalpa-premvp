@@ -8,13 +8,8 @@
   <link rel="stylesheet" href="styles.css?v=20251121">
 
   <style>
-    .phone-row {
-      display: flex;
-      gap: 8px;
-    }
-    .phone-row input {
-      width: 50%;
-    }
+    .phone-row { display: flex; gap: 8px; }
+    .phone-row input { width: 50%; }
 
     #duplicateMsg {
       background: #f7e9d4;
@@ -39,33 +34,28 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
 
-    <!-- LEFT -->
     <div class="left">
       <h1 class="hero-title">Why Sankalpa?</h1>
-
       <p class="hero-text">
         Sankalpa connects devotees with authentic priests worldwide,
-        ensuring tradition, respect, and ease of experience.
+        ensuring tradition, respect and ease of experience.
       </p>
     </div>
 
-    <!-- RIGHT -->
     <div class="right">
       <div class="form-box">
 
-        <!-- Toggle Buttons -->
         <div class="toggle-row" style="margin-top:10px;">
           <button class="primary-btn" onclick="showExisting()">Existing User</button>
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- Duplicate Message -->
+        <!-- DUPLICATE MESSAGE -->
         <div id="duplicateMsg"></div>
 
-        <!-- EXISTING USER -->
+        <!-- ================= EXISTING USER ================= -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -87,7 +77,6 @@
             </select>
           </div>
 
-          <!-- INLINE PHONE -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
             <div class="phone-row">
@@ -99,7 +88,7 @@
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
-        <!-- NEW USER -->
+        <!-- ================= NEW USER ================= -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -121,7 +110,6 @@
             </select>
           </div>
 
-          <!-- INLINE PHONE -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
             <div class="phone-row">
@@ -149,5 +137,6 @@
   </section>
 
   <script src="script.js?v=20251121"></script>
+
 </body>
 </html>
