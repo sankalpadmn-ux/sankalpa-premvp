@@ -4,31 +4,26 @@
   <meta charset="utf-8">
   <title>Sankalpa – Search Priests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css?v=20251121">
+
+  <!-- UPDATED CSS -->
+  <link rel="stylesheet" href="styles2.css?v=20251122">
 </head>
 
 <body class="bg">
 
   <!-- Header -->
-  <header class="header" style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:#f7e9d4;
-      padding:10px 18px;
-    ">
+  <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
+      
+      <!-- LOGO -->
+      <a href="index.html" style="display:flex;align-items:center;cursor:pointer;text-decoration:none;">
+        <img src="images/Sankalpa_Logo.jpg" style="height:80px;width:auto;object-fit:contain;">
+      </a>
 
-    <!-- LOGO LEFT TOP -->
-    <a href="index.html" style="display:flex;align-items:center;cursor:pointer;text-decoration:none;">
-        <img src="images/Sankalpa_Logo.jpg" style="height:60px;width:auto;object-fit:contain;">
-    </a>
-
-    <nav style="display:flex;gap:22px;">
+      <nav style="display:flex;gap:22px;">
         <a href="index.html" class="header-link">Home</a>
         <a href="contact.html" class="header-link">Contact Us</a>
         <a onclick="logout()" class="header-link" style="cursor:pointer;">Logout</a>
-    </nav>
-
+      </nav>
   </header>
 
   <!-- Welcome Message -->
@@ -117,7 +112,7 @@
       </div>
 
       <!-- Search Button -->
-      <button class="primary-btn" style="width:100%;" onclick="searchPriests()">Search Priests</button>
+      <button class="primary-btn" onclick="searchPriests()">Search Priests</button>
 
     </div>
 
@@ -127,8 +122,31 @@
 
 <script>
 
-function goHome() {
+function logout() {
+  localStorage.clear();
   window.location.href = "index.html";
 }
 
-function l
+/* Load customer details */
+window.onload = function() {
+
+  document.getElementById("displayName").innerText =
+    localStorage.getItem("customerName") || "Devotee";
+
+  document.getElementById("customerCountry").value =
+    localStorage.getItem("customerCountry") || "";
+
+  document.getElementById("customerCity").value =
+    localStorage.getItem("customerCity") || "";
+};
+
+/* Search Handler */
+function searchPriests() {
+  document.getElementById("results").innerHTML =
+    "<br><div style='padding:15px;background:#fff8ee;border-radius:8px;border:1px solid #e0d2bf;'>Priest search will be activated soon.</div>";
+}
+
+</script>
+
+</body>
+</html>
