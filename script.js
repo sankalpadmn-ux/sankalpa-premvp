@@ -1,17 +1,17 @@
 /***********************************************
- * SANKALPA – script.js (NON-CORS, NO PREFLIGHT)
+ * SANKALPA – script.js (Duplicate Message + Auto Redirect)
  ***********************************************/
 
-function goHome() {
-  window.location.href = "index.html";
-}
+function goHome() { window.location.href = "index.html"; }
 
 function showExisting() {
+  document.getElementById("duplicateMsg").style.display = "none";
   document.getElementById("existingSection").style.display = "block";
   document.getElementById("newSection").style.display = "none";
 }
 
 function showNew() {
+  document.getElementById("duplicateMsg").style.display = "none";
   document.getElementById("existingSection").style.display = "none";
   document.getElementById("newSection").style.display = "block";
 }
@@ -40,22 +40,6 @@ function handleCountryChange(type) {
   }
 }
 
-function validateMobile(type) {}
-
-/*----------------------------------------------
-  EXISTING USER LOGIN
-----------------------------------------------*/
-function loginUser() {
-  let name = document.getElementById("existing_name").value.trim();
-  if (!name) { alert("Please enter Name"); return; }
-  localStorage.setItem("customerName", name);
-  window.location.href = "search.html";
-}
-
-/*----------------------------------------------
-  NEW USER REGISTRATION (NO FETCH)
-  Uses hidden HTML form → never sends OPTIONS
-----------------------------------------------*/
 async function registerUser() {
 
   let duplicateBox = document.getElementById("duplicateMsg");
@@ -75,33 +59,60 @@ async function registerUser() {
 
   let fullPhone = code ? `${code} ${phone}` : phone;
 
-  /*----------------------------------------------
-    CREATE HIDDEN FORM (NO CORS, NO PREFLIGHT)
-  ----------------------------------------------*/
-  let form = document.createElement("form");
-  form.method = "POST";
-  form.action = "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec";
+  let formData = new URLSearchParams();
+  formData.append("action", "registerCustomer");
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("mobile", fullPhone);
+  formData.append("city", city);
+  formData.append("country", country);
 
-  let addField = (name, value) => {
-    let input = document.createElement("input");
-    input.type = "hidden";
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
-  };
+  try {
+    let response = await fetch(
+      "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec",
+      { method: "POST", body: formData }
+    );
 
-  addField("action", "registerCustomer");
-  addField("name", name);
-  addField("email", email);
-  addField("mobile", fullPhone);
-  addField("city", city);
-  addField("country", country);
+    let result = await response.json();
 
-  document.body.appendChild(form);
+    // ---------------------------
+    // DUPLICATE USER HANDLING
+    // ---------------------------
+    if (result.status === "duplicate") {
+      duplicateBox.innerHTML =
+        `<b>This mobile number is already registered.</b><br>
+         Welcome back, ${result.name}. Redirecting…`;
 
-  /*----------------------------------------------
-    SUBMIT FORM
-    → Browser sends POST directly (no OPTIONS)
-  ----------------------------------------------*/
-  form.submit();
+      duplicateBox.style.display = "block";
+
+      setTimeout(() => {
+        localStorage.setItem("customerName", result.name);
+        window.location.href = "search.html";
+      }, 2000);
+
+      return;
+    }
+
+    // ---------------------------
+    // SUCCESSFUL REGISTRATION
+    // ---------------------------
+    if (result.status === "success") {
+      localStorage.setItem("customerName", name);
+      window.location.href = "search.html";
+      return;
+    }
+
+    alert(result.message);
+
+  } catch (err) {
+    alert("Unable to connect to server.");
+    console.error(err);
+  }
+}
+
+function loginUser() {
+  let name = document.getElementById("existing_name").value.trim();
+  if (!name) { alert("Please enter Name"); return; }
+  localStorage.setItem("customerName", name);
+  window.location.href = "search.html";
 }
