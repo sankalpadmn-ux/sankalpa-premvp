@@ -5,15 +5,10 @@
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS with cache-busting -->
-  <link rel="stylesheet" href="styles.css?v=20251121-01">
+  <link rel="stylesheet" href="styles.css?v=20251120">
 
   <style>
-    .valid-msg { color: green; font-size: 0.85rem; margin-top: 4px; }
-    .error-msg { color: red; font-size: 0.85rem; margin-top: 4px; }
-    .hidden { display: none; }
-
-    /* Duplicate box styling */
+    /* Duplicate Message UI */
     #duplicateMsg {
       background: #f7e9d4;
       border: 1px solid #d7c2a4;
@@ -25,38 +20,21 @@
       display: none;
     }
 
-    /* INLINE PHONE LAYOUT (consistent for both forms) */
     .phone-row {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
-    .phone-row input:first-child {
-      width: 30%;
-    }
-    .phone-row input:last-child {
-      width: 70%;
-    }
-
-    @media (max-width: 600px) {
-      .phone-row {
-        flex-direction: column;
-      }
-      .phone-row input {
-        width: 100% !important;
-      }
+    .phone-row input {
+      width: 50%;
     }
   </style>
 </head>
 
 <body class="bg">
 
-  <!-- VERSION TEST -->
-  <!-- RAMYA-2025-TEST -->
-
   <!-- Header -->
   <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
     <div class="logo2" onclick="goHome()" style="cursor:pointer;">S A N K A L P A</div>
-
     <nav style="display:flex;gap:22px;">
       <a href="contact.html" class="header-link">Contact Us</a>
     </nav>
@@ -64,22 +42,18 @@
 
   <section class="hero">
 
-    <!-- LEFT PANEL -->
+    <!-- LEFT SIDE -->
     <div class="left">
       <h1 class="hero-title">Why Sankalpa?</h1>
+
       <p class="hero-text">
         Sankalpa is a sacred place created to help devotees connect with the right
-        Hindu priests for every ritual, ceremony, and spiritual requirement.
-        Our purpose is to make the process simple, respectful, and deeply rooted
-        in tradition — ensuring that every devotee finds the priest who aligns
-        with their needs, values, and customs.
-        <br><br>
-        With purity of intention and seamless experience at heart,
-        Sankalpa stands as your trusted space for divine connection.
+        Hindu priests for every ritual and spiritual requirement.  
+        We ensure simplicity, respect and tradition at every step.
       </p>
     </div>
 
-    <!-- RIGHT PANEL -->
+    <!-- RIGHT SIDE -->
     <div class="right">
       <div class="form-box">
 
@@ -89,10 +63,10 @@
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- DUPLICATE MESSAGE -->
+        <!-- Duplicate Message -->
         <div id="duplicateMsg"></div>
 
-        <!-- EXISTING USER FORM -->
+        <!-- ---------------- EXISTING USER ---------------- -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -120,7 +94,6 @@
             <input type="text" id="existing_otherCountry">
           </div>
 
-          <!-- INLINE PHONE -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
             <div class="phone-row">
@@ -130,10 +103,10 @@
           </div>
 
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
+
         </div>
 
-
-        <!-- NEW USER FORM -->
+        <!-- ---------------- NEW USER ---------------- -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -158,10 +131,10 @@
 
           <div class="input-group hidden" id="new_otherCountryBox">
             <label>Enter Country</label>
-            <input type="text" id="new_otherCountry">
+            <input type="text" id="new_otherCountry" placeholder="Your Country">
           </div>
 
-          <!-- INLINE PHONE -->
+          <!-- INLINE PHONE FIELD -->
           <div class="input-group">
             <label>Mobile Number (WhatsApp)</label>
             <div class="phone-row">
@@ -181,14 +154,15 @@
           </div>
 
           <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
+
         </div>
 
       </div>
     </div>
+
   </section>
 
-  <!-- JS with cache-busting -->
-  <script src="script.js?v=20251121-01"></script>
+  <script src="script.js?v=20251120"></script>
 
 </body>
 </html>
