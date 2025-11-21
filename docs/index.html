@@ -5,6 +5,7 @@
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Updated CSS -->
   <link rel="stylesheet" href="styles2.css?v=20251124">
 
   <style>
@@ -52,7 +53,7 @@
       <h1 class="hero-title">Why Sankalpa?</h1>
       <p class="hero-text">
         Sankalpa connects devotees with authentic priests worldwide,
-        ensuring tradition, respect and ease of experience.
+        ensuring tradition, respect, and ease of experience.
       </p>
     </div>
 
@@ -64,10 +65,10 @@
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- Duplicate Message -->
+        <!-- DUPLICATE / MESSAGE BOX -->
         <div id="duplicateMsg"></div>
 
-        <!-- EXISTING USER -->
+        <!-- ================= EXISTING USER ================= -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -100,7 +101,7 @@
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
         </div>
 
-        <!-- NEW USER -->
+        <!-- ================= NEW USER ================= -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
@@ -148,7 +149,8 @@
     © <span id="yearSpan"></span> Sankalpa. All rights reserved.
   </footer>
 
-  <script src="script.js?v=20251124"></script>
+  <!-- Updated JS with cache-busting -->
+  <script src="script.js?v=20251126"></script>
 
   <script>
     document.getElementById("yearSpan").textContent = new Date().getFullYear();
