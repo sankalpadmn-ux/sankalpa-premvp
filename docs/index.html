@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tinos:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="style.css?v=1.2"> 
+
     <style>
         /* SANKALPA COLOR PALETTE (RADIANCE & DIVINITY) */
         :root {
@@ -28,33 +30,32 @@
             color: var(--text-color-dark);
             font-family: 'Lato', sans-serif;
             min-height: 100vh;
-            /* GOLDEN FLOW BACKGROUND: Subtle radial glow for a soft gold effect */
+            /* GOLDEN FLOW BACKGROUND */
             background-image: radial-gradient(circle at 50% 10%, var(--golden-glow-light) 0%, var(--background-base) 70%);
-            padding-top: 56px;
+            padding-top: 56px; /* Space for the fixed navbar */
         }
 
-        /* --- NAVIGATION BAR STYLING: MERGED LOOK --- */
+        /* --- NAVIGATION BAR STYLING: FULLY MERGED LOOK --- */
         .navbar-sankalpa {
-            /* Navbar is slightly transparent and blurred to merge with background */
-            background-color: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(5px); 
+            /* Increased transparency and blur for a better merged effect */
+            background-color: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(10px); /* Stronger blur */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid var(--subtle-border); 
+            border-bottom: 1px solid rgba(212, 167, 125, 0.3); /* Softer bottom line */
         }
 
         .navbar-brand img {
-            height: 35px;
-            /* Logo glow applied */
+            height: 40px; /* Increased height for better visibility */
             filter: drop-shadow(0 0 5px rgba(247, 151, 36, 0.3));
         }
         
-        /* --- ETHNIC/PROMINENT FONT FOR HEADER (Tinos - Devanagari Style) --- */
+        /* --- ETHNIC/PROMINENT FONT FOR HEADER --- */
         .sankalpa-header {
-            font-family: 'Tinos', serif; /* Devanagari-inspired font */
+            font-family: 'Tinos', serif; 
             font-weight: 700;
             color: var(--primary-a);
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-            font-size: 3.5rem; /* Large size */
+            font-size: 3.5rem; 
         }
 
         .tagline-sankalpa {
@@ -62,7 +63,7 @@
             color: var(--text-color-dark); 
             font-weight: 400;
             font-size: 1.5rem;
-            margin-top: -15px; /* Pull closer to the main heading */
+            margin-top: -15px; 
         }
         
         .sub-header {
@@ -90,10 +91,11 @@
             margin-bottom: 20px;
         }
         
-        /* Set active toggle button styling */
+        /* Active toggle button styling */
         .btn-toggle-active {
             background-color: var(--primary-a) !important;
             color: white !important;
+            border: none !important;
         }
         
         .btn-toggle-inactive {
@@ -102,14 +104,6 @@
             border: 2px solid var(--primary-a);
         }
 
-        /* BUTTONS and INPUTS */
-        .btn-primary-sankalpa {
-            background-color: var(--primary-a);
-            border: none;
-            box-shadow: 0 4px 15px rgba(228, 88, 38, 0.4); 
-            font-weight: 700;
-        }
-        
         /* Hard Refresh Notice */
         .refresh-notice {
             background-color: var(--background-base);
@@ -126,7 +120,7 @@
         <div class="container-fluid">
             
             <a class="navbar-brand" href="index.html">
-                <img src="images/Sankalpa_Logo.jpg" alt="Sankalpa Logo" height="35">
+                <img src="images/Sankalpa_Logo.jpg" alt="Sankalpa Logo" height="40">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -184,7 +178,7 @@
                             </div>
 
                             <div class="row g-3">
-                                <div class="col-5">
+                                <div class="col-6">
                                     <label for="existing_country" class="form-label">Country</label>
                                     <select class="form-select" id="existing_country" onchange="handleCountryChange('existing')" required>
                                         <option value="" selected>Select</option>
@@ -196,9 +190,9 @@
                                     <label for="existing_countryCode" class="form-label">Code</label>
                                     <input type="text" class="form-control" id="existing_countryCode" readonly>
                                 </div>
-                                <div class="col-5">
-                                    <label for="existing_phone" class="form-label">Mobile Number</label>
-                                    <input type="number" class="form-control" id="existing_phone" placeholder="Mobile Number" required>
+                                <div class="col-4">
+                                    <label for="existing_phone" class="form-label">Mobile</label>
+                                    <input type="number" class="form-control" id="existing_phone" placeholder="Number" required>
                                 </div>
                             </div>
 
@@ -223,7 +217,7 @@
                             </div>
 
                             <div class="row g-3">
-                                <div class="col-5">
+                                <div class="col-6">
                                     <label for="new_country" class="form-label">Country</label>
                                     <select class="form-select" id="new_country" onchange="handleCountryChange('new')" required>
                                         <option value="" selected>Select</option>
@@ -235,9 +229,9 @@
                                     <label for="new_countryCode" class="form-label">Code</label>
                                     <input type="text" class="form-control" id="new_countryCode" readonly>
                                 </div>
-                                <div class="col-5">
-                                    <label for="new_phone" class="form-label">Mobile Number</label>
-                                    <input type="number" class="form-control" id="new_phone" placeholder="Mobile Number" required>
+                                <div class="col-4">
+                                    <label for="new_phone" class="form-label">Mobile</label>
+                                    <input type="number" class="form-control" id="new_phone" placeholder="Number" required>
                                 </div>
                             </div>
 
