@@ -1,13 +1,12 @@
 /***********************************************
- * SANKALPA – script.js (Final Polished Version)
+ * SANKALPA – script.js (JSON Compatible Final)
  ***********************************************/
 
 const API_URL =
   "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec";
 
 /*---------------------------------------------------
-  PREVENT ANY DEFAULT FORM SUBMISSION
-  - Avoids white screen and raw JSON response
+  PREVENT DEFAULT FORM SUBMIT (Important)
 ---------------------------------------------------*/
 document.addEventListener("submit", (e) => e.preventDefault());
 
@@ -52,9 +51,9 @@ function handleCountryChange(type) {
 }
 
 /*---------------------------------------------------
-  EXISTING USER LOGIN – OPTION 1
-  - Still uses registerCustomer endpoint
-  - Duplicate = EXISTING user
+  EXISTING USER LOGIN (Option 1)
+  - Uses registerCustomer
+  - Backend duplicate = login
 ---------------------------------------------------*/
 async function loginUser() {
   hideDuplicate();
@@ -77,7 +76,7 @@ async function loginUser() {
       mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        action: "registerCustomer",   // IMPORTANT: login uses register
+        action: "registerCustomer",
         name: name,
         country: country,
         mobile: fullPhone,
@@ -89,24 +88,24 @@ async function loginUser() {
     const data = await response.json();
 
     if (data.status === "duplicate") {
-      // Proper styled duplicate message
       showDuplicate(`Welcome back, ${data.name}. Redirecting…`);
-
       setTimeout(() => {
         window.location.href =
           "search.html?name=" + encodeURIComponent(data.name);
       }, 1500);
+    }
 
-    } else if (data.status === "success") {
-      // Rare but safe fallback
+    else if (data.status === "success") {
+      // Rare situation: user not found but backend created new
       showDuplicate(`Welcome, ${name}. Redirecting…`);
       setTimeout(() => {
         window.location.href =
           "search.html?name=" + encodeURIComponent(name);
       }, 1500);
+    }
 
-    } else {
-      showDuplicate("No matching user found. Please register.");
+    else {
+      showDuplicate("User not found. Please register.");
     }
 
   } catch (err) {
@@ -125,7 +124,7 @@ async function registerUser() {
   const countryCode = document.getElementById("new_countryCode").value.trim();
   const phone = document.getElementById("new_phone").value.trim();
   const city = document.getElementById("new_city").value.trim();
-  const email = ""; // Not collected on UI
+  const email = ""; // email not taken on UI
 
   if (!name || !country || !phone || !city) {
     showDuplicate("Please fill all fields.");
@@ -152,7 +151,6 @@ async function registerUser() {
     const data = await response.json();
 
     if (data.status === "duplicate") {
-      // Neat styled duplicate message
       showDuplicate(
         `This mobile number is already registered. Welcome back, ${data.name}.`
       );
@@ -161,15 +159,17 @@ async function registerUser() {
         window.location.href =
           "search.html?name=" + encodeURIComponent(data.name);
       }, 1500);
+    }
 
-    } else if (data.status === "success") {
-      showDuplicate(`Registration successful! Redirecting…`);
+    else if (data.status === "success") {
+      showDuplicate("Registration successful! Redirecting…");
       setTimeout(() => {
         window.location.href =
           "search.html?name=" + encodeURIComponent(name);
       }, 1500);
+    }
 
-    } else {
+    else {
       showDuplicate("Unexpected error during registration.");
     }
 
@@ -179,7 +179,7 @@ async function registerUser() {
 }
 
 /*---------------------------------------------------
-  DUPLICATE MESSAGE DISPLAY
+  DUPLICATE / MESSAGE BOX
 ---------------------------------------------------*/
 function showDuplicate(msg) {
   const box = document.getElementById("duplicateMsg");
