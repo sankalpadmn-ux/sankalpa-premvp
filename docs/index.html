@@ -37,11 +37,14 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .navbar-brand-sankalpa {
-            font-family: 'Playfair Display', serif;
-            color: var(--text-color-dark) !important;
-            font-size: 1.5rem;
-            font-weight: 700;
+        .navbar-brand img {
+            height: 35px; /* Size for the navbar logo */
+            transition: opacity 0.3s;
+        }
+        
+        /* Optional: Add a subtle lift/glow effect on logo hover */
+        .navbar-brand:hover img {
+            opacity: 0.9;
         }
 
         .nav-link-sankalpa {
@@ -55,7 +58,7 @@
             color: var(--primary-a) !important;
         }
 
-        /* --- CONTENT STYLING --- */
+        /* --- CONTENT & FORM STYLING (Retained) --- */
         .hero-section {
             padding: 5rem 0;
         }
@@ -72,7 +75,6 @@
             font-weight: 400;
         }
 
-        /* --- FORM CARD STYLING --- */
         .auth-card {
             background-color: var(--card-background); 
             border: 1px solid #F0E0D0; 
@@ -87,8 +89,7 @@
             color: var(--text-color-dark);
             margin-bottom: 1.5rem;
         }
-
-        /* BUTTONS AND INPUTS (Retained Radiance) */
+        
         .btn-primary-sankalpa {
             background-color: var(--primary-a);
             border: none;
@@ -114,7 +115,6 @@
             box-shadow: 0 0 0 0.25rem rgba(247, 151, 36, 0.2); 
         }
 
-        /* DUPLICATE/INFO BOX */
         #duplicateMsg {
             background-color: var(--secondary-b);
             color: white;
@@ -132,8 +132,8 @@
     <nav class="navbar navbar-expand-lg navbar-sankalpa fixed-top">
         <div class="container-fluid">
             
-            <a class="navbar-brand navbar-brand-sankalpa" href="index.html">
-                SANKALPA
+            <a class="navbar-brand" href="index.html">
+                <img src="Docs/Images/Sankalpa_Logo.jpg" alt="Sankalpa Logo" height="35">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -274,7 +274,7 @@
 
         /* All functions (goHome, showExisting, showNew, hideDuplicate, 
            handleCountryChange, encodeForm, loginUser, registerUser, showDuplicate) 
-           are the same as provided earlier to ensure Google Sheets connectivity is SAFE. */
+           are preserved to ensure Google Sheets connectivity is SAFE. */
 
         function goHome() {
             window.location.href = "index.html";
