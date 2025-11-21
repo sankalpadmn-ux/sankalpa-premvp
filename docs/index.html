@@ -5,18 +5,9 @@
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="styles2.css?v=20251122">
+  <link rel="stylesheet" href="styles2.css?v=20251124">
 
   <style>
-    .phone-row {
-      display: flex;
-      gap: 8px;
-    }
-    .phone-row input {
-      width: 50%;
-    }
-
     #duplicateMsg {
       background: #f7e9d4;
       border: 1px solid #d8c4a8;
@@ -28,25 +19,28 @@
       display: none;
     }
   </style>
-
 </head>
 
 <body class="bg">
 
   <!-- Header -->
-  <header class="header"
-    style="display:flex;justify-content:space-between;align-items:center;
-           background:#f7e9d4;padding:10px 18px;">
+  <header class="header" style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#f7e9d4;
+      padding:10px 18px;
+    ">
 
     <!-- LOGO -->
     <a href="index.html" style="display:flex;align-items:center;cursor:pointer;">
-      <img src="images/Sankalpa_Logo.jpg"
-           style="height:90px;width:auto;object-fit:contain;"
-           alt="Sankalpa Logo">
+        <img src="images/Sankalpa_Logo.jpg"
+             style="width:260px;height:auto;object-fit:contain;"
+             alt="Sankalpa Logo">
     </a>
 
     <nav style="display:flex;gap:22px;">
-      <a href="contact.html" class="header-link">Contact Us</a>
+        <a href="contact.html" class="header-link">Contact Us</a>
     </nav>
 
   </header>
@@ -54,7 +48,6 @@
   <!-- Hero Section -->
   <section class="hero">
 
-    <!-- Left Section -->
     <div class="left">
       <h1 class="hero-title">Why Sankalpa?</h1>
       <p class="hero-text">
@@ -63,13 +56,10 @@
       </p>
     </div>
 
-    <!-- Right Section -->
     <div class="right">
       <div class="form-box">
 
-        <!-- Toggle Buttons -->
-        <div class="toggle-row"
-             style="margin-top:10px;display:flex;gap:10px;justify-content:center;">
+        <div class="toggle-row" style="margin-top:10px;">
           <button class="primary-btn" onclick="showExisting()">Existing User</button>
           <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
@@ -77,16 +67,16 @@
         <!-- Duplicate Message -->
         <div id="duplicateMsg"></div>
 
-        <!-- ================= EXISTING USER ================= -->
+        <!-- EXISTING USER -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
-            <label for="existing_name">Name</label>
+            <label>Name</label>
             <input type="text" id="existing_name" placeholder="Enter Your Name">
           </div>
 
           <div class="input-group">
-            <label for="existing_country">Country</label>
+            <label>Country</label>
             <select id="existing_country" onchange="handleCountryChange('existing')">
               <option value="">Select Country</option>
               <option value="India" data-code="+91">India</option>
@@ -108,19 +98,18 @@
           </div>
 
           <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
-
         </div>
 
-        <!-- ================= NEW USER ================= -->
+        <!-- NEW USER -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
-            <label for="new_name">Name</label>
+            <label>Name</label>
             <input type="text" id="new_name" placeholder="Enter Name">
           </div>
 
           <div class="input-group">
-            <label for="new_country">Country</label>
+            <label>Country</label>
             <select id="new_country" onchange="handleCountryChange('new')">
               <option value="">Select Country</option>
               <option value="India" data-code="+91">India</option>
@@ -142,12 +131,11 @@
           </div>
 
           <div class="input-group">
-            <label for="new_city">City / Locality</label>
-            <input type="text" id="new_city" placeholder="Enter City / Locality">
+            <label>City</label>
+            <input type="text" id="new_city" placeholder="Enter City">
           </div>
 
           <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
-
         </div>
 
       </div>
@@ -160,16 +148,11 @@
     © <span id="yearSpan"></span> Sankalpa. All rights reserved.
   </footer>
 
-  <!-- Footer Year -->
-  <script>
-    (function () {
-      const y = document.getElementById('yearSpan');
-      if (y) y.textContent = new Date().getFullYear();
-    })();
-  </script>
+  <script src="script.js?v=20251124"></script>
 
-  <!-- JS -->
-  <script src="script.js?v=20251122"></script>
+  <script>
+    document.getElementById("yearSpan").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
