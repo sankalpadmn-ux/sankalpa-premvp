@@ -5,7 +5,7 @@
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Updated CSS -->
+  <!-- Main CSS -->
   <link rel="stylesheet" href="styles2.css?v=20251122">
 
   <style>
@@ -41,10 +41,11 @@
       padding:10px 18px;
     ">
 
-    <!-- LOGO LEFT TOP -->
+    <!-- LOGO -->
     <a href="index.html" style="display:flex;align-items:center;cursor:pointer;text-decoration:none;">
-      <!-- Increased logo size -->
-      <img src="images/Sankalpa_Logo.jpg" style="height:90px;width:auto;object-fit:contain;" alt="Sankalpa Logo">
+      <img src="images/Sankalpa_Logo.jpg"
+           style="height:90px;width:auto;object-fit:contain;"
+           alt="Sankalpa Logo">
     </a>
 
     <nav style="display:flex;gap:22px;">
@@ -52,7 +53,7 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
 
     <div class="left">
@@ -72,7 +73,7 @@
           <button class="primary-btn" type="button" onclick="showNew()">New User</button>
         </div>
 
-        <!-- Duplicate Message -->
+        <!-- Duplicate message -->
         <div id="duplicateMsg"></div>
 
         <!-- ================= EXISTING USER ================= -->
@@ -151,20 +152,20 @@
 
   </section>
 
-  <!-- Optional simple footer -->
+  <!-- Footer -->
   <footer style="text-align:center;padding:16px 0;font-size:12px;color:#754d26;">
     © <span id="yearSpan"></span> Sankalpa. All rights reserved.
   </footer>
 
-  <!-- Script file -->
+  <!-- Set year -->
   <script>
-    // Set current year in footer (won't break if script.js fails)
     (function () {
-      var y = document.getElementById('yearSpan');
+      const y = document.getElementById('yearSpan');
       if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
 
+  <!-- Main JS -->
   <script src="script.js?v=20251122"></script>
 </body>
 </html>
