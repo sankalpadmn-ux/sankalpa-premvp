@@ -1,32 +1,35 @@
 /* ============================================
-   GLOBAL BASE STYLES
-   ============================================ */
-
+   GLOBAL BASE
+============================================ */
 body, html {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Arial, sans-serif;
+  color: #523a20;
 }
 
-/* Gradient Background */
+/* Gradient background */
 .bg {
-  background: linear-gradient(145deg, #f7e9d4, #e9d6b8, #f2e2c4);
-  min-height: 100vh;
+  background: linear-gradient(145deg, #f7e9d4, #ecd8ba, #f3e3c7);
   background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-bottom: 40px;
 }
 
 /* ============================================
    HEADER
-   ============================================ */
+============================================ */
+.header {
+  background: #f7e9d4;
+  padding: 12px 20px;
+  border-bottom: 1px solid #d8c4a8;
+}
 
 .header-link {
-  color: #754d26;
+  color: #6a4720;
   text-decoration: none;
   font-weight: 600;
-  font-size: 16px;
-  padding: 8px 10px;
+  font-size: 15px;
 }
 
 .header-link:hover {
@@ -35,20 +38,24 @@ body, html {
 
 /* ============================================
    HERO LAYOUT
-   ============================================ */
-
+============================================ */
 .hero {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 40px 10%;
+  gap: 40px;
   flex-wrap: wrap;
 }
 
-.left, .right {
+.left {
   flex: 1;
   min-width: 320px;
-  margin-bottom: 30px;
+}
+
+.right {
+  flex: 1;
+  min-width: 320px;
 }
 
 .hero-title {
@@ -58,72 +65,64 @@ body, html {
 }
 
 .hero-text {
-  font-size: 18px;
-  color: #6a4720;
-  margin-top: 10px;
+  font-size: 17px;
+  margin-top: 12px;
   line-height: 1.6;
+  color: #6a4720;
 }
 
 /* ============================================
    FORM BOX
-   ============================================ */
-
+============================================ */
 .form-box {
-  background: rgba(255, 255, 255, 0.65);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.55);
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.10);
   backdrop-filter: blur(6px);
 }
 
-/* Input grouping */
-
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .input-group label {
-  font-size: 15px;
-  font-weight: 600;
-  color: #5a3410;
   display: block;
-  margin-bottom: 6px;
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-weight: 600;
 }
 
 .input-group input,
 .input-group select {
   width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #c2a98b;
+  padding: 11px;
+  border-radius: 8px;
+  border: 1px solid #c9b59b;
+  background: #fffaf3;
   font-size: 15px;
-  color: #5a3410;
-  background: #fff6ec;
+  color: #4b351c;
 }
 
-/* Phone row */
+/* PHONE ROW */
 .phone-row {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .phone-row input {
   width: 50%;
 }
 
-/* ============================================
-   BUTTONS
-   ============================================ */
-
+/* Buttons */
 .primary-btn {
   background: #8c5a20;
   color: white;
-  padding: 12px 14px;
-  border: none;
-  border-radius: 8px;
+  padding: 13px;
   font-size: 15px;
   font-weight: 600;
-  width: 100%;
+  border-radius: 8px;
+  border: none;
   cursor: pointer;
 }
 
@@ -131,33 +130,28 @@ body, html {
   background: #754d26;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .left, .right {
-    width: 100%;
-  }
-
-  .hero-title {
-    font-size: 28px;
-  }
+/* Contact Box */
+.contact-box {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 28px;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  font-size: 17px;
+  line-height: 1.8;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.10);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
+/* =============================
+   RESPONSIVENESS
+============================= */
+@media (max-width: 768px) {
+  .hero { flex-direction: column; padding: 30px 6%; }
+  .hero-title { font-size: 28px; }
+}
 
 footer {
-  margin-top: 25px;
+  text-align: center;
+  padding-top: 25px;
+  color: #6a4720;
+  font-size: 13px;
 }
-
-/* ============================================
-   END OF CSS
-   ============================================ */
