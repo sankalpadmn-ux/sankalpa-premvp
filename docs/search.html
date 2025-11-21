@@ -5,11 +5,7 @@
   <title>Search – Sankalpa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <link rel="stylesheet" href="styles2.css?v=20251201">
+  <link rel="stylesheet" href="styles2.css?v=20251203">
 </head>
 
 <body class="bg">
@@ -28,23 +24,17 @@
 <section class="hero" style="justify-content:center;text-align:center;">
   <div class="form-box" style="max-width:600px;">
     <h2 id="welcomeMsg">Welcome</h2>
-    <p style="margin-top:12px;">Priest search options will be added here.</p>
+    <p>Priest search functionality will appear here.</p>
   </div>
 </section>
 
 <script>
   const params = new URLSearchParams(window.location.search);
-  const name = params.get("name") || "";
-  document.getElementById("welcomeMsg").textContent =
-    name ? "Welcome, " + name : "Welcome";
+  const name = params.get("name");
+  if (name) document.getElementById("welcomeMsg").textContent = "Welcome, " + name;
 </script>
 
-<script>
-  const v = Date.now();
-  const js = document.createElement("script");
-  js.src = "script.js?v=" + v;
-  document.head.appendChild(js);
-</script>
+<script src="script.js?v=20251203"></script>
 
 </body>
 </html>
