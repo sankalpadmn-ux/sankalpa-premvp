@@ -5,11 +5,18 @@
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- UPDATED CSS FILE -->
+  <!-- Updated CSS -->
   <link rel="stylesheet" href="styles2.css?v=20251122">
 
   <style>
-    /* Duplicate message (inline styles kept) */
+    .phone-row {
+      display: flex;
+      gap: 8px;
+    }
+    .phone-row input {
+      width: 50%;
+    }
+
     #duplicateMsg {
       background: #f7e9d4;
       border: 1px solid #d8c4a8;
@@ -26,10 +33,18 @@
 <body class="bg">
 
   <!-- Header -->
-  <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
-    <!-- LOGO -->
+  <header class="header" style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#f7e9d4;
+      padding:10px 18px;
+    ">
+
+    <!-- LOGO LEFT TOP -->
     <a href="index.html" style="display:flex;align-items:center;cursor:pointer;text-decoration:none;">
-      <img src="images/Sankalpa_Logo.jpg" style="height:80px;width:auto;object-fit:contain;">
+      <!-- Increased logo size -->
+      <img src="images/Sankalpa_Logo.jpg" style="height:90px;width:auto;object-fit:contain;" alt="Sankalpa Logo">
     </a>
 
     <nav style="display:flex;gap:22px;">
@@ -51,24 +66,25 @@
     <div class="right">
       <div class="form-box">
 
-        <div class="toggle-row" style="margin-top:10px;">
-          <button class="primary-btn" onclick="showExisting()">Existing User</button>
-          <button class="primary-btn" onclick="showNew()">New User</button>
+        <!-- Toggle Buttons -->
+        <div class="toggle-row" style="margin-top:10px; display:flex; gap:10px; justify-content:center;">
+          <button class="primary-btn" type="button" onclick="showExisting()">Existing User</button>
+          <button class="primary-btn" type="button" onclick="showNew()">New User</button>
         </div>
 
-        <!-- DUPLICATE MESSAGE -->
+        <!-- Duplicate Message -->
         <div id="duplicateMsg"></div>
 
-        <!-- EXISTING USER -->
+        <!-- ================= EXISTING USER ================= -->
         <div id="existingSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
-            <label>Name</label>
+            <label for="existing_name">Name</label>
             <input type="text" id="existing_name" placeholder="Enter Your Name">
           </div>
 
           <div class="input-group">
-            <label>Country</label>
+            <label for="existing_country">Country</label>
             <select id="existing_country" onchange="handleCountryChange('existing')">
               <option value="">Select Country</option>
               <option value="India" data-code="+91">India</option>
@@ -89,19 +105,19 @@
             </div>
           </div>
 
-          <button class="primary-btn" onclick="loginUser()">Submit</button>
+          <button class="primary-btn" style="width:100%;" type="button" onclick="loginUser()">Submit</button>
         </div>
 
-        <!-- NEW USER -->
+        <!-- ================= NEW USER ================= -->
         <div id="newSection" style="display:none;margin-top:25px;">
 
           <div class="input-group">
-            <label>Name</label>
+            <label for="new_name">Name</label>
             <input type="text" id="new_name" placeholder="Enter Name">
           </div>
 
           <div class="input-group">
-            <label>Country</label>
+            <label for="new_country">Country</label>
             <select id="new_country" onchange="handleCountryChange('new')">
               <option value="">Select Country</option>
               <option value="India" data-code="+91">India</option>
@@ -114,4 +130,41 @@
             </select>
           </div>
 
-          <div class="input-grou
+          <div class="input-group">
+            <label>Mobile Number (WhatsApp)</label>
+            <div class="phone-row">
+              <input type="text" id="new_countryCode" placeholder="+91" readonly>
+              <input type="text" id="new_phone" placeholder="Enter Mobile Number">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="new_city">City / Locality</label>
+            <input type="text" id="new_city" placeholder="Enter City / Locality">
+          </div>
+
+          <button class="primary-btn" style="width:100%;" type="button" onclick="registerUser()">Submit</button>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Optional simple footer -->
+  <footer style="text-align:center;padding:16px 0;font-size:12px;color:#754d26;">
+    © <span id="yearSpan"></span> Sankalpa. All rights reserved.
+  </footer>
+
+  <!-- Script file -->
+  <script>
+    // Set current year in footer (won't break if script.js fails)
+    (function () {
+      var y = document.getElementById('yearSpan');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+
+  <script src="script.js?v=20251122"></script>
+</body>
+</html>
