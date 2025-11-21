@@ -5,13 +5,7 @@
   <title>Sankalpa – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- PERMANENT NO-CACHE FIX -->
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <!-- CSS with version bump -->
-  <link rel="stylesheet" href="styles2.css?v=20251201">
+  <link rel="stylesheet" href="styles2.css?v=20251203">
 
   <style>
     #duplicateMsg {
@@ -29,124 +23,120 @@
 
 <body class="bg">
 
-  <!-- Header -->
-  <header class="header" style="display:flex;justify-content:space-between;align-items:center;">
-    <a href="index.html">
-      <img src="images/Sankalpa_Logo.jpg" style="width:260px;height:auto;" alt="Logo">
-    </a>
-    <nav style="display:flex;gap:22px;">
-      <a href="contact.html" class="header-link">Contact Us</a>
-    </nav>
-  </header>
+<header class="header" style="display:flex;justify-content:space-between;align-items:center;">
+  <a href="index.html">
+    <img src="images/Sankalpa_Logo.jpg" style="width:260px;">
+  </a>
+  <nav style="display:flex;gap:22px;">
+    <a href="contact.html" class="header-link">Contact Us</a>
+  </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
+<section class="hero">
 
-    <div class="left">
-      <h1 class="hero-title">Why Sankalpa?</h1>
-      <p class="hero-text">
-        Sankalpa connects devotees with authentic priests worldwide,
-        ensuring tradition, respect, and ease of experience.
-      </p>
-    </div>
+  <div class="left">
+    <h1 class="hero-title">Why Sankalpa?</h1>
+    <p class="hero-text">
+      Sankalpa connects devotees with authentic priests worldwide,
+      ensuring tradition, respect, and ease of experience.
+    </p>
+  </div>
 
-    <div class="right">
-      <div class="form-box">
+  <div class="right">
+    <div class="form-box">
 
-        <div style="display:flex;gap:12px;margin-top:10px;">
-          <button class="primary-btn" onclick="showExisting()">Existing User</button>
-          <button class="primary-btn" onclick="showNew()">New User</button>
+      <div style="display:flex;gap:12px;margin-top:10px;">
+        <button class="primary-btn" onclick="showExisting()">Existing User</button>
+        <button class="primary-btn" onclick="showNew()">New User</button>
+      </div>
+
+      <div id="duplicateMsg"></div>
+
+      <!-- Existing User -->
+      <div id="existingSection" style="display:none;margin-top:25px;">
+
+        <div class="input-group">
+          <label>Name</label>
+          <input type="text" id="existing_name">
         </div>
 
-        <div id="duplicateMsg"></div>
-
-        <!-- EXISTING USER FORM -->
-        <div id="existingSection" style="display:none;margin-top:25px;">
-          <div class="input-group">
-            <label>Name</label>
-            <input type="text" id="existing_name">
-          </div>
-
-          <div class="input-group">
-            <label>Country</label>
-            <select id="existing_country" onchange="handleCountryChange('existing')">
-              <option value="">Select Country</option>
-              <option value="India" data-code="+91">India</option>
-              <option value="United States" data-code="+1">United States</option>
-              <option value="United Kingdom" data-code="+44">United Kingdom</option>
-              <option value="Singapore" data-code="+65">Singapore</option>
-              <option value="UAE" data-code="+971">UAE</option>
-              <option value="Australia" data-code="+61">Australia</option>
-              <option value="Canada" data-code="+1">Canada</option>
-            </select>
-          </div>
-
-          <div class="input-group">
-            <label>Mobile (WhatsApp)</label>
-            <div class="phone-row">
-              <input type="text" id="existing_countryCode" placeholder="+91" readonly>
-              <input type="text" id="existing_phone" placeholder="Mobile Number">
-            </div>
-          </div>
-
-          <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
+        <div class="input-group">
+          <label>Country</label>
+          <select id="existing_country" onchange="handleCountryChange('existing')">
+            <option value="">Select Country</option>
+            <option value="India" data-code="+91">India</option>
+            <option value="United States" data-code="+1">USA</option>
+            <option value="United Kingdom" data-code="+44">UK</option>
+            <option value="Singapore" data-code="+65">Singapore</option>
+            <option value="UAE" data-code="+971">UAE</option>
+            <option value="Australia" data-code="+61">Australia</option>
+            <option value="Canada" data-code="+1">Canada</option>
+          </select>
         </div>
 
-        <!-- NEW USER FORM -->
-        <div id="newSection" style="display:none;margin-top:25px;">
-          <div class="input-group">
-            <label>Name</label>
-            <input type="text" id="new_name">
+        <div class="input-group">
+          <label>Mobile (WhatsApp)</label>
+          <div class="phone-row">
+            <input type="text" id="existing_countryCode" placeholder="+91" readonly>
+            <input type="text" id="existing_phone" placeholder="Mobile">
           </div>
-
-          <div class="input-group">
-            <label>Country</label>
-            <select id="new_country" onchange="handleCountryChange('new')">
-              <option value="">Select Country</option>
-              <option value="India" data-code="+91">India</option>
-              <option value="United States" data-code="+1">United States</option>
-              <option value="United Kingdom" data-code="+44">United Kingdom</option>
-              <option value="Singapore" data-code="+65">Singapore</option>
-              <option value="UAE" data-code="+971">UAE</option>
-              <option value="Australia" data-code="+61">Australia</option>
-              <option value="Canada" data-code="+1">Canada</option>
-            </select>
-          </div>
-
-          <div class="input-group">
-            <label>Mobile (WhatsApp)</label>
-            <div class="phone-row">
-              <input type="text" id="new_countryCode" placeholder="+91" readonly>
-              <input type="text" id="new_phone" placeholder="Mobile Number">
-            </div>
-          </div>
-
-          <div class="input-group">
-            <label>City</label>
-            <input type="text" id="new_city">
-          </div>
-
-          <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
         </div>
+
+        <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
 
       </div>
+
+      <!-- New User -->
+      <div id="newSection" style="display:none;margin-top:25px;">
+
+        <div class="input-group">
+          <label>Name</label>
+          <input type="text" id="new_name">
+        </div>
+
+        <div class="input-group">
+          <label>Country</label>
+          <select id="new_country" onchange="handleCountryChange('new')">
+            <option value="">Select Country</option>
+            <option value="India" data-code="+91">India</option>
+            <option value="United States" data-code="+1">USA</option>
+            <option value="United Kingdom" data-code="+44">UK</option>
+            <option value="Singapore" data-code="+65">Singapore</option>
+            <option value="UAE" data-code="+971">UAE</option>
+            <option value="Australia" data-code="+61">Australia</option>
+            <option value="Canada" data-code="+1">Canada</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Mobile (WhatsApp)</label>
+          <div class="phone-row">
+            <input type="text" id="new_countryCode" placeholder="+91" readonly>
+            <input type="text" id="new_phone" placeholder="Mobile">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>City</label>
+          <input type="text" id="new_city">
+        </div>
+
+        <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
+
+      </div>
+
     </div>
+  </div>
 
-  </section>
+</section>
 
-  <footer>© <span id="yearSpan"></span> Sankalpa</footer>
+<footer>© <span id="yearSpan"></span> Sankalpa</footer>
 
-  <!-- Auto JS no-cache -->
-  <script>
-    const v = Date.now();
-    const js = document.createElement("script");
-    js.src = "script.js?v=" + v;
-    document.head.appendChild(js);
-  </script>
+<script src="script.js?v=20251203"></script>
 
-  <script>
-    document.getElementById("yearSpan").textContent = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("yearSpan").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
