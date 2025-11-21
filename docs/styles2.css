@@ -1,113 +1,197 @@
-/* ==========================================================
-   GLOBAL BACKGROUND + BODY
-   ========================================================== */
+/* =========================================================
+   SANKALPA – styles2.css (Final Stable Version)
+   ========================================================= */
+
+/* ------------------------------
+   GLOBAL
+   ------------------------------ */
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-size: cover;
+  background-position: center;
 }
 
 .bg {
-    background: linear-gradient(to bottom right, #faf4e5, #f7e9d4);
-    min-height: 100vh;
-    color: #5c483a;
+  background-image: url("images/bg_main.jpg"); /* optional if you have */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-/* ==========================================================
-   HEADER
-   ========================================================== */
-.header {
-    background: #f7e9d4;
-    padding: 14px 22px;
-    border-bottom: 1px solid #d8c4a8;
-}
-
+/* Links in header */
 .header-link {
-    color:#7a4d24;
-    font-weight:600;
-    text-decoration:none;
-    font-size:16px;
+  text-decoration: none;
+  color: #5a2c0a;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .header-link:hover {
-    opacity:0.75;
+  opacity: 0.7;
 }
 
-/* ==========================================================
-   HERO SECTION (HOME PAGE)
-   ========================================================== */
+/* ------------------------------
+   HEADER
+   ------------------------------ */
+.header {
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 5;
+}
+
+/* ------------------------------
+   HERO SECTION LAYOUT
+   ------------------------------ */
 .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 60px 40px;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.hero-title {
-    font-size: 36px;
-    font-weight: 700;
-    color: #7a4d24;
-    margin-bottom: 15px;
-}
-
-.hero-text {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #5c483a;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 8%;
+  align-items: flex-start;
+  gap: 40px;
 }
 
 .left {
-    flex: 1;
-    min-width: 260px;
+  flex: 1;
+  min-width: 260px;
 }
 
 .right {
-    flex: 1;
-    min-width: 320px;
-    display: flex;
-    justify-content: center;
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
 }
 
-/* ==========================================================
+/* ------------------------------
+   HERO TEXT
+   ------------------------------ */
+.hero-title {
+  font-size: 34px;
+  color: #5a2c0a;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.hero-text {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #754d26;
+  max-width: 450px;
+}
+
+/* ------------------------------
    FORM BOX
-   ========================================================== */
+   ------------------------------ */
 .form-box {
-    background: #fff8ee;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #e0d2bf;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    width: 100%;
-    max-width: 420px;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.70);
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 1px solid #e1d5c4;
 }
 
-.form-title {
-    text-align: center;
-    color: #7a4d24;
-    font-size: 24px;
-    margin-bottom: 18px;
-    font-weight: 700;
-}
-
-/* ==========================================================
-   INPUT FIELDS
-   ========================================================== */
+/* ------------------------------
+   INPUT GROUP
+   ------------------------------ */
 .input-group {
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 }
 
 .input-group label {
-    display: block;
-    color: #7a4d24;
-    font-weight: 600;
-    margin-bottom: 6px;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #5a2c0a;
 }
 
+/* All inputs */
 .input-group input,
 .input-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #d8c4a8;
-    border-radius: 6px
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c9b8a3;
+  background: rgba(255, 250, 240, 0.8);
+  font-size: 15px;
+  color: #5a2c0a;
+}
+
+.input-group select {
+  cursor: pointer;
+}
+
+/* ------------------------------
+   PHONE ROW (Country Code + Phone)
+   ------------------------------ */
+.phone-row input {
+  background: rgba(255, 250, 240, 0.9);
+}
+
+/* ------------------------------
+   BUTTONS
+   ------------------------------ */
+.primary-btn {
+  background: #8b4a1e;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary-btn:hover {
+  opacity: 0.8;
+}
+
+/* ------------------------------
+   CONTACT PAGE (MINIMAL ONLY)
+   ------------------------------ */
+.contact-box {
+  text-align: center;
+}
+
+/* ------------------------------
+   SEARCH PAGE
+   ------------------------------ */
+.search-container input {
+  background: rgba(255, 250, 240, 0.9);
+  border: 1px solid #c9b8a3;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  width: 100%;
+}
+
+/* ------------------------------
+   FOOTER
+   ------------------------------ */
+footer {
+  margin-top: 40px;
+}
+
+/* ------------------------------
+   RESPONSIVENESS
+   ------------------------------ */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .form-box {
+    margin-top: 20px;
+  }
+}
