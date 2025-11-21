@@ -1,197 +1,163 @@
-/* =========================================================
-   SANKALPA – styles2.css (Final Stable Version)
-   ========================================================= */
+/* ============================================
+   GLOBAL BASE STYLES
+   ============================================ */
 
-/* ------------------------------
-   GLOBAL
-   ------------------------------ */
 body, html {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", sans-serif;
-  background-size: cover;
-  background-position: center;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
+/* Gradient Background */
 .bg {
-  background-image: url("images/bg_main.jpg"); /* optional if you have */
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: linear-gradient(145deg, #f7e9d4, #e9d6b8, #f2e2c4);
+  min-height: 100vh;
   background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-/* Links in header */
+/* ============================================
+   HEADER
+   ============================================ */
+
 .header-link {
+  color: #754d26;
   text-decoration: none;
-  color: #5a2c0a;
   font-weight: 600;
   font-size: 16px;
+  padding: 8px 10px;
 }
 
 .header-link:hover {
-  opacity: 0.7;
+  text-decoration: underline;
 }
 
-/* ------------------------------
-   HEADER
-   ------------------------------ */
-.header {
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-  position: relative;
-  z-index: 5;
-}
+/* ============================================
+   HERO LAYOUT
+   ============================================ */
 
-/* ------------------------------
-   HERO SECTION LAYOUT
-   ------------------------------ */
 .hero {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  padding: 40px 8%;
-  align-items: flex-start;
-  gap: 40px;
+  align-items: center;
+  padding: 40px 10%;
+  flex-wrap: wrap;
 }
 
-.left {
+.left, .right {
   flex: 1;
-  min-width: 260px;
+  min-width: 320px;
+  margin-bottom: 30px;
 }
 
-.right {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  justify-content: center;
-}
-
-/* ------------------------------
-   HERO TEXT
-   ------------------------------ */
 .hero-title {
-  font-size: 34px;
-  color: #5a2c0a;
-  margin-bottom: 15px;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 700;
+  color: #5a3410;
 }
 
 .hero-text {
   font-size: 18px;
-  line-height: 1.5;
-  color: #754d26;
-  max-width: 450px;
+  color: #6a4720;
+  margin-top: 10px;
+  line-height: 1.6;
 }
 
-/* ------------------------------
+/* ============================================
    FORM BOX
-   ------------------------------ */
+   ============================================ */
+
 .form-box {
-  width: 100%;
-  max-width: 420px;
-  background: rgba(255, 255, 255, 0.70);
+  background: rgba(255, 255, 255, 0.65);
   padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  border: 1px solid #e1d5c4;
+  border-radius: 12px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  backdrop-filter: blur(6px);
 }
 
-/* ------------------------------
-   INPUT GROUP
-   ------------------------------ */
+/* Input grouping */
+
 .input-group {
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 .input-group label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5a3410;
   display: block;
   margin-bottom: 6px;
-  font-weight: 600;
-  font-size: 15px;
-  color: #5a2c0a;
 }
 
-/* All inputs */
 .input-group input,
 .input-group select {
   width: 100%;
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #c9b8a3;
-  background: rgba(255, 250, 240, 0.8);
+  border-radius: 6px;
+  border: 1px solid #c2a98b;
   font-size: 15px;
-  color: #5a2c0a;
+  color: #5a3410;
+  background: #fff6ec;
 }
 
-.input-group select {
-  cursor: pointer;
+/* Phone row */
+.phone-row {
+  display: flex;
+  gap: 10px;
 }
 
-/* ------------------------------
-   PHONE ROW (Country Code + Phone)
-   ------------------------------ */
 .phone-row input {
-  background: rgba(255, 250, 240, 0.9);
+  width: 50%;
 }
 
-/* ------------------------------
+/* ============================================
    BUTTONS
-   ------------------------------ */
+   ============================================ */
+
 .primary-btn {
-  background: #8b4a1e;
+  background: #8c5a20;
   color: white;
+  padding: 12px 14px;
   border: none;
-  padding: 12px;
   border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
+  font-size: 15px;
   font-weight: 600;
+  width: 100%;
+  cursor: pointer;
 }
 
 .primary-btn:hover {
-  opacity: 0.8;
+  background: #754d26;
 }
 
-/* ------------------------------
-   CONTACT PAGE (MINIMAL ONLY)
-   ------------------------------ */
-.contact-box {
-  text-align: center;
-}
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
 
-/* ------------------------------
-   SEARCH PAGE
-   ------------------------------ */
-.search-container input {
-  background: rgba(255, 250, 240, 0.9);
-  border: 1px solid #c9b8a3;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 15px;
-  width: 100%;
-}
-
-/* ------------------------------
-   FOOTER
-   ------------------------------ */
-footer {
-  margin-top: 40px;
-}
-
-/* ------------------------------
-   RESPONSIVENESS
-   ------------------------------ */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
     text-align: center;
   }
 
+  .left, .right {
+    width: 100%;
+  }
+
   .hero-title {
     font-size: 28px;
   }
-
-  .form-box {
-    margin-top: 20px;
-  }
 }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  margin-top: 25px;
+}
+
+/* ============================================
+   END OF CSS
+   ============================================ */
