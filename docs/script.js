@@ -1,13 +1,14 @@
 /***********************************************
- * SANKALPA – script.js (Form-Encoded Version)
- * NO JSON, NO CORS ISSUES — 100% Apps Script Safe
+ * SANKALPA – script.js (Final Stable Version)
+ * Form-encoded POST → ALWAYS WORKS with Apps Script
+ * No JSON, No CORS, No caching issues
  ***********************************************/
 
 const API_URL =
   "https://script.google.com/macros/s/AKfycbzbNeL0HERxq-Q2mXchTEL3iWCM9PYBJFHTor9ViUjzKRyu3EGqqHJXiTyXXbBgt7IQ/exec";
 
 /*---------------------------------------------------
-  HOME NAVIGATION
+  NAVIGATION
 ---------------------------------------------------*/
 function goHome() {
   window.location.href = "index.html";
@@ -34,7 +35,7 @@ function hideDuplicate() {
 }
 
 /*---------------------------------------------------
-  COUNTRY CODE AUTO-FILL
+  COUNTRY CODE HANDLER
 ---------------------------------------------------*/
 function handleCountryChange(type) {
   const selectEl = document.getElementById(type + "_country");
@@ -47,7 +48,7 @@ function handleCountryChange(type) {
 }
 
 /*---------------------------------------------------
-  FORM ENCODING HELPER
+  FORM ENCODING – Apps Script Compatible
 ---------------------------------------------------*/
 function encodeForm(data) {
   return Object.keys(data)
@@ -159,4 +160,27 @@ async function registerUser() {
         window.location.href =
           "search.html?name=" + encodeURIComponent(data.name);
       }, 1500);
-    } else if (data.status === "succes
+    } else if (data.status === "success") {
+      showDuplicate("Registration successful! Redirecting…");
+      setTimeout(() => {
+        window.location.href =
+          "search.html?name=" + encodeURIComponent(name);
+      }, 1500);
+    } else {
+      showDuplicate("Unexpected error during registration.");
+    }
+  } catch (err) {
+    showDuplicate("Network issue. Please refresh and try again.");
+  }
+}
+
+/*---------------------------------------------------
+  DUPLICATE / INFO BOX
+---------------------------------------------------*/
+function showDuplicate(msg) {
+  const box = document.getElementById("duplicateMsg");
+  if (box) {
+    box.textContent = msg;
+    box.style.display = "block";
+  }
+}
