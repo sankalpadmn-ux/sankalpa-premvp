@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SANKALPA - Connecting with Purpose</title>
+    <title>SANKALPA - A Divine Meeting Place</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -12,172 +12,181 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* SANKALPA COLOR PALETTE (Refined for Divine Feel) */
+        /* SANKALPA COLOR PALETTE (RADIANCE & DIVINITY) */
         :root {
-            --primary-a: #E45826; /* Deep Burnt Orange (Logo text) */
-            --secondary-b: #F79724; /* Vibrant Flame Orange (Logo accent/glow) */
-            --text-color-dark: #6D4C41; /* Dark Brown/Maroon (Deepest Om tone) */
-            --text-color-light: #8B7163; /* Lighter brown for subtle text */
-            --background-base: #FAEBD7; /* Very Pale Peach (Logo background) */
-            --background-highlight: #FFF8EE; /* Lighter cream for subtle contrast */
-            --border-light: #E0C7AA; /* Soft, warm border color */
+            --primary-a: #E45826; /* Deep Burnt Orange (Main Logo Color) */
+            --secondary-b: #F79724; /* Vibrant Flame Orange (Glow/Accent) */
+            --text-color-dark: #6D4C41; /* Dark Brown/Maroon */
+            --background-base: #FAEBD7; /* Very Pale Peach/Cream */
+            --card-background: #FFFFFF; /* Pure white for high contrast and clean glow */
         }
 
         body {
             background-color: var(--background-base);
             color: var(--text-color-dark);
-            font-family: 'Lora', serif; /* A more elegant and readable serif font */
+            font-family: 'Lora', serif;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            overflow-x: hidden; /* Prevent horizontal scroll on small screens */
+            /* Divine Radiance Glow Effect */
+            background-image: radial-gradient(circle at 50% 10%, #FFECD2, var(--background-base) 70%);
+            padding-top: 56px; /* Space for fixed navbar */
         }
 
-        .container {
-            max-width: 900px; /* Wider container for a more spacious feel */
+        /* --- NAVIGATION BAR STYLING --- */
+        .navbar-sankalpa {
+            background-color: var(--card-background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .card {
-            background-color: var(--background-highlight); /* Lighter card background */
-            border: 1px solid var(--border-light); /* Soft, subtle border */
-            border-radius: 1.5rem; /* More rounded corners for softness */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Deeper, softer shadow */
-            padding: 3rem; /* More internal padding */
+        .navbar-brand-sankalpa {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-color-dark) !important;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-link-sankalpa {
+            color: var(--text-color-dark) !important;
+            font-weight: 600;
+            margin-right: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link-sankalpa:hover {
+            color: var(--primary-a) !important;
+        }
+
+        /* --- CONTENT STYLING --- */
+        .hero-section {
+            padding: 5rem 0;
         }
 
         .sankalpa-header {
-            font-family: 'Playfair Display', serif; /* Luxurious font for main title */
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
             color: var(--text-color-dark);
-            cursor: pointer;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Subtle text shadow */
         }
 
         .lead-sankalpa {
-            color: var(--primary-a); /* Use primary color for tagline */
-            font-family: 'Lora', serif;
+            color: var(--primary-a); 
             font-style: italic;
             font-weight: 400;
+        }
+
+        /* --- FORM CARD STYLING --- */
+        .auth-card {
+            background-color: var(--card-background); 
+            border: 1px solid #F0E0D0; 
+            border-radius: 1.5rem; 
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15), 0 0 40px rgba(247, 151, 36, 0.1); 
+            padding: 2rem;
         }
 
         .h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             color: var(--text-color-dark);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* PRIMARY BUTTONS (Submit, Save) */
+        /* BUTTONS AND INPUTS (Retained Radiance) */
         .btn-primary-sankalpa {
-            background: linear-gradient(135deg, var(--primary-a) 0%, var(--secondary-b) 100%); /* Soft gradient */
+            background-color: var(--primary-a);
             border: none;
-            color: white;
-            font-weight: 700;
-            padding: 0.75rem 2rem;
-            border-radius: 0.75rem; /* Slightly less rounded for elegance */
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            box-shadow: 0 5px 15px rgba(228, 88, 38, 0.3); /* Button shadow */
-        }
-
-        .btn-primary-sankalpa:hover, .btn-primary-sankalpa:focus {
-            transform: translateY(-2px); /* Lift effect on hover */
-            box-shadow: 0 8px 20px rgba(228, 88, 38, 0.4);
-            background: linear-gradient(135deg, var(--secondary-b) 0%, var(--primary-a) 100%); /* Subtle gradient shift on hover */
-            color: white; /* Ensure text remains white */
-        }
-
-        /* SECONDARY BUTTONS (Toggle sections) */
-        .btn-secondary-sankalpa {
-            color: var(--text-color-dark);
-            border: 2px solid var(--border-light);
-            background-color: transparent;
-            font-weight: 600;
-            padding: 0.6rem 1.5rem;
-            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(228, 88, 38, 0.4); 
             transition: all 0.2s ease-in-out;
         }
-
+        .btn-primary-sankalpa:hover {
+            background-color: var(--secondary-b); 
+            box-shadow: 0 6px 20px rgba(247, 151, 36, 0.6); 
+            transform: translateY(-2px);
+        }
+        .btn-secondary-sankalpa {
+            color: var(--primary-a); 
+            border: 2px solid var(--primary-a); 
+            background-color: transparent;
+        }
         .btn-secondary-sankalpa:hover {
-            color: var(--primary-a);
-            border-color: var(--primary-a);
-            background-color: rgba(228, 88, 38, 0.05); /* Very light highlight */
+            color: white;
+            background-color: var(--primary-a);
         }
-
-        /* INPUT FIELDS */
-        .form-control {
-            border: 1px solid var(--border-light);
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            color: var(--text-color-dark);
-            background-color: #fcfcfc; /* Slightly off-white for fields */
-        }
-
-        .form-control::placeholder {
-            color: var(--text-color-light); /* Lighter placeholder text */
-            opacity: 0.7;
-        }
-
         .form-control:focus {
             border-color: var(--secondary-b);
-            box-shadow: 0 0 0 0.25rem rgba(247, 151, 36, 0.15); /* Softer focus shadow */
-            background-color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(247, 151, 36, 0.2); 
         }
 
-        .form-label {
-            color: var(--text-color-dark);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        /* DUPLICATE/INFO BOX (Success/Error Messages) */
+        /* DUPLICATE/INFO BOX */
         #duplicateMsg {
-            display: none;
             background-color: var(--secondary-b);
             color: white;
-            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(247, 151, 36, 0.4); 
             border-radius: 0.75rem;
             padding: 1.25rem;
             margin-top: 1.5rem;
             text-align: center;
-            animation: fadeIn 0.5s ease-out; /* Subtle fade-in */
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Custom select arrow for consistent look */
-        .form-select {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%236D4C41' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-            background-position: right 0.75rem center;
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-xl-7"> <div class="card">
+    <nav class="navbar navbar-expand-lg navbar-sankalpa fixed-top">
+        <div class="container-fluid">
+            
+            <a class="navbar-brand navbar-brand-sankalpa" href="index.html">
+                SANKALPA
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-sankalpa" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <button class="btn btn-secondary-sankalpa w-100 my-1" type="button" onclick="showExisting()">Existing User</button>
+                        <button class="btn btn-primary-sankalpa w-100 my-1" type="button" onclick="showNew()">New User</button>
+                    </li>
+                </ul>
+                
+                <div class="d-none d-lg-flex gap-2">
+                    <button class="btn btn-secondary-sankalpa" type="button" onclick="showExisting()">Existing User</button>
+                    <button class="btn btn-primary-sankalpa" type="button" onclick="showNew()">New User</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container hero-section">
+        <div class="row align-items-center">
+
+            <div class="col-lg-7 col-md-12 mb-5 mb-lg-0">
+                <h1 class="display-5 sankalpa-header mb-3">
+                    Discover Your Divine Sankalpa
+                </h1>
+                <p class="lead lead-sankalpa mb-4">
+                    A sacred space where intention meets enlightenment.
+                </p>
+                <p>
+                    Sankalpa is more than a registry; it is a **divine meeting place** where the spiritual seeker finds guidance and clarity. Here, **devotees get to meet revered Priests**, ensuring every ritual and intention is aligned with the highest spiritual principles.
+                </p>
+                <p>
+                    Our platform is built upon the timeless wisdom of connecting inner resolve—the Sankalpa—with the actions needed to manifest it. By documenting your spiritual intentions, we help you create a clear path for growth, supported by personalized guidance from our devoted clergy.
+                </p>
+                <p class="text-muted small mt-4">
+                    "When the heart is pure, the path appears clear."
+                </p>
+            </div>
+
+            <div class="col-lg-5 col-md-12">
+                <div class="auth-card">
                     
-                    <div class="text-center mb-5"> <h1 class="display-4 sankalpa-header" onclick="goHome()">SANKALPA</h1>
-                        <p class="lead lead-sankalpa">Connecting with purpose</p>
-                    </div>
-
-                    <div class="d-flex justify-content-center mb-4 gap-3">
-                        <button class="btn btn-secondary-sankalpa" type="button" onclick="showExisting()">Existing User</button>
-                        <button class="btn btn-secondary-sankalpa" type="button" onclick="showNew()">New User Registration</button>
-                    </div>
-
-                    <div id="duplicateMsg" style="display: none;">
-                        Loading...
-                    </div>
+                    <div id="duplicateMsg">Loading...</div>
 
                     <div id="existingSection" style="display: block;">
-                        <h4 class="text-center">Welcome Back</h4>
+                        <h4 class="text-center">Log In to Fulfill Your Intention</h4>
                         <form onsubmit="event.preventDefault(); loginUser();">
                             
                             <div class="mb-3">
@@ -185,13 +194,14 @@
                                 <input type="text" class="form-control" id="existing_name" placeholder="Enter your name" required>
                             </div>
 
-                            <div class="row g-3"> <div class="col-5">
+                            <div class="row g-3">
+                                <div class="col-5">
                                     <label for="existing_country" class="form-label">Country</label>
                                     <select class="form-select" id="existing_country" onchange="handleCountryChange('existing')" required>
                                         <option value="" selected>Select</option>
                                         <option value="India" data-code="+91">India</option>
                                         <option value="USA" data-code="+1">USA</option>
-                                        </select>
+                                    </select>
                                 </div>
                                 <div class="col-2">
                                     <label for="existing_countryCode" class="form-label">Code</label>
@@ -204,12 +214,13 @@
                             </div>
 
                             <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-primary-sankalpa btn-lg">Log In / Check Status</button>
+                                <button type="submit" class="btn btn-primary-sankalpa btn-lg">Log In</button>
                             </div>
                         </form>
                     </div> 
+
                     <div id="newSection" style="display: none;">
-                        <h4 class="text-center">New Registration</h4>
+                        <h4 class="text-center">Register Your Divine Sankalpa</h4>
                         <form onsubmit="event.preventDefault(); registerUser();">
                             
                             <div class="mb-3">
@@ -222,13 +233,14 @@
                                 <input type="text" class="form-control" id="new_city" placeholder="Your City Name" required>
                             </div>
 
-                            <div class="row g-3"> <div class="col-5">
+                            <div class="row g-3">
+                                <div class="col-5">
                                     <label for="new_country" class="form-label">Country</label>
                                     <select class="form-select" id="new_country" onchange="handleCountryChange('new')" required>
                                         <option value="" selected>Select</option>
                                         <option value="India" data-code="+91">India</option>
                                         <option value="USA" data-code="+1">USA</option>
-                                        </select>
+                                    </select>
                                 </div>
                                 <div class="col-2">
                                     <label for="new_countryCode" class="form-label">Code</label>
@@ -245,7 +257,7 @@
                             </div>
                         </form>
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -254,24 +266,20 @@
 
     <script>
         /***********************************************
-         * SANKALPA – script.js (Final Stable Version)
-         * Form-encoded POST → ALWAYS WORKS with Apps Script
-         * No JSON, No CORS, No caching issues
+         * SANKALPA – script.js (Functionality Preserved)
          ***********************************************/
 
         const API_URL =
             "https://script.google.com/macros/s/AKfycbzbNeL0HERxq-Q2mXchTEL3iWCM9PYBJFHTor9ViUjzKRyu3EGqqHJXiTyXXbBgt7IQ/exec";
 
-        /*---------------------------------------------------
-         NAVIGATION
-        ---------------------------------------------------*/
+        /* All functions (goHome, showExisting, showNew, hideDuplicate, 
+           handleCountryChange, encodeForm, loginUser, registerUser, showDuplicate) 
+           are the same as provided earlier to ensure Google Sheets connectivity is SAFE. */
+
         function goHome() {
             window.location.href = "index.html";
         }
 
-        /*---------------------------------------------------
-         TOGGLE SECTIONS
-        ---------------------------------------------------*/
         function showExisting() {
             hideDuplicate();
             document.getElementById("existingSection").style.display = "block";
@@ -289,22 +297,14 @@
             if (box) box.style.display = "none";
         }
 
-        /*---------------------------------------------------
-         COUNTRY CODE HANDLER
-        ---------------------------------------------------*/
         function handleCountryChange(type) {
             const selectEl = document.getElementById(type + "_country");
             const codeEl = document.getElementById(type + "_countryCode");
-
             const selectedOption = selectEl.options[selectEl.selectedIndex];
             const dialCode = selectedOption.getAttribute("data-code");
-
             codeEl.value = dialCode ? dialCode : "";
         }
 
-        /*---------------------------------------------------
-         FORM ENCODING – Apps Script Compatible
-        ---------------------------------------------------*/
         function encodeForm(data) {
             return Object.keys(data)
                 .map(
@@ -314,24 +314,17 @@
                 .join("&");
         }
 
-        /*---------------------------------------------------
-         EXISTING USER LOGIN
-        ---------------------------------------------------*/
         async function loginUser() {
             hideDuplicate();
-
             const name = document.getElementById("existing_name").value.trim();
             const country = document.getElementById("existing_country").value.trim();
             const code = document.getElementById("existing_countryCode").value.trim();
             const phone = document.getElementById("existing_phone").value.trim();
-
             if (!name || !country || !phone) {
                 showDuplicate("Please fill all fields.");
                 return;
             }
-
             const fullPhone = code + phone;
-
             const body = encodeForm({
                 action: "registerCustomer",
                 name: name,
@@ -370,12 +363,8 @@
             }
         }
 
-        /*---------------------------------------------------
-         NEW USER REGISTRATION
-        ---------------------------------------------------*/
         async function registerUser() {
             hideDuplicate();
-
             const name = document.getElementById("new_name").value.trim();
             const country = document.getElementById("new_country").value.trim();
             const code = document.getElementById("new_countryCode").value.trim();
@@ -386,7 +375,6 @@
                 showDuplicate("Please fill all fields.");
                 return;
             }
-
             const fullPhone = code + phone;
 
             const body = encodeForm({
@@ -429,9 +417,6 @@
             }
         }
 
-        /*---------------------------------------------------
-         DUPLICATE / INFO BOX
-        ---------------------------------------------------*/
         function showDuplicate(msg) {
             const box = document.getElementById("duplicateMsg");
             if (box) {
