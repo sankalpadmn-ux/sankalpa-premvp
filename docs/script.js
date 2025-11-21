@@ -1,10 +1,10 @@
 /***********************************************
  * SANKALPA – script.js (Form-Encoded Version)
- * NO JSON, NO CORS ISSUES
+ * NO JSON, NO CORS ISSUES — 100% Apps Script Safe
  ***********************************************/
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec";
+  "https://script.google.com/macros/s/AKfycbzbNeL0HERxq-Q2mXchTEL3iWCM9PYBJFHTor9ViUjzKRyu3EGqqHJXiTyXXbBgt7IQ/exec";
 
 /*---------------------------------------------------
   HOME NAVIGATION
@@ -126,4 +126,37 @@ async function registerUser() {
   const phone = document.getElementById("new_phone").value.trim();
   const city = document.getElementById("new_city").value.trim();
 
-  if (!name || !country
+  if (!name || !country || !phone || !city) {
+    showDuplicate("Please fill all fields.");
+    return;
+  }
+
+  const fullPhone = code + phone;
+
+  const body = encodeForm({
+    action: "registerCustomer",
+    name: name,
+    country: country,
+    mobile: fullPhone,
+    city: city,
+    email: ""
+  });
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body
+    });
+
+    const data = await response.json();
+
+    if (data.status === "duplicate") {
+      showDuplicate(
+        `This mobile number is already registered. Welcome back, ${data.name}.`
+      );
+      setTimeout(() => {
+        window.location.href =
+          "search.html?name=" + encodeURIComponent(data.name);
+      }, 1500);
+    } else if (data.status === "succes
