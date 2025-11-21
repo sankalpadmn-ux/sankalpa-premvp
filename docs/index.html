@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SANKALPA - A Divine Meeting Place</title>
+    <title>SANKALPA - Connecting with Purpose</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -19,52 +19,47 @@
             --text-color-dark: #4E342E; /* Deep Earthy Brown (Maroon/Om tone) */
             --background-base: #FFF8E1; /* Lightest Cream/Saffron Hint */
             --card-background: #FFFFFF; /* Pure white for high contrast and clean glow */
-            --subtle-border: #E0B28D; /* Soft gold/tan border */
+            --subtle-border: #D4A77D; /* Soft gold/tan border */
+            --golden-glow-light: #FFFAE9; /* Near white golden highlight */
         }
 
         body {
             background-color: var(--background-base);
             color: var(--text-color-dark);
-            font-family: 'Lato', sans-serif; /* Clean, modern body font for readability */
+            font-family: 'Lato', sans-serif;
             min-height: 100vh;
-            /* Divine Radiance Glow Effect */
-            background-image: radial-gradient(circle at 50% 10%, #FFECD2, var(--background-base) 70%);
+            /* GOLDEN FLOW BACKGROUND: Subtle radial glow for a soft gold effect */
+            background-image: radial-gradient(circle at 50% 10%, var(--golden-glow-light) 0%, var(--background-base) 70%);
             padding-top: 56px;
         }
 
-        /* --- NAVIGATION BAR STYLING --- */
+        /* --- NAVIGATION BAR STYLING: MERGED LOOK --- */
         .navbar-sankalpa {
-            background-color: var(--card-background);
+            /* Navbar is slightly transparent and blurred to merge with background */
+            background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
+            backdrop-filter: blur(5px); /* Soft blur effect */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--subtle-border); /* Subtle bottom line */
         }
 
         .navbar-brand img {
             height: 35px;
-            /* Optional: Add a subtle glow to the logo itself */
+            /* Logo glow applied */
             filter: drop-shadow(0 0 5px rgba(247, 151, 36, 0.3));
         }
-
-        .nav-link-sankalpa {
-            color: var(--text-color-dark) !important;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .nav-link-sankalpa:hover {
-            color: var(--primary-a) !important;
-        }
-
-        /* --- ETHNIC/PROMINENT FONT FOR HEADER --- */
+        
+        /* --- ETHNIC/PROMINENT FONT FOR HEADER (Cinzel) --- */
         .sankalpa-header {
-            font-family: 'Cinzel', serif; /* Powerful, classic, and ethnic-looking serif font */
-            font-weight: 900; /* Extra bold */
-            color: var(--primary-a); /* Use the flame color for prominence */
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            color: var(--primary-a);
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .lead-sankalpa {
+        .tagline-sankalpa {
             color: var(--text-color-dark); 
             font-weight: 700;
+            font-size: 1.4rem;
         }
         
         .sub-header {
@@ -79,23 +74,25 @@
             background-color: var(--card-background); 
             border: 1px solid var(--subtle-border); 
             border-radius: 1.5rem; 
-            /* Enhanced Shadow for Divine Glow */
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15), 0 0 40px rgba(247, 151, 36, 0.15); 
             padding: 2rem;
+            position: relative;
+        }
+        
+        /* Toggle buttons inside the card */
+        .toggle-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
-        /* BUTTONS and INPUTS (Radiance Retained) */
+        /* BUTTONS and INPUTS */
         .btn-primary-sankalpa {
             background-color: var(--primary-a);
             border: none;
             box-shadow: 0 4px 15px rgba(228, 88, 38, 0.4); 
-            transition: all 0.2s ease-in-out;
             font-weight: 700;
-        }
-        .btn-primary-sankalpa:hover {
-            background-color: var(--secondary-b); 
-            box-shadow: 0 6px 20px rgba(247, 151, 36, 0.6); 
-            transform: translateY(-2px);
         }
         .btn-secondary-sankalpa {
             color: var(--primary-a); 
@@ -104,12 +101,6 @@
             font-weight: 600;
         }
         
-        /* Input focus is subtle orange glow */
-        .form-control:focus {
-            border-color: var(--secondary-b);
-            box-shadow: 0 0 0 0.25rem rgba(247, 151, 36, 0.2); 
-        }
-
         /* Hard Refresh Notice */
         .refresh-notice {
             background-color: var(--background-base);
@@ -126,7 +117,7 @@
         <div class="container-fluid">
             
             <a class="navbar-brand" href="index.html">
-                <img src="Images/Sankalpa_Logo.jpg" alt="Sankalpa Logo" height="35">
+                <img src="images/Sankalpa_Logo.jpg" alt="Sankalpa Logo" height="35">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -138,16 +129,7 @@
                     <li class="nav-item">
                         <a class="nav-link nav-link-sankalpa" href="contact.html">Contact Us</a>
                     </li>
-                    <li class="nav-item d-lg-none">
-                        <button class="btn btn-secondary-sankalpa w-100 my-1" type="button" onclick="showExisting()">Existing User</button>
-                        <button class="btn btn-primary-sankalpa w-100 my-1" type="button" onclick="showNew()">New User</button>
-                    </li>
                 </ul>
-                
-                <div class="d-none d-lg-flex gap-2">
-                    <button class="btn btn-secondary-sankalpa" type="button" onclick="showExisting()">Existing User</button>
-                    <button class="btn btn-primary-sankalpa" type="button" onclick="showNew()">New User</button>
-                </div>
             </div>
         </div>
     </nav>
@@ -159,29 +141,27 @@
                 <h1 class="display-3 sankalpa-header mb-3">
                     SANKALPA
                 </h1>
-                <p class="lead lead-sankalpa mb-4">
-                    The Sacred Registry of Intent and Devotion.
+                <p class="tagline-sankalpa mb-4">
+                    Connecting with Purpose
                 </p>
                 
                 <h2 class="sub-header mt-5">Why Sankalpa?</h2>
                 <p>
-                    A **Sankalpa** is a deep, sacred vow—a resolute intention of the heart and mind. Our platform is the bridge between your inner resolve and its divine manifestation.
-                </p>
-                <p>
-                    This is more than a registry; it is a **divine meeting place**. We are dedicated to the principle that a clear intention, when supported by knowledgeable counsel, yields profound spiritual results. Here, **devotees meet revered Priests**, ensuring every vow is ritually sound and guided by time-honored spiritual wisdom.
-                </p>
-                <p>
-                    By documenting your spiritual journey with us, you create a focused path, illuminated by devotion and clarity, allowing your **Sankalpa** to blossom into reality.
+                    Sankalpa is dedicated to upholding ancient traditions in the modern world. We provide a seamless, tech-enabled platform that connects you to a curated global collective of **trusted priests**, ensuring every ritual, vow, and **Sankalpa** is realized with **uncompromised authenticity and spiritual integrity.**
                 </p>
             </div>
 
             <div class="col-lg-5 col-md-12">
                 <div class="auth-card">
                     
-                    <div id="duplicateMsg">Loading...</div>
+                    <div class="toggle-buttons">
+                        <button class="btn btn-secondary-sankalpa" type="button" onclick="showExisting()">Existing User</button>
+                        <button class="btn btn-secondary-sankalpa" type="button" onclick="showNew()">New User</button>
+                    </div>
+
+                    <div id="duplicateMsg" class="mb-4" style="display: none;">Loading...</div>
 
                     <div id="existingSection" style="display: block;">
-                        <h4 class="sub-header text-center">Enter the Sacred Space</h4>
                         <form onsubmit="event.preventDefault(); loginUser();">
                             
                             <div class="mb-3">
@@ -248,7 +228,7 @@
                             </div>
 
                             <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-primary-sankalpa btn-lg">Register Now</button>
+                                <button type="submit" class="btn btn-primary-sankalpa btn-lg">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -279,12 +259,14 @@
 
         function showExisting() {
             hideDuplicate();
+            // Show Existing, Hide New
             document.getElementById("existingSection").style.display = "block";
             document.getElementById("newSection").style.display = "none";
         }
 
         function showNew() {
             hideDuplicate();
+            // Show New, Hide Existing
             document.getElementById("existingSection").style.display = "none";
             document.getElementById("newSection").style.display = "block";
         }
