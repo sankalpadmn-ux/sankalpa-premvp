@@ -2,112 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Search – Sankalpa</title>
+  <title>Sankalpa – Search</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles2.css?v=20251122">
-
-  <style>
-    .search-container {
-      max-width: 700px;
-      margin: 50px auto;
-      background: rgba(255, 255, 255, 0.60);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .search-title {
-      font-size: 26px;
-      font-weight: bold;
-      text-align: center;
-      color: #5a2c0a;
-    }
-
-    .search-line {
-      width: 60%;
-      height: 2px;
-      background: #b38e5d;
-      margin: 12px auto 22px auto;
-    }
-
-    .input-group {
-      margin-bottom: 18px;
-    }
-
-    .logout-link {
-      display:none;
-    }
-  </style>
-
+  <link rel="stylesheet" href="styles2.css?v=20251124">
 </head>
 
 <body class="bg">
 
   <!-- Header -->
-  <header class="header"
-      style="display:flex;justify-content:space-between;align-items:center;
-             background:#f7e9d4;padding:10px 18px;">
+  <header class="header" style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f7e9d4;
+    padding:10px 18px;
+  ">
 
     <!-- LOGO -->
     <a href="index.html" style="display:flex;align-items:center;cursor:pointer;">
       <img src="images/Sankalpa_Logo.jpg"
-           style="height:90px;width:auto;object-fit:contain;"
+           style="width:260px;height:auto;object-fit:contain;"
            alt="Sankalpa Logo">
     </a>
 
-    <!-- NAV -->
     <nav style="display:flex;gap:22px;">
       <a href="index.html" class="header-link">Home</a>
       <a href="contact.html" class="header-link">Contact Us</a>
-      <a id="logoutLink" href="index.html" class="header-link logout-link">Logout</a>
+      <a href="index.html" class="header-link">Logout</a>
     </nav>
 
   </header>
 
-  <!-- Search Box -->
-  <div class="search-container">
+  <!-- Main Content -->
+  <section class="hero" style="text-align:center;">
 
-    <div class="search-title">Search Priests</div>
-    <div class="search-line"></div>
+    <h1 class="hero-title" id="welcomeName">Welcome</h1>
 
-    <div style="text-align:center; margin-bottom:20px; color:#754d26;">
-      Welcome, <span id="userName"></span>
+    <p class="hero-text">
+      You may now proceed to request priest services.  
+      Our admin will contact you shortly after verifying your details.
+    </p>
+
+    <div style="margin-top:25px;">
+      <button class="primary-btn" onclick="goHome()">Back to Home</button>
     </div>
 
-    <div class="input-group">
-      <label for="search_location">Enter City / Locality</label>
-      <input type="text" id="search_location" placeholder="e.g. Chennai, Bangalore, Singapore">
-    </div>
-
-    <button class="primary-btn" style="width:100%;">
-      Search
-    </button>
-
-  </div>
-
-  <!-- Footer -->
-  <footer style="text-align:center;padding:16px 0;font-size:12px;color:#754d26;">
-    © <span id="yearSpan"></span> Sankalpa. All rights reserved.
-  </footer>
+  </section>
 
   <script>
-    // YEAR
-    (function () {
-      const y = document.getElementById('yearSpan');
-      if (y) y.textContent = new Date().getFullYear();
-    })();
-
-    // LOGOUT LOGIC
+    // Extract ?name= from URL
     const params = new URLSearchParams(window.location.search);
-    const name = params.get("name");
+    const userName = params.get("name");
 
-    if (name) {
-      document.getElementById("logoutLink").style.display = "inline-block";
-      document.getElementById("userName").textContent = name;
-    } else {
-      document.getElementById("userName").textContent = "Guest";
+    if (userName) {
+      document.getElementById("welcomeName").textContent =
+        "Welcome, " + decodeURIComponent(userName);
+    }
+  </script>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
     }
   </script>
 
