@@ -1,5 +1,5 @@
 /***********************************************
- * SANKALPA – script.js (Final Stable Version)
+ * SANKALPA – script.js (Final Aligned Version)
  ***********************************************/
 
 const API_URL = "https://script.google.com/macros/s/AKfycbyrrJJoNaJSlJenxMEiTNPQCSs-d9BuuOEh_r7QjryYEVTx5TeP0HE8Ty8f22lWRf9h/exec";
@@ -68,19 +68,18 @@ async function loginUser() {
       mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        action: "login",
+        action: "loginCustomer",
         name: name,
         country: country,
-        phone: fullPhone
+        mobile: fullPhone   // IMPORTANT: backend expects mobile
       })
     });
 
     const data = await response.json();
 
     if (data.status === "success") {
-      // Redirect to Search page with name
       window.location.href = "search.html?name=" +
-        encodeURIComponent(data.name);
+        encodeURIComponent(name);
 
     } else if (data.status === "not_found") {
       showDuplicate("No matching user found. Please register as a new user.");
@@ -104,6 +103,7 @@ async function registerUser() {
   const countryCode = document.getElementById("new_countryCode").value.trim();
   const phone = document.getElementById("new_phone").value.trim();
   const city = document.getElementById("new_city").value.trim();
+  const email = ""; // No email collected on UI
 
   if (!name || !country || !phone || !city) {
     showDuplicate("Please fill all fields.");
@@ -118,33 +118,30 @@ async function registerUser() {
       mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        action: "register",
+        action: "registerCustomer",
         name: name,
         country: country,
-        phone: fullPhone,
-        city: city
+        mobile: fullPhone,  // IMPORTANT: backend expects mobile
+        city: city,
+        email: email
       })
     });
 
     const data = await response.json();
 
     if (data.status === "duplicate") {
-      // Show friendly duplicate message
       showDuplicate(
         `This mobile number is already registered. Welcome back, ${data.name}.`
       );
 
-      // Redirect to search after 1.8 seconds
       setTimeout(() => {
         window.location.href = "search.html?name=" +
           encodeURIComponent(data.name);
       }, 1800);
 
     } else if (data.status === "success") {
-
-      // NEW USER → Go to Search page also
       window.location.href = "search.html?name=" +
-        encodeURIComponent(data.name);
+        encodeURIComponent(name);
 
     } else {
       showDuplicate("Unexpected error during registration.");
