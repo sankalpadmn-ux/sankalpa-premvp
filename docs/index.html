@@ -28,21 +28,18 @@
       display: none;
     }
   </style>
+
 </head>
 
 <body class="bg">
 
   <!-- Header -->
-  <header class="header" style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:#f7e9d4;
-      padding:10px 18px;
-    ">
+  <header class="header"
+    style="display:flex;justify-content:space-between;align-items:center;
+           background:#f7e9d4;padding:10px 18px;">
 
     <!-- LOGO -->
-    <a href="index.html" style="display:flex;align-items:center;cursor:pointer;text-decoration:none;">
+    <a href="index.html" style="display:flex;align-items:center;cursor:pointer;">
       <img src="images/Sankalpa_Logo.jpg"
            style="height:90px;width:auto;object-fit:contain;"
            alt="Sankalpa Logo">
@@ -51,11 +48,13 @@
     <nav style="display:flex;gap:22px;">
       <a href="contact.html" class="header-link">Contact Us</a>
     </nav>
+
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero">
 
+    <!-- Left Section -->
     <div class="left">
       <h1 class="hero-title">Why Sankalpa?</h1>
       <p class="hero-text">
@@ -64,16 +63,18 @@
       </p>
     </div>
 
+    <!-- Right Section -->
     <div class="right">
       <div class="form-box">
 
         <!-- Toggle Buttons -->
-        <div class="toggle-row" style="margin-top:10px; display:flex; gap:10px; justify-content:center;">
-          <button class="primary-btn" type="button" onclick="showExisting()">Existing User</button>
-          <button class="primary-btn" type="button" onclick="showNew()">New User</button>
+        <div class="toggle-row"
+             style="margin-top:10px;display:flex;gap:10px;justify-content:center;">
+          <button class="primary-btn" onclick="showExisting()">Existing User</button>
+          <button class="primary-btn" onclick="showNew()">New User</button>
         </div>
 
-        <!-- Duplicate message -->
+        <!-- Duplicate Message -->
         <div id="duplicateMsg"></div>
 
         <!-- ================= EXISTING USER ================= -->
@@ -106,7 +107,8 @@
             </div>
           </div>
 
-          <button class="primary-btn" style="width:100%;" type="button" onclick="loginUser()">Submit</button>
+          <button class="primary-btn" style="width:100%;" onclick="loginUser()">Submit</button>
+
         </div>
 
         <!-- ================= NEW USER ================= -->
@@ -144,7 +146,8 @@
             <input type="text" id="new_city" placeholder="Enter City / Locality">
           </div>
 
-          <button class="primary-btn" style="width:100%;" type="button" onclick="registerUser()">Submit</button>
+          <button class="primary-btn" style="width:100%;" onclick="registerUser()">Submit</button>
+
         </div>
 
       </div>
@@ -157,7 +160,7 @@
     © <span id="yearSpan"></span> Sankalpa. All rights reserved.
   </footer>
 
-  <!-- Set year -->
+  <!-- Footer Year -->
   <script>
     (function () {
       const y = document.getElementById('yearSpan');
@@ -165,7 +168,8 @@
     })();
   </script>
 
-  <!-- Main JS -->
+  <!-- JS -->
   <script src="script.js?v=20251122"></script>
+
 </body>
 </html>
