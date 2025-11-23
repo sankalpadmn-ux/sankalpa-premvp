@@ -1,40 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Search – Sankalpa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="styles2.css?v=20251203">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANKALPA - Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles2.css"> 
 </head>
+<body>
 
-<body class="bg">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/Sankalpa_Logo.jpg" alt="Sankalpa Logo" class="logo-image">
+            </a>
+            
+            <div class="ml-auto">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<header class="header" style="display:flex;justify-content:space-between;align-items:center;">
-  <a href="index.html">
-    <img src="images/Sankalpa_Logo.jpg" style="width:260px;">
-  </a>
+    <div class="container text-center py-5">
+        <h1>Search for a Priest or Ritual</h1>
+        <p class="lead">Find the trusted resource you need for your Sankalpa.</p>
+        
+        <div class="input-group mb-3" style="max-width: 600px; margin: auto;">
+            <input type="text" class="form-control" placeholder="E.g., Vedic Priest, Pooja, City">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">Search</button>
+            </div>
+        </div>
+        
+        <div class="mt-5">
+            <p class="text-muted">Search results will appear here.</p>
+        </div>
+        
+    </div> 
 
-  <nav style="display:flex;gap:22px;">
-    <a href="contact.html" class="header-link">Contact Us</a>
-    <a href="index.html" class="header-link">Logout</a>
-  </nav>
-</header>
-
-<section class="hero" style="justify-content:center;text-align:center;">
-  <div class="form-box" style="max-width:600px;">
-    <h2 id="welcomeMsg">Welcome</h2>
-    <p>Priest search functionality will appear here.</p>
-  </div>
-</section>
-
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const name = params.get("name");
-  if (name) document.getElementById("welcomeMsg").textContent = "Welcome, " + name;
-</script>
-
-<script src="script.js?v=20251203"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script> 
 </body>
 </html>
