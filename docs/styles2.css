@@ -1,169 +1,149 @@
 /*
  * SANKALPA UI STYLESHEET (styles2.css)
- * Version 1.1 - Logo Color Integration & Form Refinement
+ * Version 1.8 - Final Lightweight Mobile Optimization & Color Verification
  */
 
 /* ===================================================================
-   GLOBAL STYLING & BACKGROUND (Logo Color Integration)
+   GLOBAL STYLING & BACKGROUND 
    =================================================================== */
 
-/* Apply the uniform glossy background matching the Logo Image Background */
 body, html {
-    background-color: #F8E9D8 !important; /* New Pale Apricot/Saffron Background from Logo */
+    background-color: #F8E9D8 !important; /* Pale Apricot/Saffron Background from Logo */
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
-    
-    /* Global text color is set to a dark, readable tone */
     color: #333; 
     font-family: Arial, sans-serif;
 }
 
-/* Ensure main containers inherit the new background color and don't introduce different shades */
 .container, .header, .navbar {
     background-color: transparent !important;
 }
 
 
 /* ===================================================================
-   NAVIGATION & LOGO 
+   NAVIGATION & LOGO (Blending Fix Applied Here)
    =================================================================== */
 
-/* Style for the logo image to make it significantly larger */
+.navbar-expand-lg .container-fluid {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    padding: 15px 15px 0 15px; 
+}
+
+/* Base Logo size for Desktop & Blending Fix */
 .logo-image {
-    width: 250px; /* Current size, adjust if needed */
+    width: 250px; 
     height: auto;
     display: block;
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); 
+    background-color: #F8E9D8 !important; 
+    padding: 5px; 
 }
 
-/* Target the container (navbar-brand) to position the logo top-left */
 .navbar-brand {
-    padding-top: 15px !important; 
-    padding-bottom: 0 !important;
-    margin-left: 15px !important; 
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* Style for the "Contact Us" link */
 .nav-item {
-    padding: 0 10px;
+    padding-top: 5px; 
+    padding-bottom: 0;
 }
 
 .nav-link {
-    color: #333 !important; /* Retaining dark font color */
+    color: #333 !important; 
     text-decoration: none;
     font-weight: bold;
 }
 
 
 /* ===================================================================
-   HERO & CONTENT AREAS
+   HERO & CONTENT AREAS (Precise Text Alignment Fix & Logo Colors)
    =================================================================== */
 
-/* General container styling for centering content */
 .container {
-    padding-top: 20px;
+    padding-top: 10px; 
     padding-bottom: 50px;
-    text-align: center;
+    text-align: center; 
 }
 
-/* Style for the main SANKALPA heading (Use Logo Text Color) */
 h1 {
     font-size: 3em;
     font-weight: 700;
-    margin-top: 20px;
-    color: #C75939; /* Deep Red/Burnt Orange from Logo Text */
+    margin-top: 15px; 
+    margin-bottom: 5px; 
+    color: #C75939; /* LOGO PRIMARY COLOR */
 }
 
-/* Style for the "Connecting with Purpose" tagline (Use Logo Tagline Color) */
 .tagline {
     font-size: 1.5em;
-    margin-bottom: 30px;
+    margin-bottom: 40px; 
     font-style: italic;
-    color: #A07A58; /* Muted Brown-Green from Logo Tagline */
+    color: #A07A58; /* LOGO SECONDARY COLOR */
 }
 
-/* Style for "Why Sankalpa?" section */
+/* Why Sankalpa section styling */
 .why-sankalpa {
-    /* Use a slightly darker background for better readability contrast */
-    background-color: rgba(255, 255, 255, 0.4); 
+    background-color: rgba(255, 255, 255, 0.6); 
     padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 40px;
+    border-radius: 12px; 
+    margin-bottom: 25px; 
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    text-align: left; 
+    /* Soft Golden Glow Shadow (Desktop) */
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.2), 0 4px 8px rgba(0,0,0,0.1); 
+    border: 1px solid rgba(255, 215, 0, 0.3); 
 }
 
 .why-sankalpa h2 {
     text-align: center;
     margin-bottom: 15px;
+    color: #C75939; /* LOGO PRIMARY COLOR */
 }
 
 .why-sankalpa p {
     line-height: 1.6;
+    color: #444; 
+}
+
+.why-sankalpa p strong {
+    color: #A07A58; /* LOGO SECONDARY COLOR */
+    font-weight: 700;
 }
 
 
 /* ===================================================================
-   FORM STYLING (The "Sacred Space" - Refined for Silkish UI)
+   FORM STYLING (Sacred Space) 
    =================================================================== */
 
 .form-section {
     max-width: 500px;
     margin: 0 auto;
     padding: 30px;
-    /* Use the primary logo background color slightly brightened for the form container */
-    background-color: rgba(255, 255, 255, 0.85); 
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 12px;
+    /* Soft Golden Glow Shadow (Desktop) */
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.3), 0 6px 12px rgba(0,0,0,0.15); 
 }
 
-/* Custom styling for form inputs and buttons for a smoother look */
-.form-control {
-    background-color: #FEFBF6; /* Very light cream/off-white input background */
-    border: 1px solid #D2B48C; 
-    border-radius: 8px; 
-    padding: 12px 15px; 
+.form-section h4 {
+    color: #C75939; /* LOGO PRIMARY COLOR */
     margin-bottom: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
-    transition: all 0.3s ease;
+    font-weight: 600;
 }
 
-.form-control:focus {
-    border-color: #A07A58; /* Focus color using the tagline color */
-    box-shadow: 0 0 0 0.2rem rgba(160, 122, 88, 0.25); 
-}
-
-/* Button Styling (Using the Tagline/Secondary Logo Color for sophistication) */
-.btn-primary {
-    background-color: #A07A58; /* Muted Brown-Green from Logo Tagline */
-    border-color: #8C6A4D;
-    color: #FFF;
-    font-weight: bold;
-    padding: 12px 25px; 
-    border-radius: 30px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #8C6A4D; 
-    border-color: #785A3D;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.15); 
-    transform: translateY(-1px); 
-}
-
-/* Tab Navigation Styling */
+/* Tab Alignment Refinement */
 .nav-tabs {
     border-bottom: none !important; 
     justify-content: center; 
-    margin-bottom: 20px;
-}
-
-.nav-tabs .nav-item {
-    margin: 0 5px;
+    margin-bottom: 20px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    border-radius: 8px 8px 0 0; 
 }
 
 .nav-tabs .nav-link {
@@ -176,15 +156,97 @@ h1 {
 }
 
 .nav-tabs .nav-link.active {
-    color: #C75939 !important; /* Highlight active tab with the primary logo text color */
+    color: #C75939 !important; /* LOGO PRIMARY COLOR */
     font-weight: 700;
     border-bottom: 3px solid #C75939 !important; 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); 
     background-color: transparent !important;
+}
+
+.form-control {
+    background-color: #FEFBF6; 
+    border: 1px solid #D2B48C; 
+    border-radius: 8px; 
+    padding: 12px 15px; 
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) inset; 
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #A07A58; 
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6); 
+}
+
+.btn-primary {
+    background-color: #A07A58; /* LOGO SECONDARY COLOR */
+    border-color: #8C6A4D;
+    color: #FFF;
+    font-weight: bold;
+    padding: 12px 25px; 
+    border-radius: 30px; 
+    box-shadow: 0 4px 10px rgba(160, 122, 88, 0.4); 
+    transition: all 0.3s ease;
 }
 
 
 /* ===================================================================
-   UTILITY (To ensure NO footer exists)
+   MOBILE RESPONSIVENESS (Optimized for Lightweight - Shadow Removal)
+   =================================================================== */
+
+@media (max-width: 768px) {
+    
+    .logo-image {
+        width: 150px; 
+    }
+
+    .navbar-expand-lg .container-fluid {
+        flex-direction: column; 
+        align-items: center; 
+        padding-top: 10px;
+    }
+    
+    /* REMOVING RESOURCE-INTENSIVE SHADOWS FOR MOBILE PERFORMANCE */
+    .why-sankalpa, .form-section {
+        box-shadow: none !important;
+        border: 1px solid rgba(0,0,0,0.1); /* Use a simple border instead of shadow */
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-top: 5px;
+    }
+    
+    .tagline {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+
+    .why-sankalpa {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .form-section {
+        padding: 20px 15px;
+    }
+    
+    .form-row > .col-3,
+    .form-row > .col-9 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .form-row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+/* ===================================================================
+   UTILITY
    =================================================================== */
 
 footer {
