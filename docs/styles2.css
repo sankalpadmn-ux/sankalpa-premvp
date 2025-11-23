@@ -1,19 +1,20 @@
 /*
  * SANKALPA UI STYLESHEET (styles2.css)
- * Version 1.0 - Beautification Changes
+ * Version 1.1 - Logo Color Integration & Form Refinement
  */
 
 /* ===================================================================
-   GLOBAL STYLING & BACKGROUND (Requested Changes)
+   GLOBAL STYLING & BACKGROUND (Logo Color Integration)
    =================================================================== */
 
-/* Apply the uniform glossy golden/silkish background and remove margins/padding */
+/* Apply the uniform glossy background matching the Logo Image Background */
 body, html {
-    background-color: #F5F5DC !important; /* Pale Gold/Creamy Beige - soothing silkish UI */
+    background-color: #F8E9D8 !important; /* New Pale Apricot/Saffron Background from Logo */
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
-    /* Retain original font colors as requested */
+    
+    /* Global text color is set to a dark, readable tone */
     color: #333; 
     font-family: Arial, sans-serif;
 }
@@ -25,21 +26,21 @@ body, html {
 
 
 /* ===================================================================
-   NAVIGATION & LOGO (Requested Changes)
+   NAVIGATION & LOGO 
    =================================================================== */
 
 /* Style for the logo image to make it significantly larger */
 .logo-image {
-    width: 250px; /* Adjust this value (250px) if you need it even bigger */
+    width: 250px; /* Current size, adjust if needed */
     height: auto;
     display: block;
 }
 
 /* Target the container (navbar-brand) to position the logo top-left */
 .navbar-brand {
-    padding-top: 15px !important; /* Push down slightly from the absolute top */
+    padding-top: 15px !important; 
     padding-bottom: 0 !important;
-    margin-left: 15px !important; /* Margin from the left edge */
+    margin-left: 15px !important; 
 }
 
 /* Style for the "Contact Us" link */
@@ -65,24 +66,26 @@ body, html {
     text-align: center;
 }
 
-/* Style for the main SANKALPA heading */
+/* Style for the main SANKALPA heading (Use Logo Text Color) */
 h1 {
     font-size: 3em;
     font-weight: 700;
     margin-top: 20px;
-    /* This text is controlled in index.html, but we style it here */
+    color: #C75939; /* Deep Red/Burnt Orange from Logo Text */
 }
 
-/* Style for the "Connecting with Purpose" tagline */
+/* Style for the "Connecting with Purpose" tagline (Use Logo Tagline Color) */
 .tagline {
     font-size: 1.5em;
     margin-bottom: 30px;
     font-style: italic;
+    color: #A07A58; /* Muted Brown-Green from Logo Tagline */
 }
 
 /* Style for "Why Sankalpa?" section */
 .why-sankalpa {
-    background-color: rgba(255, 255, 255, 0.5); /* Subtle overlay for readability over the background */
+    /* Use a slightly darker background for better readability contrast */
+    background-color: rgba(255, 255, 255, 0.4); 
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 40px;
@@ -90,7 +93,7 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle depth */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 }
 
 .why-sankalpa h2 {
@@ -104,59 +107,79 @@ h1 {
 
 
 /* ===================================================================
-   FORM STYLING (The "Sacred Space" - Minor refinement)
+   FORM STYLING (The "Sacred Space" - Refined for Silkish UI)
    =================================================================== */
 
 .form-section {
     max-width: 500px;
     margin: 0 auto;
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.7); /* Slightly brighter background for the interactive area */
+    /* Use the primary logo background color slightly brightened for the form container */
+    background-color: rgba(255, 255, 255, 0.85); 
     border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* More prominent depth */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
 }
 
 /* Custom styling for form inputs and buttons for a smoother look */
 .form-control {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 15px;
+    background-color: #FEFBF6; /* Very light cream/off-white input background */
+    border: 1px solid #D2B48C; 
+    border-radius: 8px; 
+    padding: 12px 15px; 
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+    transition: all 0.3s ease;
 }
 
+.form-control:focus {
+    border-color: #A07A58; /* Focus color using the tagline color */
+    box-shadow: 0 0 0 0.2rem rgba(160, 122, 88, 0.25); 
+}
+
+/* Button Styling (Using the Tagline/Secondary Logo Color for sophistication) */
 .btn-primary {
-    background-color: #A08A4D; /* A deeper gold/bronze color for the button */
-    border-color: #8C7540;
-    color: white;
+    background-color: #A07A58; /* Muted Brown-Green from Logo Tagline */
+    border-color: #8C6A4D;
+    color: #FFF;
     font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 12px 25px; 
+    border-radius: 30px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #8C7540;
-    border-color: #786334;
+    background-color: #8C6A4D; 
+    border-color: #785A3D;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15); 
+    transform: translateY(-1px); 
 }
 
-.tab-pane {
-    padding-top: 20px;
+/* Tab Navigation Styling */
+.nav-tabs {
+    border-bottom: none !important; 
+    justify-content: center; 
+    margin-bottom: 20px;
 }
 
-/* Styling for the tab links (Existing User / New User) */
+.nav-tabs .nav-item {
+    margin: 0 5px;
+}
+
 .nav-tabs .nav-link {
-    color: #333;
-    border: 1px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
+    color: #6C757D !important; 
+    background-color: transparent !important;
+    border: none !important;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .nav-tabs .nav-link.active {
-    color: #A08A4D; /* Highlight active tab with a gold tone */
-    background-color: transparent;
-    border-color: transparent;
-    border-bottom: 2px solid #A08A4D; /* Underline active tab */
+    color: #C75939 !important; /* Highlight active tab with the primary logo text color */
+    font-weight: 700;
+    border-bottom: 3px solid #C75939 !important; 
+    background-color: transparent !important;
 }
 
 
@@ -164,7 +187,6 @@ h1 {
    UTILITY (To ensure NO footer exists)
    =================================================================== */
 
-/* Although the HTML will be removed, this ensures no element with a footer tag shows up */
 footer {
     display: none !important;
 }
