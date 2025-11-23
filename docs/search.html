@@ -6,7 +6,9 @@
     <title>SANKALPA - Search</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
-    <link rel="stylesheet" href="styles2.css?v=11"> 
+    <script>
+        document.write('<link rel="stylesheet" href="styles2.css?t=' + Date.now() + '">');
+    </script>
 </head>
 <body>
 
@@ -43,7 +45,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // This check is already run by script.js, but we re-run it here for visual consistency
             const isLoggedIn = localStorage.getItem('sankalpa_loggedIn') === 'true';
             const userName = localStorage.getItem('sankalpa_userName');
             const authLinks = document.getElementById('auth-links');
