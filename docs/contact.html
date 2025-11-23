@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SANKALPA - Contact Us</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
     <link rel="stylesheet" href="styles2.css?v=10"> 
 </head>
 <body>
 
-    <div class="top-bar-flush">
+    <div class="top-bar-flush" id="top-nav-bar">
         <a class="logo-link" href="index.html">
             <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
         </a>
         
-        <ul class="contact-us-link">
+        <ul class="contact-us-link" id="auth-links">
             <li>
                 <a href="contact.html">Contact Us</a>
             </li>
@@ -25,18 +24,34 @@
     <div class="container text-center py-5" style="padding-top: 150px !important;">
         <h1>Contact Sankalpa</h1>
         <p class="lead">We are here to assist you with your divine vows and rituals.</p>
-        
         <div class="form-section mt-4" style="max-width: 500px; margin: auto; padding: 30px;">
             <p><strong>Email:</strong> support@sankalpa.com</p>
             <p><strong>Phone:</strong> +91 98765 43210</p>
             <p><strong>Address:</strong> Sacred Space HQ, Global City, Earth</p>
         </div>
-        
     </div> 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script> 
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('sankalpa_loggedIn') === 'true';
+            const userName = localStorage.getItem('sankalpa_userName');
+            const authLinks = document.getElementById('auth-links');
+
+            if (isLoggedIn && userName) {
+                authLinks.innerHTML = `
+                    <li><span style="font-weight: bold; padding-right: 15px;">Welcome ${userName}</span></li>
+                    <li><a href="#" id="logout-link">Logout</a></li>
+                `;
+            } else {
+                // If not logged in, redirect to index.html (Login)
+                window.location.href = 'index.html'; 
+            }
+        });
+    </script>
 </body>
 </html>
