@@ -1,6 +1,6 @@
 /**
  * SANKALPA UI JAVASCRIPT FILE (script.js)
- * Version 1.3 - Implemented Login State Management and Redirection
+ * Version 1.4 - Finalizing Login State Management and Access Control
  */
 
 // ==========================================================
@@ -22,6 +22,30 @@ function logoutUser() {
     // Redirect back to the Login Page
     window.location.href = 'index.html';
 }
+
+// Function to check login status and redirect if necessary
+function checkLoginStatus() {
+    const isLoggedIn = localStorage.getItem('sankalpa_loggedIn') === 'true';
+    const isLoginPage = window.location.pathname.includes('index.html');
+    
+    // For protected pages (search.html and contact.html)
+    if (!isLoginPage) {
+        if (!isLoggedIn) {
+            // Redirect to login page if trying to access a protected page without logging in
+            window.location.href = 'index.html';
+            return true; // Stop further execution
+        }
+    } else {
+        // For the login page (index.html)
+        if (isLoggedIn) {
+            // If user is logged in, immediately redirect to search page
+            window.location.href = 'search.html';
+            return true; // Stop further execution
+        }
+    }
+    return false; // User is on the correct page state
+}
+
 
 // ==========================================================
 // 1. STATUS MESSAGE HANDLER
@@ -53,11 +77,14 @@ function showDuplicate(msg) {
 
 
 // ==========================================================
-// 2. FORM SUBMISSION LOGIC
+// 2. FORM SUBMISSION LOGIC & LISTENERS
 // ==========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Check login status immediately on load (Handles redirection for all pages)
+    if (checkLoginStatus()) return;
+
     // Function to handle inline WhatsApp validation display
     function showWhatsappStatus(msg, isSuccess) {
         const statusBox = document.getElementById("whatsapp-status");
@@ -70,17 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 statusBox.classList.remove('validation-success');
             }
-
-            // We keep this message visible until the final action takes place
-        }
-    }
-    
-    // --- CHECK FOR LOGGED IN USER ON LOAD (Prevent access to login page if already logged in) ---
-    if (window.location.pathname.includes('index.html')) {
-        if (localStorage.getItem('sankalpa_loggedIn') === 'true') {
-            // If user is logged in, immediately redirect to search page
-            window.location.href = 'search.html';
-            return;
         }
     }
     
@@ -94,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showDuplicate("Error: Please enter your Full Name.");
             } else {
                 // Simulate successful login
-                showDuplicate(`Login Success: Welcome back, ${name}! Redirecting...`);
+                showDuplicate(`Login Success: Welcome back, ${name}! Redirecting to search...`);
                 setTimeout(() => loginUser(name), 1000); // Redirect after 1 second
             }
         });
@@ -122,13 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 showWhatsappStatus(`✓ WhatsApp Validated: Mobile number confirmed.`, true);
             }
 
-            // Registration Success logic
+            // Registration Success logic (24 hour lockout)
             setTimeout(() => {
                 showDuplicate(`Registration Success: Vow recorded for ${name}. You can log in only after 24 hours. Auto-login failed.`);
-                // Note: Per user request, auto-login fails, and user must log in later. 
-                // We clear storage and redirect back to the index page.
-                logoutUser(); // Reset session
-                window.location.href = 'index.html'; // Redirect back to login page
+                // Reset session and redirect back to index page.
+                logoutUser(); 
             }, 2000); 
         });
     }
