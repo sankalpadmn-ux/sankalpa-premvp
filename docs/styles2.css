@@ -1,6 +1,6 @@
 /*
  * SANKALPA UI STYLESHEET (styles2.css)
- * Version 2.9 - California Gold Background, Flush Logo, High Content
+ * Version 3.0 - Major Layout Fixes, Color Corrections, New Background (#ead79b)
  */
 
 /* ===================================================================
@@ -15,7 +15,7 @@
    =================================================================== */
 
 body, html {
-    background-color: #FDB515 !important; /* NEW: CALIFORNIA GOLD */
+    background-color: #ead79b !important; /* NEW: Soft Beige/Gold */
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
@@ -29,25 +29,29 @@ body, html {
 
 
 /* ===================================================================
-   NAVIGATION & LOGO (Top Flush Positioning)
+   NAVIGATION & LOGO (Top Flush Positioning FIX)
    =================================================================== */
 
-/* Container for Logo and Contact Us - Now spans the full width at the very top */
+/* Container for Logo and Contact Us */
 .top-bar-flush {
     display: flex;
     justify-content: space-between; 
-    align-items: flex-start; /* Aligns content to the top */
+    align-items: flex-start; 
     width: 100%;
-    padding: 10px 15px 0 0; /* Padding for the right (Contact Us) */
-    position: absolute; /* Allows content below to shift up */
+    /* Increase padding to prevent overlap and ensure contact link visibility */
+    padding: 10px 30px 0 0; 
+    position: relative; /* CHANGE: Use relative to prevent content overlap and ensure proper flow */
     z-index: 1000;
+    /* Adding some bottom padding to separate the logo bar from the main content */
+    margin-bottom: 20px; 
 }
 
 .logo-link {
     display: inline-block;
     padding: 0;
     margin: 0;
-    line-height: 0; /* Removes line height gap below image */
+    line-height: 0; 
+    padding-left: 15px; /* Aligns with container padding */
 }
 
 .logo-image {
@@ -56,11 +60,9 @@ body, html {
     display: block;
     box-shadow: none !important; 
     border-radius: 0 !important;
-    padding: 0 !important;
-    margin-left: 0; /* Ensures flush left */
 }
 
-/* Contact Us Link Styling */
+/* Contact Us Link Styling FIX */
 .contact-us-link {
     list-style: none;
     padding: 0;
@@ -78,17 +80,16 @@ body, html {
 
 
 /* ===================================================================
-   HERO CONTENT LAYOUT (SHIFTED UP AGGRESSIVELY)
+   HERO CONTENT LAYOUT (POSITIONING FIX)
    =================================================================== */
 
 .main-content-layout {
     display: flex;
     justify-content: space-between;
     align-items: flex-start; 
-    /* SHIFT UP: Use heavy negative margin to pull the content up 
-       over the default space previously occupied by the navbar. */
-    margin-top: -110px; 
-    padding-top: 130px; /* Counter-padding to push text/form content down just below the flush logo */
+    /* FIX: Removed aggressive negative margin. Padding is enough now due to relative logo position. */
+    margin-top: 0; 
+    padding-top: 0; 
     padding-bottom: 50px;
     text-align: left; 
 }
@@ -109,31 +110,31 @@ body, html {
 
 
 /* ===================================================================
-   CONTENT STYLING (Colors retained)
+   CONTENT STYLING (Color FIX)
    =================================================================== */
 
-/* SANKALPA Heading: Cinzel (Bold, Monumental) */
+/* SANKALPA Heading: Cinzel (Orange FIX) */
 h1 {
     font-family: 'Cinzel', serif; 
     font-size: 3.8em; 
     font-weight: 700; 
     margin-top: 5px; 
     margin-bottom: 8px; 
-    color: #0B6623; /* Changed to Green for better contrast on Gold background */
+    color: #ED7014; /* FIX: Set to Orange */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
     text-align: left; 
     text-transform: uppercase; 
     letter-spacing: 0.1em;
 }
 
-/* Tagline: Cormorant Garamond (Italic, Refined) */
+/* Tagline: Cormorant Garamond (Green FIX) */
 .tagline {
     font-family: 'Cormorant Garamond', serif; 
     font-size: 1.6em; 
     margin-bottom: 30px; 
     font-style: italic; 
     font-weight: 500; 
-    color: #333; /* Darker text for readability */
+    color: #0B6623; /* FIX: Set to Green */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
     text-align: left; 
 }
@@ -154,38 +155,51 @@ h1 {
 }
 
 .why-sankalpa p strong {
-    color: #084C1C; /* Darker green */
+    color: #084C1C; 
     font-weight: 700;
 }
 
 
 /* ===================================================================
-   FORM STYLING (Sacred Space) 
+   FORM STYLING (Sacred Space) FIXES
    =================================================================== */
 
 .form-section {
     max-width: 500px;
     margin: 0; 
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.95); 
+    background-color: rgba(255, 255, 255, 0.95); /* Retain slight transparency */
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0,0,0,0.2); 
     text-align: center; 
 }
 
 .form-section h4 {
-    color: #ED7014; /* Orange retained for internal form headings */
+    color: #ED7014; 
     margin-bottom: 25px;
     font-weight: 700;
     font-size: 1.8em;
+}
+
+/* Tabs: FIX spacing/white background by forcing padding/background inside tab-content */
+.tab-content {
+    background-color: transparent; 
+    padding-top: 5px; 
 }
 
 .nav-tabs {
     border-bottom: none !important; 
     justify-content: center; 
     margin-bottom: 25px; 
-    background-color: rgba(255, 255, 255, 0.95); 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+    background-color: transparent; 
+    box-shadow: none;
     border-radius: 8px 8px 0 0; 
+}
+
+/* FIX: Ensure tabs are clickable */
+.nav-tabs .nav-link {
+    cursor: pointer;
+    background-color: transparent !important;
+    border: none !important;
 }
 
 .nav-tabs .nav-link.active {
@@ -196,14 +210,16 @@ h1 {
     transform: translateY(-2px); 
 }
 
+/* Country Dropdown Fix: Increase padding/height to prevent cutoff */
 .form-control {
     background-color: #FFF8E7; 
     border: 1px solid #FFC65A; 
     border-radius: 8px; 
-    padding: 14px 18px; 
+    padding: 14px 18px; /* Ensure ample padding */
     margin-bottom: 20px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset; 
     transition: all 0.3s ease;
+    height: auto; /* Allow height to adjust */
 }
 
 .form-control:focus {
@@ -237,9 +253,8 @@ h1 {
 @media (max-width: 768px) {
     
     .main-content-layout {
-        /* Mobile content is still pushed down, but less aggressively */
-        margin-top: -60px;
-        padding-top: 100px;
+        margin-top: 0;
+        padding-top: 30px; /* Reduced padding for mobile */
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -278,6 +293,6 @@ h1 {
     }
     
     .top-bar-flush {
-        padding: 10px 15px 0 0; 
+        padding: 10px 15px 0 15px; /* Adjust padding for mobile */
     }
 }
