@@ -1,6 +1,6 @@
 /*
  * SANKALPA UI STYLESHEET (styles2.css)
- * Version 2.8 - Google Font Integration and Final Layout
+ * Version 2.9 - California Gold Background, Flush Logo, High Content
  */
 
 /* ===================================================================
@@ -15,12 +15,11 @@
    =================================================================== */
 
 body, html {
-    background-color: #EFE9AB !important; /* SOFT PALE GOLD BACKGROUND */
+    background-color: #FDB515 !important; /* NEW: CALIFORNIA GOLD */
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
     color: #333; 
-    /* Default body font: Inter for high readability */
     font-family: 'Inter', sans-serif;
 }
 
@@ -30,55 +29,66 @@ body, html {
 
 
 /* ===================================================================
-   NAVIGATION & LOGO (Top Left Flush)
+   NAVIGATION & LOGO (Top Flush Positioning)
    =================================================================== */
 
-.navbar-expand-lg .container-fluid {
+/* Container for Logo and Contact Us - Now spans the full width at the very top */
+.top-bar-flush {
     display: flex;
     justify-content: space-between; 
-    align-items: flex-start; 
-    padding: 0px 15px 0 0px; 
-    margin: 0; 
+    align-items: flex-start; /* Aligns content to the top */
     width: 100%;
+    padding: 10px 15px 0 0; /* Padding for the right (Contact Us) */
+    position: absolute; /* Allows content below to shift up */
+    z-index: 1000;
+}
+
+.logo-link {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    line-height: 0; /* Removes line height gap below image */
 }
 
 .logo-image {
     width: 250px; 
     height: auto;
     display: block;
-    background-color: transparent !important; 
     box-shadow: none !important; 
     border-radius: 0 !important;
     padding: 0 !important;
-    margin-left: 0;
+    margin-left: 0; /* Ensures flush left */
 }
 
-.navbar-brand {
-    padding: 0 !important;
-    margin: 0 !important;
+/* Contact Us Link Styling */
+.contact-us-link {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.nav-item {
-    padding-top: 5px; 
-    padding-bottom: 0;
-}
-
-.nav-link {
+.contact-us-link a {
     color: #333 !important; 
     text-decoration: none;
     font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    padding-top: 5px;
+    display: block;
 }
 
 
 /* ===================================================================
-   HERO CONTENT LAYOUT (SPLIT SCREEN - HIGH PLACEMENT)
+   HERO CONTENT LAYOUT (SHIFTED UP AGGRESSIVELY)
    =================================================================== */
 
 .main-content-layout {
     display: flex;
     justify-content: space-between;
     align-items: flex-start; 
-    padding-top: 0px; 
+    /* SHIFT UP: Use heavy negative margin to pull the content up 
+       over the default space previously occupied by the navbar. */
+    margin-top: -110px; 
+    padding-top: 130px; /* Counter-padding to push text/form content down just below the flush logo */
     padding-bottom: 50px;
     text-align: left; 
 }
@@ -94,24 +104,22 @@ body, html {
 .right-form-area {
     flex: 0 0 45%; 
     max-width: 45%;
-    /* PULL FORM UP: Negative margin for aggressive upward placement */
-    margin-top: -30px; 
+    margin-top: 0px; 
 }
 
 
 /* ===================================================================
-   CONTENT STYLING (Google Fonts and Colors)
+   CONTENT STYLING (Colors retained)
    =================================================================== */
 
 /* SANKALPA Heading: Cinzel (Bold, Monumental) */
 h1 {
     font-family: 'Cinzel', serif; 
-    
     font-size: 3.8em; 
     font-weight: 700; 
     margin-top: 5px; 
     margin-bottom: 8px; 
-    color: #ED7014; /* PRIMARY ORANGE */
+    color: #0B6623; /* Changed to Green for better contrast on Gold background */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
     text-align: left; 
     text-transform: uppercase; 
@@ -121,12 +129,11 @@ h1 {
 /* Tagline: Cormorant Garamond (Italic, Refined) */
 .tagline {
     font-family: 'Cormorant Garamond', serif; 
-    
     font-size: 1.6em; 
     margin-bottom: 30px; 
     font-style: italic; 
     font-weight: 500; 
-    color: #0B6623; /* SECONDARY DARK GREEN */
+    color: #333; /* Darker text for readability */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
     text-align: left; 
 }
@@ -147,7 +154,7 @@ h1 {
 }
 
 .why-sankalpa p strong {
-    color: #0B6623; 
+    color: #084C1C; /* Darker green */
     font-weight: 700;
 }
 
@@ -161,12 +168,12 @@ h1 {
     margin: 0; 
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.95); 
-    box-shadow: 0 0 25px rgba(237, 112, 20, 0.4), 0 8px 16px rgba(0,0,0,0.2); 
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0,0,0,0.2); 
     text-align: center; 
 }
 
 .form-section h4 {
-    color: #ED7014; 
+    color: #ED7014; /* Orange retained for internal form headings */
     margin-bottom: 25px;
     font-weight: 700;
     font-size: 1.8em;
@@ -224,17 +231,15 @@ h1 {
 
 
 /* ===================================================================
-   MOBILE RESPONSIVENESS (Vertical Stack)
+   MOBILE RESPONSIVENESS 
    =================================================================== */
 
 @media (max-width: 768px) {
     
-    /* Remove desktop positioning overrides */
-    .right-form-area {
-        margin-top: 0; 
-    }
-
     .main-content-layout {
+        /* Mobile content is still pushed down, but less aggressively */
+        margin-top: -60px;
+        padding-top: 100px;
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -248,7 +253,6 @@ h1 {
         text-align: center !important;
     }
     
-    /* Ensure mobile fonts are resized for readability */
     h1 {
         font-size: 2.5em; 
         margin-top: 15px;
@@ -263,7 +267,6 @@ h1 {
         text-align: center !important; 
     }
 
-    /* Mobile specific styles */
     .form-section {
         box-shadow: none !important;
         border: 1px solid rgba(0,0,0,0.1); 
@@ -274,10 +277,7 @@ h1 {
         width: 150px; 
     }
     
-    .navbar-expand-lg .container-fluid {
-        flex-direction: row; 
-        justify-content: space-between;
-        align-items: center; 
-        padding: 10px 15px; 
+    .top-bar-flush {
+        padding: 10px 15px 0 0; 
     }
 }
