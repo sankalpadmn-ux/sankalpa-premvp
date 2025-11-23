@@ -1,14 +1,14 @@
 /*
  * SANKALPA UI STYLESHEET (styles2.css)
- * Version 2.0 - Golden-Orange Redesign & Seamless Integration
+ * Version 2.4 - Split-Screen Layout & Left Alignment
  */
 
 /* ===================================================================
-   GLOBAL STYLING & BACKGROUND (More GOLDEN and ORANGISH - Point 2)
+   GLOBAL STYLING & BACKGROUND 
    =================================================================== */
 
 body, html {
-    background-color: #FDD265 !important; /* New: Richer Golden-Orange Background */
+    background-color: #f0aa7f !important; /* GOLDEN-ORANGISH BACKGROUND */
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
@@ -22,7 +22,7 @@ body, html {
 
 
 /* ===================================================================
-   NAVIGATION & LOGO (Transparent Blend - Point 1)
+   NAVIGATION & LOGO (Transparent Blend)
    =================================================================== */
 
 .navbar-expand-lg .container-fluid {
@@ -37,18 +37,10 @@ body, html {
     width: 250px; 
     height: auto;
     display: block;
-    
-    /* --- LOGO TRANSPARENCY FIX (Requires Transparent PNG) --- */
-    /* Remove background, shadow, and padding to allow full blend IF image is transparent PNG */
     background-color: transparent !important; 
     box-shadow: none !important; 
     border-radius: 0 !important;
     padding: 0 !important;
-    /* If Sankalpa_Logo.jpg is still a JPEG with a solid background,
-       it will show that solid background against the #FDD265 page background.
-       Only a transparent PNG will truly blend seamlessly.
-       You MUST ensure your logo image is a transparent PNG.
-    */
 }
 
 .navbar-brand {
@@ -69,83 +61,98 @@ body, html {
 
 
 /* ===================================================================
-   HERO & CONTENT AREAS (Text Placement and Colors - Points 3, 4, 5)
+   HERO CONTENT LAYOUT (SPLIT SCREEN)
    =================================================================== */
 
-.container {
+.main-content-layout {
+    /* Base style for desktop: enable flexbox for two columns */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align content to the top */
     padding-top: 10px; 
     padding-bottom: 50px;
-    text-align: center; 
+    text-align: left; /* Default left alignment */
 }
 
-/* 3. SANKALPA Heading in Bright Orange & 5. Top Center */
+.left-content-area {
+    flex: 0 0 50%; /* Left column takes 50% width */
+    max-width: 50%;
+    padding-right: 30px; 
+    text-align: left !important; /* Force Left Alignment for text */
+}
+
+.right-form-area {
+    flex: 0 0 45%; /* Right column slightly smaller */
+    max-width: 45%;
+    /* Ensure the form section itself is centered within this right column */
+}
+
+
+/* ===================================================================
+   CONTENT STYLING (Left Aligned Text & Colors)
+   =================================================================== */
+
+/* SANKALPA Heading: Primary Orange */
 h1 {
-    font-size: 3.5em; /* Slightly larger for prominence */
-    font-weight: 800; /* Bolder */
-    margin-top: 25px; /* More space from logo */
-    margin-bottom: 8px; /* Tighter grouping with tagline */
-    color: #FF7F50; /* New: Bright Coral Orange */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    font-size: 3.5em; 
+    font-weight: 800; 
+    margin-top: 25px; 
+    margin-bottom: 8px; 
+    color: #ED7014; /* PRIMARY ORANGE */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
+    text-align: left; /* Ensure h1 is left-aligned */
 }
 
-/* 4. Connecting with Purpose in Dark Green & 5. Top Center */
+/* Tagline: Secondary Dark Green */
 .tagline {
-    font-size: 1.8em; /* Slightly larger */
-    margin-bottom: 50px; /* More space before next section */
+    font-size: 1.8em; 
+    margin-bottom: 30px; 
     font-style: italic;
-    color: #2E8B57; /* New: Dark Sea Green */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    color: #0B6623; /* SECONDARY DARK GREEN */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
+    text-align: left; /* Ensure tagline is left-aligned */
 }
 
-/* 6. Why Sankalpa section no separate border (merge with background) */
+/* Why Sankalpa section: Purpose Write Up */
 .why-sankalpa {
-    background-color: transparent !important; /* Merge with background */
-    padding: 20px 0; /* Adjust padding to separate text visually */
+    background-color: transparent !important; 
+    padding: 0; /* Removed padding */
     border-radius: 0 !important; 
     margin-bottom: 30px; 
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; /* Center content now that it's merged */
     box-shadow: none !important; 
     border: none !important; 
-}
-
-.why-sankalpa h2 {
-    text-align: center;
-    margin-bottom: 15px;
-    color: #FF7F50; /* Primary Orange for heading */
-    font-size: 2.2em;
-    font-weight: 700;
+    text-align: left !important; /* Force Left Alignment for text */
 }
 
 .why-sankalpa p {
-    line-height: 1.8; /* Increased line height for readability */
-    color: #4A4A4A; /* Slightly darker gray for contrast on light gold */
+    line-height: 1.8; 
+    color: #4A4A4A; 
     font-size: 1.1em;
+    text-align: left; /* Ensure body copy is left-aligned */
 }
 
 .why-sankalpa p strong {
-    color: #2E8B57; /* Dark Green for emphasis */
+    color: #0B6623; /* SECONDARY DARK GREEN */
     font-weight: 700;
 }
 
 
 /* ===================================================================
-   FORM STYLING (Sacred Space) - Adjusted for new background
+   FORM STYLING (Sacred Space) 
    =================================================================== */
 
 .form-section {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0; /* Removed auto margin for right alignment */
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.95); /* More opaque white for contrast */
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(255, 165, 0, 0.4), 0 8px 16px rgba(0,0,0,0.2); /* Enhanced golden glow */
+    background-color: rgba(255, 255, 255, 0.95); 
+    /* Golden Glow (Desktop Only) */
+    box-shadow: 0 0 25px rgba(237, 112, 20, 0.4), 0 8px 16px rgba(0,0,0,0.2); 
+    text-align: center; /* Keep form elements centered within the box */
 }
 
 .form-section h4 {
-    color: #FF7F50; /* Primary Orange */
+    color: #ED7014; /* PRIMARY ORANGE */
     margin-bottom: 25px;
     font-weight: 700;
     font-size: 1.8em;
@@ -154,69 +161,84 @@ h1 {
 .nav-tabs {
     border-bottom: none !important; 
     justify-content: center; 
-    margin-bottom: 25px; /* More space */
-    background-color: rgba(255, 255, 255, 0.95); /* Ensure tabs match form background */
+    margin-bottom: 25px; 
+    background-color: rgba(255, 255, 255, 0.95); 
     box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
     border-radius: 8px 8px 0 0; 
 }
 
-.nav-tabs .nav-link {
-    color: #6C757D !important; 
-    background-color: transparent !important;
-    border: none !important;
-    padding: 12px 22px; /* Increased padding */
-    font-weight: 500;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
 .nav-tabs .nav-link.active {
-    color: #FF7F50 !important; /* Primary Orange */
+    color: #ED7014 !important; /* PRIMARY ORANGE */
     font-weight: 700;
-    border-bottom: 4px solid #FF7F50 !important; /* Thicker underline */
-    text-shadow: 0 0 8px rgba(255, 165, 0, 0.7); /* Brighter glow */
-    background-color: transparent !important;
-    transform: translateY(-2px); /* Slight lift */
+    border-bottom: 4px solid #ED7014 !important; 
+    text-shadow: 0 0 8px rgba(237, 112, 20, 0.7); 
+    transform: translateY(-2px); 
 }
 
 .form-control {
-    background-color: #FFF8E7; /* Very light cream for inputs */
-    border: 1px solid #FFC65A; /* Gold border */
+    background-color: #FFF8E7; 
+    border: 1px solid #FFC65A; 
     border-radius: 8px; 
-    padding: 14px 18px; /* More generous padding */
+    padding: 14px 18px; 
     margin-bottom: 20px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset; 
     transition: all 0.3s ease;
 }
 
 .form-control:focus {
-    border-color: #FF7F50; /* Bright orange focus */
-    box-shadow: 0 0 10px rgba(255, 165, 0, 0.8); /* Stronger golden glow on focus */
+    border-color: #ED7014; 
+    box-shadow: 0 0 10px rgba(237, 112, 20, 0.8); 
 }
 
 .btn-primary {
-    background-color: #2E8B57; /* Dark Green for button */
-    border-color: #226B44;
+    background-color: #0B6623; /* SECONDARY DARK GREEN */
+    border-color: #084C1C;
     color: #FFF;
     font-weight: bold;
-    padding: 14px 30px; /* Larger button */
-    border-radius: 35px; /* More rounded */
-    box-shadow: 0 5px 15px rgba(46, 139, 87, 0.5); /* Greenish glow */
+    padding: 14px 30px; 
+    border-radius: 35px; 
+    box-shadow: 0 5px 15px rgba(11, 102, 35, 0.5); 
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #226B44; 
-    border-color: #1A4F33;
-    box-shadow: 0 8px 20px rgba(46, 139, 87, 0.7); 
+    background-color: #084C1C; 
+    border-color: #063A14;
+    box-shadow: 0 8px 20px rgba(11, 102, 35, 0.7); 
     transform: translateY(-3px); 
 }
 
 
 /* ===================================================================
-   MOBILE RESPONSIVENESS 
+   MOBILE RESPONSIVENESS (Vertical Stack for Mobile)
    =================================================================== */
 
 @media (max-width: 768px) {
+    
+    /* Revert to single column stack */
+    .main-content-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .left-content-area, .right-form-area {
+        flex: 0 0 100%; 
+        max-width: 100%;
+        padding: 0 15px; /* Add horizontal padding for mobile */
+        margin-bottom: 20px;
+        text-align: center !important;
+    }
+    
+    h1, .tagline, .why-sankalpa p {
+        text-align: center !important; /* Center text on mobile */
+    }
+
+    /* REMOVING RESOURCE-INTENSIVE SHADOWS FOR MOBILE PERFORMANCE */
+    .why-sankalpa, .form-section {
+        box-shadow: none !important;
+        border: 1px solid rgba(0,0,0,0.1); 
+    }
     
     .logo-image {
         width: 150px; 
@@ -228,16 +250,8 @@ h1 {
         padding-top: 10px;
     }
     
-    .ml-auto {
-        margin-left: 0 !important;
-    }
-    
-    .nav-item {
-        padding: 5px 0; 
-    }
-
     h1 {
-        font-size: 2.5em; /* Adjusted for mobile */
+        font-size: 2.5em; 
         margin-top: 15px;
     }
     
@@ -246,29 +260,10 @@ h1 {
         margin-bottom: 25px;
     }
 
-    .why-sankalpa {
-        padding: 15px;
-        margin-bottom: 20px;
-        /* No shadows for mobile performance as requested */
-        box-shadow: none !important; 
-        border: none !important;
-        text-align: center; /* Ensure mobile text aligns well */
-    }
-
-    .why-sankalpa h2 {
-        font-size: 1.8em;
-    }
-
-    .why-sankalpa p {
-        font-size: 1em;
-    }
-    
     .form-section {
         padding: 20px 15px;
-        box-shadow: none !important; /* No shadows for mobile forms */
-        border: 1px solid rgba(0,0,0,0.1); /* Simple border for definition */
     }
-
+    
     .form-row > .col-3,
     .form-row > .col-9 {
         flex: 0 0 100%;
@@ -282,11 +277,11 @@ h1 {
     }
     
     .nav-tabs .nav-link {
-        padding: 10px 15px; /* Smaller tabs for mobile */
+        padding: 10px 15px; 
     }
     
     .nav-tabs .nav-link.active {
-        border-bottom-width: 3px !important; /* Slightly thinner underline */
+        border-bottom-width: 3px !important; 
     }
 }
 
