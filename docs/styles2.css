@@ -1,6 +1,6 @@
 /*
  * SANKALPA UI STYLESHEET (styles2.css)
- * Version 4.0 (V11) - Layout Compression, Dropdown Fix, Tab Color Fix
+ * Version 5.0 (V12) - Layout Compression, Dropdown FIX, Button Color Fix
  */
 
 /* ===================================================================
@@ -15,7 +15,7 @@
    =================================================================== */
 
 body, html {
-    background-color: #ead79b !important; /* Soft Beige/Gold */
+    background-color: #ead79b !important; 
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
@@ -38,8 +38,8 @@ body, html {
     justify-content: space-between; 
     align-items: flex-start; 
     width: 100%;
-    /* Reduced top padding */
-    padding: 5px 30px 0 0; 
+    /* Forced Zero Top Padding */
+    padding: 0 30px 0 0; 
     position: relative; 
     z-index: 1000;
     /* Reduced margin below the top bar */
@@ -51,7 +51,9 @@ body, html {
     padding: 0;
     margin: 0;
     line-height: 0; 
-    padding-left: 5px; /* LOGO FIX: Moves logo closer to the top-left edge */
+    /* Logo to absolute top-left */
+    padding-left: 5px; 
+    padding-top: 5px;
 }
 
 .logo-image {
@@ -62,7 +64,7 @@ body, html {
     border-radius: 0 !important;
 }
 
-/* Contact Us Link Styling FIX */
+/* Contact Us Link Styling */
 .contact-us-link {
     list-style: none;
     padding: 0;
@@ -97,33 +99,34 @@ body, html {
 .left-content-area {
     flex: 0 0 50%; 
     max-width: 50%;
-    /* Reduced padding */
     padding-right: 20px; 
     padding-left: 15px; 
     text-align: left !important; 
+    /* Force Left Column Content UP */
+    margin-top: -30px; 
 }
 
 .right-form-area {
     flex: 0 0 45%; 
     max-width: 45%;
-    margin-top: 0px; 
-    /* VERTICAL COMPRESSION FIX: Remove top padding/margin from form area */
+    /* Force Right Column Content UP */
+    margin-top: -30px; 
     padding-top: 0 !important; 
 }
 
 
 /* ===================================================================
-   CONTENT STYLING (Color FIX)
+   CONTENT STYLING (Headers & Tagline)
    =================================================================== */
 
 h1 {
     font-family: 'Cinzel', serif; 
     font-size: 3.8em; 
     font-weight: 700; 
-    /* VERTICAL COMPRESSION FIX: Reduce H1 margins */
+    /* VERTICAL COMPRESSION FIX: Zero out H1 margins */
     margin-top: 0px !important; 
     margin-bottom: 5px !important; 
-    color: #ED7014; /* Orange */
+    color: #ED7014; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
     text-align: left; 
     text-transform: uppercase; 
@@ -133,18 +136,16 @@ h1 {
 .tagline {
     font-family: 'Cormorant Garamond', serif; 
     font-size: 1.6em; 
-    /* VERTICAL COMPRESSION FIX: Reduce tagline margins */
     margin-bottom: 15px !important; 
     font-style: italic; 
     font-weight: 500; 
-    color: #0B6623; /* Dark Green */
+    color: #0B6623; 
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
     text-align: left; 
 }
 
 .why-sankalpa {
     padding: 0; 
-    /* VERTICAL COMPRESSION FIX: Reduce body copy margin */
     margin-bottom: 10px !important; 
     text-align: left !important; 
 }
@@ -171,24 +172,16 @@ h1 {
     text-align: center; 
 }
 
-.form-section h4 {
-    color: #ED7014; 
-    margin-bottom: 25px;
-    font-weight: 700;
-    font-size: 1.8em;
-}
-
-/* Tab Colors FIX: Targetting the inactive tab */
+/* Tab Colors FIX: Inactive is Green, Active is Orange (working) */
 .nav-tabs .nav-link {
     cursor: pointer;
     background-color: transparent !important;
     border: none !important;
-    color: #0B6623 !important; /* FIX: Set default (inactive) tab color to dark green */
+    color: #0B6623 !important; /* Inactive (Unselected) is Dark Green */
 }
 
-/* Tab Colors FIX: Targetting the active tab */
 .nav-tabs .nav-link.active {
-    color: #ED7014 !important; /* Orange */
+    color: #ED7014 !important; /* Active (Selected) is Orange */
     font-weight: 700;
     border-bottom: 4px solid #ED7014 !important; 
     text-shadow: 0 0 8px rgba(237, 112, 20, 0.7); 
@@ -206,9 +199,33 @@ h1 {
     transition: all 0.3s ease;
     height: auto; 
     
-    /* DROPDOWN FIX: Increase z-index for form controls, especially select dropdowns */
+    /* DROPDOWN FIX: Increase z-index and ensure menu is above other elements */
     position: relative; 
-    z-index: 5; 
+    z-index: 10; 
     /* Reset line-height to fix text cutoff in select boxes */
     line-height: normal; 
+}
+
+
+/* ===================================================================
+   BUTTON STYLING FIX (Preventing unwanted Blue)
+   =================================================================== */
+
+.btn-primary {
+    /* Set the button back to a primary brand color (Orange) */
+    background-color: #ED7014 !important; 
+    border-color: #ED7014 !important; 
+    color: white !important;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    /* Darken slightly on hover for feedback */
+    background-color: #D65A00 !important; 
+    border-color: #D65A00 !important; 
+    color: white !important;
 }
