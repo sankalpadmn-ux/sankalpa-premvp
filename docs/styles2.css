@@ -1,6 +1,6 @@
 /*
  * SANKALPA UI STYLESHEET (styles2.css)
- * Version 3.0 - Major Layout Fixes, Color Corrections, New Background (#ead79b)
+ * Version 4.0 (V11) - Layout Compression, Dropdown Fix, Tab Color Fix
  */
 
 /* ===================================================================
@@ -15,7 +15,7 @@
    =================================================================== */
 
 body, html {
-    background-color: #ead79b !important; /* NEW: Soft Beige/Gold */
+    background-color: #ead79b !important; /* Soft Beige/Gold */
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
@@ -38,12 +38,12 @@ body, html {
     justify-content: space-between; 
     align-items: flex-start; 
     width: 100%;
-    /* Increase padding to prevent overlap and ensure contact link visibility */
-    padding: 10px 30px 0 0; 
-    position: relative; /* CHANGE: Use relative to prevent content overlap and ensure proper flow */
+    /* Reduced top padding */
+    padding: 5px 30px 0 0; 
+    position: relative; 
     z-index: 1000;
-    /* Adding some bottom padding to separate the logo bar from the main content */
-    margin-bottom: 20px; 
+    /* Reduced margin below the top bar */
+    margin-bottom: 5px; 
 }
 
 .logo-link {
@@ -51,7 +51,7 @@ body, html {
     padding: 0;
     margin: 0;
     line-height: 0; 
-    padding-left: 15px; /* Aligns with container padding */
+    padding-left: 5px; /* LOGO FIX: Moves logo closer to the top-left edge */
 }
 
 .logo-image {
@@ -80,16 +80,16 @@ body, html {
 
 
 /* ===================================================================
-   HERO CONTENT LAYOUT (POSITIONING FIX)
+   HERO CONTENT LAYOUT (VERTICAL COMPRESSION FIX)
    =================================================================== */
 
 .main-content-layout {
     display: flex;
     justify-content: space-between;
     align-items: flex-start; 
-    /* FIX: Removed aggressive negative margin. Padding is enough now due to relative logo position. */
-    margin-top: 0; 
-    padding-top: 0; 
+    /* VERTICAL COMPRESSION FIX: Zero out top padding/margin */
+    margin-top: 0 !important; 
+    padding-top: 0 !important; 
     padding-bottom: 50px;
     text-align: left; 
 }
@@ -97,7 +97,8 @@ body, html {
 .left-content-area {
     flex: 0 0 50%; 
     max-width: 50%;
-    padding-right: 30px; 
+    /* Reduced padding */
+    padding-right: 20px; 
     padding-left: 15px; 
     text-align: left !important; 
 }
@@ -106,6 +107,8 @@ body, html {
     flex: 0 0 45%; 
     max-width: 45%;
     margin-top: 0px; 
+    /* VERTICAL COMPRESSION FIX: Remove top padding/margin from form area */
+    padding-top: 0 !important; 
 }
 
 
@@ -113,36 +116,36 @@ body, html {
    CONTENT STYLING (Color FIX)
    =================================================================== */
 
-/* SANKALPA Heading: Cinzel (Orange FIX) */
 h1 {
     font-family: 'Cinzel', serif; 
     font-size: 3.8em; 
     font-weight: 700; 
-    margin-top: 5px; 
-    margin-bottom: 8px; 
-    color: #ED7014; /* FIX: Set to Orange */
+    /* VERTICAL COMPRESSION FIX: Reduce H1 margins */
+    margin-top: 0px !important; 
+    margin-bottom: 5px !important; 
+    color: #ED7014; /* Orange */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
     text-align: left; 
     text-transform: uppercase; 
     letter-spacing: 0.1em;
 }
 
-/* Tagline: Cormorant Garamond (Green FIX) */
 .tagline {
     font-family: 'Cormorant Garamond', serif; 
     font-size: 1.6em; 
-    margin-bottom: 30px; 
+    /* VERTICAL COMPRESSION FIX: Reduce tagline margins */
+    margin-bottom: 15px !important; 
     font-style: italic; 
     font-weight: 500; 
-    color: #0B6623; /* FIX: Set to Green */
+    color: #0B6623; /* Dark Green */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
     text-align: left; 
 }
 
-/* Why Sankalpa section: Body Copy */
 .why-sankalpa {
     padding: 0; 
-    margin-bottom: 30px; 
+    /* VERTICAL COMPRESSION FIX: Reduce body copy margin */
+    margin-bottom: 10px !important; 
     text-align: left !important; 
 }
 
@@ -154,11 +157,6 @@ h1 {
     text-align: left; 
 }
 
-.why-sankalpa p strong {
-    color: #084C1C; 
-    font-weight: 700;
-}
-
 
 /* ===================================================================
    FORM STYLING (Sacred Space) FIXES
@@ -168,7 +166,7 @@ h1 {
     max-width: 500px;
     margin: 0; 
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.95); /* Retain slight transparency */
+    background-color: rgba(255, 255, 255, 0.95); 
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0,0,0,0.2); 
     text-align: center; 
 }
@@ -180,119 +178,37 @@ h1 {
     font-size: 1.8em;
 }
 
-/* Tabs: FIX spacing/white background by forcing padding/background inside tab-content */
-.tab-content {
-    background-color: transparent; 
-    padding-top: 5px; 
-}
-
-.nav-tabs {
-    border-bottom: none !important; 
-    justify-content: center; 
-    margin-bottom: 25px; 
-    background-color: transparent; 
-    box-shadow: none;
-    border-radius: 8px 8px 0 0; 
-}
-
-/* FIX: Ensure tabs are clickable */
+/* Tab Colors FIX: Targetting the inactive tab */
 .nav-tabs .nav-link {
     cursor: pointer;
     background-color: transparent !important;
     border: none !important;
+    color: #0B6623 !important; /* FIX: Set default (inactive) tab color to dark green */
 }
 
+/* Tab Colors FIX: Targetting the active tab */
 .nav-tabs .nav-link.active {
-    color: #ED7014 !important; 
+    color: #ED7014 !important; /* Orange */
     font-weight: 700;
     border-bottom: 4px solid #ED7014 !important; 
     text-shadow: 0 0 8px rgba(237, 112, 20, 0.7); 
     transform: translateY(-2px); 
 }
 
-/* Country Dropdown Fix: Increase padding/height to prevent cutoff */
+/* Dropdown/Input Fix: Ensure full menu visibility and proper z-index */
 .form-control {
     background-color: #FFF8E7; 
     border: 1px solid #FFC65A; 
     border-radius: 8px; 
-    padding: 14px 18px; /* Ensure ample padding */
+    padding: 14px 18px; 
     margin-bottom: 20px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset; 
     transition: all 0.3s ease;
-    height: auto; /* Allow height to adjust */
-}
-
-.form-control:focus {
-    border-color: #ED7014; 
-    box-shadow: 0 0 10px rgba(237, 112, 20, 0.8); 
-}
-
-.btn-primary {
-    background-color: #0B6623; 
-    border-color: #084C1C;
-    color: #FFF;
-    font-weight: bold;
-    padding: 14px 30px; 
-    border-radius: 35px; 
-    box-shadow: 0 5px 15px rgba(11, 102, 35, 0.5); 
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #084C1C; 
-    border-color: #063A14;
-    box-shadow: 0 8px 20px rgba(11, 102, 35, 0.7); 
-    transform: translateY(-3px); 
-}
-
-
-/* ===================================================================
-   MOBILE RESPONSIVENESS 
-   =================================================================== */
-
-@media (max-width: 768px) {
+    height: auto; 
     
-    .main-content-layout {
-        margin-top: 0;
-        padding-top: 30px; /* Reduced padding for mobile */
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .left-content-area, .right-form-area {
-        flex: 0 0 100%; 
-        max-width: 100%;
-        padding: 0 15px; 
-        margin-bottom: 20px;
-        text-align: center !important;
-    }
-    
-    h1 {
-        font-size: 2.5em; 
-        margin-top: 15px;
-    }
-    
-    .tagline {
-        font-size: 1.3em; 
-        margin-bottom: 25px;
-    }
-
-    h1, .tagline, .why-sankalpa p {
-        text-align: center !important; 
-    }
-
-    .form-section {
-        box-shadow: none !important;
-        border: 1px solid rgba(0,0,0,0.1); 
-        padding: 20px 15px;
-    }
-
-    .logo-image {
-        width: 150px; 
-    }
-    
-    .top-bar-flush {
-        padding: 10px 15px 0 15px; /* Adjust padding for mobile */
-    }
+    /* DROPDOWN FIX: Increase z-index for form controls, especially select dropdowns */
+    position: relative; 
+    z-index: 5; 
+    /* Reset line-height to fix text cutoff in select boxes */
+    line-height: normal; 
 }
