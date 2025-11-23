@@ -1,14 +1,14 @@
 /*
  * SANKALPA UI STYLESHEET (styles2.css)
- * Version 1.8 - Final Lightweight Mobile Optimization & Color Verification
+ * Version 2.0 - Golden-Orange Redesign & Seamless Integration
  */
 
 /* ===================================================================
-   GLOBAL STYLING & BACKGROUND 
+   GLOBAL STYLING & BACKGROUND (More GOLDEN and ORANGISH - Point 2)
    =================================================================== */
 
 body, html {
-    background-color: #F8E9D8 !important; /* Pale Apricot/Saffron Background from Logo */
+    background-color: #FDD265 !important; /* New: Richer Golden-Orange Background */
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
@@ -22,7 +22,7 @@ body, html {
 
 
 /* ===================================================================
-   NAVIGATION & LOGO (Blending Fix Applied Here)
+   NAVIGATION & LOGO (Transparent Blend - Point 1)
    =================================================================== */
 
 .navbar-expand-lg .container-fluid {
@@ -32,15 +32,23 @@ body, html {
     padding: 15px 15px 0 15px; 
 }
 
-/* Base Logo size for Desktop & Blending Fix */
+/* Base Logo size for Desktop & Transparent Blend */
 .logo-image {
     width: 250px; 
     height: auto;
     display: block;
-    border-radius: 5px; 
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); 
-    background-color: #F8E9D8 !important; 
-    padding: 5px; 
+    
+    /* --- LOGO TRANSPARENCY FIX (Requires Transparent PNG) --- */
+    /* Remove background, shadow, and padding to allow full blend IF image is transparent PNG */
+    background-color: transparent !important; 
+    box-shadow: none !important; 
+    border-radius: 0 !important;
+    padding: 0 !important;
+    /* If Sankalpa_Logo.jpg is still a JPEG with a solid background,
+       it will show that solid background against the #FDD265 page background.
+       Only a transparent PNG will truly blend seamlessly.
+       You MUST ensure your logo image is a transparent PNG.
+    */
 }
 
 .navbar-brand {
@@ -61,7 +69,7 @@ body, html {
 
 
 /* ===================================================================
-   HERO & CONTENT AREAS (Precise Text Alignment Fix & Logo Colors)
+   HERO & CONTENT AREAS (Text Placement and Colors - Points 3, 4, 5)
    =================================================================== */
 
 .container {
@@ -70,79 +78,85 @@ body, html {
     text-align: center; 
 }
 
+/* 3. SANKALPA Heading in Bright Orange & 5. Top Center */
 h1 {
-    font-size: 3em;
-    font-weight: 700;
-    margin-top: 15px; 
-    margin-bottom: 5px; 
-    color: #C75939; /* LOGO PRIMARY COLOR */
+    font-size: 3.5em; /* Slightly larger for prominence */
+    font-weight: 800; /* Bolder */
+    margin-top: 25px; /* More space from logo */
+    margin-bottom: 8px; /* Tighter grouping with tagline */
+    color: #FF7F50; /* New: Bright Coral Orange */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
 }
 
+/* 4. Connecting with Purpose in Dark Green & 5. Top Center */
 .tagline {
-    font-size: 1.5em;
-    margin-bottom: 40px; 
+    font-size: 1.8em; /* Slightly larger */
+    margin-bottom: 50px; /* More space before next section */
     font-style: italic;
-    color: #A07A58; /* LOGO SECONDARY COLOR */
+    color: #2E8B57; /* New: Dark Sea Green */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
 
-/* Why Sankalpa section styling */
+/* 6. Why Sankalpa section no separate border (merge with background) */
 .why-sankalpa {
-    background-color: rgba(255, 255, 255, 0.6); 
-    padding: 20px;
-    border-radius: 12px; 
-    margin-bottom: 25px; 
+    background-color: transparent !important; /* Merge with background */
+    padding: 20px 0; /* Adjust padding to separate text visually */
+    border-radius: 0 !important; 
+    margin-bottom: 30px; 
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    text-align: left; 
-    /* Soft Golden Glow Shadow (Desktop) */
-    box-shadow: 0 0 15px rgba(255, 193, 7, 0.2), 0 4px 8px rgba(0,0,0,0.1); 
-    border: 1px solid rgba(255, 215, 0, 0.3); 
+    text-align: center; /* Center content now that it's merged */
+    box-shadow: none !important; 
+    border: none !important; 
 }
 
 .why-sankalpa h2 {
     text-align: center;
     margin-bottom: 15px;
-    color: #C75939; /* LOGO PRIMARY COLOR */
+    color: #FF7F50; /* Primary Orange for heading */
+    font-size: 2.2em;
+    font-weight: 700;
 }
 
 .why-sankalpa p {
-    line-height: 1.6;
-    color: #444; 
+    line-height: 1.8; /* Increased line height for readability */
+    color: #4A4A4A; /* Slightly darker gray for contrast on light gold */
+    font-size: 1.1em;
 }
 
 .why-sankalpa p strong {
-    color: #A07A58; /* LOGO SECONDARY COLOR */
+    color: #2E8B57; /* Dark Green for emphasis */
     font-weight: 700;
 }
 
 
 /* ===================================================================
-   FORM STYLING (Sacred Space) 
+   FORM STYLING (Sacred Space) - Adjusted for new background
    =================================================================== */
 
 .form-section {
     max-width: 500px;
     margin: 0 auto;
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.9); 
+    background-color: rgba(255, 255, 255, 0.95); /* More opaque white for contrast */
     border-radius: 12px;
-    /* Soft Golden Glow Shadow (Desktop) */
-    box-shadow: 0 0 20px rgba(255, 193, 7, 0.3), 0 6px 12px rgba(0,0,0,0.15); 
+    box-shadow: 0 0 25px rgba(255, 165, 0, 0.4), 0 8px 16px rgba(0,0,0,0.2); /* Enhanced golden glow */
 }
 
 .form-section h4 {
-    color: #C75939; /* LOGO PRIMARY COLOR */
-    margin-bottom: 20px;
-    font-weight: 600;
+    color: #FF7F50; /* Primary Orange */
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.8em;
 }
 
-/* Tab Alignment Refinement */
 .nav-tabs {
     border-bottom: none !important; 
     justify-content: center; 
-    margin-bottom: 20px; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    margin-bottom: 25px; /* More space */
+    background-color: rgba(255, 255, 255, 0.95); /* Ensure tabs match form background */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
     border-radius: 8px 8px 0 0; 
 }
 
@@ -150,48 +164,56 @@ h1 {
     color: #6C757D !important; 
     background-color: transparent !important;
     border: none !important;
-    padding: 10px 20px;
+    padding: 12px 22px; /* Increased padding */
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-tabs .nav-link.active {
-    color: #C75939 !important; /* LOGO PRIMARY COLOR */
+    color: #FF7F50 !important; /* Primary Orange */
     font-weight: 700;
-    border-bottom: 3px solid #C75939 !important; 
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); 
+    border-bottom: 4px solid #FF7F50 !important; /* Thicker underline */
+    text-shadow: 0 0 8px rgba(255, 165, 0, 0.7); /* Brighter glow */
     background-color: transparent !important;
+    transform: translateY(-2px); /* Slight lift */
 }
 
 .form-control {
-    background-color: #FEFBF6; 
-    border: 1px solid #D2B48C; 
+    background-color: #FFF8E7; /* Very light cream for inputs */
+    border: 1px solid #FFC65A; /* Gold border */
     border-radius: 8px; 
-    padding: 12px 15px; 
+    padding: 14px 18px; /* More generous padding */
     margin-bottom: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05) inset; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset; 
     transition: all 0.3s ease;
 }
 
 .form-control:focus {
-    border-color: #A07A58; 
-    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6); 
+    border-color: #FF7F50; /* Bright orange focus */
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.8); /* Stronger golden glow on focus */
 }
 
 .btn-primary {
-    background-color: #A07A58; /* LOGO SECONDARY COLOR */
-    border-color: #8C6A4D;
+    background-color: #2E8B57; /* Dark Green for button */
+    border-color: #226B44;
     color: #FFF;
     font-weight: bold;
-    padding: 12px 25px; 
-    border-radius: 30px; 
-    box-shadow: 0 4px 10px rgba(160, 122, 88, 0.4); 
+    padding: 14px 30px; /* Larger button */
+    border-radius: 35px; /* More rounded */
+    box-shadow: 0 5px 15px rgba(46, 139, 87, 0.5); /* Greenish glow */
     transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #226B44; 
+    border-color: #1A4F33;
+    box-shadow: 0 8px 20px rgba(46, 139, 87, 0.7); 
+    transform: translateY(-3px); 
 }
 
 
 /* ===================================================================
-   MOBILE RESPONSIVENESS (Optimized for Lightweight - Shadow Removal)
+   MOBILE RESPONSIVENESS 
    =================================================================== */
 
 @media (max-width: 768px) {
@@ -206,31 +228,47 @@ h1 {
         padding-top: 10px;
     }
     
-    /* REMOVING RESOURCE-INTENSIVE SHADOWS FOR MOBILE PERFORMANCE */
-    .why-sankalpa, .form-section {
-        box-shadow: none !important;
-        border: 1px solid rgba(0,0,0,0.1); /* Use a simple border instead of shadow */
+    .ml-auto {
+        margin-left: 0 !important;
+    }
+    
+    .nav-item {
+        padding: 5px 0; 
     }
 
     h1 {
-        font-size: 2em;
-        margin-top: 5px;
+        font-size: 2.5em; /* Adjusted for mobile */
+        margin-top: 15px;
     }
     
     .tagline {
-        font-size: 1.2em;
-        margin-bottom: 15px;
+        font-size: 1.3em;
+        margin-bottom: 25px;
     }
 
     .why-sankalpa {
         padding: 15px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        /* No shadows for mobile performance as requested */
+        box-shadow: none !important; 
+        border: none !important;
+        text-align: center; /* Ensure mobile text aligns well */
+    }
+
+    .why-sankalpa h2 {
+        font-size: 1.8em;
+    }
+
+    .why-sankalpa p {
+        font-size: 1em;
     }
     
     .form-section {
         padding: 20px 15px;
+        box-shadow: none !important; /* No shadows for mobile forms */
+        border: 1px solid rgba(0,0,0,0.1); /* Simple border for definition */
     }
-    
+
     .form-row > .col-3,
     .form-row > .col-9 {
         flex: 0 0 100%;
@@ -241,6 +279,14 @@ h1 {
     .form-row {
         margin-left: 0;
         margin-right: 0;
+    }
+    
+    .nav-tabs .nav-link {
+        padding: 10px 15px; /* Smaller tabs for mobile */
+    }
+    
+    .nav-tabs .nav-link.active {
+        border-bottom-width: 3px !important; /* Slightly thinner underline */
     }
 }
 
