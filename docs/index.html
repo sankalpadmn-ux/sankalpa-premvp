@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SANKALPA - Connecting with Purpose</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles2.css?v=10"> 
+    
+    <link rel="stylesheet" href="styles2.css?v=11"> 
+    
     <style>
         .validation-success {
             color: #0B6623;
@@ -20,7 +22,7 @@
 </head>
 <body>
 
-    <div class="top-bar-flush">
+    <div class="top-bar-flush" id="top-nav-bar">
         <a class="logo-link" href="index.html">
             <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
         </a>
@@ -33,17 +35,20 @@
     </div>
 
     <div class="container main-content-layout">
+        
         <div class="left-content-area">
+            
             <h1 class="mt-4">SANKALPA</h1> 
             <p class="tagline">Connecting with Purpose</p>
+            
             <div class="why-sankalpa">
                 <p>Sankalpa is dedicated to upholding ancient traditions in the modern world. We provide a seamless, tech-enabled platform that connects you to a curated global collective of trusted priests, ensuring every ritual, vow, and Sankalpa is realized with uncompromised authenticity and spiritual integrity.</p>
             </div>
-        </div> 
-        
-        <div class="right-form-area">
+
+        </div> <div class="right-form-area">
             <div class="form-section">
                 <h4>Enter the Sacred Space</h4>
+
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab" aria-controls="existing" aria-selected="true">Existing User</a>
@@ -54,6 +59,7 @@
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
+                    
                     <div id="duplicateMsg" class="alert alert-info text-center" style="display: none; margin-bottom: 20px;">
                         Loading...
                     </div>
@@ -61,9 +67,11 @@
                     <div class="tab-pane fade show active" id="existing" role="tabpanel" aria-labelledby="existing-tab">
                         <form>
                             <input type="text" class="form-control" placeholder="Full Name">
+                            
                             <select class="form-control" title="Select your Country">
                                 <option value="" disabled selected>Country</option>
-                            </select>
+                                </select>
+
                             <div class="form-row">
                                 <div class="col-3">
                                     <input type="text" class="form-control" placeholder="Code">
@@ -80,9 +88,11 @@
                         <form>
                             <input type="text" class="form-control" placeholder="Full Name">
                             <input type="text" class="form-control" placeholder="City">
+                            
                             <select class="form-control" title="Select your Country">
                                 <option value="" disabled selected>Country</option>
-                            </select>
+                                </select>
+
                             <div class="form-row">
                                 <div class="col-3">
                                     <input type="text" class="form-control" placeholder="Code">
