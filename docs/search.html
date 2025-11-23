@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SANKALPA - Search</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles2.css?v=10"> 
+    
+    <link rel="stylesheet" href="styles2.css?v=11"> 
 </head>
 <body>
 
@@ -42,18 +43,23 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // This check is already run by script.js, but we re-run it here for visual consistency
             const isLoggedIn = localStorage.getItem('sankalpa_loggedIn') === 'true';
             const userName = localStorage.getItem('sankalpa_userName');
             const authLinks = document.getElementById('auth-links');
 
             if (isLoggedIn && userName) {
+                // If logged in, show Welcome/Logout/Contact Us
                 authLinks.innerHTML = `
                     <li><span style="font-weight: bold; padding-right: 15px;">Welcome ${userName}</span></li>
                     <li><a href="#" id="logout-link">Logout</a></li>
+                    <li><a href="contact.html" style="padding-left: 15px;">Contact Us</a></li>
                 `;
             } else {
-                // If not logged in, redirect to index.html (Login)
-                window.location.href = 'index.html'; 
+                // If not logged in, show Contact Us link
+                authLinks.innerHTML = `
+                    <li><a href="contact.html">Contact Us</a></li>
+                `;
             }
         });
     </script>
