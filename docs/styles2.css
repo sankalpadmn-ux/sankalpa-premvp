@@ -1,114 +1,170 @@
+/*
+ * SANKALPA UI STYLESHEET (styles2.css)
+ * Version 1.0 - Beautification Changes
+ */
+
+/* ===================================================================
+   GLOBAL STYLING & BACKGROUND (Requested Changes)
+   =================================================================== */
+
+/* Apply the uniform glossy golden/silkish background and remove margins/padding */
 body, html {
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: #523a20;
+    background-color: #F5F5DC !important; /* Pale Gold/Creamy Beige - soothing silkish UI */
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    /* Retain original font colors as requested */
+    color: #333; 
+    font-family: Arial, sans-serif;
 }
 
-.bg {
-  background: linear-gradient(145deg, #f7e9d4, #ecd8ba, #f3e3c7);
-  min-height: 100vh;
-  padding-bottom: 40px;
+/* Ensure main containers inherit the new background color and don't introduce different shades */
+.container, .header, .navbar {
+    background-color: transparent !important;
 }
 
-/******** HEADER ********/
-.header {
-  background: #f7e9d4;
-  padding: 12px 20px;
-  border-bottom: 1px solid #d8c4a8;
+
+/* ===================================================================
+   NAVIGATION & LOGO (Requested Changes)
+   =================================================================== */
+
+/* Style for the logo image to make it significantly larger */
+.logo-image {
+    width: 250px; /* Adjust this value (250px) if you need it even bigger */
+    height: auto;
+    display: block;
 }
 
-.header-link {
-  color: #6a4720;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
+/* Target the container (navbar-brand) to position the logo top-left */
+.navbar-brand {
+    padding-top: 15px !important; /* Push down slightly from the absolute top */
+    padding-bottom: 0 !important;
+    margin-left: 15px !important; /* Margin from the left edge */
 }
 
-.header-link:hover { text-decoration: underline; }
-
-/******** HERO ********/
-.hero {
-  display: flex;
-  justify-content: space-between;
-  padding: 40px 10%;
-  flex-wrap: wrap;
-  gap: 40px;
+/* Style for the "Contact Us" link */
+.nav-item {
+    padding: 0 10px;
 }
 
-.left, .right {
-  flex: 1;
-  min-width: 320px;
+.nav-link {
+    color: #333 !important; /* Retaining dark font color */
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.hero-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #5a3410;
+
+/* ===================================================================
+   HERO & CONTENT AREAS
+   =================================================================== */
+
+/* General container styling for centering content */
+.container {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    text-align: center;
 }
 
-.hero-text { 
-  font-size: 17px;
-  margin-top: 12px;
-  color: #6a4720;
+/* Style for the main SANKALPA heading */
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    margin-top: 20px;
+    /* This text is controlled in index.html, but we style it here */
 }
 
-/******** FORM ********/
-.form-box, .contact-box {
-  background: rgba(255, 255, 255, 0.55);
-  padding: 24px;
-  border-radius: 14px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+/* Style for the "Connecting with Purpose" tagline */
+.tagline {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    font-style: italic;
 }
 
-.input-group { margin-bottom: 18px; }
-
-.input-group label {
-  display: block;
-  font-size: 15px;
-  margin-bottom: 5px;
-  font-weight: 600;
+/* Style for "Why Sankalpa?" section */
+.why-sankalpa {
+    background-color: rgba(255, 255, 255, 0.5); /* Subtle overlay for readability over the background */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle depth */
 }
 
-.input-group input,
-.input-group select {
-  width: 100%;
-  padding: 11px;
-  border-radius: 8px;
-  border: 1px solid #c9b59b;
-  background: #fffaf3;
-  font-size: 15px;
+.why-sankalpa h2 {
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-.phone-row {
-  display: flex;
-  gap: 12px;
+.why-sankalpa p {
+    line-height: 1.6;
 }
 
-.primary-btn {
-  background: #8c5a20;
-  color: white;
-  padding: 13px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+
+/* ===================================================================
+   FORM STYLING (The "Sacred Space" - Minor refinement)
+   =================================================================== */
+
+.form-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly brighter background for the interactive area */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* More prominent depth */
 }
 
-.primary-btn:hover {
-  background: #754d26;
+/* Custom styling for form inputs and buttons for a smoother look */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
 }
 
-/******** FOOTER ********/
+.btn-primary {
+    background-color: #A08A4D; /* A deeper gold/bronze color for the button */
+    border-color: #8C7540;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #8C7540;
+    border-color: #786334;
+}
+
+.tab-pane {
+    padding-top: 20px;
+}
+
+/* Styling for the tab links (Existing User / New User) */
+.nav-tabs .nav-link {
+    color: #333;
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
+.nav-tabs .nav-link.active {
+    color: #A08A4D; /* Highlight active tab with a gold tone */
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 2px solid #A08A4D; /* Underline active tab */
+}
+
+
+/* ===================================================================
+   UTILITY (To ensure NO footer exists)
+   =================================================================== */
+
+/* Although the HTML will be removed, this ensures no element with a footer tag shows up */
 footer {
-  text-align: center;
-  padding-top: 25px;
-  color: #6a4720;
-  font-size: 13px;
-}
-
-@media (max-width: 768px) {
-  .hero { flex-direction: column; padding: 30px 6%; }
+    display: none !important;
 }
