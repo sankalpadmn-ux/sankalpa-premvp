@@ -4,301 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SANKALPA - Connecting with Purpose</title>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
-    <style>
-        /*
-         * SANKALPA UI STYLESHEET (sankalpa_master.css)
-         * Version 5.0 (V12) - Layout Compression, Dropdown FIX, Button Color Fix
-         */
 
-        /* ===================================================================
-           GOOGLE FONT INTEGRATION
-           =================================================================== */
-
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@400;700&display=swap');
-
-
-        /* ===================================================================
-           GLOBAL STYLING & BACKGROUND 
-           =================================================================== */
-
-        body, html {
-            background-color: #ead79b !important; 
-            margin: 0 !important;
-            padding: 0 !important;
-            height: 100%;
-            color: #333; 
-            font-family: 'Inter', sans-serif;
-        }
-
-        .container, .header, .navbar {
-            background-color: transparent !important;
-        }
-
-
-        /* ===================================================================
-           NAVIGATION & LOGO (Top Flush Positioning FIX)
-           =================================================================== */
-
-        /* Container for Logo and Contact Us */
-        .top-bar-flush {
-            display: flex;
-            justify-content: space-between; 
-            align-items: flex-start; 
-            width: 100%;
-            /* Forced Zero Top Padding */
-            padding: 0 30px 0 0; 
-            position: relative; 
-            z-index: 1000;
-            /* Reduced margin below the top bar */
-            margin-bottom: 5px; 
-        }
-
-        .logo-link {
-            display: inline-block;
-            padding: 0;
-            margin: 0;
-            line-height: 0; 
-            /* Logo to absolute top-left */
-            padding-left: 5px; 
-            padding-top: 5px;
-        }
-
-        .logo-image {
-            width: 250px; 
-            height: auto;
-            display: block;
-            box-shadow: none !important; 
-            border-radius: 0 !important;
-        }
-
-        /* Contact Us Link Styling */
-        .contact-us-link {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .contact-us-link a {
-            color: #333 !important; 
-            text-decoration: none;
-            font-weight: bold;
-            font-family: 'Inter', sans-serif;
-            padding-top: 5px;
-            display: block;
-        }
-
-
-        /* ===================================================================
-           HERO CONTENT LAYOUT (VERTICAL COMPRESSION FIX)
-           =================================================================== */
-
-        .main-content-layout {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start; 
-            /* VERTICAL COMPRESSION FIX: Zero out top padding/margin */
-            margin-top: 0 !important; 
-            padding-top: 0 !important; 
-            padding-bottom: 50px;
-            text-align: left; 
-        }
-
-        .left-content-area {
-            flex: 0 0 50%; 
-            max-width: 50%;
-            padding-right: 20px; 
-            padding-left: 15px; 
-            text-align: left !important; 
-            /* Force Left Column Content UP */
-            margin-top: -30px; 
-        }
-
-        .right-form-area {
-            flex: 0 0 45%; 
-            max-width: 45%;
-            /* Force Right Column Content UP */
-            margin-top: -30px; 
-            padding-top: 0 !important; 
-        }
-
-
-        /* ===================================================================
-           CONTENT STYLING (Headers & Tagline)
-           =================================================================== */
-
-        h1 {
-            font-family: 'Cinzel', serif; 
-            font-size: 3.8em; 
-            font-weight: 700; 
-            /* VERTICAL COMPRESSION FIX: Zero out H1 margins */
-            margin-top: 0px !important; 
-            margin-bottom: 5px !important; 
-            color: #ED7014; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
-            text-align: left; 
-            text-transform: uppercase; 
-            letter-spacing: 0.1em;
-        }
-
-        .tagline {
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: 1.6em; 
-            margin-bottom: 15px !important; 
-            font-style: italic; 
-            font-weight: 500; 
-            color: #0B6623; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
-            text-align: left; 
-        }
-
-        .why-sankalpa {
-            padding: 0; 
-            margin-bottom: 10px !important; 
-            text-align: left !important; 
-        }
-
-        .why-sankalpa p {
-            line-height: 1.8; 
-            color: #4A4A4A; 
-            font-size: 1.1em;
-            font-family: 'Inter', sans-serif; 
-            text-align: left; 
-        }
-
-
-        /* ===================================================================
-           FORM STYLING (Sacred Space) FIXES
-           =================================================================== */
-
-        .form-section {
-            max-width: 500px;
-            margin: 0; 
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.95); 
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0,0,0,0.2); 
-            text-align: center; 
-        }
-
-        /* Tab Colors FIX: Inactive is Green, Active is Orange (working) */
-        .nav-tabs .nav-link {
-            cursor: pointer;
-            background-color: transparent !important;
-            border: none !important;
-            color: #0B6623 !important; /* Inactive (Unselected) is Dark Green */
-        }
-
-        .nav-tabs .nav-link.active {
-            color: #ED7014 !important; /* Active (Selected) is Orange */
-            font-weight: 700;
-            border-bottom: 4px solid #ED7014 !important; 
-            text-shadow: 0 0 8px rgba(237, 112, 20, 0.7); 
-            transform: translateY(-2px); 
-        }
-
-        /* Dropdown/Input Fix: Ensure full menu visibility and proper z-index */
-        .form-control {
-            background-color: #FFF8E7; 
-            border: 1px solid #FFC65A; 
-            border-radius: 8px; 
-            padding: 14px 18px; 
-            margin-bottom: 20px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset; 
-            transition: all 0.3s ease;
-            height: auto; 
-            
-            /* DROPDOWN FIX: Increase z-index and ensure menu is above other elements */
-            position: relative; 
-            z-index: 10; 
-            /* Reset line-height to fix text cutoff in select boxes */
-            line-height: normal; 
-        }
-
-
-        /* ===================================================================
-           BUTTON STYLING FIX (Preventing unwanted Blue)
-           =================================================================== */
-
-        .btn-primary {
-            /* Set the button back to a primary brand color (Orange) */
-            background-color: #ED7014 !important; 
-            border-color: #ED7014 !important; 
-            color: white !important;
-            font-weight: bold;
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover, .btn-primary:focus {
-            /* Darken slightly on hover for feedback */
-            background-color: #D65A00 !important; 
-            border-color: #D65A00 !important; 
-            color: white !important;
-        }
-
-        .validation-success {
-            color: #0B6623;
-            font-weight: bold;
-            font-size: 0.9em;
-            text-align: left;
-            margin-top: -10px;
-            margin-bottom: 20px;
-            padding-left: 5px;
-        }
-    </style>
+    <!-- Main UI Stylesheet -->
+    <link rel="stylesheet" href="docs/sankalpa_master.css">
 </head>
+
 <body>
 
+    <!-- TOP BAR WITH TRUE EXTREME-LEFT LOGO -->
     <div class="top-bar-flush" id="top-nav-bar">
+
+        <!-- FIXED PATH + FIXED TOP-LEFT POSITION -->
         <a class="logo-link" href="index.html">
-            <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+            <img src="docs/images/Sankalpa_logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
         </a>
-        
+
         <ul class="contact-us-link">
-            <li>
-                <a href="contact.html">Contact Us</a>
-            </li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="container main-content-layout">
-        
-        <div class="left-content-area">
-            <h1 class="mt-4">SANKALPA</h1> 
-            <p class="tagline">Connecting with Purpose</p>
-            <div class="why-sankalpa">
-                <p>Sankalpa is dedicated to upholding ancient traditions in the modern world. We provide a seamless, tech-enabled platform that connects you to a curated global collective of trusted priests, ensuring every ritual, vow, and Sankalpa is realized with uncompromised authenticity and spiritual integrity.</p>
-            </div>
-        </div> 
 
+        <!-- LEFT SIDE -->
+        <div class="left-content-area">
+            <h1 class="mt-4">SANKALPA</h1>
+            <p class="tagline">Connecting with Purpose</p>
+
+            <div class="why-sankalpa">
+                <p>
+                    Sankalpa is dedicated to upholding ancient traditions in the modern world.
+                    We provide a seamless, tech-enabled platform that connects you to a curated 
+                    global collective of trusted priests, ensuring every ritual, vow, and Sankalpa 
+                    is realized with uncompromised authenticity and spiritual integrity.
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE FORM -->
         <div class="right-form-area">
             <div class="form-section">
+
                 <h4>Enter the Sacred Space</h4>
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <!-- TABS -->
+                <ul class="nav nav-tabs" id="myTab">
                     <li class="nav-item">
-                        <a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab" aria-controls="existing" aria-selected="true">Existing User</a>
+                        <a class="nav-link active" id="existing-tab" data-toggle="tab"
+                           href="#existing" role="tab">Existing User</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">New User</a>
+                        <a class="nav-link" id="new-tab" data-toggle="tab"
+                           href="#new" role="tab">New User</a>
                     </li>
                 </ul>
 
-                <div class="tab-content" id="myTabContent">
-                    
-                    <div id="duplicateMsg" class="alert alert-info text-center" style="display: none; margin-bottom: 20px;">
+                <div class="tab-content">
+
+                    <!-- DUPLICATE MESSAGE BOX -->
+                    <div id="duplicateMsg"
+                         class="alert alert-info text-center"
+                         style="display:none; margin-bottom:20px;">
                         Loading...
                     </div>
-                    
-                    <div class="tab-pane fade show active" id="existing" role="tabpanel" aria-labelledby="existing-tab">
+
+                    <!-- EXISTING USER LOGIN -->
+                    <div class="tab-pane fade show active" id="existing" role="tabpanel">
                         <form>
+
                             <input type="text" class="form-control" placeholder="Full Name">
-                            <select class="form-control" title="Select your Country">
+
+                            <!-- COUNTRY DROPDOWN ID ADDED -->
+                            <select class="form-control" id="country-existing">
                                 <option value="" disabled selected>Country</option>
                             </select>
+
                             <div class="form-row">
                                 <div class="col-3">
                                     <input type="text" class="form-control" placeholder="Code">
@@ -307,40 +92,56 @@
                                     <input type="text" class="form-control" placeholder="Mobile Number">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
+
+                            <button type="submit" class="btn btn-primary btn-block mt-3">
+                                Log In
+                            </button>
+
                         </form>
                     </div>
-                    
-                    <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+
+                    <!-- NEW USER REGISTRATION -->
+                    <div class="tab-pane fade" id="new" role="tabpanel">
                         <form>
+
                             <input type="text" class="form-control" placeholder="Full Name">
                             <input type="text" class="form-control" placeholder="City">
-                            <select class="form-control" title="Select your Country">
+
+                            <!-- COUNTRY DROPDOWN ID ADDED -->
+                            <select class="form-control" id="country-new">
                                 <option value="" disabled selected>Country</option>
                             </select>
+
                             <div class="form-row">
                                 <div class="col-3">
                                     <input type="text" class="form-control" placeholder="Code">
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" class="form-control" placeholder="Mobile Number" id="new-user-mobile">
+                                    <input type="text" id="new-user-mobile" class="form-control" placeholder="Mobile Number">
                                 </div>
                             </div>
-                            
-                            <div id="whatsapp-status" style="display: none;" class="validation-success"></div>
 
-                            <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+                            <div id="whatsapp-status"
+                                 style="display:none;"
+                                 class="validation-success"></div>
+
+                            <button type="submit" class="btn btn-primary btn-block mt-3">
+                                Submit
+                            </button>
+
                         </form>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
+    </div>
 
-    </div> 
-
+    <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script> 
+
+    <!-- FIXED PATH -->
+    <script src="docs/script.js"></script>
 </body>
 </html>
