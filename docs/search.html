@@ -1,44 +1,53 @@
+<!--
+  SANKALPA FRONTEND
+  search.html — Version v1.0.0
+  Description: Search page
+  Last Updated: 2025-11-25
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SANKALPA - Search</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SANKALPA - Search</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="sankalpa_master.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.0">
 </head>
-
 <body>
 
-    <!-- TOP -->
-    <div class="top-bar-flush">
-        <a class="logo-link" href="index.html">
-            <img src="images/Sankalpa_Logo.jpg.png" class="logo-image">
-        </a>
+  <!-- TOP BAR (fixed) -->
+  <div class="top-bar-flush" role="banner">
+    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
+      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+    </a>
 
-        <ul class="contact-us-link">
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
+    <ul class="contact-us-link">
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="container" style="padding-top:120px;">
+    <h1>Search for a Priest or Ritual</h1>
+    <p class="lead">Find trusted priests and rituals worldwide.</p>
+
+    <div class="input-group mb-3" style="max-width:650px;margin:auto;">
+      <input type="text" class="form-control" placeholder="E.g., Vedic Priest, Pooja, City">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button">Search</button>
+      </div>
     </div>
 
-    <div class="container text-center" style="padding-top:120px;">
-
-        <h1>Search a Priest or Ritual</h1>
-        <p class="lead">Find trusted priests globally.</p>
-
-        <div class="input-group" style="max-width:600px;margin:auto;">
-            <input class="form-control" placeholder="E.g., Rudra Homam, Vedic Priest, City">
-            <div class="input-group-append">
-                <button class="btn btn-primary">Search</button>
-            </div>
-        </div>
-
-        <p class="text-muted mt-4">Search results will appear here.</p>
-
+    <div class="mt-5">
+      <p class="text-muted">Search results will appear here.</p>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- Scripts (versioned) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+  <script src="script.js?v=1.0.0"></script>
 </body>
 </html>
