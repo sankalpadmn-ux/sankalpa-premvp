@@ -1,11 +1,11 @@
 /**
- * SANKALPA UI JAVASCRIPT FILE (Corrected Version + Auto Country Code)
+ * SANKALPA UI JAVASCRIPT FILE (Final Version)
  * Features:
- *  - Login + Logout + Redirect Logic
+ *  - Login / Logout / Redirect Logic
  *  - Duplicate Message Handler
- *  - WhatsApp Validation (Unmodified)
+ *  - WhatsApp Validation (Untouched)
  *  - Built-in Country Dropdown Loader
- *  - Auto Country Code for BOTH Existing + New forms
+ *  - Auto Country Code for BOTH Existing + New User forms
  */
 
 /* ==========================================================
