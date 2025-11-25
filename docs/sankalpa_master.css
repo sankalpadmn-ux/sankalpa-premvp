@@ -1,10 +1,6 @@
 /*
  * SANKALPA UI STYLESHEET (sankalpa_master.css)
- * FINAL FIXED VERSION
- * - Logo alignment fixed
- * - Heading spacing fixed
- * - Country dropdown text clipping fixed
- * - Full compatibility across all pages
+ * FINAL VERSION — LOGO TOP-LEFT FIX + DROPDOWN FIX
  */
 
 /* ==========================================================
@@ -20,12 +16,8 @@ body, html {
     font-family: 'Inter', sans-serif;
 }
 
-.container, .header, .navbar {
-    background-color: transparent !important;
-}
-
 /* ==========================================================
-   TOP BAR + LOGO
+   TOP BAR + LOGO (ABSOLUTE TOP-LEFT)
 ========================================================== */
 
 .top-bar-flush {
@@ -33,26 +25,40 @@ body, html {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    padding: 5px 25px 0 5px;
+
+    /* ABSOLUTE FIX */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    z-index: 2000;
 }
 
+/* LEFT: LOGO */
 .logo-link {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .logo-image {
-    width: 230px;
+    width: 220px;
     height: auto;
     display: block;
-    margin-top: 0;
+
+    /* TRUE ZERO OFFSET */
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* Right side: Contact Us */
+/* RIGHT: CONTACT US */
 .contact-us-link {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .contact-us-link a {
@@ -60,7 +66,10 @@ body, html {
     text-decoration: none;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
-    padding-top: 10px;
+
+    /* Align vertically with logo */
+    padding-top: 8px !important;
+    display: block;
 }
 
 /* ==========================================================
@@ -71,28 +80,27 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 10px;
-    padding-top: 10px;
+
     padding-bottom: 50px;
+    margin-top: 120px !important;   /* Push page content below the top bar */
 }
 
-/* ------------------------------------------
-   FIX: Heading previously overlapped logo
-------------------------------------------- */
+/* LEFT SIDE CONTENT */
 .left-content-area {
     flex: 0 0 50%;
     max-width: 50%;
     padding-left: 20px;
     padding-right: 15px;
-    margin-top: 90px !important;   /* PUSHES HEADING DOWN */
+
+    margin-top: 40px !important;   /* Prevent overlap with logo */
 }
 
-/* Right column */
+/* RIGHT SIDE FORMS */
 .right-form-area {
     flex: 0 0 45%;
     max-width: 45%;
-    margin-top: 40px !important;
     padding-top: 0;
+    margin-top: 40px !important;
 }
 
 /* ==========================================================
@@ -106,9 +114,8 @@ h1 {
     margin-top: 0 !important;
     margin-bottom: 5px !important;
     color: #ED7014;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     text-transform: uppercase;
-    letter-spacing: 0.07em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .tagline {
@@ -117,13 +124,11 @@ h1 {
     margin-bottom: 20px !important;
     font-style: italic;
     color: #0B6623;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-/* Left text */
 .why-sankalpa p {
     font-size: 1.15em;
-    line-height: 1.8em;
+    line-height: 1.8;
     color: #4A4A4A;
 }
 
@@ -135,12 +140,12 @@ h1 {
     max-width: 500px;
     margin: 0 auto;
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255,255,255,0.95);
     box-shadow: 0 0 25px rgba(0,0,0,0.4), 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
-/* Tabs */
+/* FORMS & TABS */
 .nav-tabs .nav-link {
     cursor: pointer;
     background-color: transparent !important;
@@ -155,31 +160,31 @@ h1 {
     transform: translateY(-2px);
 }
 
-/* ==========================================================
-   INPUTS + DROPDOWNS
-========================================================== */
-
+/* INPUTS & DROPDOWNS */
 .form-control {
     background-color: #FFF8E7;
     border: 1px solid #FFC65A;
     border-radius: 8px;
     padding: 14px 18px;
     margin-bottom: 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    position: relative;
-    z-index: 10;
+    height: auto;
+    line-height: normal;
 }
 
-/* ------------------------------------------
-   FINAL FIX — COUNTRY DROPDOWN CLIPPING
-------------------------------------------- */
+/* ==========================================================
+   FINAL DROPDOWN FIX — NO CLIPPING
+========================================================== */
+
 select.form-control {
     height: auto !important;
     min-height: 58px !important;
+
     line-height: 1.6em !important;
     padding-top: 14px !important;
     padding-bottom: 14px !important;
+
     white-space: normal !important;
     overflow: visible !important;
     display: block !important;
@@ -192,7 +197,7 @@ select.form-control {
 .btn-primary {
     background-color: #ED7014 !important;
     border-color: #ED7014 !important;
-    color: white !important;
+    color: #fff !important;
     font-weight: bold;
     border-radius: 8px;
     padding: 12px 22px;
@@ -201,6 +206,6 @@ select.form-control {
 }
 
 .btn-primary:hover {
-    background-color: #d65a00 !important;
-    border-color: #d65a00 !important;
+    background-color: #D65A00 !important;
+    border-color: #D65A00 !important;
 }
