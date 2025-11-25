@@ -1,105 +1,213 @@
-/* LOGIN STORAGE */
-function loginUser(name){
-    localStorage.setItem("sankalpa_loggedIn","true");
-    localStorage.setItem("sankalpa_userName",name);
-    window.location.href="search.html";
+/**
+ * script.js — Version v1.0.0
+ * SANKALPA FRONTEND LOGIC
+ * Handles: login/logout, redirects, country dropdown population,
+ * auto-prefill country code, simple validation, WhatsApp status message,
+ * and minimal cache-aware logic is handled via versioned URLs in HTML.
+ *
+ * Last Updated: 2025-11-25
+ */
+
+/* ==========================================================
+   LOGIN STATE MANAGEMENT
+   - LocalStorage driven
+========================================================== */
+function loginUser(userName) {
+  localStorage.setItem('sankalpa_loggedIn', 'true');
+  localStorage.setItem('sankalpa_userName', userName);
+  window.location.href = 'search.html';
 }
 
-function logoutUser(){
-    localStorage.removeItem("sankalpa_loggedIn");
-    localStorage.removeItem("sankalpa_userName");
-    window.location.href="index.html";
+function logoutUser() {
+  localStorage.removeItem('sankalpa_loggedIn');
+  localStorage.removeItem('sankalpa_userName');
+  window.location.href = 'index.html';
 }
 
-/* COUNTRY LIST */
-const countries=[
-"India","United States","United Kingdom","Australia","Canada",
-"Singapore","Malaysia","United Arab Emirates","New Zealand","Germany",
-"France","Japan","Switzerland","Sri Lanka","Nepal"
+/**
+ * checkLoginStatus()
+ * Redirects based on login state.
+ * Returns true if a redirect was performed.
+ */
+function checkLoginStatus() {
+  const isLoggedIn = localStorage.getItem('sankalpa_loggedIn') === 'true';
+  const isLoginPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/sankalpa-premvp/');
+
+  if (!isLoginPage) {
+    if (!isLoggedIn) {
+      window.location.href = 'index.html';
+      return true;
+    }
+  } else {
+    if (isLoggedIn) {
+      window.location.href = 'search.html';
+      return true;
+    }
+  }
+  return false;
+}
+
+/* ==========================================================
+   STATUS MESSAGE HANDLER
+========================================================== */
+function showDuplicate(msg) {
+  const box = document.getElementById('duplicateMsg');
+  if (!box) return;
+  const whatsappStatus = document.getElementById('whatsapp-status');
+  if (whatsappStatus) whatsappStatus.style.display = 'none';
+
+  box.textContent = msg;
+  box.style.display = 'block';
+  box.classList.remove('alert-info', 'alert-danger', 'alert-success');
+
+  const m = msg.toLowerCase();
+  if (m.includes('success') || m.includes('validated')) {
+    box.classList.add('alert-success');
+  } else if (m.includes('error') || m.includes('fail')) {
+    box.classList.add('alert-danger');
+  } else {
+    box.classList.add('alert-info');
+  }
+
+  setTimeout(() => {
+    box.style.display = 'none';
+  }, 5000);
+}
+
+/* ==========================================================
+   COUNTRY LIST + AUTO COUNTRY CODE
+   - Keeps a lightweight list for prefill
+========================================================== */
+const countryList = [
+  'India','United States','United Kingdom','Canada','Australia',
+  'Singapore','Malaysia','United Arab Emirates','Germany','France',
+  'Netherlands','New Zealand','Sri Lanka','Nepal','Bangladesh',
+  'South Africa','Japan','Switzerland'
 ];
 
-const codes={
-"India":"+91","United States":"+1","United Kingdom":"+44",
-"Australia":"+61","Canada":"+1","Singapore":"+65","Malaysia":"+60",
-"United Arab Emirates":"+971","New Zealand":"+64","Germany":"+49",
-"France":"+33","Japan":"+81","Switzerland":"+41","Sri Lanka":"+94","Nepal":"+977"
+const countryCodes = {
+  'India': '+91',
+  'United States': '+1',
+  'United Kingdom': '+44',
+  'Canada': '+1',
+  'Australia': '+61',
+  'Singapore': '+65',
+  'Malaysia': '+60',
+  'United Arab Emirates': '+971',
+  'Germany': '+49',
+  'France': '+33',
+  'Netherlands': '+31',
+  'New Zealand': '+64',
+  'Sri Lanka': '+94',
+  'Nepal': '+977',
+  'Bangladesh': '+880',
+  'South Africa': '+27',
+  'Japan': '+81',
+  'Switzerland': '+41'
 };
 
-/* POPULATE DROPDOWNS */
-function loadCountries(){
-    const ex=document.getElementById("country-existing");
-    const nw=document.getElementById("country-new");
+function loadCountries() {
+  const dropdownExisting = document.getElementById('country-existing');
+  const dropdownNew = document.getElementById('country-new');
 
-    countries.forEach(c=>{
-        if(ex){ let o=document.createElement("option"); o.text=c; ex.add(o); }
-        if(nw){ let o=document.createElement("option"); o.text=c; nw.add(o); }
+  countryList.forEach(country => {
+    if (dropdownExisting) {
+      const opt = document.createElement('option');
+      opt.value = country;
+      opt.textContent = country;
+      dropdownExisting.appendChild(opt);
+    }
+    if (dropdownNew) {
+      const opt2 = document.createElement('option');
+      opt2.value = country;
+      opt2.textContent = country;
+      dropdownNew.appendChild(opt2);
+    }
+  });
+
+  if (dropdownExisting) {
+    dropdownExisting.addEventListener('change', function () {
+      const selected = this.value;
+      const codeInput = document.querySelector('#existing .col-3 input');
+      if (codeInput && countryCodes[selected]) codeInput.value = countryCodes[selected];
     });
+  }
 
-    if(ex){
-        ex.addEventListener("change",()=>{
-            const cd=document.querySelector('#existing .col-3 input');
-            if(cd) cd.value=codes[ex.value] || "";
-        });
-    }
-
-    if(nw){
-        nw.addEventListener("change",()=>{
-            const cd=document.querySelector('#new .col-3 input');
-            if(cd) cd.value=codes[nw.value] || "";
-        });
-    }
+  if (dropdownNew) {
+    dropdownNew.addEventListener('change', function () {
+      const selected = this.value;
+      const codeInput = document.querySelector('#new .col-3 input');
+      if (codeInput && countryCodes[selected]) codeInput.value = countryCodes[selected];
+    });
+  }
 }
 
-/* DUPLICATE/STATUS MESSAGES */
-function showDuplicate(msg){
-    const box=document.getElementById("duplicateMsg");
-    box.textContent=msg;
-    box.style.display="block";
+/* ==========================================================
+   FORM HANDLERS
+========================================================== */
+document.addEventListener('DOMContentLoaded', () => {
 
-    setTimeout(()=>box.style.display="none",4000);
-}
+  // If a redirect occurs in checkLoginStatus, stop further execution.
+  if (checkLoginStatus()) return;
 
-/* MAIN */
-document.addEventListener("DOMContentLoaded",()=>{
+  // Load country options
+  loadCountries();
 
-    loadCountries();
+  // EXISTING USER FORM (login)
+  const existingForm = document.querySelector('#existing form');
+  if (existingForm) {
+    existingForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = this.querySelector('input[placeholder="Full Name"]').value;
+      if (!name.trim()) {
+        showDuplicate('Error: Please enter your Full Name.');
+      } else {
+        showDuplicate(`Login Success: Welcome back, ${name}! Redirecting to search...`);
+        setTimeout(() => loginUser(name), 900);
+      }
+    });
+  }
 
-    /* EXISTING USER */
-    const exForm=document.querySelector("#existing form");
-    if(exForm){
-        exForm.addEventListener("submit",e=>{
-            e.preventDefault();
-            const name=exForm.querySelector('input[placeholder="Full Name"]').value;
-            if(!name.trim()) return showDuplicate("Please enter your name.");
-            showDuplicate("Login Success: Welcome back!");
-            setTimeout(()=>loginUser(name),900);
-        });
-    }
+  // NEW USER FORM (registration)
+  const newUserForm = document.querySelector('#new form');
+  if (newUserForm) {
+    newUserForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = this.querySelector('input[placeholder="Full Name"]').value;
+      const mobileInput = document.querySelector('#new-user-mobile');
+      const mobile = mobileInput ? mobileInput.value : '';
 
-    /* NEW USER */
-    const newForm=document.querySelector("#new form");
-    if(newForm){
-        newForm.addEventListener("submit",e=>{
-            e.preventDefault();
-            const name=newForm.querySelector('input[placeholder="Full Name"]').value;
-            const mobile=document.getElementById("new-user-mobile").value;
-            if(!name.trim()) return showDuplicate("Please enter a name.");
-            if(!mobile.trim() || mobile.length<8) return showDuplicate("Enter valid mobile.");
+      if (!name.trim()) {
+        showDuplicate('Error: Please enter a name for registration.');
+        return;
+      }
 
-            document.getElementById("whatsapp-status").textContent="✓ WhatsApp Validated";
-            document.getElementById("whatsapp-status").style.display="block";
+      if (!mobile.trim() || mobile.trim().length < 8) {
+        showDuplicate('Error: Please provide a valid Mobile Number for registration.');
+        return;
+      }
 
-            showDuplicate(`Registration Success for ${name}. Login after 24 hours.`);
-            setTimeout(()=>logoutUser(),1500);
-        });
-    }
+      // WhatsApp validation (kept intentionally simple & unchanged)
+      const statusBox = document.getElementById('whatsapp-status');
+      if (statusBox) {
+        statusBox.textContent = '✓ WhatsApp Validated: Mobile number confirmed.';
+        statusBox.style.display = 'block';
+      }
 
-    /* LOGOUT */
-    const lo=document.getElementById("logout-link");
-    if(lo){
-        lo.addEventListener("click",e=>{
-            e.preventDefault();
-            logoutUser();
-        });
-    }
+      // Registration success simulation
+      setTimeout(() => {
+        showDuplicate(`Registration Success: Vow recorded for ${name}. You can log in after 24 hours.`);
+        logoutUser();
+      }, 2000);
+    });
+  }
+
+  // LOGOUT listener (if present on page)
+  const logoutButton = document.getElementById('logout-link');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      logoutUser();
+    });
+  }
 });
