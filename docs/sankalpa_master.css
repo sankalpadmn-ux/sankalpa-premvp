@@ -1,109 +1,206 @@
-/* GLOBAL */
+/*
+ * SANKALPA UI STYLESHEET (sankalpa_master.css)
+ * FINAL FIXED VERSION
+ * - Logo alignment fixed
+ * - Heading spacing fixed
+ * - Country dropdown text clipping fixed
+ * - Full compatibility across all pages
+ */
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
 body, html {
     background-color: #ead79b !important;
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     height: 100%;
+    color: #333;
     font-family: 'Inter', sans-serif;
 }
 
-/* TOP BAR */
+.container, .header, .navbar {
+    background-color: transparent !important;
+}
+
+/* ==========================================================
+   TOP BAR + LOGO
+========================================================== */
+
 .top-bar-flush {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    padding: 5px 20px 0 5px;
+    padding: 5px 25px 0 5px;
 }
 
 .logo-link {
     margin: 0;
-}
-
-.logo-image {
-    width: 220px;
-    height: auto;
-    margin-top: 0;
-}
-
-/* CONTACT US LINK */
-.contact-us-link {
-    list-style: none;
-    margin: 0;
     padding: 0;
 }
 
-.contact-us-link a {
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
+.logo-image {
+    width: 230px;
+    height: auto;
+    display: block;
+    margin-top: 0;
 }
 
-/* MAIN LAYOUT */
+/* Right side: Contact Us */
+.contact-us-link {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-us-link a {
+    color: #333 !important;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    padding-top: 10px;
+}
+
+/* ==========================================================
+   MAIN LAYOUT
+========================================================== */
+
 .main-content-layout {
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
+    align-items: flex-start;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 50px;
 }
 
-/* FIX heading overlap – moved downward */
+/* ------------------------------------------
+   FIX: Heading previously overlapped logo
+------------------------------------------- */
 .left-content-area {
+    flex: 0 0 50%;
     max-width: 50%;
     padding-left: 20px;
-    padding-right: 10px;
-    margin-top: 40px !important;
+    padding-right: 15px;
+    margin-top: 90px !important;   /* PUSHES HEADING DOWN */
 }
 
-/* RIGHT FORM */
+/* Right column */
 .right-form-area {
+    flex: 0 0 45%;
     max-width: 45%;
-    margin-top: 20px !important;
+    margin-top: 40px !important;
+    padding-top: 0;
 }
 
-/* HEADINGS */
+/* ==========================================================
+   HEADINGS + TAGLINE
+========================================================== */
+
 h1 {
-    font-family: Cinzel, serif;
-    font-size: 3.4em;
+    font-family: 'Cinzel', serif;
+    font-size: 3.8em;
+    font-weight: 700;
+    margin-top: 0 !important;
+    margin-bottom: 5px !important;
     color: #ED7014;
-    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
 }
 
 .tagline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4em;
+    font-size: 1.7em;
+    margin-bottom: 20px !important;
+    font-style: italic;
     color: #0B6623;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-/* FORM SECTION */
+/* Left text */
+.why-sankalpa p {
+    font-size: 1.15em;
+    line-height: 1.8em;
+    color: #4A4A4A;
+}
+
+/* ==========================================================
+   FORM SECTION
+========================================================== */
+
 .form-section {
-    background: #fff;
+    max-width: 500px;
+    margin: 0 auto;
     padding: 30px;
-    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 25px rgba(0,0,0,0.4), 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
 }
 
-/* TABS */
+/* Tabs */
 .nav-tabs .nav-link {
-    color: #0B6623 !important;
+    cursor: pointer;
+    background-color: transparent !important;
     border: none !important;
+    color: #0B6623 !important;
 }
 
 .nav-tabs .nav-link.active {
     color: #ED7014 !important;
-    border-bottom: 3px solid #ED7014 !important;
+    font-weight: 700;
+    border-bottom: 4px solid #ED7014 !important;
+    transform: translateY(-2px);
 }
 
-/* FIX: Country name clipping */
+/* ==========================================================
+   INPUTS + DROPDOWNS
+========================================================== */
+
+.form-control {
+    background-color: #FFF8E7;
+    border: 1px solid #FFC65A;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+/* ------------------------------------------
+   FINAL FIX — COUNTRY DROPDOWN CLIPPING
+------------------------------------------- */
 select.form-control {
     height: auto !important;
-    min-height: 52px !important;
+    min-height: 58px !important;
+    line-height: 1.6em !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
     white-space: normal !important;
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
-    line-height: 1.4em !important;
+    overflow: visible !important;
+    display: block !important;
 }
 
-/* Buttons */
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
 .btn-primary {
     background-color: #ED7014 !important;
     border-color: #ED7014 !important;
+    color: white !important;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-size: 1.15em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+    background-color: #d65a00 !important;
+    border-color: #d65a00 !important;
 }
