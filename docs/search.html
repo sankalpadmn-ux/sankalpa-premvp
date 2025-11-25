@@ -5,83 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SANKALPA - Search</title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- Main CSS -->
     <link rel="stylesheet" href="sankalpa_master.css">
 </head>
 
 <body>
 
-    <!-- TOP BAR -->
-    <div class="top-bar-flush" id="top-nav-bar">
-
-        <!-- TRUE EXTREME LEFT TOP LOGO -->
+    <div class="top-bar-flush">
         <a class="logo-link" href="index.html">
-            <img src="images/Sankalpa_logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+            <img src="images/Sankalpa_Logo.jpg.png" class="logo-image">
         </a>
 
-        <ul class="contact-us-link" id="auth-links">
-            <li><a class="nav-link" href="contact.html">Contact Us</a></li>
+        <ul class="contact-us-link">
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
-
     </div>
 
-    <!-- MAIN SEARCH AREA -->
-    <div class="container text-center py-5" style="padding-top: 110px !important;">
+    <div class="container text-center" style="padding-top:120px;">
+        <h1>Search a Priest or Ritual</h1>
+        <p class="lead">Find trusted priests globally.</p>
 
-        <h1>Search for a Priest or Ritual</h1>
-
-        <p class="lead" style="max-width: 650px; margin: 0 auto 30px;">
-            Find trusted priests, rituals, and spiritual services across the globe.
-        </p>
-
-        <!-- SEARCH INPUT BAR -->
-        <div class="input-group mb-3" style="max-width: 650px; margin: auto;">
-            <input type="text" class="form-control" placeholder="E.g., Vedic Priest, Rudra Homam, Wedding Priest, City">
+        <div class="input-group" style="max-width:600px;margin:auto;">
+            <input class="form-control" placeholder="E.g., Rudra Homam, Vedic Priest, City">
             <div class="input-group-append">
-                <button class="btn btn-primary" type="button">Search</button>
+                <button class="btn btn-primary">Search</button>
             </div>
         </div>
 
-        <div class="mt-5">
-            <p class="text-muted">Search results will appear here.</p>
-        </div>
-
+        <p class="text-muted mt-4">Results will appear here.</p>
     </div>
 
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Correct Script Path -->
     <script src="script.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const isLoggedIn = localStorage.getItem('sankalpa_loggedIn') === 'true';
-            const userName = localStorage.getItem('sankalpa_userName');
-            const authLinks = document.getElementById('auth-links');
-
-            if (isLoggedIn && userName) {
-
-                authLinks.innerHTML = `
-                    <li><span style="font-weight: bold; padding-right: 15px;">Welcome ${userName}</span></li>
-                    <li><a href="#" id="logout-link">Logout</a></li>
-                    <li><a href="contact.html" style="padding-left: 15px;">Contact Us</a></li>
-                `;
-
-            } else {
-
-                authLinks.innerHTML = `
-                    <li><a href="contact.html">Contact Us</a></li>
-                `;
-
-            }
-        });
-    </script>
 
 </body>
 </html>
