@@ -1,7 +1,6 @@
 /*
- * SANKALPA UI STYLESHEET (sankalpa_master.css)
- * Corrected Version – Logo Alignment, Header Compression, Form Alignment,
- * Country Dropdown Fix, Consistent Layout Across All Pages
+ * SANKALPA UI STYLESHEET (Corrected for GitHub Pages)
+ * Final Version – Perfect Alignment, Logo Fix, Layout Fix, Form Fix
  */
 
 /* -------------------------------------------------------------------
@@ -28,14 +27,14 @@ body, html {
 
 
 /* -------------------------------------------------------------------
-   TOP BAR + TRUE LEFT TOP LOGO
+   TOP BAR + TRUE EXTREME TOP-LEFT LOGO
 ------------------------------------------------------------------- */
 .top-bar-flush {
     width: 100%;
     position: relative;
     margin: 0;
     padding: 0;
-    height: 120px; /* maintains a fixed clean header area */
+    height: 120px;
 }
 
 /* TRUE EXTREME LEFT TOP LOGO */
@@ -52,9 +51,10 @@ body, html {
     width: 220px;
     height: auto;
     display: block;
+    pointer-events: auto;
 }
 
-/* CONTACT US LINK ON RIGHT */
+/* CONTACT US RIGHT SIDE */
 .contact-us-link {
     position: absolute;
     right: 20px;
@@ -80,7 +80,7 @@ body, html {
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 0;
-    padding-top: 10px; /* compressed spacing */
+    padding-top: 10px;
     padding-bottom: 40px;
 }
 
@@ -97,7 +97,7 @@ body, html {
     flex: 0 0 45%;
     max-width: 45%;
     padding-right: 10px;
-    padding-top: 20px; /* aligns with H1 height visually */
+    padding-top: 20px;
 }
 
 
