@@ -1,6 +1,8 @@
 /*
- * SANKALPA UI STYLESHEET (sankalpa_master.css)
- * FINAL VERSION — LOGO TOP-LEFT FIX + DROPDOWN FIX
+ * SANKALPA UI STYLESHEET
+ * sankalpa_master.css — Version v1.0.0
+ * Description: Full UI layout + fixed header + spacing + dropdown fixes
+ * Last Updated: 2025-11-25
  */
 
 /* ==========================================================
@@ -17,28 +19,31 @@ body, html {
 }
 
 /* ==========================================================
-   TOP BAR + LOGO (ABSOLUTE TOP-LEFT)
+   FIXED TOP BAR + LOGO (Option A - Fixed)
+   - Logo at true extreme top-left
+   - Contact Us aligned top-right
+   - Content is pushed down beneath header
 ========================================================== */
 
 .top-bar-flush {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
 
-    /* ABSOLUTE FIX */
-    position: absolute;
+    /* FIXED to top of viewport */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
 
-    padding: 0 !important;
+    padding: 8px 28px; /* small horizontal padding for breathing room */
     margin: 0 !important;
-
     z-index: 2000;
+    background: transparent; /* transparent by default; can be changed to white if desired */
 }
 
-/* LEFT: LOGO */
+/* Logo styles (true zero offset inside the fixed bar) */
 .logo-link {
     margin: 0 !important;
     padding: 0 !important;
@@ -48,17 +53,15 @@ body, html {
     width: 220px;
     height: auto;
     display: block;
-
-    /* TRUE ZERO OFFSET */
     margin: 0 !important;
     padding: 0 !important;
 }
 
-/* RIGHT: CONTACT US */
+/* Contact link on the right */
 .contact-us-link {
     list-style: none;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
 }
 
 .contact-us-link a {
@@ -66,14 +69,12 @@ body, html {
     text-decoration: none;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
-
-    /* Align vertically with logo */
-    padding-top: 8px !important;
-    display: block;
+    padding-top: 8px;
 }
 
 /* ==========================================================
-   MAIN LAYOUT
+   PAGE CONTENT LAYOUT
+   - Use top padding so content sits below fixed header
 ========================================================== */
 
 .main-content-layout {
@@ -81,30 +82,27 @@ body, html {
     justify-content: space-between;
     align-items: flex-start;
 
+    /* Makes room for fixed header and gives medium, beautiful spacing below logo */
+    padding-top: 120px; /* medium spacing — tuned for balance */
     padding-bottom: 50px;
-    margin-top: 120px !important;   /* Push page content below the top bar */
 }
 
-/* LEFT SIDE CONTENT */
+/* LEFT - Heading / Text column */
 .left-content-area {
     flex: 0 0 50%;
     max-width: 50%;
     padding-left: 20px;
     padding-right: 15px;
-
-    margin-top: 40px !important;   /* Prevent overlap with logo */
 }
 
-/* RIGHT SIDE FORMS */
+/* RIGHT - Form column */
 .right-form-area {
     flex: 0 0 45%;
     max-width: 45%;
-    padding-top: 0;
-    margin-top: 40px !important;
 }
 
 /* ==========================================================
-   HEADINGS + TAGLINE
+   HEADINGS, TAGLINE, CONTENT
 ========================================================== */
 
 h1 {
@@ -115,6 +113,7 @@ h1 {
     margin-bottom: 5px !important;
     color: #ED7014;
     text-transform: uppercase;
+    letter-spacing: 0.07em;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
@@ -124,6 +123,7 @@ h1 {
     margin-bottom: 20px !important;
     font-style: italic;
     color: #0B6623;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .why-sankalpa p {
@@ -145,7 +145,7 @@ h1 {
     border-radius: 10px;
 }
 
-/* FORMS & TABS */
+/* Tabs */
 .nav-tabs .nav-link {
     cursor: pointer;
     background-color: transparent !important;
@@ -160,7 +160,7 @@ h1 {
     transform: translateY(-2px);
 }
 
-/* INPUTS & DROPDOWNS */
+/* Inputs */
 .form-control {
     background-color: #FFF8E7;
     border: 1px solid #FFC65A;
@@ -174,17 +174,15 @@ h1 {
 }
 
 /* ==========================================================
-   FINAL DROPDOWN FIX — NO CLIPPING
+   DROPDOWN FIX — Prevent country name clipping after selection
 ========================================================== */
 
 select.form-control {
     height: auto !important;
     min-height: 58px !important;
-
     line-height: 1.6em !important;
     padding-top: 14px !important;
     padding-bottom: 14px !important;
-
     white-space: normal !important;
     overflow: visible !important;
     display: block !important;
