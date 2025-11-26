@@ -1,3 +1,4 @@
+<!-- SANKALPA FRONTEND - search.html - Version v1.0.5 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,34 +7,38 @@
   <title>SANKALPA – Search</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.4">
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.5">
 </head>
 <body>
 
-<header class="top-bar-flush">
-  <a class="logo-link" href="index.html">
-    <img src="images/Sankalpa_Logo.jpg.png" class="logo-image">
-  </a>
+  <!-- FIXED HEADER -->
+  <header class="top-bar-flush">
+    <a class="logo-link" href="index.html">
+      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+    </a>
 
-  <ul class="contact-us-link">
-    <li><a href="contact.html">Contact Us</a></li>
-  </ul>
-</header>
+    <ul class="contact-us-link">
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </header>
 
-<main class="container" style="padding-top: calc(var(--header-height) + 25px);">
+  <!-- MAIN CONTENT -->
+  <main class="container" style="padding-top: calc(var(--header-height) + 30px);">
 
-  <h1 class="contact-title">SEARCH</h1>
-  <p class="contact-subtitle">Find trusted priests worldwide</p>
+    <h1 class="contact-title">SEARCH</h1>
+    <p class="contact-subtitle">Find trusted priests and rituals worldwide</p>
 
-  <div class="input-group mb-3" style="max-width:600px;margin:auto;">
-    <input type="text" class="form-control" placeholder="Vedic Priest, Pooja, City…">
-    <div class="input-group-append">
-      <button class="btn btn-primary">Search</button>
+    <div class="input-group mb-4" style="max-width:650px;margin:auto;">
+      <input type="text" class="form-control" placeholder="E.g., Vedic Priest, Rudrabhishekam, City">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button">Search</button>
+      </div>
     </div>
-  </div>
 
-</main>
+    <p class="text-muted text-center">Search results will appear here.</p>
 
-<script src="script.js?v=1.0.4"></script>
+  </main>
+
+  <script src="script.js?v=1.0.5"></script>
 </body>
 </html>
