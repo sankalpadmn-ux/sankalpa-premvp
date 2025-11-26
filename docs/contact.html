@@ -1,63 +1,61 @@
 <!--
   SANKALPA FRONTEND
-  contact.html — Version v1.0.1
-  Description: Contact page with Option 5 premium content
-  Last Updated: 2025-11-25
+  contact.html — Version v1.0.2
+  Description: Contact page (Option 5 content, styled to match landing page)
+  Last Updated: 2025-11-26
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SANKALPA - Contact</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-  <!-- Updated CSS v1.0.1 -->
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.1">
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.2">
 </head>
 <body>
 
   <!-- FIXED TOP BAR -->
-  <div class="top-bar-flush">
-    <a class="logo-link" href="index.html">
-      <img src="images/Sankalpa_Logo.jpg.png" class="logo-image" alt="Sankalpa Logo">
+  <header class="top-bar-flush" role="banner">
+    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
+      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
     </a>
 
-    <ul class="contact-us-link">
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </div>
+    <nav aria-label="primary">
+      <ul class="contact-us-link">
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="container" style="padding-top:130px;">
+  <main class="container" style="padding-top: calc(var(--header-height, 82px) + 20px);">
+    <div style="max-width:900px;margin:0 auto;">
+      <h1 class="contact-title">CONTACT US</h1>
+      <p class="contact-subtitle">We are here for your spiritual journey</p>
 
-    <h1 class="contact-title">CONTACT US</h1>
-    <p class="contact-subtitle">We are here for your spiritual journey</p>
+      <div style="max-width:650px;">
+        <p class="contact-body">
+          At Sankalpa, our mission is to ease your spiritual journey. If you need help choosing a ritual,
+          understanding tradition, verifying priest details, or navigating our platform, our support team
+          will guide you with patience and clarity.
+        </p>
 
-    <div style="max-width:650px;text-align:left;">
+        <p class="contact-body">
+          Reach out through email, phone, or WhatsApp — we respond promptly and with respect, so you can
+          focus on what truly matters: your Sankalpa.
+        </p>
 
-      <p class="contact-body">
-        At Sankalpa, our mission is to ease your spiritual journey. If you need help choosing a ritual,
-        understanding tradition, verifying priest details, or navigating our platform, our support team
-        will guide you with patience and clarity.
-      </p>
+        <p class="contact-detail"><strong>Email:</strong> sankalpadmn@gmail.com</p>
+        <p class="contact-detail"><strong>Phone:</strong> +91 90400 44700</p>
 
-      <p class="contact-body">
-        Reach out through email, phone, or WhatsApp — we respond promptly, so you can focus on what
-        truly matters: your Sankalpa.
-      </p>
-
-      <p class="contact-detail"><strong>Email:</strong> sankalpadmn@gmail.com</p>
-      <p class="contact-detail"><strong>Phone:</strong> +91 90400 44700</p>
-
-      <a href="https://wa.me/919040044700" target="_blank" class="btn btn-success">
-        Chat on WhatsApp
-      </a>
-
+        <div style="margin-top:22px;">
+          <a href="https://wa.me/919040044700" target="_blank" rel="noopener" class="btn btn-success">Chat on WhatsApp</a>
+        </div>
+      </div>
     </div>
+  </main>
 
-  </div>
-
-  <script src="script.js?v=1.0.1"></script>
+  <script src="script.js?v=1.0.2"></script>
 </body>
 </html>
