@@ -1,40 +1,38 @@
 <!--
   SANKALPA FRONTEND
-  index.html — Version v1.0.2
-  Description: Main landing + login page (fixed top bar, country dropdowns, login forms)
-  Last Updated: 2025-11-26
+  index.html — Version v1.0.3
+  Fixes: Fixed header, logo left, contact right, spacing, dropdown, auto-code
+  Last Updated: 2025-11-27
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SANKALPA - Connecting with Purpose</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SANKALPA – Connecting with Purpose</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <!-- Main CSS (cache-busted v1.0.2) -->
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.2">
+  <!-- Main CSS (forced reload) -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.3">
 </head>
 <body>
 
   <!-- FIXED TOP BAR -->
-  <header class="top-bar-flush" role="banner" aria-label="Top navigation">
-    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
+  <header class="top-bar-flush">
+    <a class="logo-link" href="index.html">
       <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
     </a>
 
-    <!-- Static Contact Us (will not be overwritten by JS) -->
-    <nav aria-label="primary">
-      <ul class="contact-us-link">
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </nav>
+    <ul class="contact-us-link">
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
   </header>
 
-  <!-- MAIN CONTENT (pushed below fixed header by CSS) -->
-  <main class="container main-content-layout" role="main">
+  <!-- MAIN CONTENT -->
+  <main class="container main-content-layout">
+
     <div class="left-content-area">
       <h1>SANKALPA</h1>
       <p class="tagline">Connecting with Purpose</p>
@@ -42,61 +40,65 @@
       <div class="why-sankalpa">
         <p>
           Sankalpa is dedicated to upholding ancient traditions in the modern world. We provide a seamless,
-          tech-enabled platform that connects you to a curated global collective of trusted priests, ensuring
-          every ritual, vow, and Sankalpa is realized with uncompromised authenticity and spiritual integrity.
+          tech-enabled platform that connects you to a curated global collective of trusted priests,
+          ensuring every ritual, vow, and Sankalpa is realized with uncompromised authenticity and spiritual integrity.
         </p>
       </div>
     </div>
 
-    <aside class="right-form-area" aria-label="Login and registration">
-      <div class="form-section" role="region" aria-labelledby="enter-sacred">
-        <h4 id="enter-sacred">Enter the Sacred Space</h4>
+    <aside class="right-form-area">
+      <div class="form-section">
+        <h4>Enter the Sacred Space</h4>
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item"><a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab">Existing User</a></li>
-          <li class="nav-item"><a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab">New User</a></li>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#existing">Existing User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#new">New User</a>
+          </li>
         </ul>
 
-        <div id="duplicateMsg" class="alert alert-info text-center" style="display:none;margin-bottom:20px;"></div>
+        <div id="duplicateMsg" class="alert alert-info text-center" style="display:none; margin-bottom:20px;"></div>
 
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content">
 
           <!-- EXISTING USER -->
-          <div class="tab-pane fade show active" id="existing" role="tabpanel" aria-labelledby="existing-tab">
+          <div class="tab-pane fade show active" id="existing">
             <form>
-              <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
+              <input type="text" class="form-control" placeholder="Full Name">
 
-              <select id="country-existing" class="form-control" aria-label="Country - existing">
+              <select id="country-existing" class="form-control">
                 <option value="" disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3"><input type="text" class="form-control" placeholder="Code" aria-label="Country Code"></div>
-                <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number" aria-label="Mobile Number"></div>
+                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
+                <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number"></div>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
+              <button class="btn btn-primary btn-block mt-3">Log In</button>
             </form>
           </div>
 
           <!-- NEW USER -->
-          <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+          <div class="tab-pane fade" id="new">
             <form>
-              <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
-              <input type="text" class="form-control" placeholder="City" aria-label="City">
+              <input type="text" class="form-control" placeholder="Full Name">
+              <input type="text" class="form-control" placeholder="City">
 
-              <select id="country-new" class="form-control" aria-label="Country - new">
+              <select id="country-new" class="form-control">
                 <option value="" disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3"><input type="text" class="form-control" placeholder="Code" aria-label="Country Code"></div>
-                <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number" aria-label="Mobile Number"></div>
+                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
+                <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number"></div>
               </div>
 
               <div id="whatsapp-status" class="validation-success" style="display:none;"></div>
 
-              <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+              <button class="btn btn-primary btn-block mt-3">Submit</button>
             </form>
           </div>
 
@@ -106,11 +108,13 @@
 
   </main>
 
-  <!-- Scripts (cache-busted v1.0.2) -->
+  <!-- JS Libraries -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <script src="script.js?v=1.0.2"></script>
+  <!-- Main JS -->
+  <script src="script.js?v=1.0.3"></script>
+
 </body>
 </html>
