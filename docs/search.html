@@ -1,47 +1,47 @@
 <!--
   SANKALPA FRONTEND
-  search.html — Version v1.0.1
-  Description: Priest/Ritual search page
-  Last Updated: 2025-11-25
+  search.html — Version v1.0.2
+  Description: Search page
+  Last Updated: 2025-11-26
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SANKALPA - Search</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-  <!-- Updated CSS v1.0.1 -->
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.1">
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.2">
 </head>
 <body>
 
   <!-- FIXED TOP BAR -->
-  <div class="top-bar-flush">
-    <a class="logo-link" href="index.html">
-      <img src="images/Sankalpa_Logo.jpg.png" class="logo-image" alt="Sankalpa Logo">
+  <header class="top-bar-flush" role="banner">
+    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
+      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
     </a>
-    <ul class="contact-us-link">
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </div>
+    <nav aria-label="primary">
+      <ul class="contact-us-link">
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="container" style="padding-top:130px;">
+  <main class="container" style="padding-top: calc(var(--header-height, 82px) + 20px);">
     <h1>Search for a Priest or Ritual</h1>
     <p class="lead">Find trusted priests and rituals worldwide.</p>
 
     <div class="input-group mb-3" style="max-width:650px;margin:auto;">
-      <input type="text" class="form-control" placeholder="E.g., Pooja, Vedic Priest, City">
+      <input type="text" class="form-control" placeholder="E.g., Pooja, Vedic Priest, City" aria-label="Search">
       <div class="input-group-append">
-        <button class="btn btn-primary">Search</button>
+        <button class="btn btn-primary" type="button">Search</button>
       </div>
     </div>
 
     <p class="text-muted mt-5">Search results will appear here.</p>
-  </div>
+  </main>
 
-  <script src="script.js?v=1.0.1"></script>
+  <script src="script.js?v=1.0.2"></script>
 </body>
 </html>
