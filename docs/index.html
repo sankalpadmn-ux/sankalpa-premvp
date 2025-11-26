@@ -1,3 +1,4 @@
+<!-- SANKALPA FRONTEND - index.html - Version v1.0.5 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,31 +7,32 @@
   <title>SANKALPA – Connecting with Purpose</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.4">
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.5">
 </head>
 <body>
 
   <!-- FIXED HEADER -->
   <header class="top-bar-flush">
     <a class="logo-link" href="index.html">
-      <img src="images/Sankalpa_Logo.jpg.png" class="logo-image">
+      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
     </a>
-
     <ul class="contact-us-link">
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </header>
 
+  <!-- MAIN PAGE CONTENT -->
   <main class="container main-content-layout">
+
     <div class="left-content-area">
       <h1>SANKALPA</h1>
       <p class="tagline">Connecting with Purpose</p>
 
       <div class="why-sankalpa">
         <p>
-          Sankalpa is dedicated to upholding ancient traditions in the modern world.
-          We connect you with a global collective of trusted priests ensuring every ritual
-          and vow is fulfilled with spiritual integrity.
+          Sankalpa is dedicated to upholding ancient traditions in the modern world. 
+          We connect you with a global collective of trusted priests ensuring every ritual 
+          is fulfilled with spiritual integrity.
         </p>
       </div>
     </div>
@@ -48,40 +50,48 @@
 
         <div class="tab-content">
 
-          <!-- EXISTING -->
+          <!-- EXISTING USER -->
           <div class="tab-pane fade show active" id="existing">
             <form>
               <input type="text" class="form-control" placeholder="Full Name">
 
               <select id="country-existing" class="form-control">
-                <option selected disabled>Country</option>
+                <option disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
-                <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number"></div>
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Code">
+                </div>
+                <div class="col-9">
+                  <input type="text" class="form-control" placeholder="Mobile Number">
+                </div>
               </div>
 
               <button class="btn btn-primary btn-block mt-3">Log In</button>
             </form>
           </div>
 
-          <!-- NEW -->
+          <!-- NEW USER -->
           <div class="tab-pane fade" id="new">
             <form>
               <input type="text" class="form-control" placeholder="Full Name">
               <input type="text" class="form-control" placeholder="City">
 
               <select id="country-new" class="form-control">
-                <option selected disabled>Country</option>
+                <option disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
-                <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number"></div>
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Code">
+                </div>
+                <div class="col-9">
+                  <input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number">
+                </div>
               </div>
 
-              <div id="whatsapp-status" style="display:none;" class="validation-success"></div>
+              <div id="whatsapp-status" class="validation-success" style="display:none;"></div>
 
               <button class="btn btn-primary btn-block mt-3">Submit</button>
             </form>
@@ -93,6 +103,6 @@
 
   </main>
 
-  <script src="script.js?v=1.0.4"></script>
+  <script src="script.js?v=1.0.5"></script>
 </body>
 </html>
