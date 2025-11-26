@@ -1,4 +1,4 @@
-<!-- SANKALPA FRONTEND - index.html - Version v1.0.5 -->
+<!-- SANKALPA FRONTEND - index.html - Version v1.0.6 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,23 +6,27 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SANKALPA – Connecting with Purpose</title>
 
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.5">
+
+  <!-- Main CSS (force refresh v1.0.6) -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.6">
 </head>
 <body>
 
   <!-- FIXED HEADER -->
-  <header class="top-bar-flush">
-    <a class="logo-link" href="index.html">
+  <header class="top-bar-flush" role="banner" aria-label="Top navigation">
+    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
       <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
     </a>
-    <ul class="contact-us-link">
+
+    <ul class="contact-us-link" aria-hidden="false">
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </header>
 
   <!-- MAIN PAGE CONTENT -->
-  <main class="container main-content-layout">
+  <main class="container main-content-layout" role="main">
 
     <div class="left-content-area">
       <h1>SANKALPA</h1>
@@ -32,18 +36,18 @@
         <p>
           Sankalpa is dedicated to upholding ancient traditions in the modern world. 
           We connect you with a global collective of trusted priests ensuring every ritual 
-          is fulfilled with spiritual integrity.
+          is fulfilled with uncompromised authenticity and spiritual integrity.
         </p>
       </div>
     </div>
 
-    <aside class="right-form-area">
-      <div class="form-section">
-        <h4>Enter the Sacred Space</h4>
+    <aside class="right-form-area" aria-label="User forms">
+      <div class="form-section" role="region" aria-labelledby="enter-sacred">
+        <h4 id="enter-sacred">Enter the Sacred Space</h4>
 
-        <ul class="nav nav-tabs">
-          <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#existing">Existing User</a></li>
-          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#new">New User</a></li>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item"><a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab">Existing User</a></li>
+          <li class="nav-item"><a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab">New User</a></li>
         </ul>
 
         <div id="duplicateMsg" class="alert alert-info text-center" style="display:none;margin-bottom:20px;"></div>
@@ -51,49 +55,41 @@
         <div class="tab-content">
 
           <!-- EXISTING USER -->
-          <div class="tab-pane fade show active" id="existing">
+          <div class="tab-pane fade show active" id="existing" role="tabpanel" aria-labelledby="existing-tab">
             <form>
-              <input type="text" class="form-control" placeholder="Full Name">
+              <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
 
-              <select id="country-existing" class="form-control">
+              <select id="country-existing" class="form-control" aria-label="Country existing">
                 <option disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3">
-                  <input type="text" class="form-control" placeholder="Code">
-                </div>
-                <div class="col-9">
-                  <input type="text" class="form-control" placeholder="Mobile Number">
-                </div>
+                <div class="col-3"><input type="text" class="form-control" placeholder="Code" aria-label="Country code"></div>
+                <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number" aria-label="Mobile number"></div>
               </div>
 
-              <button class="btn btn-primary btn-block mt-3">Log In</button>
+              <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
             </form>
           </div>
 
           <!-- NEW USER -->
-          <div class="tab-pane fade" id="new">
+          <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
             <form>
-              <input type="text" class="form-control" placeholder="Full Name">
-              <input type="text" class="form-control" placeholder="City">
+              <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
+              <input type="text" class="form-control" placeholder="City" aria-label="City">
 
-              <select id="country-new" class="form-control">
+              <select id="country-new" class="form-control" aria-label="Country new">
                 <option disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3">
-                  <input type="text" class="form-control" placeholder="Code">
-                </div>
-                <div class="col-9">
-                  <input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number">
-                </div>
+                <div class="col-3"><input type="text" class="form-control" placeholder="Code" aria-label="Country code"></div>
+                <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number" aria-label="Mobile number"></div>
               </div>
 
-              <div id="whatsapp-status" class="validation-success" style="display:none;"></div>
+              <div id="whatsapp-status" class="validation-success" style="display:none;" aria-live="polite"></div>
 
-              <button class="btn btn-primary btn-block mt-3">Submit</button>
+              <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
             </form>
           </div>
 
@@ -103,6 +99,7 @@
 
   </main>
 
-  <script src="script.js?v=1.0.5"></script>
+  <!-- Main JS (force refresh v1.0.6) -->
+  <script src="script.js?v=1.0.6"></script>
 </body>
 </html>
