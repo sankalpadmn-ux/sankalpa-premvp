@@ -1,7 +1,7 @@
 <!--
   SANKALPA FRONTEND
   index.html — Version v1.0.0
-  Description: Main landing + login page (fixed top bar, country dropdowns, login forms)
+  Description: Main landing + login page
   Last Updated: 2025-11-25
 -->
 <!DOCTYPE html>
@@ -14,26 +14,25 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <!-- Main CSS (versioned for cache-busting) -->
+  <!-- Main CSS (cache-busted) -->
   <link rel="stylesheet" href="sankalpa_master.css?v=1.0.0">
 </head>
 <body>
 
-  <!-- TOP BAR (fixed) -->
-  <div class="top-bar-flush" role="banner">
-    <!-- Logo (exact filename is case-sensitive) -->
-    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
-      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+  <!-- FIXED TOP BAR -->
+  <div class="top-bar-flush">
+    <a class="logo-link" href="index.html">
+      <img src="images/Sankalpa_Logo.jpg.png" class="logo-image" alt="Sankalpa Logo">
     </a>
 
-    <!-- Contact Us — intentionally static so it always works -->
     <ul class="contact-us-link">
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </div>
 
-  <!-- MAIN CONTENT (pushed below fixed header by CSS) -->
+  <!-- MAIN CONTENT -->
   <div class="container main-content-layout">
+
     <div class="left-content-area">
       <h1>SANKALPA</h1>
       <p class="tagline">Connecting with Purpose</p>
@@ -51,77 +50,66 @@
       <div class="form-section">
         <h4>Enter the Sacred Space</h4>
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab">Existing User</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab">New User</a>
-          </li>
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing">Existing User</a></li>
+          <li class="nav-item"><a class="nav-link" id="new-tab" data-toggle="tab" href="#new">New User</a></li>
         </ul>
 
-        <div id="duplicateMsg" class="alert alert-info text-center" style="display:none; margin-bottom:20px;">
-          Loading...
-        </div>
+        <div id="duplicateMsg" class="alert alert-info text-center" style="display:none;margin-bottom:20px;"></div>
 
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content">
 
-          <div class="tab-pane fade show active" id="existing" role="tabpanel" aria-labelledby="existing-tab">
+          <!-- EXISTING USER -->
+          <div class="tab-pane fade show active" id="existing">
             <form>
               <input type="text" class="form-control" placeholder="Full Name">
 
-              <select class="form-control" id="country-existing" title="Select your Country">
+              <select id="country-existing" class="form-control">
                 <option value="" disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3">
-                  <input type="text" class="form-control" placeholder="Code">
-                </div>
-                <div class="col-9">
-                  <input type="text" class="form-control" placeholder="Mobile Number">
-                </div>
+                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
+                <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number"></div>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
+              <button class="btn btn-primary btn-block mt-3">Log In</button>
             </form>
           </div>
 
-          <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+          <!-- NEW USER -->
+          <div class="tab-pane fade" id="new">
             <form>
               <input type="text" class="form-control" placeholder="Full Name">
               <input type="text" class="form-control" placeholder="City">
 
-              <select class="form-control" id="country-new" title="Select your Country">
+              <select id="country-new" class="form-control">
                 <option value="" disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3">
-                  <input type="text" class="form-control" placeholder="Code">
-                </div>
-                <div class="col-9">
-                  <input type="text" id="new-user-mobile" class="form-control" placeholder="Mobile Number">
-                </div>
+                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
+                <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number"></div>
               </div>
 
               <div id="whatsapp-status" class="validation-success" style="display:none;"></div>
 
-              <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+              <button class="btn btn-primary btn-block mt-3">Submit</button>
             </form>
           </div>
 
         </div>
+
       </div>
     </div>
+
   </div>
 
-  <!-- Scripts (versioned) -->
+  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- App JS (versioned for cache-busting) -->
   <script src="script.js?v=1.0.0"></script>
 </body>
 </html>
