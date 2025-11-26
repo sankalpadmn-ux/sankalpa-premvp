@@ -1,198 +1,100 @@
 /*
  * SANKALPA MASTER CSS
- * Version v1.0.5 – FINAL
+ * Version v1.0.6 – FINAL
  * Fixes: Header border removed, logo alignment, Contact Us stability,
  *        spacing, dropdown clipping, WhatsApp validation visibility.
  */
 
-/* ---------------------------------------------------------
-   GLOBAL
---------------------------------------------------------- */
-:root {
-    --header-height: 90px;
-}
+/* GLOBAL */
+:root { --header-height: 120px; } /* increased to ensure logo + contact fit */
 
 body, html {
-    background-color: #ead79b;
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    height: 100%;
+  background-color: #ead79b;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  height: 100%;
 }
 
-
-/* ---------------------------------------------------------
-   FIXED HEADER — NO BORDER, NO SHADOW
---------------------------------------------------------- */
+/* FIXED HEADER — NO BORDER/SHADOW */
 .top-bar-flush {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    position: fixed;
-    top: 0; left: 0; right: 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
 
-    height: var(--header-height);
-    padding: 10px 22px;
+  height: var(--header-height);
+  padding: 10px 22px;
 
-    background: rgba(234,215,155,0.98);
+  background: rgba(234,215,155,0.98);
 
-    /* FIX FOR THE THIN LINE */
-    box-shadow: none !important;
-    border-bottom: none !important;
-    outline: none !important;
+  /* Remove any thin lines */
+  box-shadow: none !important;
+  border-bottom: none !important;
+  outline: none !important;
 
-    z-index: 3000;
+  z-index: 3000;
 }
 
-/* LOGO — TRUE EXTREME LEFT */
-.logo-link {
-    display: flex;
-    align-items: center;
-    padding: 0;
-}
+/* LOGO */
+.logo-link { display:flex; align-items:center; padding:0; margin:0; }
+.logo-image { width: 220px; height: auto; margin-left: -4px; }
 
-.logo-image {
-    width: 220px;
-    height: auto;
-    margin-left: -4px;
-}
+/* CONTACT */
+.contact-us-link { list-style:none; margin:0; padding:0; }
+.contact-us-link li { display:inline-block; }
+.contact-us-link a { color:#333 !important; font-weight:700; font-size:1.05em; text-decoration:none; }
 
-
-/* CONTACT US — TRUE EXTREME RIGHT */
-.contact-us-link {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.contact-us-link li {
-    display: inline-block;
-}
-.contact-us-link a {
-    color: #333 !important;
-    font-weight: 700;
-    font-size: 1.05em;
-    text-decoration: none;
-}
-
-
-/* ---------------------------------------------------------
-   PAGE LAYOUT (All Pages)
---------------------------------------------------------- */
+/* MAIN LAYOUT */
 .main-content-layout {
-    display: flex;
-    justify-content: space-between;
-    padding-top: calc(var(--header-height) + 30px);
-    padding-bottom: 50px;
+  display:flex;
+  justify-content:space-between;
+  padding-top: calc(var(--header-height) + 10px);
+  padding-bottom: 50px;
 }
 
-.left-content-area {
-    flex: 0 0 50%;
-    max-width: 50%;
-}
-.right-form-area {
-    flex: 0 0 45%;
-    max-width: 45%;
-}
+.left-content-area { flex:0 0 50%; max-width:50%; padding:0 20px 0 10px; }
+.right-form-area { flex:0 0 45%; max-width:45%; }
 
-
-/* ---------------------------------------------------------
-   HEADINGS + SUBHEADINGS
---------------------------------------------------------- */
-h1,
-.contact-title {
-    font-family: 'Cinzel', serif;
-    font-size: 3.7em;
-    font-weight: 700;
-    color: #ED7014;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.15);
-    letter-spacing: 0.05em;
-    margin-bottom: 12px;
+/* HEADINGS */
+h1, .contact-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3.7em;
+  color: #ED7014;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.tagline, .contact-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size:1.6em;
+  color:#0B6623;
 }
 
-.tagline,
-.contact-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6em;
-    font-style: italic;
-    color: #0B6623;
+/* TEXT */
+.why-sankalpa p, .contact-body, .contact-detail {
+  font-size:1.13em; line-height:1.75; color:#4A4A4A;
 }
 
-
-/* ---------------------------------------------------------
-   PARAGRAPH TEXT (Landing + Contact Pages)
---------------------------------------------------------- */
-.why-sankalpa p,
-.contact-body,
-.contact-detail {
-    font-size: 1.13em;
-    line-height: 1.75;
-    color: #4A4A4A;
-    font-family: 'Inter', sans-serif;
-}
-
-
-/* ---------------------------------------------------------
-   FORM SECTION
---------------------------------------------------------- */
+/* FORM */
 .form-section {
-    max-width: 520px;
-    background: #ffffff;
-    padding: 28px;
-    border-radius: 12px;
-    box-shadow: 0px 0px 22px rgba(0,0,0,0.20);
+  max-width:520px; background:#fff; padding:28px; border-radius:12px; box-shadow:0 0 22px rgba(0,0,0,0.18);
 }
-
-/* DROPDOWN AND INPUT FIX */
 .form-control {
-    background: #FFF8E7;
-    border: 1px solid #FFC65A;
-    border-radius: 8px;
-    padding: 14px;
-    margin-bottom: 18px;
+  background:#FFF8E7; border:1px solid #FFC65A; border-radius:8px; padding:14px; margin-bottom:18px;
 }
 
-/* DROPDOWN CLIPPING FIX */
-select.form-control {
-    min-height: 56px !important;
-    white-space: normal !important;
-    overflow: visible !important;
-}
-
+/* SELECT FIX */
+select.form-control { min-height:56px !important; white-space:normal !important; overflow:visible !important; }
 
 /* TABS */
-.nav-tabs .nav-link {
-    border: none !important;
-    background: transparent !important;
-    color: #0B6623 !important;
-    font-weight: 600;
-}
-.nav-tabs .nav-link.active {
-    color: #ED7014 !important;
-    border-bottom: 3px solid #ED7014 !important;
-    transform: translateY(-2px);
-}
-
+.nav-tabs .nav-link { border:none !important; background:transparent !important; color:#0B6623 !important; font-weight:600; }
+.nav-tabs .nav-link.active { color:#ED7014 !important; border-bottom:3px solid #ED7014 !important; transform:translateY(-2px); }
 
 /* BUTTONS */
-.btn-primary {
-    background-color: #ED7014 !important;
-    border-color: #ED7014 !important;
-    font-weight: 700;
-    border-radius: 8px;
-}
-.btn-primary:hover {
-    background-color: #D65A00 !important;
-    border-color: #D65A00 !important;
-}
+.btn-primary { background-color:#ED7014 !important; border-color:#ED7014 !important; font-weight:700; border-radius:8px; }
+.btn-primary:hover { background-color:#D65A00 !important; border-color:#D65A00 !important; }
 
-
-/* ---------------------------------------------------------
-   WHATSAPP VALIDATION MESSAGE (GREEN)
---------------------------------------------------------- */
-.validation-success {
-    color: #0B6623;
-    font-weight: 700;
-    font-size: 1.05em;
-    margin-top: 8px;
-}
+/* WHATSAPP VALIDATION */
+.validation-success { color:#0B6623; font-weight:700; margin-top:8px; font-size:1.02em; }
