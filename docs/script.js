@@ -1,23 +1,38 @@
 /**
  * script.js — Version v1.0.0
  * SANKALPA FRONTEND LOGIC
- * Handles: login/logout, redirects, country dropdown population,
- * auto-prefill country code, simple validation, WhatsApp status message,
- * and minimal cache-aware logic is handled via versioned URLs in HTML.
+ *
+ * Handles:
+ * - login/logout
+ * - protected page redirects
+ * - country dropdown population
+ * - auto country-code selection
+ * - WhatsApp validation indicator
+ * - status messages
+ *
+ * Cache is managed by versioned URL in HTML (?v=1.0.0)
  *
  * Last Updated: 2025-11-25
  */
 
 /* ==========================================================
    LOGIN STATE MANAGEMENT
-   - LocalStorage driven
 ========================================================== */
+
+/**
+ * loginUser()
+ * Saves login state and redirects to search page.
+ */
 function loginUser(userName) {
   localStorage.setItem('sankalpa_loggedIn', 'true');
   localStorage.setItem('sankalpa_userName', userName);
   window.location.href = 'search.html';
 }
 
+/**
+ * logoutUser()
+ * Clears login session and redirects to index.
+ */
 function logoutUser() {
   localStorage.removeItem('sankalpa_loggedIn');
   localStorage.removeItem('sankalpa_userName');
@@ -27,32 +42,48 @@ function logoutUser() {
 /**
  * checkLoginStatus()
  * Redirects based on login state.
- * Returns true if a redirect was performed.
+ * Returns true if redirect executed (stop further JS).
  */
 function checkLoginStatus() {
   const isLoggedIn = localStorage.getItem('sankalpa_loggedIn') === 'true';
-  const isLoginPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/sankalpa-premvp/');
 
+  const path = window.location.pathname;
+  const isLoginPage =
+    path.includes('index.html') ||
+    path.endsWith('/sankalpa-premvp/') ||
+    path.endsWith('/docs/') ||
+    path === '/' ||
+    path === '';
+
+  // Visiting a protected page
   if (!isLoginPage) {
     if (!isLoggedIn) {
       window.location.href = 'index.html';
       return true;
     }
-  } else {
-    if (isLoggedIn) {
-      window.location.href = 'search.html';
-      return true;
-    }
   }
+
+  // Visiting login page while already logged in
+  if (isLoginPage && isLoggedIn) {
+    window.location.href = 'search.html';
+    return true;
+  }
+
   return false;
 }
 
 /* ==========================================================
-   STATUS MESSAGE HANDLER
+   STATUS MESSAGES
 ========================================================== */
+
+/**
+ * showDuplicate(msg)
+ * Generic toast/alert for login/register responses.
+ */
 function showDuplicate(msg) {
   const box = document.getElementById('duplicateMsg');
   if (!box) return;
+
   const whatsappStatus = document.getElementById('whatsapp-status');
   if (whatsappStatus) whatsappStatus.style.display = 'none';
 
@@ -75,14 +106,14 @@ function showDuplicate(msg) {
 }
 
 /* ==========================================================
-   COUNTRY LIST + AUTO COUNTRY CODE
-   - Keeps a lightweight list for prefill
+   COUNTRY POPULATION + AUTO COUNTRY CODE
 ========================================================== */
+
 const countryList = [
-  'India','United States','United Kingdom','Canada','Australia',
-  'Singapore','Malaysia','United Arab Emirates','Germany','France',
-  'Netherlands','New Zealand','Sri Lanka','Nepal','Bangladesh',
-  'South Africa','Japan','Switzerland'
+  'India', 'United States', 'United Kingdom', 'Canada', 'Australia',
+  'Singapore', 'Malaysia', 'United Arab Emirates', 'Germany', 'France',
+  'Netherlands', 'New Zealand', 'Sri Lanka', 'Nepal', 'Bangladesh',
+  'South Africa', 'Japan', 'Switzerland'
 ];
 
 const countryCodes = {
@@ -106,6 +137,10 @@ const countryCodes = {
   'Switzerland': '+41'
 };
 
+/**
+ * loadCountries()
+ * Populates dropdowns and applies auto-code updates.
+ */
 function loadCountries() {
   const dropdownExisting = document.getElementById('country-existing');
   const dropdownNew = document.getElementById('country-new');
@@ -127,17 +162,19 @@ function loadCountries() {
 
   if (dropdownExisting) {
     dropdownExisting.addEventListener('change', function () {
-      const selected = this.value;
       const codeInput = document.querySelector('#existing .col-3 input');
-      if (codeInput && countryCodes[selected]) codeInput.value = countryCodes[selected];
+      if (codeInput && countryCodes[this.value]) {
+        codeInput.value = countryCodes[this.value];
+      }
     });
   }
 
   if (dropdownNew) {
     dropdownNew.addEventListener('change', function () {
-      const selected = this.value;
       const codeInput = document.querySelector('#new .col-3 input');
-      if (codeInput && countryCodes[selected]) codeInput.value = countryCodes[selected];
+      if (codeInput && countryCodes[this.value]) {
+        codeInput.value = countryCodes[this.value];
+      }
     });
   }
 }
@@ -145,37 +182,43 @@ function loadCountries() {
 /* ==========================================================
    FORM HANDLERS
 ========================================================== */
-document.addEventListener('DOMContentLoaded', () => {
 
-  // If a redirect occurs in checkLoginStatus, stop further execution.
+document.addEventListener('DOMContentLoaded', () => {
+  // Login redirection check
   if (checkLoginStatus()) return;
 
-  // Load country options
+  // Populate dropdowns
   loadCountries();
 
-  // EXISTING USER FORM (login)
+  /* ---------------------------
+     EXISTING USER LOGIN FORM
+  ----------------------------*/
   const existingForm = document.querySelector('#existing form');
   if (existingForm) {
     existingForm.addEventListener('submit', function (event) {
       event.preventDefault();
       const name = this.querySelector('input[placeholder="Full Name"]').value;
+
       if (!name.trim()) {
         showDuplicate('Error: Please enter your Full Name.');
-      } else {
-        showDuplicate(`Login Success: Welcome back, ${name}! Redirecting to search...`);
-        setTimeout(() => loginUser(name), 900);
+        return;
       }
+
+      showDuplicate(`Login Success: Welcome back, ${name}! Redirecting...`);
+      setTimeout(() => loginUser(name), 900);
     });
   }
 
-  // NEW USER FORM (registration)
+  /* ---------------------------
+     NEW USER REGISTRATION FORM
+  ----------------------------*/
   const newUserForm = document.querySelector('#new form');
   if (newUserForm) {
     newUserForm.addEventListener('submit', function (event) {
       event.preventDefault();
+
       const name = this.querySelector('input[placeholder="Full Name"]').value;
-      const mobileInput = document.querySelector('#new-user-mobile');
-      const mobile = mobileInput ? mobileInput.value : '';
+      const mobile = (document.getElementById('new-user-mobile') || {}).value || '';
 
       if (!name.trim()) {
         showDuplicate('Error: Please enter a name for registration.');
@@ -183,18 +226,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (!mobile.trim() || mobile.trim().length < 8) {
-        showDuplicate('Error: Please provide a valid Mobile Number for registration.');
+        showDuplicate('Error: Please provide a valid Mobile Number.');
         return;
       }
 
-      // WhatsApp validation (kept intentionally simple & unchanged)
       const statusBox = document.getElementById('whatsapp-status');
       if (statusBox) {
         statusBox.textContent = '✓ WhatsApp Validated: Mobile number confirmed.';
         statusBox.style.display = 'block';
       }
 
-      // Registration success simulation
       setTimeout(() => {
         showDuplicate(`Registration Success: Vow recorded for ${name}. You can log in after 24 hours.`);
         logoutUser();
@@ -202,11 +243,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // LOGOUT listener (if present on page)
+  /* ---------------------------
+     LOGOUT LINK (if present)
+  ----------------------------*/
   const logoutButton = document.getElementById('logout-link');
   if (logoutButton) {
-    logoutButton.addEventListener('click', (e) => {
-      e.preventDefault();
+    logoutButton.addEventListener('click', function (event) {
+      event.preventDefault();
       logoutUser();
     });
   }
