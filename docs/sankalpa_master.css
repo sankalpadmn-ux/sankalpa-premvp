@@ -1,207 +1,107 @@
-/*
- * SANKALPA UI STYLESHEET
- * sankalpa_master.css — Version v1.0.3
- * Fixes: Fixed header, logo alignment, contact alignment, spacing, dropdown
- * Last Updated: 2025-11-27
- */
-
-/* ================================================
-   GLOBAL
-=================================================== */
+/* SANKALPA MASTER CSS — v1.0.4 */
 
 :root {
-    --header-height: 90px;  /* increased slightly for clean spacing */
+  --header-height: 90px;
 }
 
 body, html {
-    background-color: #ead79b !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 100%;
-    color: #333;
-    font-family: 'Inter', sans-serif;
+  background-color: #ead79b;
+  margin:0;
+  padding:0;
+  font-family:'Inter',sans-serif;
 }
 
-.container {
-    background: transparent !important;
-}
-
-/* ================================================
-   FIXED HEADER — Logo Left, Contact Right
-=================================================== */
-
+/* FIXED HEADER */
 .top-bar-flush {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+  position:fixed;
+  top:0; left:0; right:0;
 
-    height: var(--header-height);
-    padding: 8px 22px;
-    margin: 0;
+  height:var(--header-height);
+  padding:10px 22px;
 
-    background: rgba(234,215,155,0.96);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    z-index: 3000;
-}
+  background:rgba(234,215,155,0.96);
+  box-shadow:none !important;        /* FIX – no border */
+  border:none !important;
 
-/* Logo stays TRUE EXTREME LEFT TOP */
-.logo-link {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+  z-index:3000;
 }
 
 .logo-image {
-    width: 220px;
-    height: auto;
-    margin-left: -4px; /* pushes closer to true left */
+  width:220px;
+  margin-left:-4px;
 }
 
-/* Contact Us – TOP RIGHT */
-.contact-us-link {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.contact-us-link li {
-    display: inline-block;
-}
-
+/* Contact Us */
+.contact-us-link { list-style:none; margin:0; padding:0; }
 .contact-us-link a {
-    color: #333 !important;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    text-decoration: none;
-    padding: 6px 12px;
+  font-weight:700;
+  font-size:1.05em;
+  color:#333 !important;
 }
 
-/* ================================================
-   LANDING PAGE LAYOUT (below fixed header)
-=================================================== */
-
+/* PAGE LAYOUT */
 .main-content-layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
-    padding-top: calc(var(--header-height) + 25px);
-    padding-bottom: 60px;
+  display:flex;
+  justify-content:space-between;
+  padding-top:calc(var(--header-height) + 30px);
+  padding-bottom:50px;
 }
 
-.left-content-area {
-    flex: 0 0 50%;
-    max-width: 50%;
-    text-align: left !important;
-    padding: 10px 25px 0 10px;
-}
+.left-content-area { flex:0 0 50%; }
+.right-form-area { flex:0 0 45%; }
 
-.right-form-area {
-    flex: 0 0 45%;
-    max-width: 45%;
-}
-
-/* ================================================
-   HEADINGS + TAGLINE (Landing + Contact Page)
-=================================================== */
-
+/* HEADERS */
 h1, .contact-title {
-    font-family: 'Cinzel', serif;
-    font-size: 3.7em;
-    font-weight: 700;
-    color: #ED7014;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.18);
-    letter-spacing: 0.05em;
-    margin-bottom: 12px;
+  font-family:'Cinzel',serif;
+  font-size:3.7em;
+  color:#ED7014;
 }
 
+/* TAGLINE */
 .tagline, .contact-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6em;
-    font-style: italic;
-    color: #0B6623;
-    margin-bottom: 20px;
+  font-family:'Cormorant Garamond',serif;
+  color:#0B6623;
+  font-size:1.6em;
 }
 
-/* ================================================
-   LANDING PAGE TEXT
-=================================================== */
-
-.why-sankalpa p,
-.contact-body,
-.contact-detail {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.15em;
-    line-height: 1.75;
-    color: #4A4A4A;
-}
-
-/* ================================================
-   FORMS
-=================================================== */
-
+/* FORM BOX */
 .form-section {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.98);
-    border-radius: 12px;
-    box-shadow: 0 0 22px rgba(0,0,0,0.22);
+  background:white;
+  padding:28px;
+  border-radius:12px;
+  box-shadow:0 0 22px rgba(0,0,0,0.2);
 }
 
+/* INPUTS */
 .form-control {
-    background-color: #FFF8E7;
-    border: 1px solid #FFC65A;
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin-bottom: 18px;
-    line-height: normal;
+  background:#FFF8E7;
+  border:1px solid #FFC65A;
+  border-radius:8px;
+  padding:14px;
+  margin-bottom:18px;
 }
 
+/* Select clipping FIX */
 select.form-control {
-    min-height: 56px !important;
-    line-height: 1.6 !important;
-    white-space: normal !important;
-    overflow: visible !important;
+  min-height:56px;
+  white-space:normal;
+  overflow:visible;
 }
 
-/* Tabs */
-.nav-tabs .nav-link {
-    border: none !important;
-    background: transparent !important;
-    color: #0B6623 !important;
-    font-weight: 600;
-}
-
-.nav-tabs .nav-link.active {
-    color: #ED7014 !important;
-    border-bottom: 3px solid #ED7014 !important;
-    transform: translateY(-2px);
-}
-
-/* Buttons */
+/* BUTTONS */
 .btn-primary {
-    background-color: #ED7014 !important;
-    border-color: #ED7014 !important;
-    font-weight: 700;
-    border-radius: 8px;
+  background:#ED7014 !important;
+  border:#ED7014 !important;
+  font-weight:700;
 }
 
-.btn-primary:hover {
-    background-color: #D65A00 !important;
-    border-color: #D65A00 !important;
-}
-
-/* WhatsApp status */
+/* WhatsApp validated text */
 .validation-success {
-    color: #0B6623;
-    font-weight: 700;
-    text-align: left;
+  color:#0B6623;
+  font-weight:700;
+  margin-top:5px;
 }
