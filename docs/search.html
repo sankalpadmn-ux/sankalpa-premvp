@@ -1,47 +1,53 @@
 <!--
   SANKALPA FRONTEND
-  search.html — Version v1.0.2
-  Description: Search page
-  Last Updated: 2025-11-26
+  search.html — Version v1.0.3
+  Fixes: Fixed header, spacing, correct paths, layout consistency
+  Last Updated: 2025-11-27
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SANKALPA - Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SANKALPA – Search</title>
 
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.2">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.3">
 </head>
 <body>
 
   <!-- FIXED TOP BAR -->
-  <header class="top-bar-flush" role="banner">
-    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
+  <header class="top-bar-flush">
+    <a class="logo-link" href="index.html">
       <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
     </a>
-    <nav aria-label="primary">
-      <ul class="contact-us-link">
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </nav>
+
+    <ul class="contact-us-link">
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
   </header>
 
-  <main class="container" style="padding-top: calc(var(--header-height, 82px) + 20px);">
-    <h1>Search for a Priest or Ritual</h1>
-    <p class="lead">Find trusted priests and rituals worldwide.</p>
+  <!-- MAIN CONTENT -->
+  <main class="container" style="padding-top: calc(var(--header-height) + 25px);">
+    
+    <h1 class="contact-title">SEARCH</h1>
+    <p class="contact-subtitle">Find trusted priests and rituals worldwide</p>
 
-    <div class="input-group mb-3" style="max-width:650px;margin:auto;">
-      <input type="text" class="form-control" placeholder="E.g., Pooja, Vedic Priest, City" aria-label="Search">
+    <div class="input-group mb-3" style="max-width: 650px; margin: auto;">
+      <input type="text" class="form-control" placeholder="E.g., Pooja, Vedic Priest, City">
       <div class="input-group-append">
         <button class="btn btn-primary" type="button">Search</button>
       </div>
     </div>
 
-    <p class="text-muted mt-5">Search results will appear here.</p>
+    <p class="text-muted mt-5 text-center">Search results will appear here.</p>
+    
   </main>
 
-  <script src="script.js?v=1.0.2"></script>
+  <!-- Main JS -->
+  <script src="script.js?v=1.0.3"></script>
 </body>
 </html>
