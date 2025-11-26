@@ -1,21 +1,21 @@
 <!--
   SANKALPA FRONTEND
-  index.html — Version v1.0.0
+  index.html — Version v1.0.1
   Description: Main landing + login page
   Last Updated: 2025-11-25
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>SANKALPA - Connecting with Purpose</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <!-- Main CSS (cache-busted) -->
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.0">
+  <!-- Updated CSS v1.0.1 -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.1">
 </head>
 <body>
 
@@ -41,7 +41,7 @@
         <p>
           Sankalpa is dedicated to upholding ancient traditions in the modern world. We provide a seamless,
           tech-enabled platform that connects you to a curated global collective of trusted priests, ensuring
-          every ritual, vow, and Sankalpa is realized with uncompromised authenticity and spiritual integrity.
+          every ritual, vow, and Sankalpa is realized with uncompromised authenticity.
         </p>
       </div>
     </div>
@@ -51,8 +51,8 @@
         <h4>Enter the Sacred Space</h4>
 
         <ul class="nav nav-tabs">
-          <li class="nav-item"><a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing">Existing User</a></li>
-          <li class="nav-item"><a class="nav-link" id="new-tab" data-toggle="tab" href="#new">New User</a></li>
+          <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#existing">Existing User</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#new">New User</a></li>
         </ul>
 
         <div id="duplicateMsg" class="alert alert-info text-center" style="display:none;margin-bottom:20px;"></div>
@@ -65,7 +65,7 @@
               <input type="text" class="form-control" placeholder="Full Name">
 
               <select id="country-existing" class="form-control">
-                <option value="" disabled selected>Country</option>
+                <option disabled selected>Country</option>
               </select>
 
               <div class="form-row">
@@ -84,7 +84,7 @@
               <input type="text" class="form-control" placeholder="City">
 
               <select id="country-new" class="form-control">
-                <option value="" disabled selected>Country</option>
+                <option disabled selected>Country</option>
               </select>
 
               <div class="form-row">
@@ -110,6 +110,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <script src="script.js?v=1.0.0"></script>
+  <!-- Updated JS v1.0.1 -->
+  <script src="script.js?v=1.0.1"></script>
 </body>
 </html>
