@@ -1,13 +1,18 @@
 /*
  * SANKALPA UI STYLESHEET
- * sankalpa_master.css — Version v1.0.0
- * Description: Full UI layout + fixed header + spacing + dropdown fixes
- * Last Updated: 2025-11-25
+ * sankalpa_master.css — Version v1.0.2
+ * Description: Fixed header + balanced spacing + dropdown & form fixes
+ * Last Updated: 2025-11-26
  */
 
 /* ==========================================================
    GLOBAL
 ========================================================== */
+
+:root {
+  /* header height used to position content below */
+  --header-height: 82px;
+}
 
 body, html {
     background-color: #ead79b !important;
@@ -22,12 +27,11 @@ body, html {
     background-color: transparent !important;
 }
 
-
 /* ==========================================================
    FIXED TOP BAR — LOGO (LEFT) + CONTACT (RIGHT)
-   - Top Bar stays fixed (Option A)
-   - Logo sits at the TRUE extreme top-left
-   - Contact Us sits at top-right
+   - top bar fixed (Option A)
+   - logo sits at the TRUE extreme top-left inside the header
+   - contact us at top-right
 ========================================================== */
 
 .top-bar-flush {
@@ -40,43 +44,56 @@ body, html {
     left: 0;
     right: 0;
 
-    padding: 8px 28px;
+    height: var(--header-height);
+    padding: 6px 20px;
     margin: 0 !important;
-    z-index: 2000;
+    z-index: 3000;
 
-    background: transparent; /* keeps golden background flowing */
+    /* transparent so landing background shows through; header area still reserved */
+    background: rgba(234,215,155,0.92);
+    backdrop-filter: none;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
 }
 
+/* logo — keep at true left edge visually using negative margin on link */
 .logo-link {
     margin: 0 !important;
     padding: 0 !important;
+    display: flex;
+    align-items: center;
 }
 
+/* make the logo touch the left; small negative left offset if needed */
 .logo-image {
-    width: 220px;
+    width: 210px;
     height: auto;
     display: block;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin-left: -6px;
+    margin-top: 0;
+    padding: 0;
 }
 
+/* contact link cluster */
 .contact-us-link {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
+.contact-us-link li {
+    display: inline-block;
+}
+
 .contact-us-link a {
     color: #333 !important;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     font-family: 'Inter', sans-serif;
-    font-size: 1.05em;
+    padding: 6px 10px;
 }
 
-
 /* ==========================================================
-   MAIN LAYOUT — Balanced spacing below fixed bar
+   MAIN LAYOUT — use header height to push content down
 ========================================================== */
 
 .main-content-layout {
@@ -84,12 +101,10 @@ body, html {
     justify-content: space-between;
     align-items: flex-start;
 
-    /* Beautiful medium spacing below fixed bar */
-    padding-top: 120px;
-
+    /* reserve space equal to header + balanced extra gap (20px) */
+    padding-top: calc(var(--header-height) + 20px);
     padding-bottom: 50px;
 }
-
 
 /* LEFT COLUMN (Heading + Tagline + Text) */
 .left-content-area {
@@ -100,68 +115,61 @@ body, html {
     text-align: left !important;
 }
 
-
 /* RIGHT COLUMN (Forms) */
 .right-form-area {
     flex: 0 0 45%;
     max-width: 45%;
 }
 
-
 /* ==========================================================
-   HEADINGS + TAGLINE (Sankalpa Branding)
+   HEADINGS + TAGLINE
 ========================================================== */
 
 h1 {
     font-family: 'Cinzel', serif;
-    font-size: 3.8em;
+    font-size: 3.6em;
     font-weight: 700;
     margin-top: 0 !important;
     margin-bottom: 6px !important;
     color: #ED7014;
     text-transform: uppercase;
-    letter-spacing: 0.09em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.22);
+    letter-spacing: 0.08em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.18);
     text-align: left;
 }
 
 .tagline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7em;
-    margin-bottom: 20px !important;
+    font-size: 1.6em;
+    margin-bottom: 18px !important;
     font-style: italic;
     color: #0B6623;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.08);
     text-align: left;
 }
 
 .why-sankalpa p {
-    font-size: 1.18em;
+    font-size: 1.12em;
     line-height: 1.8;
     color: #4A4A4A;
     text-align: left;
 }
 
-
 /* ==========================================================
-   FORM SECTION (Sacred Space Box)
+   FORM SECTION
 ========================================================== */
 
 .form-section {
     max-width: 500px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 26px;
     background-color: rgba(255,255,255,0.95);
-    box-shadow: 0 0 25px rgba(0,0,0,0.4), 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.25), 0 6px 12px rgba(0,0,0,0.12);
+    border-radius: 10px;
     text-align: center;
 }
 
-
-/* ==========================================================
-   TABS (Existing / New User)
-========================================================== */
-
+/* tabs */
 .nav-tabs .nav-link {
     cursor: pointer;
     background-color: transparent !important;
@@ -174,39 +182,31 @@ h1 {
     color: #ED7014 !important;
     font-weight: 700;
     border-bottom: 4px solid #ED7014 !important;
-    text-shadow: 0 0 8px rgba(237,112,20,0.4);
     transform: translateY(-2px);
 }
 
-
-/* ==========================================================
-   INPUTS + DROPDOWNS
-========================================================== */
-
+/* inputs */
 .form-control {
     background-color: #FFF8E7;
     border: 1px solid #FFC65A;
     border-radius: 8px;
-    padding: 14px 18px;
-    margin-bottom: 20px;
-
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
     height: auto;
     line-height: normal;
 }
 
-/* Dropdown clipping fix */
+/* dropdown fix */
 select.form-control {
-    min-height: 58px !important;
-    line-height: 1.6em !important;
-    padding-top: 14px !important;
-    padding-bottom: 14px !important;
+    min-height: 56px !important;
+    line-height: 1.5em !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
     white-space: normal !important;
     overflow: visible !important;
 }
-
 
 /* ==========================================================
    BUTTONS
@@ -216,23 +216,19 @@ select.form-control {
     background-color: #ED7014 !important;
     border-color: #ED7014 !important;
     color: white !important;
-    font-weight: bold;
-
+    font-weight: 700;
     border-radius: 8px;
-    padding: 12px 22px;
-    font-size: 1.15em;
-
-    box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+    padding: 10px 20px;
+    font-size: 1.05em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.18);
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:hover, .btn-primary:focus {
     background-color: #D65A00 !important;
     border-color: #D65A00 !important;
-    color: white !important;
 }
 
-/* For Contact Page */
+/* Contact page styles */
 .contact-title {
     font-family: 'Cinzel', serif;
     font-size: 3.2em;
@@ -240,33 +236,22 @@ select.form-control {
     color: #ED7014;
     text-align: left;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.18);
+    margin-bottom: 8px;
 }
 
 .contact-subtitle {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6em;
-    font-style: italic;
+    font-size: 1.55em;
     color: #0B6623;
-    margin-top: -8px;
-    margin-bottom: 30px;
+    margin-top: -6px;
+    margin-bottom: 22px;
     text-align: left;
 }
 
-.contact-body {
+.contact-body, .contact-detail {
     font-family: 'Inter', sans-serif;
-    font-size: 1.15em;
-    line-height: 1.8em;
+    font-size: 1.12em;
+    line-height: 1.75;
     color: #4A4A4A;
-    margin-bottom: 20px;
-}
-
-.contact-detail {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.15em;
-    line-height: 1.8em;
-    color: #4A4A4A;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
