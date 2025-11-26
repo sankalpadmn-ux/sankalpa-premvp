@@ -1,4 +1,4 @@
-<!-- SANKALPA FRONTEND - index.html - Version v1.0.6 -->
+<!-- SANKALPA FRONTEND - index.html - Version v1.0.7 (Cache-Fix Release) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +9,24 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <!-- Main CSS (force refresh v1.0.6) -->
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.6">
+  <!-- Main CSS (force fresh load v1.0.7) -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.7">
 </head>
 <body>
 
   <!-- FIXED HEADER -->
-  <header class="top-bar-flush" role="banner" aria-label="Top navigation">
-    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
+  <header class="top-bar-flush">
+    <a class="logo-link" href="index.html">
       <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
     </a>
 
-    <ul class="contact-us-link" aria-hidden="false">
+    <ul class="contact-us-link">
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </header>
 
   <!-- MAIN PAGE CONTENT -->
-  <main class="container main-content-layout" role="main">
+  <main class="container main-content-layout">
 
     <div class="left-content-area">
       <h1>SANKALPA</h1>
@@ -34,16 +34,16 @@
 
       <div class="why-sankalpa">
         <p>
-          Sankalpa is dedicated to upholding ancient traditions in the modern world. 
-          We connect you with a global collective of trusted priests ensuring every ritual 
-          is fulfilled with uncompromised authenticity and spiritual integrity.
+          Sankalpa is dedicated to upholding ancient traditions in the modern world.
+          We connect you with a global collective of trusted priests ensuring every ritual
+          is fulfilled with uncompromised authenticity, purity, and spiritual integrity.
         </p>
       </div>
     </div>
 
-    <aside class="right-form-area" aria-label="User forms">
-      <div class="form-section" role="region" aria-labelledby="enter-sacred">
-        <h4 id="enter-sacred">Enter the Sacred Space</h4>
+    <aside class="right-form-area">
+      <div class="form-section">
+        <h4>Enter the Sacred Space</h4>
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item"><a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab">Existing User</a></li>
@@ -55,17 +55,17 @@
         <div class="tab-content">
 
           <!-- EXISTING USER -->
-          <div class="tab-pane fade show active" id="existing" role="tabpanel" aria-labelledby="existing-tab">
+          <div class="tab-pane fade show active" id="existing" role="tabpanel">
             <form>
-              <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
+              <input type="text" class="form-control" placeholder="Full Name">
 
-              <select id="country-existing" class="form-control" aria-label="Country existing">
+              <select id="country-existing" class="form-control">
                 <option disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3"><input type="text" class="form-control" placeholder="Code" aria-label="Country code"></div>
-                <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number" aria-label="Mobile number"></div>
+                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
+                <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number"></div>
               </div>
 
               <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
@@ -73,21 +73,21 @@
           </div>
 
           <!-- NEW USER -->
-          <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+          <div class="tab-pane fade" id="new" role="tabpanel">
             <form>
-              <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
-              <input type="text" class="form-control" placeholder="City" aria-label="City">
+              <input type="text" class="form-control" placeholder="Full Name">
+              <input type="text" class="form-control" placeholder="City">
 
-              <select id="country-new" class="form-control" aria-label="Country new">
+              <select id="country-new" class="form-control">
                 <option disabled selected>Country</option>
               </select>
 
               <div class="form-row">
-                <div class="col-3"><input type="text" class="form-control" placeholder="Code" aria-label="Country code"></div>
-                <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number" aria-label="Mobile number"></div>
+                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
+                <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number"></div>
               </div>
 
-              <div id="whatsapp-status" class="validation-success" style="display:none;" aria-live="polite"></div>
+              <div id="whatsapp-status" class="validation-success" style="display:none;"></div>
 
               <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
             </form>
@@ -99,7 +99,7 @@
 
   </main>
 
-  <!-- Main JS (force refresh v1.0.6) -->
-  <script src="script.js?v=1.0.6"></script>
+  <!-- Main JS (force fresh load v1.0.7) -->
+  <script src="script.js?v=1.0.7"></script>
 </body>
 </html>
