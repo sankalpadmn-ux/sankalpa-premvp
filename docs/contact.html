@@ -1,117 +1,58 @@
 <!--
   SANKALPA FRONTEND
   contact.html — Version v1.0.0
-  Description: Contact page (Option 5 content, styled to match landing page)
+  Description: Contact page with Option 5 text & landing-page styling
   Last Updated: 2025-11-25
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>SANKALPA - Contact</title>
 
-  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-  <!-- Main CSS (versioned) -->
   <link rel="stylesheet" href="sankalpa_master.css?v=1.0.0">
 </head>
 <body>
 
-  <!-- TOP BAR (fixed) -->
-  <div class="top-bar-flush" role="banner">
-    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
-      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+  <!-- FIXED TOP BAR -->
+  <div class="top-bar-flush">
+    <a class="logo-link" href="index.html">
+      <img src="images/Sankalpa_Logo.jpg.png" class="logo-image" alt="Sankalpa Logo">
     </a>
-
     <ul class="contact-us-link">
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </div>
 
-  <div class="container" style="padding-top: 120px;">
-    <!-- Heading & Tagline styled to match landing page -->
-    <div style="max-width: 900px; margin: 0 auto;">
-      <h1 style="
-          font-family: 'Cinzel', serif;
-          font-size: 3.4em;
-          font-weight: 700;
-          color: #ED7014;
-          text-transform: uppercase;
-          margin-bottom: 10px;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-          letter-spacing: 0.07em;
-          text-align: left;">
-        CONTACT US
-      </h1>
+  <div class="container" style="padding-top:130px;">
 
-      <p style="
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 1.6em;
-          color: #0B6623;
-          font-style: italic;
-          margin-top: -10px;
-          margin-bottom: 25px;
-          text-align: left;
-          text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
-        We are here for your spiritual journey
+    <h1 class="contact-title">CONTACT US</h1>
+    <p class="contact-subtitle">We are here for your spiritual journey</p>
+
+    <div style="max-width:650px;text-align:left;">
+
+      <p class="contact-body">
+        At Sankalpa, our mission is to ease your spiritual journey. If you need help choosing a ritual,
+        understanding tradition, verifying priest details, or navigating our platform, our support team
+        will guide you with patience and clarity.
       </p>
 
-      <div style="max-width:650px;">
-        <p style="
-            font-size: 1.15em;
-            line-height: 1.8em;
-            font-family: 'Inter', sans-serif;
-            color: #4A4A4A;
-            margin-bottom: 20px;">
-          At Sankalpa, our mission is to ease your spiritual journey. If you need help choosing a ritual,
-          understanding tradition, verifying priest details, or navigating our platform, our support team
-          will guide you with patience and clarity.
-        </p>
+      <p class="contact-body">
+        Reach out through email, phone, or WhatsApp — we respond promptly and with respect, so you can
+        focus on what truly matters: your Sankalpa.
+      </p>
 
-        <p style="
-            font-size: 1.15em;
-            line-height: 1.8em;
-            font-family: 'Inter', sans-serif;
-            color: #4A4A4A;
-            margin-bottom: 30px;">
-          Reach out through email, phone, or WhatsApp — we respond promptly and with respect, so you can
-          focus on what truly matters: your Sankalpa.
-        </p>
+      <p class="contact-detail"><strong>Email:</strong> sankalpadmn@gmail.com</p>
+      <p class="contact-detail"><strong>Phone:</strong> +91 90400 44700</p>
 
-        <p style="
-            font-size: 1.15em;
-            line-height: 1.8em;
-            font-family: 'Inter', sans-serif;
-            color: #4A4A4A;
-            margin-bottom: 10px;">
-          <strong>Email:</strong> sankalpadmn@gmail.com
-        </p>
-
-        <p style="
-            font-size: 1.15em;
-            line-height: 1.8em;
-            font-family: 'Inter', sans-serif;
-            color: #4A4A4A;
-            margin-bottom: 25px;">
-          <strong>Phone:</strong> +91 90400 44700
-        </p>
-
-        <div style="margin-bottom:40px;">
-          <a href="https://wa.me/919040044700" target="_blank" rel="noopener" class="btn btn-success">
-            Chat on WhatsApp
-          </a>
-        </div>
-      </div>
+      <a href="https://wa.me/919040044700" target="_blank" class="btn btn-success">Chat on WhatsApp</a>
     </div>
+
   </div>
 
-  <!-- Scripts (versioned) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
   <script src="script.js?v=1.0.0"></script>
 </body>
 </html>
