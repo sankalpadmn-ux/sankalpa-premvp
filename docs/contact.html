@@ -17,37 +17,37 @@
   </a>
 
   <ul class="contact-us-link">
-    <li><a href="contact.html">Contact Us</a></li>
+    <!-- This link will be replaced by JS depending on login status -->
+    <li id="contactOrSearchLink"><a href="contact.html">Contact Us</a></li>
     <li><span id="logoutLink" style="display:none;"><a href="#" onclick="logoutUser()">Log Out</a></span></li>
   </ul>
 </header>
 
 <main class="container mt-5">
 
-<h2 class="text-center mb-4">Contact Us</h2>
+  <h2 class="text-center mb-4">Contact Us</h2>
 
-<div class="card p-4 shadow-sm">
+  <!-- Removed white Bootstrap card to match Landing Page background -->
+  <div class="p-4">
+    <p>
+      Namaste, and thank you for connecting with <strong>SANKALPA</strong>.
+      We are committed to supporting your spiritual journey with authentic guidance
+      and trusted priest connections.
+    </p>
 
-  <p>
-    Namaste, and thank you for connecting with <strong>SANKALPA</strong>.
-    We are committed to supporting your spiritual journey with authentic guidance
-    and trusted priest connections.
-  </p>
+    <hr>
 
-  <hr>
+    <p><strong>Email:</strong> sankalpadmn@gmail.com</p>
 
-  <p><strong>Email:</strong> sankalpadmn@gmail.com</p>
+    <p>
+      <strong>WhatsApp:</strong>
+      <a href="https://wa.me/919040044700" target="_blank">+91 90400 44700</a>
+    </p>
 
-  <p>
-    <strong>WhatsApp:</strong>
-    <a href="https://wa.me/919040044700" target="_blank">+91 90400 44700</a>
-  </p>
-
-  <p class="mt-3 text-muted">
-    We will get back to you with utmost care within 24 hours.
-  </p>
-
-</div>
+    <p class="mt-3 text-muted">
+      We will get back to you with utmost care within 24 hours.
+    </p>
+  </div>
 
 </main>
 
@@ -56,21 +56,32 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-function logoutUser(){
-  localStorage.removeItem('sankalpa_loggedIn');
-  localStorage.removeItem('sankalpa_userName');
-  window.location.href = 'index.html';
-}
+  // logoutUser kept for parity with index
+  function logoutUser(){
+    localStorage.removeItem('sankalpa_loggedIn');
+    localStorage.removeItem('sankalpa_userName');
+    window.location.href = 'index.html';
+  }
 
-function updateLogoutVisibility(){
-  const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
-  const elem = document.getElementById('logoutLink');
-  if(elem) elem.style.display = logged ? 'inline-block' : 'none';
-}
+  function updateLogoutVisibilityAndHeader(){
+    const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
+    const logoutElem = document.getElementById('logoutLink');
+    if(logoutElem) logoutElem.style.display = logged ? 'inline-block' : 'none';
 
-document.addEventListener('DOMContentLoaded', ()=>{
-  updateLogoutVisibility();
-});
+    // Adjust header link: if logged in, show Search instead of Contact Us
+    const linkLi = document.getElementById('contactOrSearchLink');
+    if(!linkLi) return;
+    if(logged){
+      linkLi.innerHTML = '<a href="search.html">Search</a>';
+    } else {
+      linkLi.innerHTML = '<a href="contact.html">Contact Us</a>';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    updateLogoutVisibilityAndHeader();
+    // Ensure logo always goes to landing page (it does via href)
+  });
 </script>
 
 </body>
