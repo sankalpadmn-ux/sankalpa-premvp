@@ -1,4 +1,4 @@
-<!-- SANKALPA FRONTEND - contact.html - Option 3 (Final) -->
+<!-- SANKALPA FRONTEND - contact.html - Option 3 (Final Stable Version) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +46,11 @@
       <hr>
 
       <p><strong>Email:</strong> sankalpadmn@gmail.com</p>
-      <p><strong>WhatsApp:</strong> +91 90400 44700</p>
+
+      <p>
+        <strong>WhatsApp:</strong>
+        <a href="https://wa.me/919040044700" target="_blank">+91 90400 44700</a>
+      </p>
 
       <p class="mt-3 text-muted">
         We will get back to you with utmost care within 24 hours.
@@ -61,7 +65,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- LOGOUT VISIBILITY -->
+  <!-- LOGOUT VISIBILITY (NO redirect – Contact Us is public) -->
   <script>
     function logoutUser(){
       localStorage.removeItem('sankalpa_loggedIn');
@@ -75,7 +79,6 @@
       if(elem) elem.style.display = logged ? 'inline-block' : 'none';
     }
 
-    // Contact page is public; no redirect
     document.addEventListener('DOMContentLoaded', ()=>{
       updateLogoutVisibility();
     });
