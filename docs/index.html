@@ -1,232 +1,143 @@
-/**
- * SANKALPA FRONTEND SCRIPT — FINAL v1.0.8
- */
+<!-- SANKALPA FRONTEND - index.html - Version v1.0.8 (Final Production Release) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SANKALPA – Connecting with Purpose</title>
 
-/* Your deployed Apps Script web app URL */
-const GAS_WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbzbNeL0HERxq-Q2mXchTEL3iWCM9PYBJFHTor9ViUjzKRyu3EGqqHJXiTyXXbBgt7IQ/exec";
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-/* LOGIN / LOGOUT */
-function loginUser(name){
-  localStorage.setItem('sankalpa_loggedIn','true');
-  localStorage.setItem('sankalpa_userName',name);
-  window.location.href = 'search.html';
-}
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.8">
 
-function logoutUser(){
-  localStorage.removeItem('sankalpa_loggedIn');
-  localStorage.removeItem('sankalpa_userName');
-  window.location.href = 'index.html';
-}
-
-function checkLoginStatus(){
-  const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
-  const path = window.location.pathname;
-
-  const isLoginPage =
-    path.includes('index.html') ||
-    path.endsWith('/') ||
-    path.endsWith('/docs/') ||
-    path.endsWith('/sankalpa-premvp/');
-
-  if(!isLoginPage && !logged){
-    window.location.href = 'index.html';
-    return true;
-  }
-  return false;
-}
-
-/* Show Log Out only when user is logged in */
-function updateLogoutVisibility(){
-  const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
-  const elem = document.getElementById('logoutLink');
-  if(elem) elem.style.display = logged ? 'inline-block' : 'none';
-}
-
-/* STATUS BOX */
-function showDuplicate(msg){
-  const box = document.getElementById('duplicateMsg');
-  if(!box) return;
-  box.style.display = 'block';
-  box.textContent = msg;
-  setTimeout(()=>{ box.style.display='none'; }, 3200);
-}
-
-/* COUNTRY + AUTOCODE */
-const countries = [
-  "India","United States","United Kingdom","Canada","Australia","Singapore","Malaysia",
-  "UAE","Germany","France","Japan","Sri Lanka","Nepal","Bangladesh","South Africa","Switzerland"
-];
-
-const countryCodes = {
-  "India":"+91","United States":"+1","United Kingdom":"+44","Canada":"+1","Australia":"+61",
-  "Singapore":"+65","Malaysia":"+60","UAE":"+971","Germany":"+49","France":"+33","Japan":"+81",
-  "Sri Lanka":"+94","Nepal":"+977","Bangladesh":"+880","South Africa":"+27","Switzerland":"+41"
-};
-
-function loadCountries(){
-  const ex = document.getElementById('country-existing');
-  const nw = document.getElementById('country-new');
-
-  [ex,nw].forEach(select=>{
-    if(select){
-      while(select.options.length > 1) select.remove(1);
-
-      countries.forEach(c=>{
-        const o = document.createElement('option');
-        o.value = c; 
-        o.textContent = c;
-        select.appendChild(o);
-      });
-
-      select.addEventListener('change', function(){
-        const codeInput = select.parentElement.querySelector('.col-3 input');
-        if(codeInput) codeInput.value = countryCodes[select.value] || '';
-      });
+  <!-- Tiny Mobile Stability Fix -->
+  <style>
+    @media(max-width: 576px){
+      .form-section {
+        min-height: 520px; /* prevents mobile jump when switching tabs */
+      }
     }
-  });
-}
+  </style>
 
-/* Helper: POST to GAS using urlencoded format */
-function postToGAS(obj){
-  const body = Object.entries(obj)
-    .map(([k,v]) => encodeURIComponent(k)+"="+encodeURIComponent(v))
-    .join("&");
+</head>
+<body>
 
-  return fetch(GAS_WEB_APP_URL, {
-    method: "POST",
-    headers: { 
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" 
-    },
-    body
-  }).then(r => r.json());
-}
+  <!-- FIXED HEADER -->
+  <header class="top-bar-flush">
+    <a class="logo-link" href="index.html">
+      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+    </a>
 
-/* MAIN LOGIC */
-document.addEventListener('DOMContentLoaded', ()=>{
+    <ul class="contact-us-link">
+      <li><a href="contact.html">Contact Us</a></li>
+      <li>
+        <span id="logoutLink" style="display:none;">
+          <a href="#" onclick="logoutUser()">Log Out</a>
+        </span>
+      </li>
+    </ul>
+  </header>
 
-  if(checkLoginStatus()) return;
+  <!-- MAIN PAGE CONTENT -->
+  <main class="container main-content-layout">
 
-  updateLogoutVisibility();
-  loadCountries();
+    <div class="left-content-area">
+      <h1>SANKALPA</h1>
+      <p class="tagline">Connecting with Purpose</p>
 
-  /* ============================================
-     EXISTING USER LOGIN
-     ============================================ */
-  const existingForm = document.querySelector('#existing form');
-  if(existingForm){
-    existingForm.addEventListener('submit', function(e){
-      e.preventDefault();
+      <div class="why-sankalpa">
+        <p>
+          Sankalpa is dedicated to upholding ancient traditions in the modern world.
+          We connect you with a global collective of trusted priests ensuring every ritual
+          is fulfilled with uncompromised authenticity, purity, and spiritual integrity.
+        </p>
+      </div>
+    </div>
 
-      const name = this.querySelector('input[placeholder="Full Name"]').value.trim();
-      const mobile = this.querySelector('input[placeholder="Mobile Number"]').value.trim();
+    <aside class="right-form-area">
+      <div class="form-section">
+        <h4>Enter the Sacred Space</h4>
 
-      if(!name){
-        showDuplicate('Please enter your Full Name.');
-        return;
-      }
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab">
+              Existing User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab">
+              New User
+            </a>
+          </li>
+        </ul>
 
-      if(!mobile || mobile.length < 8){
-        showDuplicate('Please enter a valid WhatsApp Number.');
-        return;
-      }
+        <div id="duplicateMsg" class="alert alert-info text-center"
+             style="display:none;margin-bottom:20px;"></div>
 
-      showDuplicate('Validating WhatsApp Number...');
+        <div class="tab-content">
 
-      const payload = {
-        action: "registerCustomer",
-        name: name,
-        mobile: mobile,
-        email: "",
-        city: "",
-        country: document.getElementById("country-existing")?.value || ""
-      };
+          <!-- EXISTING USER -->
+          <div class="tab-pane fade show active" id="existing" role="tabpanel">
+            <form>
+              <input type="text" class="form-control" placeholder="Full Name">
 
-      postToGAS(payload).then(res => {
+              <select id="country-existing" class="form-control">
+                <option disabled selected>Country</option>
+              </select>
 
-        if(res.status === "duplicate"){
-          const nm = res.name || name;
-          showDuplicate(`This mobile number is already registered. Welcome back, ${nm}.`);
-          setTimeout(()=> loginUser(nm), 900);
-          return;
-        }
+              <div class="form-row">
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Code">
+                </div>
+                <div class="col-9">
+                  <input type="text" class="form-control" placeholder="Mobile Number">
+                </div>
+              </div>
 
-        if(res.status === "success"){
-          showDuplicate(`Registration successful for ${name}. You can log in after 24 hours.`);
-          setTimeout(()=> logoutUser(), 1800);
-          return;
-        }
+              <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
+            </form>
+          </div>
 
-        showDuplicate(res.message || "Server error.");
-      })
-      .catch(()=>{
-        showDuplicate("Unable to reach server. Please try again.");
-      });
+          <!-- NEW USER -->
+          <div class="tab-pane fade" id="new" role="tabpanel">
+            <form>
+              <input type="text" class="form-control" placeholder="Full Name">
+              <input type="text" class="form-control" placeholder="City">
 
-    });
-  }
+              <select id="country-new" class="form-control">
+                <option disabled selected>Country</option>
+              </select>
 
-  /* ============================================
-     NEW USER REGISTRATION
-     ============================================ */
-  const newForm = document.querySelector('#new form');
-  if(newForm){
-    newForm.addEventListener('submit', function(e){
-      e.preventDefault();
+              <div class="form-row">
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Code">
+                </div>
+                <div class="col-9">
+                  <input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number">
+                </div>
+              </div>
 
-      const name = this.querySelector('input[placeholder="Full Name"]').value.trim();
-      const city = this.querySelector('input[placeholder="City"]').value.trim();
-      const mobile = document.getElementById("new-user-mobile").value.trim();
-      const country = document.getElementById("country-new")?.value || "";
+              <div id="whatsapp-status" class="validation-success" style="display:none;"></div>
 
-      if(!name){
-        showDuplicate('Please enter your Full Name.');
-        return;
-      }
+              <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+            </form>
+          </div>
 
-      if(!mobile || mobile.length < 8){
-        showDuplicate('Please enter a valid Mobile Number.');
-        return;
-      }
+        </div>
+      </div>
+    </aside>
 
-      /* WhatsApp validation visual */
-      const wa = document.getElementById('whatsapp-status');
-      if(wa){
-        wa.textContent = '✓ WhatsApp Validated: Mobile number confirmed.';
-        wa.style.display = 'block';
-      }
+  </main>
 
-      const payload = {
-        action: "registerCustomer",
-        name: name,
-        mobile: mobile,
-        email: "",
-        city: city,
-        country: country
-      };
+  <!-- Bootstrap JS dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-      postToGAS(payload).then(res => {
+  <!-- Main JS -->
+  <script src="script.js?v=1.0.8"></script>
 
-        if(res.status === "duplicate"){
-          const nm = res.name || name;
-          showDuplicate(`This mobile number is already registered. Welcome back, ${nm}.`);
-          setTimeout(()=> loginUser(nm), 900);
-          return;
-        }
-
-        if(res.status === "success"){
-          showDuplicate(`Registration successful for ${name}. You can log in after 24 hours.`);
-          setTimeout(()=> logoutUser(), 1800);
-          return;
-        }
-
-        showDuplicate(res.message || "Server error.");
-      })
-      .catch(()=>{
-        showDuplicate("Unable to reach server. Please try again.");
-      });
-
-    });
-  }
-
-});
+</body>
+</html>
