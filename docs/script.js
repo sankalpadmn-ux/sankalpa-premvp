@@ -1,10 +1,14 @@
 /**
- * SANKALPA FRONTEND SCRIPT — FINAL v1.0.8
+ * SANKALPA FRONTEND SCRIPT — FINAL v1.0.9
+ * Stable — Do NOT Modify Structure Without Asking
  */
 
 const GAS_WEB_APP_URL =
   "https://script.google.com/macros/s/AKfycbzbNeL0HERxq-Q2mXchTEL3iWCM9PYBJFHTor9ViUjzKRyu3EGqqHJXiTyXXbBgt7IQ/exec";
 
+/***********************
+ * LOGIN / LOGOUT
+ ***********************/
 function loginUser(name){
   localStorage.setItem('sankalpa_loggedIn','true');
   localStorage.setItem('sankalpa_userName',name);
@@ -40,6 +44,9 @@ function updateLogoutVisibility(){
   if(elem) elem.style.display = logged ? 'inline-block' : 'none';
 }
 
+/***********************
+ * STATUS MESSAGE BOX
+ ***********************/
 function showDuplicate(msg){
   const box = document.getElementById('duplicateMsg');
   if(!box) return;
@@ -48,6 +55,9 @@ function showDuplicate(msg){
   setTimeout(()=>{ box.style.display='none'; }, 3200);
 }
 
+/***********************
+ * COUNTRY + AUTO CODE
+ ***********************/
 const countries = [
   "India","United States","United Kingdom","Canada","Australia","Singapore","Malaysia",
   "UAE","Germany","France","Japan","Sri Lanka","Nepal","Bangladesh","South Africa","Switzerland"
@@ -82,6 +92,9 @@ function loadCountries(){
   });
 }
 
+/***********************
+ * GAS POST Helper
+ ***********************/
 function postToGAS(obj){
   const body = Object.entries(obj)
     .map(([k,v]) => encodeURIComponent(k)+"="+encodeURIComponent(v))
@@ -96,6 +109,9 @@ function postToGAS(obj){
   }).then(r => r.json());
 }
 
+/***********************
+ * MAIN EVENT HANDLERS
+ ***********************/
 document.addEventListener('DOMContentLoaded', ()=>{
 
   if(checkLoginStatus()) return;
@@ -103,13 +119,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
   updateLogoutVisibility();
   loadCountries();
 
+  /*************************************
+   * EXISTING USER LOGIN (NO REGISTER)
+   *************************************/
   const existingForm = document.querySelector('#existing form');
+
   if(existingForm){
     existingForm.addEventListener('submit', function(e){
       e.preventDefault();
 
       const name = this.querySelector('input[placeholder="Full Name"]').value.trim();
       const mobile = this.querySelector('input[placeholder="Mobile Number"]').value.trim();
+      const code = this.querySelector('.col-3 input').value.trim();
 
       if(!name){
         showDuplicate('Please enter your Full Name.');
@@ -121,42 +142,44 @@ document.addEventListener('DOMContentLoaded', ()=>{
         return;
       }
 
-      showDuplicate('Validating WhatsApp Number...');
+      // Combine as: +91 9600003499
+      const fullMobile = code + " " + mobile;
+
+      showDuplicate('Checking number...');
 
       const payload = {
-        action: "registerCustomer",
-        name: name,
-        mobile: mobile,
-        email: "",
-        city: "",
-        country: document.getElementById("country-existing")?.value || ""
+        action: "validateCustomer",
+        mobile: fullMobile
       };
 
       postToGAS(payload).then(res => {
 
         if(res.status === "duplicate"){
           const nm = res.name || name;
-          showDuplicate(`This mobile number is already registered. Welcome back, ${nm}.`);
+          showDuplicate(`Welcome back, ${nm}.`);
           setTimeout(()=> loginUser(nm), 900);
           return;
         }
 
-        if(res.status === "success"){
-          showDuplicate(`Registration successful for ${name}. You can log in after 24 hours.`);
-          setTimeout(()=> logoutUser(), 1800);
+        if(res.status === "not_found"){
+          showDuplicate("This number is not registered. Please register as New User.");
           return;
         }
 
         showDuplicate(res.message || "Server error.");
       })
       .catch(()=>{
-        showDuplicate("Unable to reach server. Please try again.");
+        showDuplicate("Unable to reach server.");
       });
 
     });
   }
 
+  /*************************************
+   * NEW USER REGISTRATION
+   *************************************/
   const newForm = document.querySelector('#new form');
+
   if(newForm){
     newForm.addEventListener('submit', function(e){
       e.preventDefault();
@@ -164,6 +187,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       const name = this.querySelector('input[placeholder="Full Name"]').value.trim();
       const city = this.querySelector('input[placeholder="City"]').value.trim();
       const mobile = document.getElementById("new-user-mobile").value.trim();
+      const code = this.querySelector('.col-3 input').value.trim();
       const country = document.getElementById("country-new")?.value || "";
 
       if(!name){
@@ -176,6 +200,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         return;
       }
 
+      // Combine exact format your sheet uses
+      const fullMobile = code + " " + mobile;
+
+      // WhatsApp validation message
       const wa = document.getElementById('whatsapp-status');
       if(wa){
         wa.textContent = '✓ WhatsApp Validated: Mobile number confirmed.';
@@ -185,7 +213,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       const payload = {
         action: "registerCustomer",
         name: name,
-        mobile: mobile,
+        mobile: fullMobile,
         email: "",
         city: city,
         country: country
@@ -209,7 +237,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         showDuplicate(res.message || "Server error.");
       })
       .catch(()=>{
-        showDuplicate("Unable to reach server. Please try again.");
+        showDuplicate("Unable to reach server.");
       });
 
     });
