@@ -1,4 +1,4 @@
-<!-- SANKALPA FRONTEND - index.html - Version v1.0.8 (Final Release with Mobile Stability Fix) -->
+<!-- SANKALPA FRONTEND - index.html - Version v1.0.8 (Final Production Release) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="sankalpa_master.css?v=1.0.8">
 
-  <!-- Tiny Mobile Stability Fix (Option B) -->
+  <!-- Tiny Mobile Stability Fix -->
   <style>
     @media(max-width: 576px){
       .form-section {
@@ -32,7 +32,11 @@
 
     <ul class="contact-us-link">
       <li><a href="contact.html">Contact Us</a></li>
-      <li><span id="logoutLink" style="display:none;"><a href="#" onclick="logoutUser()">Log Out</a></span></li>
+      <li>
+        <span id="logoutLink" style="display:none;">
+          <a href="#" onclick="logoutUser()">Log Out</a>
+        </span>
+      </li>
     </ul>
   </header>
 
@@ -57,11 +61,20 @@
         <h4>Enter the Sacred Space</h4>
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item"><a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab">Existing User</a></li>
-          <li class="nav-item"><a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab">New User</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab">
+              Existing User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab">
+              New User
+            </a>
+          </li>
         </ul>
 
-        <div id="duplicateMsg" class="alert alert-info text-center" style="display:none;margin-bottom:20px;"></div>
+        <div id="duplicateMsg" class="alert alert-info text-center" 
+             style="display:none;margin-bottom:20px;"></div>
 
         <div class="tab-content">
 
@@ -75,8 +88,12 @@
               </select>
 
               <div class="form-row">
-                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
-                <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number"></div>
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Code">
+                </div>
+                <div class="col-9">
+                  <input type="text" class="form-control" placeholder="Mobile Number">
+                </div>
               </div>
 
               <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
@@ -94,8 +111,12 @@
               </select>
 
               <div class="form-row">
-                <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
-                <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number"></div>
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Code">
+                </div>
+                <div class="col-9">
+                  <input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number">
+                </div>
               </div>
 
               <div id="whatsapp-status" class="validation-success" style="display:none;"></div>
@@ -117,5 +138,6 @@
 
   <!-- Main JS -->
   <script src="script.js?v=1.0.8"></script>
+
 </body>
 </html>
