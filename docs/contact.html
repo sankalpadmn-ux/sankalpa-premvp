@@ -1,88 +1,77 @@
-<!-- SANKALPA FRONTEND - contact.html - Option 3 (Final Stable Version) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SANKALPA – Contact Us</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SANKALPA – Contact Us</title>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="sankalpa_master.css?v=1.7">
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.7">
 </head>
 <body>
 
-  <!-- FIXED HEADER -->
-  <header class="top-bar-flush">
-    <a class="logo-link" href="index.html">
-      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
-    </a>
+<header class="top-bar-flush">
+  <a class="logo-link" href="index.html">
+    <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+  </a>
 
-    <ul class="contact-us-link">
-      <li><a href="contact.html">Contact Us</a></li>
-      <li>
-        <span id="logoutLink" style="display:none;">
-          <a href="#" onclick="logoutUser()">Log Out</a>
-        </span>
-      </li>
-    </ul>
-  </header>
+  <ul class="contact-us-link">
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><span id="logoutLink" style="display:none;"><a href="#" onclick="logoutUser()">Log Out</a></span></li>
+  </ul>
+</header>
 
-  <!-- PAGE CONTENT -->
-  <main class="container mt-5">
+<main class="container mt-5">
 
-    <h2 class="text-center mb-4">Contact Us</h2>
+<h2 class="text-center mb-4">Contact Us</h2>
 
-    <div class="card p-4 shadow-sm">
+<div class="card p-4 shadow-sm">
 
-      <p>
-        Namaste, and thank you for connecting with <strong>SANKALPA</strong>.
-        We are committed to supporting your spiritual journey with authentic guidance
-        and trusted priest connections.
-      </p>
+  <p>
+    Namaste, and thank you for connecting with <strong>SANKALPA</strong>.
+    We are committed to supporting your spiritual journey with authentic guidance
+    and trusted priest connections.
+  </p>
 
-      <hr>
+  <hr>
 
-      <p><strong>Email:</strong> sankalpadmn@gmail.com</p>
+  <p><strong>Email:</strong> sankalpadmn@gmail.com</p>
 
-      <p>
-        <strong>WhatsApp:</strong>
-        <a href="https://wa.me/919040044700" target="_blank">+91 90400 44700</a>
-      </p>
+  <p>
+    <strong>WhatsApp:</strong>
+    <a href="https://wa.me/919040044700" target="_blank">+91 90400 44700</a>
+  </p>
 
-      <p class="mt-3 text-muted">
-        We will get back to you with utmost care within 24 hours.
-      </p>
+  <p class="mt-3 text-muted">
+    We will get back to you with utmost care within 24 hours.
+  </p>
 
-    </div>
+</div>
 
-  </main>
+</main>
 
-  <!-- BOOTSTRAP JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- LOGOUT VISIBILITY (NO redirect – Contact Us is public) -->
-  <script>
-    function logoutUser(){
-      localStorage.removeItem('sankalpa_loggedIn');
-      localStorage.removeItem('sankalpa_userName');
-      window.location.href = 'index.html';
-    }
+<script>
+function logoutUser(){
+  localStorage.removeItem('sankalpa_loggedIn');
+  localStorage.removeItem('sankalpa_userName');
+  window.location.href = 'index.html';
+}
 
-    function updateLogoutVisibility(){
-      const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
-      const elem = document.getElementById('logoutLink');
-      if(elem) elem.style.display = logged ? 'inline-block' : 'none';
-    }
+function updateLogoutVisibility(){
+  const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
+  const elem = document.getElementById('logoutLink');
+  if(elem) elem.style.display = logged ? 'inline-block' : 'none';
+}
 
-    document.addEventListener('DOMContentLoaded', ()=>{
-      updateLogoutVisibility();
-    });
-  </script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  updateLogoutVisibility();
+});
+</script>
 
 </body>
 </html>
