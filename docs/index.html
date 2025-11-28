@@ -1,4 +1,4 @@
-<!-- SANKALPA FRONTEND - index.html - Version v1.0.7 (Cache-Fix Release) -->
+<!-- SANKALPA FRONTEND - index.html - Version v1.0.8 (Final Release with Mobile Stability Fix) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +9,18 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <!-- Main CSS (force fresh load v1.0.7) -->
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.7">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.8">
+
+  <!-- Tiny Mobile Stability Fix (Option B) -->
+  <style>
+    @media(max-width: 576px){
+      .form-section {
+        min-height: 520px; /* prevents mobile jump when switching tabs */
+      }
+    }
+  </style>
+
 </head>
 <body>
 
@@ -22,6 +32,7 @@
 
     <ul class="contact-us-link">
       <li><a href="contact.html">Contact Us</a></li>
+      <li><span id="logoutLink" style="display:none;"><a href="#" onclick="logoutUser()">Log Out</a></span></li>
     </ul>
   </header>
 
@@ -99,7 +110,12 @@
 
   </main>
 
-  <!-- Main JS (force fresh load v1.0.7) -->
-  <script src="script.js?v=1.0.7"></script>
+  <!-- Bootstrap JS dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="script.js?v=1.0.8"></script>
 </body>
 </html>
