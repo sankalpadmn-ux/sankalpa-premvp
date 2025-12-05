@@ -1,100 +1,217 @@
 /*
- * SANKALPA MASTER CSS
- * Version v1.0.6 – FINAL
- * Fixes: Header border removed, logo alignment, Contact Us stability,
- *        spacing, dropdown clipping, WhatsApp validation visibility.
+ * SANKALPA MASTER STYLESHEET — FINAL CLEAN BUILD
+ * Version: v1.0-C
+ * This version unifies:
+ * - Font colors across all pages
+ * - Header/logo/top bar spacing
+ * - Contact Us styling
+ * - Dropdown clipping fix
+ * - No horizontal line under header
+ * - Perfect alignment left & right
+ * - Message colors matching landing page
  */
 
-/* GLOBAL */
-:root { --header-height: 120px; } /* increased to ensure logo + contact fit */
-
+/*===========================================
+  GLOBAL PAGE STYLING
+===========================================*/
 body, html {
-  background-color: #ead79b;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  height: 100%;
+    background-color: #ead79b !important; /* Landing page background */
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    color: #333;
+    font-family: 'Inter', sans-serif;
 }
 
-/* FIXED HEADER — NO BORDER/SHADOW */
+.container, .header, .navbar {
+    background-color: transparent !important;
+}
+
+/*===========================================
+  HEADER — LOGO + CONTACT US
+===========================================*/
 .top-bar-flush {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  position: fixed;
-  top: 0; left: 0; right: 0;
-
-  height: var(--header-height);
-  padding: 10px 22px;
-
-  background: rgba(234,215,155,0.98);
-
-  /* Remove any thin lines */
-  box-shadow: none !important;
-  border-bottom: none !important;
-  outline: none !important;
-
-  z-index: 3000;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 25px 0 0;
+    margin: 0;
+    border: none !important;         /* Remove the unwanted line */
+    box-shadow: none !important;      /* Remove ANY ghost line */
 }
 
-/* LOGO */
-.logo-link { display:flex; align-items:center; padding:0; margin:0; }
-.logo-image { width: 220px; height: auto; margin-left: -4px; }
+.logo-link {
+    padding: 0;
+    margin: 0;
+    padding-left: 5px;
+    padding-top: 5px;
+}
 
-/* CONTACT */
-.contact-us-link { list-style:none; margin:0; padding:0; }
-.contact-us-link li { display:inline-block; }
-.contact-us-link a { color:#333 !important; font-weight:700; font-size:1.05em; text-decoration:none; }
+.logo-image {
+    width: 240px;
+    height: auto;
+    display: block;
+    border-radius: 0;
+}
 
-/* MAIN LAYOUT */
+/* CONTACT US RIGHT */
+.contact-us-link {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-us-link a {
+    color: #333 !important;          /* Same color used on landing */
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    padding-top: 8px;
+    display: block;
+}
+
+/*===========================================
+  MAIN LAYOUT ALIGNMENT — LEFT + RIGHT
+===========================================*/
 .main-content-layout {
-  display:flex;
-  justify-content:space-between;
-  padding-top: calc(var(--header-height) + 10px);
-  padding-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 50px;
 }
 
-.left-content-area { flex:0 0 50%; max-width:50%; padding:0 20px 0 10px; }
-.right-form-area { flex:0 0 45%; max-width:45%; }
-
-/* HEADINGS */
-h1, .contact-title {
-  font-family: 'Cinzel', serif;
-  font-size: 3.7em;
-  color: #ED7014;
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
-}
-.tagline, .contact-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size:1.6em;
-  color:#0B6623;
+.left-content-area {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 15px;
+    padding-right: 20px;
+    margin-top: -20px;    /* Bring up SANKALPA */
 }
 
-/* TEXT */
-.why-sankalpa p, .contact-body, .contact-detail {
-  font-size:1.13em; line-height:1.75; color:#4A4A4A;
+.right-form-area {
+    flex: 0 0 45%;
+    max-width: 45%;
+    margin-top: -20px;    /* Bring up Forms */
 }
 
-/* FORM */
+/*===========================================
+  SANKALPA HEADING AND TAGLINE
+===========================================*/
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 4.0em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #ED7014;       /* SAME LANDING PAGE ORANGE */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    font-style: italic;
+    font-weight: 500;
+    color: #0B6623;       /* SAME LANDING PAGE DARK GREEN */
+}
+
+/* Paragraph under Why Sankalpa */
+.why-sankalpa p {
+    line-height: 1.7;
+    color: #4A4A4A;
+    font-size: 1.1em;
+}
+
+/*===========================================
+  FORM + TABS
+===========================================*/
 .form-section {
-  max-width:520px; background:#fff; padding:28px; border-radius:12px; box-shadow:0 0 22px rgba(0,0,0,0.18);
+    max-width: 500px;
+    background-color: rgba(255,255,255,0.95);
+    padding: 30px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.35);
+    text-align: center;
+    border-radius: 6px;
 }
+
+/* Tabs */
+.nav-tabs .nav-link {
+    color: #0B6623 !important; /* DARK GREEN (inactive) */
+    border: none !important;
+}
+
+.nav-tabs .nav-link.active {
+    color: #ED7014 !important; /* ORANGE (active) */
+    border-bottom: 4px solid #ED7014 !important;
+    font-weight: 700;
+}
+
+/*===========================================
+  INPUTS + DROPDOWNS — NO CLIPPING
+===========================================*/
 .form-control {
-  background:#FFF8E7; border:1px solid #FFC65A; border-radius:8px; padding:14px; margin-bottom:18px;
+    background-color: #FFF8E7;
+    border: 1px solid #FFC65A;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 999;        /* Ensures dropdown displays above form-section */
+    line-height: normal;
 }
 
-/* SELECT FIX */
-select.form-control { min-height:56px !important; white-space:normal !important; overflow:visible !important; }
+/*===========================================
+  BUTTONS
+===========================================*/
+.btn-primary {
+    background-color: #ED7014 !important;
+    border-color: #ED7014 !important;
+    font-weight: bold;
+    border-radius: 8px;
+}
 
-/* TABS */
-.nav-tabs .nav-link { border:none !important; background:transparent !important; color:#0B6623 !important; font-weight:600; }
-.nav-tabs .nav-link.active { color:#ED7014 !important; border-bottom:3px solid #ED7014 !important; transform:translateY(-2px); }
+.btn-primary:hover {
+    background-color: #D65A00 !important;
+}
 
-/* BUTTONS */
-.btn-primary { background-color:#ED7014 !important; border-color:#ED7014 !important; font-weight:700; border-radius:8px; }
-.btn-primary:hover { background-color:#D65A00 !important; border-color:#D65A00 !important; }
+/*===========================================
+  MESSAGE COLORS (MATCH LANDING)
+===========================================*/
+.validation-success {
+    color: #0B6623 !important; /* GREEN */
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
 
-/* WHATSAPP VALIDATION */
-.validation-success { color:#0B6623; font-weight:700; margin-top:8px; font-size:1.02em; }
+/* Error/Info message box */
+#duplicateMsg {
+    font-weight: bold;
+    color: #ED7014 !important; /* ORANGE matching landing */
+    background-color: #FFF4E8 !important;
+    border-color: #ED7014 !important;
+}
+
+/*===========================================
+  CONTACT PAGE EXACT COLORS
+===========================================*/
+.contact-heading {
+    font-family: 'Cinzel', serif;
+    font-size: 3.2em;
+    color: #ED7014 !important;
+    text-align: left;
+}
+
+.contact-text {
+    color: #4A4A4A;
+    line-height: 1.7;
+    font-size: 1.15em;
+    text-align: left;
+}
