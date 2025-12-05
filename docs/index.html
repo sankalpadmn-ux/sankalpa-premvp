@@ -1,4 +1,5 @@
-<!-- SANKALPA FRONTEND - index.html - Version v1.0.8 (Final Production Release) -->
+<!-- SANKALPA FRONTEND - index.html - Version v1.0.11
+     Finalized: header/auth-safe structure, tabs, form IDs, accessibility -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,105 +7,123 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SANKALPA – Connecting with Purpose</title>
 
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.8">
 
-  <style>
-    @media(max-width: 576px){
-      .form-section { min-height: 520px; }
-    }
-  </style>
-
+  <!-- Main CSS (v1.0.11) -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.11">
 </head>
 <body>
 
-<header class="top-bar-flush">
-  <a class="logo-link" href="index.html">
-    <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
-  </a>
+  <!-- FIXED HEADER: safe auth-links container so JS can update without removing header -->
+  <header class="top-bar-flush" role="banner" aria-label="Top navigation">
+    <a class="logo-link" href="index.html" aria-label="Sankalpa Home">
+      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+    </a>
 
-  <ul class="contact-us-link">
-    <li><a href="contact.html">Contact Us</a></li>
-    <li><span id="logoutLink" style="display:none;"><a href="#" onclick="logoutUser()">Log Out</a></span></li>
-  </ul>
-</header>
-
-<main class="container main-content-layout">
-
-  <div class="left-content-area">
-    <h1>SANKALPA</h1>
-    <p class="tagline">Connecting with Purpose</p>
-    <div class="why-sankalpa">
-      <p>
-        Sankalpa is dedicated to upholding ancient traditions in the modern world.
-        We connect you with a global collective of trusted priests ensuring every ritual
-        is fulfilled with uncompromised authenticity, purity, and spiritual integrity.
-      </p>
-    </div>
-  </div>
-
-  <aside class="right-form-area">
-    <div class="form-section">
-      <h4>Enter the Sacred Space</h4>
-
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#existing">Existing User</a></li>
-        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#new">New User</a></li>
+    <!-- JS will update only the innerHTML of #auth-links (safe) -->
+    <nav aria-label="User navigation">
+      <ul id="auth-links" class="contact-us-link">
+        <li><a href="contact.html" id="contact-link">Contact Us</a></li>
       </ul>
+    </nav>
+  </header>
 
-      <div id="duplicateMsg" class="alert alert-info text-center" style="display:none;margin-bottom:20px;"></div>
+  <!-- MAIN CONTENT -->
+  <main class="container main-content-layout" role="main">
 
-      <div class="tab-content">
-        
-        <!-- EXISTING -->
-        <div class="tab-pane fade show active" id="existing">
-          <form>
-            <input type="text" class="form-control" placeholder="Full Name">
+    <div class="left-content-area">
+      <h1 class="site-title">SANKALPA</h1>
+      <p class="tagline">Connecting with Purpose</p>
 
-            <select id="country-existing" class="form-control">
-              <option disabled selected>Country</option>
-            </select>
-
-            <div class="form-row">
-              <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
-              <div class="col-9"><input type="text" class="form-control" placeholder="Mobile Number"></div>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
-          </form>
-        </div>
-
-        <!-- NEW -->
-        <div class="tab-pane fade" id="new">
-          <form>
-            <input type="text" class="form-control" placeholder="Full Name">
-            <input type="text" class="form-control" placeholder="City">
-
-            <select id="country-new" class="form-control">
-              <option disabled selected>Country</option>
-            </select>
-
-            <div class="form-row">
-              <div class="col-3"><input type="text" class="form-control" placeholder="Code"></div>
-              <div class="col-9"><input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number"></div>
-            </div>
-
-            <div id="whatsapp-status" class="validation-success" style="display:none;"></div>
-
-            <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
-          </form>
-        </div>
-
+      <div class="why-sankalpa">
+        <p>
+          Sankalpa is dedicated to upholding ancient traditions in the modern world.
+          We connect you with a global collective of trusted priests ensuring every ritual
+          is fulfilled with uncompromised authenticity and spiritual integrity.
+        </p>
       </div>
     </div>
-  </aside>
 
-</main>
+    <aside class="right-form-area" aria-label="User forms">
+      <div class="form-section" role="region" aria-labelledby="enter-sacred">
+        <h4 id="enter-sacred">Enter the Sacred Space</h4>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="script.js?v=1.0.8"></script>
+        <!-- Bootstrap tabs: data-toggle works when Bootstrap JS loaded.
+             Keep markup canonical so tab toggling works out-of-the-box. -->
+        <ul class="nav nav-tabs" id="userTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="existing-tab" data-toggle="tab" href="#existing" role="tab" aria-controls="existing" aria-selected="true">Existing User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">New User</a>
+          </li>
+        </ul>
 
+        <div id="duplicateMsg" class="alert alert-info text-center" style="display:none; margin-bottom: 18px;"></div>
+
+        <div class="tab-content" id="userTabContent">
+
+          <!-- EXISTING USER -->
+          <div class="tab-pane fade show active" id="existing" role="tabpanel" aria-labelledby="existing-tab">
+            <form id="existing-form" novalidate>
+              <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
+
+              <select id="country-existing" class="form-control" aria-label="Country (existing)">
+                <option value="" disabled selected>Country</option>
+              </select>
+
+              <div class="form-row">
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Code" aria-label="Country code">
+                </div>
+                <div class="col-9">
+                  <input type="text" class="form-control" placeholder="Mobile Number" aria-label="Mobile number (existing)">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
+            </form>
+          </div>
+
+          <!-- NEW USER -->
+          <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+            <form id="new-form" novalidate>
+              <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name (new)">
+              <input type="text" class="form-control" placeholder="City" aria-label="City">
+
+              <select id="country-new" class="form-control" aria-label="Country (new)">
+                <option value="" disabled selected>Country</option>
+              </select>
+
+              <div class="form-row">
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Code" aria-label="Country code (new)">
+                </div>
+                <div class="col-9">
+                  <input id="new-user-mobile" type="text" class="form-control" placeholder="Mobile Number" aria-label="Mobile number (new)">
+                </div>
+              </div>
+
+              <!-- WhatsApp inline status for new user form (preferred location) -->
+              <div id="whatsapp-status" class="validation-success" style="display:none;" aria-live="polite"></div>
+
+              <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- JS libs (kept canonical) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Main JS (v1.0.11) -->
+  <script src="script.js?v=1.0.11"></script>
 </body>
 </html>
