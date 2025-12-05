@@ -1,85 +1,77 @@
-<!-- SANKALPA FRONTEND - search.html - Restored Version 1.7 + Logout -->
+<!-- SANKALPA FRONTEND – search.html – Version v1.0.12 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SANKALPA – Search</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="sankalpa_master.css?v=1.7">
+  <!-- Main CSS (cache-busted) -->
+  <link rel="stylesheet" href="sankalpa_master.css?v=1.0.12">
 </head>
+
 <body>
 
-  <!-- HEADER (same as v1.7, only Logout added) -->
-  <header class="top-bar-flush">
-    <a class="logo-link" href="index.html">
-      <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
-    </a>
+<header class="top-bar-flush" id="topHeader">
+  <a class="logo-link" href="index.html">
+    <img src="images/Sankalpa_Logo.jpg.png" alt="Sankalpa Logo" class="logo-image">
+  </a>
 
-    <ul class="contact-us-link">
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><span id="logoutLink" style="display:none;"><a href="#" onclick="logoutUser()">Log Out</a></span></li>
-    </ul>
-  </header>
+  <ul class="contact-us-link" id="authLinks">
+    <!-- dynamic (script.js) -->
+  </ul>
+</header>
 
-  <!-- PAGE CONTENT (original v1.7 layout) -->
-  <main class="container mt-5">
+<main class="container text-center py-5" style="padding-top:140px;">
+    <h1 style="color:#ED7014; text-transform:uppercase; letter-spacing:0.1em;">
+        Search for a Priest or Ritual
+    </h1>
 
-    <h2 class="text-center mb-4">Search</h2>
+    <p class="lead" style="color:#0B6623; font-family:'Cormorant Garamond', serif;">
+        Find the trusted resource you need for your Sankalpa.
+    </p>
 
-    <div class="card p-4 shadow-sm">
-      <div class="form-group">
-        <input id="searchInput" type="text" class="form-control" placeholder="Enter search text (no backend integrated)">
-      </div>
-
-      <button class="btn btn-primary btn-block" onclick="showMessage()">Search</button>
+    <div class="input-group mb-4" style="max-width:600px; margin:auto;">
+        <input type="text" class="form-control" placeholder="E.g., Vedic Priest, Pooja, City">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Search</button>
+        </div>
     </div>
 
-    <div id="searchMsg" class="alert alert-info text-center mt-4" style="display:none;">
-      Backend search is not connected in this version.
+    <div class="mt-4">
+        <p class="text-muted">Search results will appear here.</p>
     </div>
+</main>
 
-  </main>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Main JS (cache-busted) -->
+<script src="script.js?v=1.0.12"></script>
 
-  <!-- Simple Script (NO BACKEND, ONLY LOGOUT) -->
-  <script>
-    function logoutUser(){
-      localStorage.removeItem('sankalpa_loggedIn');
-      localStorage.removeItem('sankalpa_userName');
-      window.location.href = 'index.html';
+<!-- Inject correct logged-in header links -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
+    const user = localStorage.getItem('sankalpa_userName') || '';
+    const box = document.getElementById('authLinks');
+
+    if (logged) {
+        box.innerHTML = `
+            <li><span style="font-weight:bold; color:#333; padding-right:15px;">Welcome ${user}</span></li>
+            <li><a href="#" onclick="logoutUser()">Logout</a></li>
+            <li><a href="contact.html" style="padding-left:15px;">Contact Us</a></li>
+        `;
+    } else {
+        box.innerHTML = `<li><a href="contact.html">Contact Us</a></li>`;
     }
-
-    function updateLogoutVisibility(){
-      const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
-      const elem = document.getElementById('logoutLink');
-      if(elem) elem.style.display = logged ? 'inline-block' : 'none';
-    }
-
-    function checkLoginStatus(){
-      const logged = localStorage.getItem('sankalpa_loggedIn') === 'true';
-      if(!logged){
-        window.location.href = 'index.html';
-      }
-    }
-
-    function showMessage(){
-      document.getElementById('searchMsg').style.display = 'block';
-    }
-
-    document.addEventListener('DOMContentLoaded', ()=>{
-      checkLoginStatus();
-      updateLogoutVisibility();
-    });
-  </script>
+});
+</script>
 
 </body>
 </html>
